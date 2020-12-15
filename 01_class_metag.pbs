@@ -4,28 +4,55 @@
 #PBS -q batch
 #PBS -m a
 #PBS -M marroni@appliedgenomics.org
-#PBS -l nodes=1:ppn=12,vmem=150gb,walltime=168:00:00
+#PBS -l nodes=1:ppn=6,vmem=60gb,walltime=168:00:00
 NPROCS=$(wc -l < $PBS_NODEFILE)
 
-KDB=$1 KRES=$2
+KDB=$1 KRES=$2 READDIR=$3
 
 #Should we hardcode directories or pass them as parameters?
 
 DBDIR=/projects/populus/ep/share/marroni/EOSC/
-READDIR=/projects/populus/ep/share/marroni/EOSC/reads/Metagenomics
+#READDIR=/projects/populus/ep/share/marroni/EOSC/reads/Metagenomics
 KRAKBIN=/projects/populus/ep/software/kraken2-2.0.6-beta/bin
+LOGDIR=/projects/populus/ep/share/marroni/scripts/logs
 #KDB=/projects/igats/metagenomics/custom_databases/kraken_nt_2.0.7
 #KRES=/projects/populus/ep/share/marroni/EOSC/classification/Metagenomics
 
-for READFILE in $READDIR/*.gz
-do
-echo $READFILE
-pref=$(basename ${READFILE/.fastq.gz/})
-echo $pref
-#This one was in case of paired, still need to deal with that
-# echo "cd ${KRES}; export TMPDIR=${KRES}; module use --append /iga/scripts/dev_modules/modules; \
-# ${KRAKBIN}/kraken2 --threads 16 --paired --gzip-compressed --db $KDB ${READ1} ${READ2} --output ${KRES}/${pref}.kraken --use-names --report ${KRES}/${pref}.kraken.report.txt >${KRES}/logs/map.out 2>${KRES}/logs/map.err"| qsub -N s1_${pref} -l vmem=150G,walltime=168:00:00,nodes=1:ppn=16
-cd ${KRES}; export TMPDIR=${KRES}; module use --append /iga/scripts/dev_modules/modules; \
-${KRAKBIN}/kraken2 --threads 16 --gzip-compressed --db $KDB ${READFILE} --output ${KRES}/${pref}.kraken \
---use-names --report ${KRES}/${pref}.kraken.report.txt >${KRES}/logs/${pref}_map.out 2>${KRES}/logs/${pref}_map.err
-done
+#Check if paired end files exist (/dev/null is just to avoid double printing of the file name)
+if compgen -G $READDIR/*_1.fastq.gz > /dev/null;
+then
+	for READFILE in $READDIR/*_1.fastq.gz
+	do
+		echo "Processing paired reads"
+		echo $READFILE
+		pref=$(basename ${READFILE/_1.fastq.gz/})
+		READFILE2=${READFILE/_1.fastq.gz/_2.fastq.gz}
+		echo $pref
+		#This one was in case of paired, still need to deal with that
+		# echo "cd ${KRES}; export TMPDIR=${KRES}; module use --append /iga/scripts/dev_modules/modules; \
+		# ${KRAKBIN}/kraken2 --threads 16 --paired --gzip-compressed --db $KDB ${READ1} ${READ2} --output ${KRES}/${pref}.kraken --use-names --report ${KRES}/${pref}.kraken.report.txt >${KRES}/logs/map.out 2>${KRES}/logs/map.err"| qsub -N s1_${pref} -l vmem=150G,walltime=168:00:00,nodes=1:ppn=16
+		cd ${KRES}; export TMPDIR=${KRES}; module use --append /iga/scripts/dev_modules/modules; \
+		${KRAKBIN}/kraken2 --threads $NPROCS --paired --gzip-compressed --db $KDB ${READFILE} ${READFILE2} --output ${KRES}/${pref}.kraken \
+		--use-names --report ${KRES}/${pref}.kraken.report.txt >${LOGDIR}/${pref}_map.out 2>${LOGDIR}/${pref}_map.err
+	done
+fi
+#Check if we have single reads
+if compgen -G $READDIR/*.fastq.gz > /dev/null;
+then
+	for READFILE in $READDIR/*.fastq.gz
+	do
+		if [[ "$READFILE" != *"_1.fastq"* && "$READFILE" != *"_2.fastq"* ]]
+			then
+			echo "Processing single reads"
+			echo $READFILE
+			pref=$(basename ${READFILE/.fastq.gz/})
+			echo $pref
+			#This one was in case of paired, still need to deal with that
+			# echo "cd ${KRES}; export TMPDIR=${KRES}; module use --append /iga/scripts/dev_modules/modules; \
+			# ${KRAKBIN}/kraken2 --threads 16 --paired --gzip-compressed --db $KDB ${READ1} ${READ2} --output ${KRES}/${pref}.kraken --use-names --report ${KRES}/${pref}.kraken.report.txt >${KRES}/logs/map.out 2>${KRES}/logs/map.err"| qsub -N s1_${pref} -l vmem=150G,walltime=168:00:00,nodes=1:ppn=16
+			cd ${KRES}; export TMPDIR=${KRES}; module use --append /iga/scripts/dev_modules/modules; \
+			${KRAKBIN}/kraken2 --threads $NPROCS --gzip-compressed --db $KDB ${READFILE} --output ${KRES}/${pref}.kraken \
+			--use-names --report ${KRES}/${pref}.kraken.report.txt >${LOGDIR}/${pref}_map.out 2>${LOGDIR}/${pref}_map.err
+		fi
+	done
+fi
