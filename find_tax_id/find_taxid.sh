@@ -1,8 +1,8 @@
 #set -x
 
 dirPath='/home/fzuccato/test/viromescan/bowtie2'
-inFile='human_ALL+covid19.fa'
-#inFile='coronavirus.fa'
+#inFile='human_ALL+covid19.fa'
+inFile='coronavirus.fa'
 
 outFileFound=$inFile.taxID.map
 outFileNotFound=$inFile.NO.taxID.txt
@@ -31,8 +31,8 @@ do
 	then
 		#line is header, get someID
 		nOfHeaders=$[$nOfHeaders+1]
-		someID=`echo $isHeader | sed 's/^.*NC_/NC_/' | cut -f1 -d\|` #for human_all file
-		#someID=`echo $isHeader | sed 's/>//' | cut -f1 -d' '` #for coronavirus file
+		#someID=`echo $isHeader | sed 's/^.*NC_/NC_/' | cut -f1 -d\|` #for human_all file
+		someID=`echo $isHeader | sed 's/>//' | cut -f1 -d' '` #for coronavirus file
 
         taxID=`cat $mapFile | grep $someID`
         if test -n "$taxID"
@@ -46,8 +46,9 @@ do
         	#someID non trovato nel file map
 			#to do: stampare sul file la riga cosi come è
 			nOfIdsNotMapped=$[$nOfIdsNotMapped+1]
+        	echo -e 'NOT FOUND:' $nOfHeaders '\t' $line
         	echo -e '--------------------------------------------------- NOT FOUND:' $nOfHeaders '\t' $someID
-	        echo $someID >>$outFileNotFound
+	        echo $nOfHeaders' | '$line >>$outFileNotFound
         fi
 	else
 		#line is not header
