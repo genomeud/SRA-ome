@@ -2,22 +2,25 @@
 nOfParamsNeeded=1
 if test $# -lt $nOfParamsNeeded
 then
-	echo "assumption: exists folder experimentID.kraken.reads containing fastq.gz files"
-    echo "usage: $0 <experimentID> [<DB>]"
+	echo "assumption: exists folder ./experimentID.kraken.reads containing fastq.gz files"
+    echo "usage: $0 <experimentID> [</path/to/DB>]"
     exit 1
 fi
 
-dbDir=$HOME/databases/krakenDB16/
 nOfThreads=8
-experimentID=$2
-
+experimentID=$1
+dbDir=$HOME/databases/krakenDB16
 if test $# -gt $nOfParamsNeeded
 then
-    dbDir=$3
+    dbDir=$2
 fi
+dbName=`basename $dbDir`
 
-resultsDir=${experimentID}.kraken.reads
-cd $resultsDir
+fastqDir=${experimentID}.kraken.reads
+cd $fastqDir
+
+resultsDir=${dbName}_results
+mkdir $resultsDir
 
 #for single
 inputFile=${experimentID}.fastq.gz
@@ -25,8 +28,8 @@ inputFile=${experimentID}.fastq.gz
 inputFile1=${experimentID}_1.fastq.gz
 inputFile2=${experimentID}_2.fastq.gz
 #for both
-outputFile=${experimentID}.kraken
-reportFile=${experimentID}.kraken.report.txt
+outputFile=${resultsDir}/${experimentID}.kraken
+reportFile=${resultsDir}/${experimentID}.kraken.report.txt
 getFiles=""
 
 if test -e "$inputFile"
