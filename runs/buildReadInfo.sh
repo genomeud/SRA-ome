@@ -1,4 +1,4 @@
-#set -x
+set -x
 nOfParamsNeeded=1
 if test $# -lt $nOfParamsNeeded
 then
@@ -21,13 +21,18 @@ temp1='temp1'
 temp2='temp2'
 while read line
 do
-    value=`echo $line | sed s/,/\n/g`
+    value=`echo $line | tr ',' '\n'` #\r, \n or \r\n ?
+    value=`echo $line | sed 's/,/\r/g'` #\r, \n or \r\n ?
     echo "line: $i"
     echo $value
     echo $value >$temp2
+    echo 'temp1:'
+    cat temp1
+    echo 'temp2:'
+    cat temp2
     if test $i -gt 1
     then
-        paste -d: $temp1 $temp2 >$outputFile
+        paste $temp1 $temp2 >$outputFile
     else
         echo $value >$outputFile
     fi
