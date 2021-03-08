@@ -1,9 +1,9 @@
-set -x
+#set -x
 nOfParamsNeeded=1
 if test $# -lt $nOfParamsNeeded
 then
 	echo "assumption: exists file <runsIDsFile> containing list of runIds"
-    echo "usage: $0 </path/to/runsIDsFile> [<DB>]"
+    echo "usage: $0 </path/to/runsIDsFile> [<DB>] [<outputDir>]"
     exit 1
 fi
 
@@ -11,7 +11,7 @@ runsIDsFile=$1
 dbDir=$HOME/databases/krakenDB16
 if test $# -gt $nOfParamsNeeded
 then 
-	dbDir=$2 
+	dbDir=$2
 fi
 
 while read run
@@ -20,24 +20,13 @@ do
 	run=`echo $run | tr -d '\r'`
 	#start with new run
 	echo "current run:" $run
-	mkdir $run
-	cd $run
+	mkdir $runsIDsFile
 	#createInfoFile (to discover layout)
-		#echo "creating info file..."
-		#./buildReadInfo.sh $run 'run.info' #non funzionante
+	echo "creating info file..."
+	infoFile="$run/run.info"
+	./buildReadInfo.sh $run $infoFile #non funzionante
 	#getLayout
-		#layout=`cat 'run.info' | grep 'LibraryLayout' | cut -d'\t' -f2`
-	#discover layout directly (brutal way)
-	info=`esearch -db sra -query $run | efetch -format runinfo`
-	echo $info >run.info
-	layout='SINGLE' #default
-	isSingle=`echo $info | grep $layout`
-	if test -z "$isSingle"
-	then
-		#single not found ==> paired
-		layout='PAIRED'
-	fi
-	cd ..
+	layout=`cat $infoFile | grep 'LibraryLayout' | cut -f2`
 	#downloadRead
 	echo "downloading run as fastq.gz..."
 	./downloadRead.sh "$run" "$layout"
