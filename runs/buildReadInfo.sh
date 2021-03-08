@@ -2,7 +2,7 @@
 nOfParamsNeeded=1
 if test $# -lt $nOfParamsNeeded
 then
-    echo "usage: $0 <runID> [<outputFile>]"
+    echo "usage: $0 <runID> [</path/to/outputFile>]"
     exit 1
 fi
 
@@ -12,6 +12,7 @@ if test $# -gt $nOfParamsNeeded
 then
     outputFile=$2
 fi
+echo $outputFile
 
 info=`esearch -db sra -query $runID | efetch -format runinfo`
 

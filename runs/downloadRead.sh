@@ -2,7 +2,8 @@
 nOfParamsNeeded=1
 if test $# -lt $nOfParamsNeeded
 then
-    echo "usage: $0 <runID> [default=SINGLE, PAIRED]"
+    echo "NB: if outputDir =/= runID fastq will create a subfolder named <runID>"
+    echo "usage: $0 <runID> [default=SINGLE, PAIRED] [path/to/outputDir]"
     exit 1
 fi
 
@@ -11,15 +12,17 @@ layoutOption=''
 if test $# -gt $nOfParamsNeeded
 then
     layout=$2
-    if test $layout = 'PAIRED'
+    if test "$layout" = 'PAIRED'
     then
         layoutOption='--split-files'
     fi
+    outputDir=$3
+    cd $outputDir
 fi
 
 runID=$1
 
-dir="${runID}"
+dir="$runID"
 mkdir $dir
 cd $dir
 
