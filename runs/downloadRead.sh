@@ -13,7 +13,6 @@ mkdir $dir
 cd $dir
 
 command="fastq-dump --gzip $runID"
-
 echo $command
 echo `$command`
 
