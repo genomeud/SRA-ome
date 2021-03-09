@@ -44,6 +44,9 @@ do
 		#analyseRead
 		echo "analysing run with Kraken2..."
 		./runKraken.sh "$currOutDir"
+		echo "analysis done. Deleting fastq.gz file..."
+		#finds only: SRR$run.fastq.gz or SRR$run_1.fastq.gz or SRR$run_2.fastq.gz
+		#ls | egrep "SRR$run(_[1,2])?\.fastq\.gz" | xargs -d"\n" rm
 	fi
 	i=$[$i+1]
 done
