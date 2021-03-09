@@ -15,27 +15,38 @@ then
 	mainOutDir=`echo $mainOutDir | sed s:/$::`
 fi
 
-while read run
-do
-	#remove eventual carriage return from dos files
-	run=`echo $run | tr -d '\r'`
-	currOutDir="$mainOutDir/$run"
-	#start with new run
-	echo "current run:" $run
-	mkdir $currOutDir
-	#createInfoFile (to discover layout)
-	echo "creating info file..."
-	infoFile="$currOutDir/run.info"
-	./buildReadInfo.sh $run $infoFile
-	#getLayout
-	layout=`cat $infoFile | grep 'LibraryLayout' | cut -f2`
-	#downloadRead
-	echo "downloading run as fastq.gz..."
-	./downloadRead.sh "$run" "$layout" "$mainOutDir"
-	#analyseRead
-	echo "analysing run with Kraken2..."
-	./runKraken.sh "$currOutDir"
+i=1
+n=`cat $runsIDsFile | wc -l`
 
-done < $runsIDsFile
+#cat $runsIDsFile | while read line
+#do
+while test $i -le $n
+do
+	line=`cat $runsIDsFile | head -n $i | tail -n 1`
+	if ! test -z $line 
+	then
+		run=$line
+		#remove eventual carriage return from dos files
+		run=`echo $run | tr -d '\r'`
+		currOutDir="$mainOutDir/$run"
+		#start with new run
+		echo "current run:" $run
+		mkdir $currOutDir
+		#createInfoFile (to discover layout)
+		echo "creating info file..."
+		infoFile="$currOutDir/run.info"
+		./buildReadInfo.sh $run $infoFile
+		#getLayout
+		layout=`cat $infoFile | grep 'LibraryLayout' | cut -f2`
+		#downloadRead
+		echo "downloading run as fastq.gz..."
+		./downloadRead.sh "$run" "$layout" "$mainOutDir"
+		#analyseRead
+		echo "analysing run with Kraken2..."
+		./runKraken.sh "$currOutDir"
+	fi
+	i=$[$i+1]
+done
+
 
 exit 0
