@@ -1,4 +1,4 @@
-#set -x
+set -x
 nOfParamsNeeded=1
 if test $# -lt $nOfParamsNeeded
 then
@@ -15,6 +15,9 @@ then
 	mainOutDir=`echo $mainOutDir | sed s:/$::`
 fi
 
+logFile=$mainOutDir'/log.txt'
+echo -e 'input file:' $runsIDsFile "\n" >$logFile
+
 i=1
 n=`cat $runsIDsFile | wc -l`
 
@@ -30,26 +33,26 @@ do
 		run=`echo $run | tr -d '\r'`
 		currOutDir="$mainOutDir/$run"
 		#start with new run
-		echo "current run:" $run
+		echo "current run:" $run | tee -a $logFile
 		mkdir $currOutDir
 		#createInfoFile (to discover layout)
-		echo "creating info file..."
+		echo "creating info file..." | tee -a $logFile
 		infoFile="$currOutDir/run.info"
 		./buildReadInfo.sh $run $infoFile
 		#getLayout
 		layout=`cat $infoFile | grep 'LibraryLayout' | cut -f2`
 		#downloadRead
-		echo "downloading run as fastq.gz..."
+		echo "downloading run as fastq.gz..." | tee -a $logFile
 		./downloadRead.sh "$run" "$layout" "$mainOutDir"
 		#analyseRead
-		echo "analysing run with Kraken2..."
+		echo "analysing run with Kraken2..." | tee -a $logFile
 		./runKraken.sh "$currOutDir"
-		echo "analysis done. Deleting fastq.gz file..."
+		echo "analysis done. Deleting fastq.gz file..." | tee -a $logFile
 		#finds only: SRR$run.fastq.gz or SRR$run_1.fastq.gz or SRR$run_2.fastq.gz
-		#ls | egrep "SRR$run(_[1,2])?\.fastq\.gz" | xargs -d"\n" rm
+		ls $currOutDir | egrep "$run(_[1,2])?\.fastq\.gz" | xargs -d"\n" rm
+		echo -e "done:" $run "\n" | tee -a $logFile
 	fi
 	i=$[$i+1]
 done
-
 
 exit 0

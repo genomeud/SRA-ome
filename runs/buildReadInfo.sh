@@ -12,7 +12,7 @@ if test $# -gt $nOfParamsNeeded
 then
     outputFile=$2
 fi
-echo $outputFile
+echo "info file:" $outputFile
 
 info=`esearch -db sra -query $runID | efetch -format runinfo`
 
@@ -35,5 +35,5 @@ done < <(echo "$info")
 rm temp
 rm current
 
-echo "infos:"
-cat $outputFile
+#echo "infos:"
+#cat $outputFile
