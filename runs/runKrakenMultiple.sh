@@ -1,4 +1,4 @@
-set -x
+#set -x
 nOfParamsNeeded=1
 if test $# -lt $nOfParamsNeeded
 then
@@ -47,9 +47,12 @@ do
 		#analyseRead
 		echo "analysing run with Kraken2..." | tee -a $logFile
 		./runKraken.sh "$currOutDir"
-		echo "analysis done. Deleting fastq.gz file..." | tee -a $logFile
 		#finds only: SRR$run.fastq.gz or SRR$run_1.fastq.gz or SRR$run_2.fastq.gz
-		ls $currOutDir | egrep "$run(_[1,2])?\.fastq\.gz" | xargs -d"\n" rm
+		echo "analysis done. Deleting fastq.gz file..." | tee -a $logFile
+		cd $currOutDir
+		ls | egrep "$run(_[1,2])?\.fastq\.gz" | xargs -d"\n" rm
+		cd ../..
+		#end
 		echo -e "done:" $run "\n" | tee -a $logFile
 	fi
 	i=$[$i+1]
