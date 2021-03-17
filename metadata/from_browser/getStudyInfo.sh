@@ -6,7 +6,7 @@ then
 	exit 1
 fi
 
-SRAStudy=$2
+SRAStudy=$1
 
 #starts with S
 #isNCBI=`echo $SRAStudy | grep ^S | wc -c`
@@ -24,16 +24,16 @@ pattern='<STUDY '.*'accession="'$SRAStudy'"'.*'>'
 #echo -e "pattern:\t"$pattern
 
 studyTitle=`cat experiment_formatted.xml \
-| grep "$pattern" -A 15 \
-| head -n 15 \
+| grep "$pattern" -A 100 \
+| head -n 100 \
 | grep '<STUDY_TITLE>' \
 | sed s/^.*'<STUDY_TITLE>'// \
 | sed s:'</STUDY_TITLE>'::`
 
 #echo -e "studyTitle:\t"$studyTitle
-echo $studyTitle
+echo "$studyTitle"
 
 if test -z "$studyTitle"
 then
-	echo $SRAStudy >>error.txt
+	echo "$SRAStudy" >>error.txt
 fi

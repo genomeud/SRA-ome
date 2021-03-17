@@ -1,13 +1,21 @@
 #set -x
 
-if test $# -ne 1
+if test $# -lt 1
 then
     echo "assumption on fields: SRAStudy=21, Run=1"
-    echo "usage: $0 <file.csv>"
+    echo "usage: $0 <inputfile>"
     exit 1
 fi
 
-CSV=$1
+inputfile=$1
+delimiter='\t'
+
+if test $# -gt 1
+then
+    delimiter="$2"
+fi
+
+inputfile=$1
 
 outputFile='SRAStudyTitle.txt'
 logFile='SRAStudyTitle_log.txt'
@@ -17,16 +25,16 @@ echo -n >$outputFile
 echo -n >$logFile
 
 i=1
-len=`cat $CSV | wc -l`
+len=`cat "$inputfile" | wc -l`
 
 while read line
 do
-    SRAStudy=`echo $line | cut -d',' -f21`
-    Run=`echo $line | cut -d',' -f1`
-    echo "line:" $i "of" $len, $Run, | tee -a $logFile
+    SRAStudy=`echo "$line" | cut -f21`
+    Run=`echo "$line" | cut -f1`
+    echo "line:" "$i" "of" "$len", run: "$Run", study: "$SRAStudy" | tee -a $logFile
     studyTitle=`./getStudyInfo.sh $SRAStudy` 
-    echo -e $studyTitle "\n" | tee -a $logFile
-    echo $studyTitle >>$outputFile
+    echo -e "$studyTitle" "\n" | tee -a $logFile
+    echo "$studyTitle" >>$outputFile
     i=$[$i+1]
 
-done <$CSV
+done <"$inputfile"
