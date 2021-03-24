@@ -2,13 +2,15 @@
 
 if test $# -lt 3
 then
-    echo "usage: $0 <inputFile> <valueFieldIdx> <groupingFieldIdx>"
+    echo "assumption: file char separator \',\'"
+    echo "usage: $0 <inputFile> <groupingFieldIdx> [list <valueFieldIdx1> <valueFieldIdx2>]"
     exit 1
 fi
 
 inputFile=$1
-valueFieldIdx=$2
-groupingFieldIdx=$3
+groupingFieldIdx=$2
+valueFieldIdx1=$3
+valueFieldIdx2=$4
 
 tmpCountUniqGroupingFile=tmpCountUniqGroupingFile.txt
 tmpInputFile=tmpInputFile.txt
@@ -28,17 +30,19 @@ then
     exit 2
 fi
 
-cat "$inputFile" | cut -f"$valueFieldIdx","$groupingFieldIdx" | sort -k2 >$tmpInputFile
-cat "$tmpInputFile" | cut -f2 | uniq -c | sed s/^' '*// | sed s/[^' 'a-zA-Z0-9]/?/g >$tmpCountUniqGroupingFile
+delimiter=','
+
+cat "$inputFile" | sort -t$delimiter -k$groupingFieldIdx >$tmpInputFile
+cat "$tmpInputFile" | cut -d$delimiter -f$groupingFieldIdx | uniq -c | sed s/^' '*// | sed s/[^' 'a-zA-Z0-9]/?/g >$tmpCountUniqGroupingFile
 
 i=1
 while (( $i <= $n ))
 do
-    grouping=`cat $tmpInputFile | head -n $i | tail -n 1 | cut -f2 | sed s/[^' 'a-zA-Z0-9]/?/g`
+    grouping=`cat $tmpInputFile | head -n $i | tail -n 1 | cut -d$delimiter -f$groupingFieldIdx | sed s/[^' 'a-zA-Z0-9]/?/g`
     nOfEqualLines=`cat $tmpCountUniqGroupingFile | grep "^[0-9]* ""${grouping}""$" | cut -d ' ' -f1`
 
     randomLine=$(( $(( $RANDOM % $nOfEqualLines )) + $i ))
-    value=`cat $tmpInputFile | head -n $randomLine | tail -n 1 | cut -f1`
+    value=`cat $tmpInputFile | head -n $randomLine | tail -n 1 | cut -d$delimiter -f$valueFieldIdx1,$valueFieldIdx2`
 
     echo "grouping lines:" "$grouping" | tee -a $logFile
     echo "first line:" $i", number of equal lines:" "$nOfEqualLines" | tee -a $logFile
