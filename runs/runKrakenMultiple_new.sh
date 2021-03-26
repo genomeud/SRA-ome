@@ -3,7 +3,7 @@ nOfParamsNeeded=2
 if test $# -lt $nOfParamsNeeded
 then
 	echo "assumption: exists file <runsIDsFile> containing list of runIds"
-    echo "usage: $0 </path/to/runsIDsFile> <mainOutDir> [<createInfoFile=<T/F>>]"
+    echo "usage: $0 </path/to/runsIDsFile> <mainOutDir> [<createInfoFile=<TRUE/FALSE>>]"
     exit 1
 fi
 
@@ -11,7 +11,7 @@ runsIDsFile=$1
 mainOutDir=$2
 #remove eventual "/" at the end of the folder path
 mainOutDir=`echo $mainOutDir | sed s:/$::`
-createInfoFile='F'
+createInfoFile='FALSE'
 
 if test $# -gt $nOfParamsNeeded
 then 
@@ -36,9 +36,10 @@ do
 		run=`echo $run | tr -d '\r'` 2>>$logFile
 		currOutDir="$mainOutDir/$run"
 		#start with new run
+		echo "$i of $n" | tee -a $logFile
 		echo "current run:" $run | tee -a $logFile
 		mkdir $currOutDir 2>>$logFile
-		if test $createInfoFile = 'T'
+		if test $createInfoFile = 'TRUE'
 		then
 			#createInfoFile (to discover layout)
 			echo "creating info file..." | tee -a $logFile
@@ -61,8 +62,8 @@ do
 		then
 			errorFileName=`basename $errorFile`
 			newErrorFile=${currOutDir}/${errorFileName}.xml
-			>&2 echo "possible some errors while downloading!" | tee -a $logFile
-			>&2 echo "check file" "$newErrorFile" | tee -a $logFile
+			echo "possible some errors while downloading!" | tee -a $logFile
+			echo "check file" "$newErrorFile" | tee -a $logFile
 			mv "$errorFile" "$newErrorFile"
 		else
 			#remove useless files
