@@ -1,9 +1,9 @@
-#set -x
+set -x
 nOfParamsNeeded=2
 if test $# -lt $nOfParamsNeeded
 then
 	echo "assumption: exists file <runsIDsFile> containing list of runIds"
-    echo "usage: $0 </path/to/runsIDsFile> <mainOutDir> [<createInfoFile=<TRUE/FALSE>>]"
+    echo "usage: $0 </path/to/runsIDsFile> <mainOutDir> [createInfoFile=<TRUE | dflt=FALSE>]"
     exit 1
 fi
 
@@ -20,9 +20,16 @@ fi
 
 logFile=$mainOutDir'/log.txt'
 echo -e 'input file:' $runsIDsFile "\n" >$logFile
-errorFile=$HOME/'ncbi_error_report.txt'
+NCBIErrorFile=$HOME/'ncbi_error_report.txt'
 i=1
 n=`cat $runsIDsFile | wc -l`
+
+#results constants
+YES='YES'
+ERROR='ERR'
+#results files
+resultAllFile='results_all.txt'
+resultErrFile='result_err.txt'
 
 #cat $runsIDsFile | while read line
 #do
@@ -54,27 +61,37 @@ do
 		#downloadRead
 		echo "downloading run as fastq.gz..." | tee -a $logFile
 		./downloadRead.sh "$run" "$layout" "$mainOutDir" 2>>$logFile | tee -a $logFile
-		#analyseRead
-		echo "analysing run with Kraken2..." | tee -a $logFile
-		./runKraken.sh "$currOutDir" 2>>$logFile | tee -a $logFile
-		#check if some error came out (in this case don't delete files)
-		if test -e "$errorFile"
+		#check if some error came out (in this case don't run kraken)
+		newErrorFile=''
+		if test -e "$NCBIErrorFile"
 		then
-			errorFileName=`basename $errorFile`
-			newErrorFile=${currOutDir}/${errorFileName}.xml
+			NCBIErrorFileName=`basename $NCBIErrorFile`
+			newErrorFile=${currOutDir}/${NCBIErrorFileName}.xml
 			echo "possible some errors while downloading!" | tee -a $logFile
 			echo "check file" "$newErrorFile" | tee -a $logFile
-			mv "$errorFile" "$newErrorFile"
+			mv "$NCBIErrorFile" "$newErrorFile"
 		else
-			#remove useless files
-			#finds only: SRR$run.fastq.gz or SRR$run_1.fastq.gz or SRR$run_2.fastq.gz
-			echo "analysis done. Deleting fastq.gz file..." | tee -a $logFile
-			cd $currOutDir
-			ls | egrep "$run(_[1,2])?\.fastq\.gz" | xargs -d"\n" rm 2>>../../$logFile
-			cd 'krakenDB16_results'
-			ls | grep "$run.kraken$" | xargs -d"\n" rm 2>>../../../$logFile
-			cd ../../..
+			#analyseRead
+			echo "analysing run with Kraken2..." | tee -a $logFile
+			./runKraken.sh "$currOutDir" 2>>$logFile | tee -a $logFile
 		fi
+		#remove useless files
+		echo "analysis done. Deleting fastq.gz file..." | tee -a $logFile
+		cd $currOutDir
+		#finds only: $run.fastq.gz or $run_1.fastq.gz or $run_2.fastq.gz
+		ls | egrep "$run(_[1,2])?\.fastq\.gz" | xargs -d"\n" rm 2>>../../$logFile
+		if test -z "../$newErrorFile"
+		then
+			cd 'krakenDB16_results'
+			#finds only: $run.kraken
+			ls | grep "$run.kraken$" | xargs -d"\n" rm 2>>../../../$logFile
+			cd ..
+			echo $run','$ERROR >>$resultErrFile
+			echo $run','$ERROR >>$resultAllFile
+		else
+			echo $run','$YES >>$resultAllFile
+		fi
+		cd ../..
 		#end
 		echo -e "done:" $run "\n" | tee -a $logFile
 	fi
