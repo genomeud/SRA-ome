@@ -23,11 +23,14 @@ fi
 runID=$1
 
 dir="$runID"
-mkdir $dir
+if ! test -d $dir
+then
+    mkdir $dir
+fi
 cd $dir
 
-command="fastq-dump $layoutOption --gzip $runID"
+command="fasterq-dump $layoutOption --include-technical $runID"
 echo $command
-echo `$command`
+$command
 
 exit 0

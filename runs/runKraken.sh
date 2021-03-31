@@ -2,7 +2,7 @@
 nOfParamsNeeded=1
 if test $# -lt $nOfParamsNeeded
 then
-	echo "assumption: exists directory <runID> containing fastq.gz files"
+	echo "assumption: exists directory <runID> containing .fastq files"
     echo "usage: $0 </path/to/runID> [</path/to/DB>]"
     exit 1
 fi
@@ -22,10 +22,10 @@ resultsDir=${dbName}_results
 mkdir $resultsDir
 
 #for single
-inputFile=${runID}.fastq.gz
+inputFile=${runID}.fastq
 #for paired
-inputFile1=${runID}_1.fastq.gz
-inputFile2=${runID}_2.fastq.gz
+inputFile1=${runID}_1.fastq
+inputFile2=${runID}_2.fastq
 #for both
 outputFile=${resultsDir}/${runID}.kraken
 reportFile=${resultsDir}/${runID}.kraken.report.txt
@@ -42,7 +42,6 @@ fi
 
 command="kraken2 \
 --threads $nOfThreads \
---gzip-compressed \
 --db $dbDir \
 $getFiles \
 --output $outputFile \
