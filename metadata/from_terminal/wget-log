@@ -1,12 +1,0 @@
-URL transformed to HTTPS due to an HSTS policy
---2021-03-13 12:20:29--  https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?save=efetch
-Resolving trace.ncbi.nlm.nih.gov (trace.ncbi.nlm.nih.gov)... 130.14.29.113, 2607:f220:41e:4290::113
-Connecting to trace.ncbi.nlm.nih.gov (trace.ncbi.nlm.nih.gov)|130.14.29.113|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: unspecified [application/octet-stream]
-Saving to: ‘sra.cgi?save=efetch’
-
-sra.cgi?save=efetch                   [<=>                                                         ]       0  --.-KB/s               sra.cgi?save=efetch                   [ <=>                                                        ]     109  --.-KB/s    in 0s      
-
-2021-03-13 12:20:30 (60.3 MB/s) - ‘sra.cgi?save=efetch’ saved [109]
-
