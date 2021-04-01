@@ -32,5 +32,5 @@ cd $dir
 command="fasterq-dump $layoutOption --include-technical $runID"
 echo $command
 $command
-
-exit 0
+echo $?
+exit #not necessary, redundant: $?

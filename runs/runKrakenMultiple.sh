@@ -21,8 +21,8 @@ then
 fi
 
 #output files
-resultAllFile=$mainOutDir'/results_all.txt'
-resultErrFile=$mainOutDir'/results_err.txt'
+resultAllFile=$mainOutDir'/results_all.csv'
+resultErrFile=$mainOutDir'/results_err.csv'
 logFile=$mainOutDir'/log.txt'
 echo -e 'input file:' $runsIDsFile "\n" >$logFile
 echo -n >$resultAllFile
@@ -66,16 +66,21 @@ do
 		fi
 		#downloadRead
 		echo "downloading run as .fastq..." | tee -a $logFile
-		./downloadRead.sh "$run" "$layout" "$mainOutDir" 2>>$logFile | tee -a $logFile
-		#check if some error came out (in this case don't run kraken)
-		if test -e "$NCBIErrorFile"
+		printToLogFile=`./downloadRead.sh "$run" "$layout" "$mainOutDir" 2>>$logFile`
+		if test $? -ne 0
 		then
 			RUN_STATUS=$ERR_STATUS
-			NCBIErrorFileName=`basename $NCBIErrorFile`
-			newErrorFile=${currOutDir}/${NCBIErrorFileName}.xml
+		fi
+		#can't do: tee -a $logFile, would lose exit status of ./downloadRead.sh
+		echo $printToStdin>>$logFile
+		#check if some error came out (in this case don't run kraken)
+		if test $RUN_STATUS = $ERR_STATUS
+		then
+			#NCBIErrorFileName=`basename $NCBIErrorFile`
+			#newErrorFile=${currOutDir}/${NCBIErrorFileName}.xml
 			echo "possible some errors while downloading!" | tee -a $logFile
-			mv "$NCBIErrorFile" "$newErrorFile"
-			echo "check file" "$newErrorFile" | tee -a $logFile
+			#mv "$NCBIErrorFile" "$newErrorFile"
+			#echo "check file" "$newErrorFile" | tee -a $logFile
 		else
 			#analyseRead
 			echo "analysing run with Kraken2..." | tee -a $logFile
