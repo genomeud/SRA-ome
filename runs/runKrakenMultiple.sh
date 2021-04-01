@@ -72,7 +72,7 @@ do
 			RUN_STATUS=$ERR_STATUS
 		fi
 		#can't do: tee -a $logFile, would lose exit status of ./downloadRead.sh
-		echo $printToStdin>>$logFile
+		echo $printToLogFile>>$logFile
 		#check if some error came out (in this case don't run kraken)
 		if test $RUN_STATUS = $ERR_STATUS
 		then
@@ -114,6 +114,28 @@ if test -z $hasErrors
 then
 	#no errors detected
 	rm $resultErrFile
+fi
+
+if ! test -z "$allRunsFile"
+then
+	#update run files
+	allRunsFile_Run_Idx=8
+	allRunsFile_Done_Idx=19
+	resultsAllFile_Run_Idx=1
+	resultsAllFile_Done_Idx=2
+	echo "updating runs file" | tee -a $logFile
+
+	#call script
+	../metadata/updateAllRunsFile.sh \
+	$allRunsFile \
+		$allRunsFile_Run_Idx \
+		$allRunsFile_Done_Idx \
+	$resultAllFile \
+		$resultsAllFile_Run_Idx \
+		$resultsAllFile_Done_Idx \
+	2>>$logFile | tee -a $logFile
+
+	echo "update done" | tee -a $logFile
 fi
 
 exit 0

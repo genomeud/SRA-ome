@@ -26,27 +26,30 @@ n=`cat "$AllRunsFile" | wc -l`
 AllRunsFileNew="$AllRunsFileName"'_new'"$AllRunsFileExt"
 AllRunsDoneFile="$AllRunsFileName"'_done'"$AllRunsFileExt"
 AllRunsToDoFile="$AllRunsFileName"'_todo'"$AllRunsFileExt"
+AllRunsBackUpFile="$AllRunsFileName"'_backup'"$AllRunsFileExt"
 
 echo -n >$AllRunsFileNew
 echo -n >$AllRunsDoneFile
 echo -n >$AllRunsToDoFile
+echo -n >$AllRunsBackUpFile
 
 while read ARF_line
 do
     ARF_filterColumn=`echo "$ARF_line" | cut -d',' -f$ARF_filterColumnIdx`
     RTUF_filterColumn=`cat "$RunsToUpdateFile" | cut -d',' -f$RTUF_filterColumnIdx | grep -n "$ARF_filterColumn"`
-    echo "$i of $n: $ARF_filterColumn"
     ARF_newLine=''
 
     if test -z "$RTUF_filterColumn"
     then
+        echo "$i of $n: $ARF_filterColumn"
         #this line has not changed, print it as original
         #echo NOT_UPDATE
         ARF_newLine=`echo $ARF_line`
         echo "$ARF_newLine">>$AllRunsFileNew
     else
         #this line has changed, update column requested
-        echo ----------------------UPDATE-----------------------------------
+        echo -e "\n"'----------------------UPDATE-----------------------------------'
+        echo "$i of $n: $ARF_filterColumn"
         RTUF_lineIdx=`echo "$RTUF_filterColumn" | cut -d':' -f1`
         RTUF_line=`cat "$RunsToUpdateFile" | head -n "$RTUF_lineIdx" | tail -n 1`
         #fields before column to update
@@ -68,8 +71,13 @@ do
             #if not last field attach right part
             ARF_newLine="$ARF_newLine"','"$ARF_lineRight"
         fi
+
+        #print update done
+        ARF_columnOldValue=`echo "$ARF_line" | cut -d',' -f$ARF_columnValueIdx`
+        echo "$ARF_filterColumn"':' "$ARF_columnOldValue"' -> '"$RTUF_columnNewValue"
         #update line to new file
-        echo "$ARF_newLine" | tee -a $AllRunsFileNew
+        echo -e "$ARF_newLine""\n"
+        echo "$ARF_newLine" >>$AllRunsFileNew
     fi
 
     isLineDone=`echo "$ARF_newLine" | cut -d',' -f$[$ARF_columnValueIdx] | grep 'OK'`
@@ -88,7 +96,7 @@ do
 
 done <$AllRunsFile
 
-mv $AllRunsFile "$AllRunsFileName"'_backup'"$AllRunsFileExt"
+mv $AllRunsFile $AllRunsBackUpFile
 mv $AllRunsFileNew $AllRunsFile
 
 exit 0
