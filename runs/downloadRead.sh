@@ -23,14 +23,11 @@ fi
 runID=$1
 
 dir="$runID"
-if ! test -d $dir
-then
-    mkdir $dir
-fi
+mkdir $dir 2>>/dev/null
 cd $dir
 
 command="fasterq-dump $layoutOption --include-technical $runID"
 echo $command
 $command
-echo $?
+#echo $?
 exit #not necessary, redundant: $?
