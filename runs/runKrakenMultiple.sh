@@ -1,6 +1,7 @@
 set -x
 
 nOfParamsNeeded=3
+
 if test $# -lt $nOfParamsNeeded
 then
 	echo "assumption: exists file <runsIDsFile> containing list of runIds to download ad analyse"
@@ -14,6 +15,7 @@ DIR_SCRIPT_METADATA=$HOME/'SRA/metadata'
 buildReadInfo_script=$DIR_SCRIPT_ANALYSIS/'buildReadInfo.sh'
 downloadRead_script=$DIR_SCRIPT_ANALYSIS/'downloadRead.sh'
 runKraken_script=$DIR_SCRIPT_ANALYSIS/'runKraken.sh'
+getFastqFileSize_script=$DIR_SCRIPT_ANALYSIS/'getFastqFileSize.sh'
 updateAllRunsFile_script=$DIR_SCRIPT_METADATA/'updateAllRunsFile.sh'
 
 runsIDsFile=$1
@@ -22,6 +24,7 @@ DIR_OUTPUT_MAIN=`echo $2 | sed s:/$::`
 #now=$(date '+%Y_%m_%d')
 #DIR_OUTPUT_MAIN=$DIR_SCRIPT_ANALYSIS/'analysis'/"$now"
 #remove eventual "/" at the end of the folder path
+mkdir $DIR_OUTPUT_MAIN 2>>/dev/null
 
 createInfoFile=$3
 
@@ -33,14 +36,17 @@ fi
 
 #output info dir
 DIR_OUTPUT_INFO=$DIR_OUTPUT_MAIN/'.info'
+mkdir $DIR_OUTPUT_INFO 2>>/dev/null
 #output info files
-resultAllFile=$DIR_OUTPUT_MAIN'/results_all.csv'
-resultErrFile=$DIR_OUTPUT_MAIN'/results_err.csv'
-logFile=$DIR_OUTPUT_MAIN'/log.txt'
-#clear files
+resultAllFile=$DIR_OUTPUT_INFO'/results_all.csv'
+resultErrFile=$DIR_OUTPUT_INFO'/results_err.csv'
+sizeOfFastqFile=$DIR_OUTPUT_INFO'/fastq_files_size.txt'
+logFile=$DIR_OUTPUT_INFO'/log.txt'
+#create or clear files
 echo -e 'input file:' $runsIDsFile "\n" >$logFile
 echo -n >$resultAllFile
 echo -n >$resultErrFile
+echo -n >$sizeOfFastqFile
 
 #NCBIErrorFile=$HOME/'ncbi_error_report.txt'
 
@@ -59,22 +65,23 @@ cd $DIR_OUTPUT_MAIN
 #do
 while test $i -le $[$n+1]
 do
+	$STATUS_CURR_RUN = $STATUS_OK
 	line=`cat $runsIDsFile | head -n $i | tail -n 1` 2>>/dev/null
 	if ! test -z $line 
 	then
 		run=`echo $line | cut -d',' -f1`
 		#remove eventual carriage return from dos files
 		run=`echo $run | tr -d '\r'` 2>>$logFile
-		currOutDir="$DIR_OUTPUT_MAIN/$run"
+		runDir="$DIR_OUTPUT_MAIN/$run"
 		#start with new run
 		echo "$i of $n" | tee -a $logFile
 		echo "current run:" $run | tee -a $logFile
-		mkdir $currOutDir 2>>/dev/null
+		mkdir $runDir 2>>/dev/null
 		if test $createInfoFile = 'TRUE'
 		then
 			#createInfoFile (to discover layout)
 			echo "creating info file..." | tee -a $logFile
-			infoFile="$currOutDir/run.info"
+			infoFile="$runDir/run.info"
 			$buildReadInfo_script $run $infoFile 2>>$logFile | tee -a $logFile
 			#getLayout from infofile
 			layout=`cat $infoFile | grep 'LibraryLayout' | cut -f2` 2>>$logFile
@@ -90,35 +97,48 @@ do
 			STATUS_CURR_RUN=$STATUS_ERR
 		fi
 		#can't do: tee -a $logFile, would lose exit status of ./downloadRead.sh
+		#maybe is possible with PIPE_STATUS?
 		echo $printToLogFile>>$logFile
+		#save compressed size and actual size
+		#compressed size MB: value stored in SRA DB (3rd parameter in RunsIDFile)
+		#actual size: value obtained from getFastqFileSize (ls | grep | cut)
+		compressedSizeMB=`echo $line | cut -d',' -f3`
+		totalSizeMB=`$getFastqFileSize_script $runDir $run $layout`
+		if test $? -eq 2
+		then
+			#did not found any fastq files
+			totalSizeMB='NO_FASTQ_FOUND'
+			STATUS_CURR_RUN=$STATUS_ERR
+			echo "no fastq found to download" | tee -a $logFile
+		fi
+		echo -e $run'\t'$compressedSizeMB'\t'$totalSizeMB>>$sizeOfFastqFile
 		#check if some error came out (in this case don't run kraken)
 		if test $STATUS_CURR_RUN = $STATUS_ERR
 		then
 			#NCBIErrorFileName=`basename $NCBIErrorFile`
-			#newErrorFile=${currOutDir}/${NCBIErrorFileName}.xml
+			#newErrorFile=${runDir}/${NCBIErrorFileName}.xml
 			echo "possible some errors while downloading!" | tee -a $logFile
 			#mv "$NCBIErrorFile" "$newErrorFile"
 			#echo "check file" "$newErrorFile" | tee -a $logFile
 		else
 			#analyseRead
 			echo "analysing run with Kraken2..." | tee -a $logFile
-			"$runKraken_script" "$currOutDir" 2>>$logFile | tee -a $logFile
+			"$runKraken_script" "$runDir" 2>>$logFile | tee -a $logFile
 		fi
 		#remove useless files
 		echo "analysis done. Deleting .fastq file..." | tee -a $logFile
-		cd $currOutDir
+		cd $runDir
 		#finds only: $run.fastq.gz or $run_1.fastq.gz or $run_2.fastq.gz
 		ls | egrep "$run(_[1,2])?\.fastq" | xargs -d"\n" rm 2>>$logFile
 		cd ..
 
 		if test $STATUS_CURR_RUN = $STATUS_OK
 		then
-			cd $currOutDir/'krakenDB16_results'
+			cd $runDir/'krakenDB16_results'
 			#finds only: $run.kraken
 			ls | grep "$run.kraken$" | xargs -d"\n" rm 2>>$logFile
 			cd ../..
 			echo $run','$STATUS_OK >>$resultAllFile
-
 		else
 			echo $run','$STATUS_ERR >>$resultErrFile
 			echo $run','$STATUS_ERR >>$resultAllFile
