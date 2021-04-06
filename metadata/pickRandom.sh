@@ -14,8 +14,8 @@ groupingFieldIdx=$2     #scientific name
 valueFieldIdx1=$3       #run
 valueFieldIdx2=$4       #layout
 valueFieldIdx3=$5       #size [MB]
-#doneFieldIdx=$6         #done == NO
-MAX_SIZE_MB=5000          #size [MB]
+#doneFieldIdx=$6        #done == NO
+MAX_SIZE_MB=5000        #size [MB]
 
 if test $# -gt $nOfParamsNeeded
 then

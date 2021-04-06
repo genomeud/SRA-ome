@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 
 nOfParamsNeeded=3
 
@@ -42,6 +42,8 @@ mkdir $DIR_OUTPUT_INFO 2>>/dev/null
 resultAllFile=$DIR_OUTPUT_INFO'/results_all.csv'
 resultErrFile=$DIR_OUTPUT_INFO'/results_err.csv'
 sizeOfFastqFile=$DIR_OUTPUT_INFO'/fastq_files_size.txt'
+updatesFiles=$DIR_OUTPUT_INFO'/updates.txt'
+
 logFile=$DIR_OUTPUT_INFO'/log.txt'
 #create or clear files
 echo -e 'input file:' $runsIDsFile "\n" >$logFile
@@ -107,7 +109,7 @@ do
 		if test $downloadExitCode -ne 0
 		then
 			STATUS_CURR_RUN=$STATUS_ERR
-			echo "Download caused error with exit code: $downloadExitCode"  | tee -a $logFile
+			echo "Error: Download caused error with exit code: $downloadExitCode"  | tee -a $logFile
 		fi
 		
 		#save compressed size and actual size
@@ -126,7 +128,7 @@ do
 		else
 			#did not found any fastq files
 			STATUS_CURR_RUN=$STATUS_ERR
-			echo 'Fastq file downloaded not found' | tee -a $logFile
+			echo 'Error: Fastq file downloaded not found' | tee -a $logFile
 			#print error instead of actual size in output
 			echo 'NO_FASTQ_FOUND' >>$sizeOfFastqFile
 		fi
@@ -160,7 +162,7 @@ do
 		fi
 
 		#end
-		echo -e "done:" $run "\n" | tee -a $logFile
+		echo -e "done: $run \n" | tee -a $logFile
 	fi
 	i=$[$i+1]
 done
@@ -179,7 +181,7 @@ then
 	allRunsFile_Done_Idx=19
 	resultsAllFile_Run_Idx=1
 	resultsAllFile_Done_Idx=2
-	
+
 	echo "updating runs file" | tee -a $logFile
 
 	#call script
@@ -190,6 +192,7 @@ then
 	$resultAllFile \
 		$resultsAllFile_Run_Idx \
 		$resultsAllFile_Done_Idx \
+	$updatesFiles \
 	2>>$logFile | tee -a $logFile
 
 	echo "update done" | tee -a $logFile

@@ -1,9 +1,9 @@
 #set -x
-nOfParamsNeeded=6
+nOfParamsNeeded=7
 
 if test $# -ne $nOfParamsNeeded
 then
-    echo "usage: $0 <AllRunsFile.csv> <ARF_filterColumnIdx> <ARF_columnValueIdx> <RunsToUpdateFile.csv> <RTUF_filterColumnIdx> <RTUF_columnValueIdx>"
+    echo "usage: $0 <AllRunsFile.csv> <ARF_filterColumnIdx> <ARF_columnValueIdx> <RunsToUpdateFile.csv> <RTUF_filterColumnIdx> <RTUF_columnValueIdx> <updatesLog.txt>"
     exit 1
 fi
 
@@ -19,6 +19,9 @@ RTUF_columnValueIdx=$6   #2: DONE = <OK | NO | ERR>
 AllRunsFileExt='.'`echo $AllRunsFile | sed 's/.*\.//'`
 #get path/to/file without extension
 AllRunsFileName=`echo $AllRunsFile | sed 's/\.[^\.]*$//'`
+
+updatesLog=$7
+echo -n >$updatesLog
 
 i=1
 n=`cat "$AllRunsFile" | wc -l`
@@ -41,7 +44,10 @@ do
 
     if test -z "$RTUF_filterColumn"
     then
-        echo "$i of $n: $ARF_filterColumn"
+        if test $(( $i % 500 )) -eq 0
+        then
+            echo "running... $i of $n"
+        fi
         #this line has not changed, print it as original
         #echo NOT_UPDATE
         ARF_newLine=`echo $ARF_line`
@@ -74,9 +80,8 @@ do
 
         #print update done
         ARF_columnOldValue=`echo "$ARF_line" | cut -d',' -f$ARF_columnValueIdx`
-        echo "$ARF_filterColumn"':' "$ARF_columnOldValue"' -> '"$RTUF_columnNewValue"
+        echo -e "$ARF_filterColumn"':' "$ARF_columnOldValue"' -> '"$RTUF_columnNewValue""\n" | tee -a $updatesLog
         #update line to new file
-        echo -e "$ARF_newLine""\n"
         echo "$ARF_newLine" >>$AllRunsFileNew
     fi
 
