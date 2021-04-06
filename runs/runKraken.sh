@@ -18,8 +18,8 @@ fi
 dbName=`basename $dbDir`
 cd $runIDDir
 
-resultsDir=${dbName}_results
-mkdir $resultsDir
+#resultsDir=${dbName}_results
+#mkdir $resultsDir
 
 #for single
 inputFile=${runID}.fastq
@@ -27,23 +27,23 @@ inputFile=${runID}.fastq
 inputFile1=${runID}_1.fastq
 inputFile2=${runID}_2.fastq
 #for both
-outputFile=${resultsDir}/${runID}.kraken
-reportFile=${resultsDir}/${runID}.kraken.report.txt
-getFiles=""
+outputFile=${runID}.kraken
+reportFile=${runID}.kraken.report.txt
+runFiles=""
 
 if test -e "$inputFile"
 then
 	#single read
-	getFiles="$inputFile"
+	runFiles="$inputFile"
 else
 	#paired read
-	getFiles="--paired $inputFile1 $inputFile2"
+	runFiles="--paired $inputFile1 $inputFile2"
 fi
 
 command="kraken2 \
 --threads $nOfThreads \
 --db $dbDir \
-$getFiles \
+$runFiles \
 --output $outputFile \
 --report $reportFile"
 

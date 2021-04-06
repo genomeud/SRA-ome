@@ -1,3 +1,4 @@
+#!/bin/bash
 set -x
 
 nOfParamsNeeded=3
@@ -13,7 +14,7 @@ DIR_SCRIPT_ANALYSIS=$HOME/'SRA/runs'
 DIR_SCRIPT_METADATA=$HOME/'SRA/metadata'
 #scripts
 buildReadInfo_script=$DIR_SCRIPT_ANALYSIS/'buildReadInfo.sh'
-downloadRead_script=$DIR_SCRIPT_ANALYSIS/'downloadRead.sh'
+downloadRun_script=$DIR_SCRIPT_ANALYSIS/'downloadRun.sh'
 runKraken_script=$DIR_SCRIPT_ANALYSIS/'runKraken.sh'
 getFastqFileSize_script=$DIR_SCRIPT_ANALYSIS/'getFastqFileSize.sh'
 updateAllRunsFile_script=$DIR_SCRIPT_METADATA/'updateAllRunsFile.sh'
@@ -63,20 +64,27 @@ cd $DIR_OUTPUT_MAIN
 
 #cat $runsIDsFile | while read line
 #do
-while test $i -le $[$n+1]
+while test $i -le $n
 do
-	$STATUS_CURR_RUN = $STATUS_OK
+	STATUS_CURR_RUN=$STATUS_OK
 	line=`cat $runsIDsFile | head -n $i | tail -n 1` 2>>/dev/null
 	if ! test -z $line 
 	then
+		#get run from input file (first field)
 		run=`echo $line | cut -d',' -f1`
+
 		#remove eventual carriage return from dos files
 		run=`echo $run | tr -d '\r'` 2>>$logFile
-		runDir="$DIR_OUTPUT_MAIN/$run"
-		#start with new run
+
+		#print current run
 		echo "$i of $n" | tee -a $logFile
 		echo "current run:" $run | tee -a $logFile
+
+		#create run directory
+		runDir="$DIR_OUTPUT_MAIN/$run"
 		mkdir $runDir 2>>/dev/null
+
+		#get run layout
 		if test $createInfoFile = 'TRUE'
 		then
 			#createInfoFile (to discover layout)
@@ -89,60 +97,68 @@ do
 			#get layout from input file (2nd field)
 			layout=`echo $line | cut -d',' -f2`
 		fi
-		#downloadRead
+
+		#downloadRun
 		echo "downloading run as .fastq..." | tee -a $logFile
-		printToLogFile=`"$downloadRead_script" "$run" "$layout" "$DIR_OUTPUT_MAIN" 2>>$logFile`
-		if test $? -ne 0
+		printToLogFile=`"$downloadRun_script" "$run" "$layout" "$DIR_OUTPUT_MAIN" 2>>$logFile | tee -a $logFile`
+		downloadExitCode=${PIPESTATUS[0]}
+			
+		#download error
+		if test $downloadExitCode -ne 0
 		then
 			STATUS_CURR_RUN=$STATUS_ERR
+			echo "Download caused error with exit code: $downloadExitCode"  | tee -a $logFile
 		fi
-		#can't do: tee -a $logFile, would lose exit status of ./downloadRead.sh
-		#maybe is possible with PIPE_STATUS?
-		echo $printToLogFile>>$logFile
+		
 		#save compressed size and actual size
 		#compressed size MB: value stored in SRA DB (3rd parameter in RunsIDFile)
 		#actual size: value obtained from getFastqFileSize (ls | grep | cut)
 		compressedSizeMB=`echo $line | cut -d',' -f3`
+		#print compressed size in output
+		echo -e -n $run'\t'$compressedSizeMB'\t'>>$sizeOfFastqFile
+		#calculate actual size
 		totalSizeMB=`$getFastqFileSize_script $runDir $run $layout`
-		if test $? -eq 2
+		#check if got some error (file not exists?)
+		if test $? -eq 0
 		then
-			#did not found any fastq files
-			totalSizeMB='NO_FASTQ_FOUND'
-			STATUS_CURR_RUN=$STATUS_ERR
-			echo "no fastq found to download" | tee -a $logFile
-		fi
-		echo -e $run'\t'$compressedSizeMB'\t'$totalSizeMB>>$sizeOfFastqFile
-		#check if some error came out (in this case don't run kraken)
-		if test $STATUS_CURR_RUN = $STATUS_ERR
-		then
-			#NCBIErrorFileName=`basename $NCBIErrorFile`
-			#newErrorFile=${runDir}/${NCBIErrorFileName}.xml
-			echo "possible some errors while downloading!" | tee -a $logFile
-			#mv "$NCBIErrorFile" "$newErrorFile"
-			#echo "check file" "$newErrorFile" | tee -a $logFile
+			#print size in output
+			echo $totalSizeMB >>$sizeOfFastqFile
 		else
+			#did not found any fastq files
+			STATUS_CURR_RUN=$STATUS_ERR
+			echo 'Fastq file downloaded not found' | tee -a $logFile
+			#print error instead of actual size in output
+			echo 'NO_FASTQ_FOUND' >>$sizeOfFastqFile
+		fi
+
+		#check if some error came out (in this case don't run kraken)
+		if test $STATUS_CURR_RUN = $STATUS_OK
+		then
 			#analyseRead
 			echo "analysing run with Kraken2..." | tee -a $logFile
 			"$runKraken_script" "$runDir" 2>>$logFile | tee -a $logFile
+			#remove useless files
+			echo "analysis done. Deleting .fastq file..." | tee -a $logFile
+			cd $runDir
+			#finds only: $run.fastq or $run_1.fastq or $run_2.fastq
+			ls | egrep "$run(_[1,2])?\.fastq" | xargs -d"\n" rm 2>>$logFile
+			cd ..
 		fi
-		#remove useless files
-		echo "analysis done. Deleting .fastq file..." | tee -a $logFile
-		cd $runDir
-		#finds only: $run.fastq.gz or $run_1.fastq.gz or $run_2.fastq.gz
-		ls | egrep "$run(_[1,2])?\.fastq" | xargs -d"\n" rm 2>>$logFile
-		cd ..
 
+		#check if some error came out (in this case don't remove files)
+		#NB: with fasterq-dump, temp files are removed from fasterq in any case in case of error.
 		if test $STATUS_CURR_RUN = $STATUS_OK
 		then
-			cd $runDir/'krakenDB16_results'
+			cd $runDir
 			#finds only: $run.kraken
 			ls | grep "$run.kraken$" | xargs -d"\n" rm 2>>$logFile
-			cd ../..
+			cd ..
 			echo $run','$STATUS_OK >>$resultAllFile
 		else
 			echo $run','$STATUS_ERR >>$resultErrFile
 			echo $run','$STATUS_ERR >>$resultAllFile
 		fi
+
 		#end
 		echo -e "done:" $run "\n" | tee -a $logFile
 	fi
