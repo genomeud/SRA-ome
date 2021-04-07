@@ -4,8 +4,9 @@ nOfParamsNeeded=6
 
 if test $# -lt $nOfParamsNeeded
 then
-    echo "assumption: file char separator \',\'"
-    echo "usage: $0 <inputFile> <groupingFieldIdx> <valueFieldIdx:<1> <2> <3>> <doneFieldIdx> <outputDir> [<MAX_SIZE_MB>]"
+    echo "assumption: file char separator ','"
+    echo "usage: $0 <inputFile> <groupingFieldIdx> <valueFieldIdx:<run> <layout> <size>> <outputDir> [<MAX_SIZE_MB>]"
+    echo "example: $0 metadata_filtered_small_todo.csv 9 8 14 17 /path/to/outputDir"
     exit 1
 fi
 

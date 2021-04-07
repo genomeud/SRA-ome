@@ -7,6 +7,7 @@ if test $# -lt $nOfParamsNeeded
 then
 	echo "assumption: exists file <runsIDsFile> containing list of runIds to download ad analyse"
     echo "usage: $0 <runsIDsFile> <outputDir> createInfoFile=<TRUE | FALSE> [<allRunsFile.csv>]"
+	echo "example: $0 /path/to/runs_list.csv /path/to/out/dir FALSE $HOME/SRA/metadata/metadata_filtered_small.csv"
     exit 1
 fi
 
