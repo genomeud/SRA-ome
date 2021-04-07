@@ -26,7 +26,9 @@ echo -n >$updatesLog
 i=1
 n=`cat "$AllRunsFile" | wc -l`
 
+#temp file
 AllRunsFileNew="$AllRunsFileName"'_new'"$AllRunsFileExt"
+#output files
 AllRunsDoneFile="$AllRunsFileName"'_done'"$AllRunsFileExt"
 AllRunsToDoFile="$AllRunsFileName"'_todo'"$AllRunsFileExt"
 AllRunsBackUpFile="$AllRunsFileName"'_backup'"$AllRunsFileExt"
@@ -42,12 +44,13 @@ do
     RTUF_filterColumn=`cat "$RunsToUpdateFile" | cut -d',' -f$RTUF_filterColumnIdx | grep -n "$ARF_filterColumn"`
     ARF_newLine=''
 
+    if test $(( $i % 500 )) -eq 0
+    then
+        echo "running... $i of $n"
+    fi
+    
     if test -z "$RTUF_filterColumn"
     then
-        if test $(( $i % 500 )) -eq 0
-        then
-            echo "running... $i of $n"
-        fi
         #this line has not changed, print it as original
         #echo NOT_UPDATE
         ARF_newLine=`echo $ARF_line`

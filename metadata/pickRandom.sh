@@ -1,11 +1,11 @@
 #set -x
 
-nOfParamsNeeded=5
+nOfParamsNeeded=6
 
 if test $# -lt $nOfParamsNeeded
 then
     echo "assumption: file char separator \',\'"
-    echo "usage: $0 <inputFile> <groupingFieldIdx> <valueFieldIdx:<1> <2> <3>> <doneFieldIdx> [<MAX_SIZE_MB>]"
+    echo "usage: $0 <inputFile> <groupingFieldIdx> <valueFieldIdx:<1> <2> <3>> <doneFieldIdx> <outputDir> [<MAX_SIZE_MB>]"
     exit 1
 fi
 
@@ -14,12 +14,14 @@ groupingFieldIdx=$2     #scientific name
 valueFieldIdx1=$3       #run
 valueFieldIdx2=$4       #layout
 valueFieldIdx3=$5       #size [MB]
+outputDir=`echo "$6" | sed s:/$::`
+mkdir $outputDir 2>>/dev/null
 #doneFieldIdx=$6        #done == NO
 MAX_SIZE_MB=5000        #size [MB]
 
 if test $# -gt $nOfParamsNeeded
 then
-    MAX_SIZE_MB = $6
+    MAX_SIZE_MB = $7
 fi
 
 #temp files
@@ -31,8 +33,8 @@ echo -n >$tmpAllRunsSorted
 echo -n >$tmpPossibleRunsSorted
 
 #output and log files
-outputFile=runs_list.csv
-logFile=runs_list_log.txt
+outputFile=$outputDir'/runs_list.csv'
+logFile=$outputDir/'runs_list_log.txt'
 echo -n >$outputFile
 echo -n >$logFile
 
@@ -80,7 +82,12 @@ then
     exit 2
 fi
 
-cat "$tmpPossibleRunsSorted" | cut -d$delimiter -f$groupingFieldIdx | uniq -c | sed s/^' '*// | sed s/[^' 'a-zA-Z0-9]/?/g >$tmpCountUniqGroupingFile
+cat "$tmpPossibleRunsSorted" \
+| cut -d$delimiter -f$groupingFieldIdx \
+| uniq -c \
+| sed s/^' '*// \
+| sed s/[^' 'a-zA-Z0-9]/' '/g \
+>$tmpCountUniqGroupingFile
 
 #sleep 100
 
@@ -88,8 +95,15 @@ i=1 #current row
 j=1 #current tentative of i-row
 while (( $i <= $n ))
 do
-    grouping=`cat $tmpPossibleRunsSorted | head -n $i | tail -n 1 | cut -d$delimiter -f$groupingFieldIdx | sed s/[^' 'a-zA-Z0-9]/?/g`
-    nOfEqualLines=`cat $tmpCountUniqGroupingFile | grep "^[0-9]* ""${grouping}""$" | cut -d ' ' -f1`
+    grouping=`cat $tmpPossibleRunsSorted \
+    | head -n $i \
+    | tail -n 1 \
+    | cut -d$delimiter -f$groupingFieldIdx \
+    | sed s/[^' 'a-zA-Z0-9]/' '/g`
+    
+    nOfEqualLines=`cat $tmpCountUniqGroupingFile \
+    | grep "^[0-9]* ""${grouping}""$" \
+    | cut -d ' ' -f1`
 
     randomIdx=$(( $(( $RANDOM % $nOfEqualLines )) + $i ))
     randomLine=`cat $tmpPossibleRunsSorted | head -n $randomIdx | tail -n 1`
