@@ -7,7 +7,7 @@ if test $# -lt $nOfParamsNeeded
 then
 	echo "assumption: exists file <runsIDsFile> containing list of runIds to download ad analyse"
     echo "usage: $0 <runsIDsFile> <outputDir> createInfoFile=<TRUE | FALSE> [<allRunsFile.csv>]"
-	echo "example: $0 /path/to/runs_list.csv /path/to/out/dir FALSE $HOME/SRA/metadata/metadata_filtered_small.csv"
+	echo "example: $0 /path/.info/runs_list.csv /path/to/out/dir FALSE $HOME/SRA/metadata/metadata_filtered_small.csv"
     exit 1
 fi
 
@@ -43,7 +43,7 @@ mkdir $DIR_OUTPUT_INFO 2>>/dev/null
 resultAllFile=$DIR_OUTPUT_INFO'/results_all.csv'
 resultErrFile=$DIR_OUTPUT_INFO'/results_err.csv'
 sizeOfFastqFile=$DIR_OUTPUT_INFO'/fastq_files_size.txt'
-updatesFiles=$DIR_OUTPUT_INFO'/updates.txt'
+updatesFiles=$DIR_OUTPUT_INFO'/updates_log.txt'
 
 logFile=$DIR_OUTPUT_INFO'/log.txt'
 #create or clear files

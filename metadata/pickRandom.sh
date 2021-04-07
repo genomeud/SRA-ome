@@ -87,7 +87,7 @@ cat "$tmpPossibleRunsSorted" \
 | cut -d$delimiter -f$groupingFieldIdx \
 | uniq -c \
 | sed s/^' '*// \
-| sed s/[^' 'a-zA-Z0-9]/' '/g \
+| sed s/[^' 'a-zA-Z0-9]/'?'/g \
 >$tmpCountUniqGroupingFile
 
 #sleep 100
@@ -100,7 +100,7 @@ do
     | head -n $i \
     | tail -n 1 \
     | cut -d$delimiter -f$groupingFieldIdx \
-    | sed s/[^' 'a-zA-Z0-9]/' '/g`
+    | sed s/[^' 'a-zA-Z0-9]/'?'/g`
     
     nOfEqualLines=`cat $tmpCountUniqGroupingFile \
     | grep "^[0-9]* ""${grouping}""$" \

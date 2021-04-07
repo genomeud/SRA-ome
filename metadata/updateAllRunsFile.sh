@@ -4,6 +4,7 @@ nOfParamsNeeded=7
 if test $# -ne $nOfParamsNeeded
 then
     echo "usage: $0 <AllRunsFile.csv> <ARF_filterColumnIdx> <ARF_columnValueIdx> <RunsToUpdateFile.csv> <RTUF_filterColumnIdx> <RTUF_columnValueIdx> <updatesLog.txt>"
+    echo "example: $0 'metadata_filtered_small.csv' 8 19 'results_all.csv' 1 2 'updatesLog.txt'"
     exit 1
 fi
 
@@ -83,7 +84,7 @@ do
 
         #print update done
         ARF_columnOldValue=`echo "$ARF_line" | cut -d',' -f$ARF_columnValueIdx`
-        echo -e "$ARF_filterColumn"':' "$ARF_columnOldValue"' -> '"$RTUF_columnNewValue""\n" | tee -a $updatesLog
+        echo -e "$ARF_filterColumn"':' "$ARF_columnOldValue"' -> '"$RTUF_columnNewValue" | tee -a $updatesLog
         #update line to new file
         echo "$ARF_newLine" >>$AllRunsFileNew
     fi
