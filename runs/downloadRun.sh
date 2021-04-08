@@ -17,6 +17,7 @@ fi
 if test $# -gt $nOfParamsNeeded
 then
     outputDir=$3
+    mkdir $outputDir 2>/dev/null
     cd $outputDir
 fi
 

@@ -5,9 +5,14 @@ nOfParamsNeeded=3
 if test $# -lt $nOfParamsNeeded
 then
     echo -e "usage: $0 <folderSearchFiles> <field> <stringToSearch> [<folderOutFile>] \n"
+
     echo "output: search in <folderSearchFiles> recursive: files having extensions .kraken.report.txt"
     echo "          foreach file: search in the file <stringToSearch>, prints match to output file"
-    echo "          output file: <folderSearchFiles>/string_searched_<stringToSearch>.txt"
+    echo -e "          output file: <folderSearchFiles>/string_searched_<stringToSearch>.txt \n"
+    
+    echo "example: $0 /path/to/folder/search 5 '2697049' /path/to/folder/output"
+    echo "example: $0 /path/to/folder/search 6 'corona' /path/to/folder/output"
+
     exit 1
 fi
 
