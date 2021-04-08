@@ -22,7 +22,7 @@ MAX_SIZE_MB=5000        #size [MB]
 
 if test $# -gt $nOfParamsNeeded
 then
-    MAX_SIZE_MB = $7
+    MAX_SIZE_MB=$7
 fi
 
 #temp files
