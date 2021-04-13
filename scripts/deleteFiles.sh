@@ -29,7 +29,7 @@ findFastq='egrep '"$run(_[1,2])?\.fastq"
 echo $list '|' $findFastq '|' $removeFiles
 $list | $findFastq | $removeFiles
 
-ok=$?
+fastqStatus=$?
 
 #.kraken files
 #ls | egrep "$run(_[1,2])?\.fastq" | xargs -d"\n" rm
@@ -37,9 +37,15 @@ findKraken='grep '"$run.kraken$"
 echo $list '|' $findKraken '|' $removeFiles
 $list | $findKraken | $removeFiles
 
-if test $ok -eq 0
+krakenStatus=$?
+
+ok=0
+if test $fastqStatus -ne 0
 then
-    ok=$?
-fi 
+    ok=$fastqStatus
+elif test $krakenStatus -ne 0
+then
+    ok=$krakenStatus
+fi
 
 exit $ok
