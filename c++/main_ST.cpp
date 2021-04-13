@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
-//mine
+//my SRA library
 #include "sra.h"
 
 using namespace std;
@@ -184,7 +184,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-#pragma end region main
+#pragma endregion main
 
 #pragma region exec
 
