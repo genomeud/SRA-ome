@@ -5,7 +5,7 @@ To compile the c++ code is needed:
 * link file:
     + run.cpp
 
-NB: library <filesystem> is pretty new.
+NB: library filesystem is pretty new.
 Need to link:
 * using g++:
     + -lstdc++fs
