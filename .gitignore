@@ -8,4 +8,5 @@ metadata/*
 #runs/analysis/[A-Z]RR*
 runs/analysis/2021_03_26/[A-Z]RR*
 *.xml
-scripts/c++_tests/storeruns/*
+c++/storeruns/*
+c++/*_binary
