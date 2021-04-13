@@ -18,14 +18,13 @@ fi
 
 cd $dir
 
-#ls | egrep "$run(_[1,2])?\.fastq" | xargs -d"\n" rm
-#ls | grep "$run.kraken$" | xargs -d"\n" r
 ok=0
 
 list='ls'
 removeFiles='xargs -d\n rm'
 
 #.fastq files
+#ls | grep "$run.kraken$" | xargs -d"\n" r
 findFastq='egrep '"$run(_[1,2])?\.fastq"
 echo $list '|' $findFastq '|' $removeFiles
 $list | $findFastq | $removeFiles
@@ -33,6 +32,7 @@ $list | $findFastq | $removeFiles
 ok=$?
 
 #.kraken files
+#ls | egrep "$run(_[1,2])?\.fastq" | xargs -d"\n" rm
 findKraken='grep '"$run.kraken$"
 echo $list '|' $findKraken '|' $removeFiles
 $list | $findKraken | $removeFiles
