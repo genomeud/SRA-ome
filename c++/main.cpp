@@ -14,7 +14,7 @@
 #include <vector>
 #include <sstream>
 //mine
-#include "SRA.h"
+#include "sra.h"
 
 using namespace std;
 //using namespace experimental::filesystem;
