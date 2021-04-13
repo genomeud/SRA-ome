@@ -28,13 +28,13 @@ i=1
 n=`cat "$AllRunsFile" | wc -l`
 
 #temp file
-AllRunsFileNew="$AllRunsFileName"'_new'"$AllRunsFileExt"
+AllRunsFileTemp="$AllRunsFileName"'_temp'"$AllRunsFileExt"
 #output files
 AllRunsDoneFile="$AllRunsFileName"'_done'"$AllRunsFileExt"
 AllRunsToDoFile="$AllRunsFileName"'_todo'"$AllRunsFileExt"
 AllRunsBackUpFile="$AllRunsFileName"'_backup'"$AllRunsFileExt"
 
-echo -n >$AllRunsFileNew
+echo -n >$AllRunsFileTemp
 echo -n >$AllRunsDoneFile
 echo -n >$AllRunsToDoFile
 echo -n >$AllRunsBackUpFile
@@ -55,7 +55,7 @@ do
         #this line has not changed, print it as original
         #echo NOT_UPDATE
         ARF_newLine=`echo $ARF_line`
-        echo "$ARF_newLine">>$AllRunsFileNew
+        echo "$ARF_newLine">>$AllRunsFileTemp
     else
         #this line has changed, update column requested
         echo -e "\n"'----------------------UPDATE-----------------------------------'
@@ -86,7 +86,7 @@ do
         ARF_columnOldValue=`echo "$ARF_line" | cut -d',' -f$ARF_columnValueIdx`
         echo -e "$ARF_filterColumn"':' "$ARF_columnOldValue"' -> '"$RTUF_columnNewValue" | tee -a $updatesLog
         #update line to new file
-        echo "$ARF_newLine" >>$AllRunsFileNew
+        echo "$ARF_newLine" >>$AllRunsFileTemp
     fi
 
     isLineDone=`echo "$ARF_newLine" | cut -d',' -f$[$ARF_columnValueIdx] | grep 'OK'`
@@ -106,6 +106,6 @@ do
 done <$AllRunsFile
 
 mv $AllRunsFile $AllRunsBackUpFile
-mv $AllRunsFileNew $AllRunsFile
+mv $AllRunsFileTemp $AllRunsFile
 
 exit 0
