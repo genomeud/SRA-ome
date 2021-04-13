@@ -1,0 +1,1055 @@
++ nOfParamsNeeded=3
++ test 4 -lt 3
++ DIR_SCRIPT_ANALYSIS=/home/fzuccato/SRA/runs
++ DIR_SCRIPT_METADATA=/home/fzuccato/SRA/metadata
++ buildReadInfo_script=/home/fzuccato/SRA/runs/buildReadInfo.sh
++ downloadRun_script=/home/fzuccato/SRA/runs/downloadRun.sh
++ runKraken_script=/home/fzuccato/SRA/runs/runKraken.sh
++ getFastqFileSize_script=/home/fzuccato/SRA/runs/getFastqFileSize.sh
++ updateAllRunsFile_script=/home/fzuccato/SRA/metadata/updateAllRunsFile.sh
++ runsIDsFile=/mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
+++ sed 's:/$::'
+++ echo /mnt/extra/fzuccato_new/2021_04_02_0MB
++ DIR_OUTPUT_MAIN=/mnt/extra/fzuccato_new/2021_04_02_0MB
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB
++ createInfoFile=FALSE
++ allRunsFile=
++ test 4 -gt 3
++ allRunsFile=/home/fzuccato/SRA/metadata/metadata_filtered_small.csv
++ DIR_OUTPUT_INFO=/mnt/extra/fzuccato_new/2021_04_02_0MB/.info
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/.info
++ resultAllFile=/mnt/extra/fzuccato_new/2021_04_02_0MB/.info/results_all.csv
++ resultErrFile=/mnt/extra/fzuccato_new/2021_04_02_0MB/.info/results_err.csv
++ sizeOfFastqFile=/mnt/extra/fzuccato_new/2021_04_02_0MB/.info/fastq_files_size.txt
++ updatesFiles=/mnt/extra/fzuccato_new/2021_04_02_0MB/.info/updates.txt
++ logFile=/mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo -e 'input file:' /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv '\n'
++ echo -n
++ echo -n
++ echo -n
++ i=1
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
+++ wc -l
++ n=13
++ STATUS_OK=OK
++ STATUS_ERR=ERR
++ STATUS_CURR_RUN=OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB
++ test 1 -le 13
++ STATUS_CURR_RUN=OK
+++ head -n 1
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
+++ tail -n 1
++ line=ERR2592889,SINGLE,0
++ test -z ERR2592889,SINGLE,0
+++ echo ERR2592889,SINGLE,0
+++ cut -d, -f1
++ run=ERR2592889
+++ echo ERR2592889
+++ tr -d '\r'
++ run=ERR2592889
++ echo '1 of 13'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+1 of 13
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'current run:' ERR2592889
+current run: ERR2592889
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592889
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592889
++ test FALSE = TRUE
+++ cut -d, -f2
+++ echo ERR2592889,SINGLE,0
++ layout=SINGLE
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'downloading run as .fastq...'
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh ERR2592889 SINGLE /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --include-technical ERR2592889'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo ERR2592889,SINGLE,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'ERR2592889\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592889 ERR2592889 SINGLE
++ totalSizeMB=1.62
++ test 0 -eq 0
++ echo 1.62
++ test OK = OK
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'analysing run with Kraken2...'
+analysing run with Kraken2...
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592889
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 ERR2592889.fastq 
+--output ERR2592889.kraken 
+--report ERR2592889.kraken.report.txt
++ echo 'analysis done. Deleting .fastq file...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592889
++ egrep 'ERR2592889(_[1,2])?\.fastq'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592889
++ grep 'ERR2592889.kraken$'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ echo ERR2592889,OK
++ echo -e 'done: ERR2592889 \n'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+done: ERR2592889 
+
++ i=2
++ test 2 -le 13
++ STATUS_CURR_RUN=OK
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
+++ head -n 2
+++ tail -n 1
++ line=ERR2592915,SINGLE,0
++ test -z ERR2592915,SINGLE,0
+++ echo ERR2592915,SINGLE,0
+++ cut -d, -f1
++ run=ERR2592915
+++ echo ERR2592915
+++ tr -d '\r'
++ run=ERR2592915
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo '2 of 13'
+2 of 13
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'current run:' ERR2592915
+current run: ERR2592915
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592915
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592915
++ test FALSE = TRUE
+++ cut -d, -f2
+++ echo ERR2592915,SINGLE,0
++ layout=SINGLE
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+++ /home/fzuccato/SRA/runs/downloadRun.sh ERR2592915 SINGLE /mnt/extra/fzuccato_new/2021_04_02_0MB
++ printToLogFile='fasterq-dump --include-technical ERR2592915'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo ERR2592915,SINGLE,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'ERR2592915\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592915 ERR2592915 SINGLE
++ totalSizeMB=.03
++ test 0 -eq 0
++ echo .03
++ test OK = OK
++ echo 'analysing run with Kraken2...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysing run with Kraken2...
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592915
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 ERR2592915.fastq 
+--output ERR2592915.kraken 
+--report ERR2592915.kraken.report.txt
++ echo 'analysis done. Deleting .fastq file...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592915
++ ls
++ xargs '-d\n' rm
++ egrep 'ERR2592915(_[1,2])?\.fastq'
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592915
++ xargs '-d\n' rm
++ ls
++ grep 'ERR2592915.kraken$'
++ cd ..
++ echo ERR2592915,OK
++ echo -e 'done: ERR2592915 \n'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+done: ERR2592915 
+
++ i=3
++ test 3 -le 13
++ STATUS_CURR_RUN=OK
+++ head -n 3
+++ tail -n 1
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
++ line=ERR2592937,SINGLE,0
++ test -z ERR2592937,SINGLE,0
+++ echo ERR2592937,SINGLE,0
+++ cut -d, -f1
++ run=ERR2592937
+++ echo ERR2592937
+++ tr -d '\r'
++ run=ERR2592937
++ echo '3 of 13'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+3 of 13
++ echo 'current run:' ERR2592937
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+current run: ERR2592937
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592937
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592937
++ test FALSE = TRUE
+++ echo ERR2592937,SINGLE,0
+++ cut -d, -f2
++ layout=SINGLE
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh ERR2592937 SINGLE /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --include-technical ERR2592937'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo ERR2592937,SINGLE,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'ERR2592937\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592937 ERR2592937 SINGLE
++ totalSizeMB=.04
++ test 0 -eq 0
++ echo .04
++ test OK = OK
++ echo 'analysing run with Kraken2...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysing run with Kraken2...
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592937
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 ERR2592937.fastq 
+--output ERR2592937.kraken 
+--report ERR2592937.kraken.report.txt
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'analysis done. Deleting .fastq file...'
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592937
++ egrep 'ERR2592937(_[1,2])?\.fastq'
++ xargs '-d\n' rm
++ ls
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592937
++ grep 'ERR2592937.kraken$'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ echo ERR2592937,OK
++ echo -e 'done: ERR2592937 \n'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+done: ERR2592937 
+
++ i=4
++ test 4 -le 13
++ STATUS_CURR_RUN=OK
+++ head -n 4
+++ tail -n 1
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
++ line=ERR2592938,SINGLE,0
++ test -z ERR2592938,SINGLE,0
+++ cut -d, -f1
+++ echo ERR2592938,SINGLE,0
++ run=ERR2592938
+++ tr -d '\r'
+++ echo ERR2592938
++ run=ERR2592938
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo '4 of 13'
+4 of 13
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'current run:' ERR2592938
+current run: ERR2592938
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592938
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592938
++ test FALSE = TRUE
+++ echo ERR2592938,SINGLE,0
+++ cut -d, -f2
++ layout=SINGLE
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh ERR2592938 SINGLE /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --include-technical ERR2592938'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo ERR2592938,SINGLE,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'ERR2592938\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592938 ERR2592938 SINGLE
++ totalSizeMB=.10
++ test 0 -eq 0
++ echo .10
++ test OK = OK
++ echo 'analysing run with Kraken2...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysing run with Kraken2...
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592938
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 ERR2592938.fastq 
+--output ERR2592938.kraken 
+--report ERR2592938.kraken.report.txt
++ echo 'analysis done. Deleting .fastq file...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592938
++ egrep 'ERR2592938(_[1,2])?\.fastq'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR2592938
++ grep 'ERR2592938.kraken$'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ echo ERR2592938,OK
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo -e 'done: ERR2592938 \n'
+done: ERR2592938 
+
++ i=5
++ test 5 -le 13
++ STATUS_CURR_RUN=OK
+++ head -n 5
+++ tail -n 1
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
++ line=ERR4332001,SINGLE,0
++ test -z ERR4332001,SINGLE,0
+++ echo ERR4332001,SINGLE,0
+++ cut -d, -f1
++ run=ERR4332001
+++ tr -d '\r'
+++ echo ERR4332001
++ run=ERR4332001
++ echo '5 of 13'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+5 of 13
++ echo 'current run:' ERR4332001
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+current run: ERR4332001
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/ERR4332001
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR4332001
++ test FALSE = TRUE
+++ cut -d, -f2
+++ echo ERR4332001,SINGLE,0
++ layout=SINGLE
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'downloading run as .fastq...'
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh ERR4332001 SINGLE /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --include-technical ERR4332001'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo ERR4332001,SINGLE,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'ERR4332001\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR4332001 ERR4332001 SINGLE
++ totalSizeMB='did not found any fastq file'
++ test 2 -eq 0
++ STATUS_CURR_RUN=ERR
++ echo 'Error: Fastq file downloaded not found'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+Error: Fastq file downloaded not found
++ echo NO_FASTQ_FOUND
++ test ERR = OK
++ test ERR = OK
++ echo ERR4332001,ERR
++ echo ERR4332001,ERR
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo -e 'done: ERR4332001 \n'
+done: ERR4332001 
+
++ i=6
++ test 6 -le 13
++ STATUS_CURR_RUN=OK
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
+++ head -n 6
+++ tail -n 1
++ line=ERR4332002,SINGLE,0
++ test -z ERR4332002,SINGLE,0
+++ cut -d, -f1
+++ echo ERR4332002,SINGLE,0
++ run=ERR4332002
+++ echo ERR4332002
+++ tr -d '\r'
++ run=ERR4332002
++ echo '6 of 13'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+6 of 13
++ echo 'current run:' ERR4332002
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+current run: ERR4332002
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/ERR4332002
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR4332002
++ test FALSE = TRUE
+++ cut -d, -f2
+++ echo ERR4332002,SINGLE,0
++ layout=SINGLE
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh ERR4332002 SINGLE /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --include-technical ERR4332002'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo ERR4332002,SINGLE,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'ERR4332002\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/ERR4332002 ERR4332002 SINGLE
++ totalSizeMB='did not found any fastq file'
++ test 2 -eq 0
++ STATUS_CURR_RUN=ERR
++ echo 'Error: Fastq file downloaded not found'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+Error: Fastq file downloaded not found
++ echo NO_FASTQ_FOUND
++ test ERR = OK
++ test ERR = OK
++ echo ERR4332002,ERR
++ echo ERR4332002,ERR
++ echo -e 'done: ERR4332002 \n'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+done: ERR4332002 
+
++ i=7
++ test 7 -le 13
++ STATUS_CURR_RUN=OK
+++ head -n 7
+++ tail -n 1
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
++ line=SRR10008584,PAIRED,0
++ test -z SRR10008584,PAIRED,0
+++ echo SRR10008584,PAIRED,0
+++ cut -d, -f1
++ run=SRR10008584
+++ echo SRR10008584
+++ tr -d '\r'
++ run=SRR10008584
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo '7 of 13'
+7 of 13
++ echo 'current run:' SRR10008584
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+current run: SRR10008584
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008584
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008584
++ test FALSE = TRUE
+++ echo SRR10008584,PAIRED,0
+++ cut -d, -f2
++ layout=PAIRED
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh SRR10008584 PAIRED /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --split-files --include-technical SRR10008584'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo SRR10008584,PAIRED,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'SRR10008584\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008584 SRR10008584 PAIRED
++ totalSizeMB=4.24
++ test 0 -eq 0
++ echo 4.24
++ test OK = OK
++ echo 'analysing run with Kraken2...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysing run with Kraken2...
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008584
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10008584_1.fastq SRR10008584_2.fastq 
+--output SRR10008584.kraken 
+--report SRR10008584.kraken.report.txt
++ echo 'analysis done. Deleting .fastq file...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008584
++ egrep 'SRR10008584(_[1,2])?\.fastq'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008584
++ ls
++ grep 'SRR10008584.kraken$'
++ xargs '-d\n' rm
++ cd ..
++ echo SRR10008584,OK
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo -e 'done: SRR10008584 \n'
+done: SRR10008584 
+
++ i=8
++ test 8 -le 13
++ STATUS_CURR_RUN=OK
+++ head -n 8
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
+++ tail -n 1
++ line=SRR10008585,PAIRED,0
++ test -z SRR10008585,PAIRED,0
+++ cut -d, -f1
+++ echo SRR10008585,PAIRED,0
++ run=SRR10008585
+++ tr -d '\r'
+++ echo SRR10008585
++ run=SRR10008585
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo '8 of 13'
+8 of 13
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'current run:' SRR10008585
+current run: SRR10008585
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008585
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008585
++ test FALSE = TRUE
+++ echo SRR10008585,PAIRED,0
+++ cut -d, -f2
++ layout=PAIRED
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh SRR10008585 PAIRED /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --split-files --include-technical SRR10008585'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo SRR10008585,PAIRED,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'SRR10008585\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008585 SRR10008585 PAIRED
++ totalSizeMB=8.52
++ test 0 -eq 0
++ echo 8.52
++ test OK = OK
++ echo 'analysing run with Kraken2...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysing run with Kraken2...
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008585
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10008585_1.fastq SRR10008585_2.fastq 
+--output SRR10008585.kraken 
+--report SRR10008585.kraken.report.txt
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'analysis done. Deleting .fastq file...'
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008585
++ egrep 'SRR10008585(_[1,2])?\.fastq'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008585
++ ls
++ grep 'SRR10008585.kraken$'
++ xargs '-d\n' rm
++ cd ..
++ echo SRR10008585,OK
++ echo -e 'done: SRR10008585 \n'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+done: SRR10008585 
+
++ i=9
++ test 9 -le 13
++ STATUS_CURR_RUN=OK
+++ head -n 9
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
+++ tail -n 1
++ line=SRR10008589,PAIRED,0
++ test -z SRR10008589,PAIRED,0
+++ cut -d, -f1
+++ echo SRR10008589,PAIRED,0
++ run=SRR10008589
+++ tr -d '\r'
+++ echo SRR10008589
++ run=SRR10008589
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo '9 of 13'
+9 of 13
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'current run:' SRR10008589
+current run: SRR10008589
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008589
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008589
++ test FALSE = TRUE
+++ cut -d, -f2
+++ echo SRR10008589,PAIRED,0
++ layout=PAIRED
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh SRR10008589 PAIRED /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --split-files --include-technical SRR10008589'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo SRR10008589,PAIRED,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'SRR10008589\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008589 SRR10008589 PAIRED
++ totalSizeMB=3.32
++ test 0 -eq 0
++ echo 3.32
++ test OK = OK
++ echo 'analysing run with Kraken2...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysing run with Kraken2...
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008589
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10008589_1.fastq SRR10008589_2.fastq 
+--output SRR10008589.kraken 
+--report SRR10008589.kraken.report.txt
++ echo 'analysis done. Deleting .fastq file...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008589
++ egrep 'SRR10008589(_[1,2])?\.fastq'
++ xargs '-d\n' rm
++ ls
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008589
++ grep 'SRR10008589.kraken$'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ echo SRR10008589,OK
++ echo -e 'done: SRR10008589 \n'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+done: SRR10008589 
+
++ i=10
++ test 10 -le 13
++ STATUS_CURR_RUN=OK
+++ head -n 10
+++ tail -n 1
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
++ line=SRR10008593,PAIRED,0
++ test -z SRR10008593,PAIRED,0
+++ cut -d, -f1
+++ echo SRR10008593,PAIRED,0
++ run=SRR10008593
+++ echo SRR10008593
+++ tr -d '\r'
++ run=SRR10008593
++ echo '10 of 13'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+10 of 13
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'current run:' SRR10008593
+current run: SRR10008593
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008593
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008593
++ test FALSE = TRUE
+++ cut -d, -f2
+++ echo SRR10008593,PAIRED,0
++ layout=PAIRED
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh SRR10008593 PAIRED /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --split-files --include-technical SRR10008593'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo SRR10008593,PAIRED,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'SRR10008593\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008593 SRR10008593 PAIRED
++ totalSizeMB=.36
++ test 0 -eq 0
++ echo .36
++ test OK = OK
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'analysing run with Kraken2...'
+analysing run with Kraken2...
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008593
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10008593_1.fastq SRR10008593_2.fastq 
+--output SRR10008593.kraken 
+--report SRR10008593.kraken.report.txt
++ echo 'analysis done. Deleting .fastq file...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008593
++ ls
++ xargs '-d\n' rm
++ egrep 'SRR10008593(_[1,2])?\.fastq'
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008593
++ xargs '-d\n' rm
++ ls
++ grep 'SRR10008593.kraken$'
++ cd ..
++ echo SRR10008593,OK
++ echo -e 'done: SRR10008593 \n'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+done: SRR10008593 
+
++ i=11
++ test 11 -le 13
++ STATUS_CURR_RUN=OK
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
+++ tail -n 1
+++ head -n 11
++ line=SRR10008594,PAIRED,0
++ test -z SRR10008594,PAIRED,0
+++ echo SRR10008594,PAIRED,0
+++ cut -d, -f1
++ run=SRR10008594
+++ echo SRR10008594
+++ tr -d '\r'
++ run=SRR10008594
++ echo '11 of 13'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+11 of 13
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'current run:' SRR10008594
+current run: SRR10008594
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008594
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008594
++ test FALSE = TRUE
+++ echo SRR10008594,PAIRED,0
+++ cut -d, -f2
++ layout=PAIRED
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh SRR10008594 PAIRED /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --split-files --include-technical SRR10008594'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo SRR10008594,PAIRED,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'SRR10008594\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008594 SRR10008594 PAIRED
++ totalSizeMB=3.72
++ test 0 -eq 0
++ echo 3.72
++ test OK = OK
++ echo 'analysing run with Kraken2...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysing run with Kraken2...
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008594
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10008594_1.fastq SRR10008594_2.fastq 
+--output SRR10008594.kraken 
+--report SRR10008594.kraken.report.txt
++ echo 'analysis done. Deleting .fastq file...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008594
++ egrep 'SRR10008594(_[1,2])?\.fastq'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008594
++ grep 'SRR10008594.kraken$'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ echo SRR10008594,OK
++ echo -e 'done: SRR10008594 \n'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+done: SRR10008594 
+
++ i=12
++ test 12 -le 13
++ STATUS_CURR_RUN=OK
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
+++ head -n 12
+++ tail -n 1
++ line=SRR10008598,PAIRED,0
++ test -z SRR10008598,PAIRED,0
+++ echo SRR10008598,PAIRED,0
+++ cut -d, -f1
++ run=SRR10008598
+++ tr -d '\r'
+++ echo SRR10008598
++ run=SRR10008598
++ echo '12 of 13'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+12 of 13
++ echo 'current run:' SRR10008598
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+current run: SRR10008598
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008598
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008598
++ test FALSE = TRUE
+++ echo SRR10008598,PAIRED,0
+++ cut -d, -f2
++ layout=PAIRED
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh SRR10008598 PAIRED /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --split-files --include-technical SRR10008598'
++ downloadExitCode=0
++ test 0 -ne 0
+++ cut -d, -f3
+++ echo SRR10008598,PAIRED,0
++ compressedSizeMB=0
++ echo -e -n 'SRR10008598\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008598 SRR10008598 PAIRED
++ totalSizeMB=8.58
++ test 0 -eq 0
++ echo 8.58
++ test OK = OK
++ echo 'analysing run with Kraken2...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysing run with Kraken2...
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008598
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10008598_1.fastq SRR10008598_2.fastq 
+--output SRR10008598.kraken 
+--report SRR10008598.kraken.report.txt
++ echo 'analysis done. Deleting .fastq file...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008598
++ egrep 'SRR10008598(_[1,2])?\.fastq'
++ ls
++ xargs '-d\n' rm
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008598
++ grep 'SRR10008598.kraken$'
++ xargs '-d\n' rm
++ ls
++ cd ..
++ echo SRR10008598,OK
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo -e 'done: SRR10008598 \n'
+done: SRR10008598 
+
++ i=13
++ test 13 -le 13
++ STATUS_CURR_RUN=OK
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/runs_list.csv
+++ head -n 13
+++ tail -n 1
++ line=SRR10008599,PAIRED,0
++ test -z SRR10008599,PAIRED,0
+++ echo SRR10008599,PAIRED,0
+++ cut -d, -f1
++ run=SRR10008599
+++ echo SRR10008599
+++ tr -d '\r'
++ run=SRR10008599
++ echo '13 of 13'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+13 of 13
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'current run:' SRR10008599
+current run: SRR10008599
++ runDir=/mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008599
++ mkdir /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008599
++ test FALSE = TRUE
+++ echo SRR10008599,PAIRED,0
+++ cut -d, -f2
++ layout=PAIRED
++ echo 'downloading run as .fastq...'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+downloading run as .fastq...
+++ /home/fzuccato/SRA/runs/downloadRun.sh SRR10008599 PAIRED /mnt/extra/fzuccato_new/2021_04_02_0MB
+++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ printToLogFile='fasterq-dump --split-files --include-technical SRR10008599'
++ downloadExitCode=0
++ test 0 -ne 0
+++ echo SRR10008599,PAIRED,0
+++ cut -d, -f3
++ compressedSizeMB=0
++ echo -e -n 'SRR10008599\t0\t'
+++ /home/fzuccato/SRA/runs/getFastqFileSize.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008599 SRR10008599 PAIRED
++ totalSizeMB=3.00
++ test 0 -eq 0
++ echo 3.00
++ test OK = OK
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'analysing run with Kraken2...'
+analysing run with Kraken2...
++ /home/fzuccato/SRA/runs/runKraken.sh /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008599
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10008599_1.fastq SRR10008599_2.fastq 
+--output SRR10008599.kraken 
+--report SRR10008599.kraken.report.txt
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
++ echo 'analysis done. Deleting .fastq file...'
+analysis done. Deleting .fastq file...
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008599
++ ls
++ egrep 'SRR10008599(_[1,2])?\.fastq'
++ xargs '-d\n' rm
++ cd ..
++ test OK = OK
++ cd /mnt/extra/fzuccato_new/2021_04_02_0MB/SRR10008599
++ ls
++ grep 'SRR10008599.kraken$'
++ xargs '-d\n' rm
++ cd ..
++ echo SRR10008599,OK
++ echo -e 'done: SRR10008599 \n'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+done: SRR10008599 
+
++ i=14
++ test 14 -le 13
+++ cat /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/results_err.csv
++ hasErrors='ERR4332001,ERR
+ERR4332002,ERR'
++ test -z 'ERR4332001,ERR
+ERR4332002,ERR'
++ test -z /home/fzuccato/SRA/metadata/metadata_filtered_small.csv
++ allRunsFile_Run_Idx=8
++ allRunsFile_Done_Idx=19
++ resultsAllFile_Run_Idx=1
++ resultsAllFile_Done_Idx=2
++ echo 'updating runs file'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+updating runs file
++ /home/fzuccato/SRA/metadata/updateAllRunsFile.sh /home/fzuccato/SRA/metadata/metadata_filtered_small.csv 8 19 /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/results_all.csv 1 2 /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/updates.txt
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+running... 500 of 13192
+running... 1000 of 13192
+running... 1500 of 13192
+running... 2000 of 13192
+
+----------------------UPDATE-----------------------------------
+2371 of 13192: ERR2592889
+ERR2592889: OK -> OK
+
+
+----------------------UPDATE-----------------------------------
+2397 of 13192: ERR2592915
+ERR2592915: OK -> OK
+
+
+----------------------UPDATE-----------------------------------
+2419 of 13192: ERR2592937
+ERR2592937: OK -> OK
+
+
+----------------------UPDATE-----------------------------------
+2420 of 13192: ERR2592938
+ERR2592938: OK -> OK
+
+
+----------------------UPDATE-----------------------------------
+2453 of 13192: ERR4332001
+ERR4332001: ERR -> ERR
+
+
+----------------------UPDATE-----------------------------------
+2454 of 13192: ERR4332002
+ERR4332002: ERR -> ERR
+
+
+----------------------UPDATE-----------------------------------
+2458 of 13192: SRR10008584
+SRR10008584: OK -> OK
+
+
+----------------------UPDATE-----------------------------------
+2459 of 13192: SRR10008585
+SRR10008585: OK -> OK
+
+
+----------------------UPDATE-----------------------------------
+2463 of 13192: SRR10008589
+SRR10008589: OK -> OK
+
+
+----------------------UPDATE-----------------------------------
+2467 of 13192: SRR10008593
+SRR10008593: OK -> OK
+
+
+----------------------UPDATE-----------------------------------
+2468 of 13192: SRR10008594
+SRR10008594: OK -> OK
+
+
+----------------------UPDATE-----------------------------------
+2472 of 13192: SRR10008598
+SRR10008598: OK -> OK
+
+
+----------------------UPDATE-----------------------------------
+2473 of 13192: SRR10008599
+SRR10008599: OK -> OK
+
+running... 2500 of 13192
+running... 3000 of 13192
+running... 3500 of 13192
+running... 4000 of 13192
+running... 4500 of 13192
+running... 5000 of 13192
+running... 5500 of 13192
+running... 6000 of 13192
+running... 6500 of 13192
+running... 7000 of 13192
+running... 7500 of 13192
+running... 8000 of 13192
+running... 8500 of 13192
+running... 9000 of 13192
+running... 9500 of 13192
+running... 10000 of 13192
+running... 10500 of 13192
+running... 11000 of 13192
+running... 11500 of 13192
+running... 12000 of 13192
+running... 12500 of 13192
+running... 13000 of 13192
++ echo 'update done'
++ tee -a /mnt/extra/fzuccato_new/2021_04_02_0MB/.info/log.txt
+update done
++ exit 0

@@ -3,6 +3,9 @@
 *.fa
 *bowtie2
 metadata/experiment_formatted.xml
-metadata/metadata_*
-runs/**/[A-Z]RR*
+metadata/*
+#runs/**/[A-Z]RR*
+#runs/analysis/[A-Z]RR*
+runs/analysis/2021_03_26/[A-Z]RR*
 *.xml
+scripts/c++_tests/storeruns/*
