@@ -1,6 +1,6 @@
 # c++ code compilation
 To compile the c++ code is needed:
-* c++ version >=
+* c++ version:
     + c++17
 * link file:
     + run.cpp
