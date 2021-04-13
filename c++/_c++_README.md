@@ -4,13 +4,10 @@ To compile the c++ code is needed:
     + c++17
 * link file:
     + run.cpp
-
-NB: library filesystem is pretty new.
-Need to link:
-* using g++:
-    + -lstdc++fs
-* using clang++:
-    + -lc++fs
+* libraries:
+    + for multi threading:
+        + pthread
+    + lstdc++fs (with g++) or lc++fs (with clang++) (for filesystem)
 
 NB: clang is giving error for now
 
