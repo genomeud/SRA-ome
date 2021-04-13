@@ -27,14 +27,14 @@ B_to_MB=$(( 2 ** 20 ))
 if test $layout = 'SINGLE'
 then
     fastqSizeB=`echo $sizesB`
-    fastqSizeMB=`bc <<< "scale=2; $fastqSizeB / $B_to_MB"` 
+    fastqSizeMB=`bc <<< "scale=0; $fastqSizeB / $B_to_MB"` 
     totalSizeMB=$fastqSizeMB
 else
     fastq1SizeB=`echo $sizesB | cut -d' ' -f1`
     fastq2SizeB=`echo $sizesB | cut -d' ' -f2`
-    fastq1SizeMB=`bc <<< "scale=2; $fastq1SizeB / $B_to_MB"` 
-    fastq2SizeMB=`bc <<< "scale=2; $fastq2SizeB / $B_to_MB"`
-    totalSizeMB=`bc <<< "scale=2; $fastq1SizeMB + $fastq2SizeMB"`
+    fastq1SizeMB=`bc <<< "scale=0; $fastq1SizeB / $B_to_MB"` 
+    fastq2SizeMB=`bc <<< "scale=0; $fastq2SizeB / $B_to_MB"`
+    totalSizeMB=`bc <<< "scale=0; $fastq1SizeMB + $fastq2SizeMB"`
 fi
 
 echo $totalSizeMB
