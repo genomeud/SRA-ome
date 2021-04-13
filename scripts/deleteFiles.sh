@@ -1,3 +1,4 @@
+#set -x
 nOfParamsNeeded=1
 
 if test $# -lt $nOfParamsNeeded
@@ -17,7 +18,28 @@ fi
 
 cd $dir
 
-ls | egrep "$run(_[1,2])?\.fastq" | xargs -d"\n" rm
-ls | grep "$run.kraken$" | xargs -d"\n" rm
+#ls | egrep "$run(_[1,2])?\.fastq" | xargs -d"\n" rm
+#ls | grep "$run.kraken$" | xargs -d"\n" r
+ok=0
 
-exit 0
+list='ls'
+removeFiles='xargs -d\n rm'
+
+#.fastq files
+findFastq='egrep '"$run(_[1,2])?\.fastq"
+echo $list '|' $findFastq '|' $removeFiles
+$list | $findFastq | $removeFiles
+
+ok=$?
+
+#.kraken files
+findKraken='grep '"$run.kraken$"
+echo $list '|' $findKraken '|' $removeFiles
+$list | $findKraken | $removeFiles
+
+if test $ok -eq 0
+then
+    ok=$?
+fi 
+
+exit $ok
