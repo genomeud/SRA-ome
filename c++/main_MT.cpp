@@ -1,11 +1,11 @@
-//for read and write on stdin/stderr
+//to read and write on stdin/stderr
 #include <iostream>
-//for read and write on files
+//to read and write on files
 #include <fstream>
 //to handle filesystem: check files and directories
 #include <filesystem>
 //#include <experimental/filesystem>
-//for execute shell scripts
+//to execute shell scripts
 #include <cstdio>
 #include <memory>
 #include <stdexcept>
@@ -18,6 +18,8 @@
 #include <string>
 #include <vector>
 #include <sstream>
+//to get actual time for log
+#include <time.h>
 //my SRA library
 #include "sra.h"
 
@@ -28,9 +30,8 @@ using namespace filesystem;
 #pragma region methods
 
     //region exec
-    tuple<int, string> exec_cout_stderr_to_stdout(const string& command, bool coutBuffer);
-    tuple<int, string> exec_cout(const string& command, bool coutBuffer);
-    tuple<int, string> exec_cout(const char* command, bool coutBuffer);
+    tuple<int, string> execAndPrint(const string& command, const SRA::Run& run, bool printOutput);
+    tuple<int, string> exec(const char* command);
 
     //region scripts
     void startRun(SRA::Run& run);
@@ -41,6 +42,8 @@ using namespace filesystem;
     void endRun(SRA::Run& run);
 
     //region useful
+    void buildAndPrint(const string& line, const SRA::Run& run, bool newline);
+    string buildLineToOutput(const string& line, const SRA::Run& run, bool newline);
     void removeTrailingSeparator(path& path, char separator);
     string buildCommand(const string& command, const vector<string>& parameters);
     vector<string> explode(const string& line, char delim);
@@ -221,6 +224,8 @@ int main(int argc, char *argv[]) {
         //cout << "\n";
     }
 
+    cout << "ended everything ok!\n";
+    
     return 0;
 }
 
@@ -229,55 +234,78 @@ int main(int argc, char *argv[]) {
 #pragma region exec
 
 /*
-if coutBuffer == TRUE: 
+if printOutput == TRUE: 
     output will be printed to cout
     return type: <exitStatus, nullptr>
 useful if is important if everything done correctly
 output generated just print it out, don't return it
 
-if coutBuffer == FALSE: 
+if printOutput == FALSE: 
     output will be returned
     return type: <exitStatus, buffer>
 useful if is important the output generated
 */
+tuple<int, string> execAndPrint(const string& command, const SRA::Run& run, bool printOutput) {
 
-tuple<int, string> exec_cout_stderr_to_stdout(const string& command, bool coutBuffer) {
-
+    //stderr redirection to stdout:
+    //popen() cannot handle stderr only stdout
     string new_command = command + " 2>&1";
-    printWithMutexLock(new_command, true);
-    tuple<int, string> output = exec_cout(new_command, coutBuffer);
-    //int exitStatus = std::get<0>(output);
-    //cout << "exitStatus: " << exitStatus << "\n";
+    //print command will be executed
+    string toPrint = new_command;
+    buildAndPrint(toPrint, run, true);
+    tuple<int, string> output = exec(new_command.c_str());
+    if(printOutput) {
+        vector<string> lines = explode(std::get<1>(output), '\n');
+        for(const auto &line: lines) {
+            buildAndPrint(line, run, true);
+        }
+    }
+
     return output;
 }
 
-tuple<int, string>  exec_cout(const string& command, bool coutBuffer) {
-    return exec_cout(command.c_str(), coutBuffer);
-}
-
-tuple<int, string> exec_cout(const char* command, bool coutBuffer) {
+tuple<int, string> exec(const char* command) {
     array<char, 128> buffer;
-    string result;
+    string result = "";
     FILE *pipe = popen(command, "r");
     if (!pipe) {
         throw runtime_error("popen() failed!");
     }
     while (!feof(pipe)) {
         if (fgets(buffer.data(), 128, pipe) != nullptr) {
-            result = buffer.data();
+            result += buffer.data();
         }
     }
-    if(coutBuffer) {
-        printWithMutexLock(result, false);
-    }
     int exitStatus = WEXITSTATUS(pclose(pipe));
-    string output = coutBuffer ? "" : result;
-    return std::make_tuple(exitStatus, output);    
+    return std::make_tuple(exitStatus, result);  
 }
 
 #pragma endregion exec
 
 #pragma region useful
+
+void buildAndPrint(const string& line, const SRA::Run& run, bool newline) {
+    string toPrint = buildLineToOutput(line, run, false);
+    printWithMutexLock(toPrint, newline);
+}
+
+string buildLineToOutput(const string& line, const SRA::Run& run, bool newline) {
+    // Current date/time based on current system
+    time_t now = time(0);
+    // Convert now to tm struct for local timezone
+    struct tm* localtm = localtime(&now);
+    char separator = '\t';
+    const int bufSize = 80;
+    char timeBuffer [bufSize];
+    strftime(timeBuffer, bufSize, "%F %T", localtm);
+    std::string toPrint = timeBuffer;
+    toPrint += separator;
+    toPrint += run.getRunID();
+    toPrint += separator;
+    toPrint += line;
+    if(newline) toPrint += '\n';
+    return toPrint;
+}
 
 void removeTrailingSeparator(path& path, char separator) {
     string p = path.c_str();
@@ -324,100 +352,94 @@ void printAllSizesToFile(const vector<SRA::Run>& runs) {
 void startRun(SRA::Run& run) {
     run.setRunStatus(SRA::RunStatus::OK);
     string toPrint = "started: " + run.to_string();
-    printWithMutexLock(toPrint, true);
-    //printWithMutexLock(run.to_json(), true);
+    buildAndPrint(toPrint, run, true);
     run.setInProcess(true);
 }
 
 void endRun(SRA::Run& run) {
     string toPrint = "ended: " + run.to_string();
-    printWithMutexLock(toPrint, true);
-    //printWithMutexLock(run.to_json(), true);
+    buildAndPrint(toPrint, run, true);
     run.setInProcess(false);
 }
 
 void execFasterQDump(SRA::Run& run) {
     string toPrint = "downloading run as .fastq...";
-    printWithMutexLock(toPrint, true);
+    buildAndPrint(toPrint, run, true);
     string cmd = SRA::buildFasterQDump_command(
         execFasterQDump_script, run, run.getFastq_dir()
     );
-    tuple<int, string> output = exec_cout_stderr_to_stdout(cmd, true);
+    tuple<int, string> output = execAndPrint(cmd, run, true);
     int exitCode = std::get<0>(output);
     if(exitCode != 0) {
         //download failed
         run.setRunStatus(SRA::RunStatus::ERR);
         toPrint = "error: FasterQDump caused error with exit code:" + exitCode;
-        printWithMutexLock(toPrint, true);   
     } else {
         toPrint = "download done correctly!";
-        printWithMutexLock(toPrint, true);
     }
+    buildAndPrint(toPrint, run, true);
 
 }
 
 void execKraken(SRA::Run& run) {
     string toPrint = "analysing run with Kraken2...";
-    printWithMutexLock(toPrint, true);
+    buildAndPrint(toPrint, run, true);
     string cmd = SRA::buildKraken_command(
         execKraken_script, run.getFastq_dir()
     );
-    tuple<int, string> output = exec_cout_stderr_to_stdout(cmd, true);
+    tuple<int, string> output = execAndPrint(cmd, run, true);
     int exitCode = std::get<0>(output);
     if(exitCode != 0) {
         //kraken failed
         run.setRunStatus(SRA::RunStatus::ERR);
         toPrint = "error: Kraken caused error with exit code:" + exitCode;
-        printWithMutexLock(toPrint, true);    
     } else {
         toPrint = "Kakren: analysed correctly!";
-        printWithMutexLock(toPrint, true);
     }
+    buildAndPrint(toPrint, run, true);
 }
 
 void execGetFastqFileSize(SRA::Run& run) {
     //calculate from filesystem fastq file uncompressed size
     string toPrint = "looking for fastq file size...";
-    printWithMutexLock(toPrint, true);
+    buildAndPrint(toPrint, run, true);
     string cmd = SRA::buildGetFastqFileSize_command(
         getFastqFileSize_script, run, run.getFastq_dir()
     );
-    tuple<int, string> output = exec_cout_stderr_to_stdout(cmd, false);
+    tuple<int, string> output = execAndPrint(cmd, run, false);
     int exitCode = std::get<0>(output);
 
     if(exitCode != 0) {
         //getFastqFileSize failed: file not exist?
         run.setRunStatus(SRA::RunStatus::ERR);
         string error = std::get<1>(output);
-        printWithMutexLock(error, false);
+        buildAndPrint(toPrint, run, false);
         toPrint = "error: get FastqFileSize caused error with exit code:" + exitCode;
-        printWithMutexLock(toPrint, true);
 
     } else {
         //getFastqFileSize ok
         int sizeUncompressed = stoi(std::get<1>(output));
         run.setSizeUncompressed(sizeUncompressed);
         toPrint = "Fastq file size obtained correctly!";
-        printWithMutexLock(toPrint, true);
     }
+    buildAndPrint(toPrint, run, true);
 }
 
 void execDeleteFiles(SRA::Run& run) {
     //calculate from filesystem fastq file uncompressed size
     string toPrint = "deleting fastq files...";
-    printWithMutexLock(toPrint, true);
+    buildAndPrint(toPrint, run, true);
     string cmd = SRA::buildDeleteFiles_command(
         deleteFiles_script, run, run.getFastq_dir()
     );
-    tuple<int, string> output = exec_cout_stderr_to_stdout(cmd, true);
+    tuple<int, string> output = execAndPrint(cmd, run, true);
     int exitCode = std::get<0>(output);
     if (exitCode == 0) {
         toPrint = "Deleted files correctly!";
-        printWithMutexLock(toPrint, true);
     } else {
         toPrint = "warn: error while deleting files..";
-        printWithMutexLock(toPrint, true);
     }
+    buildAndPrint(toPrint, run, true);
 }
 
 #pragma endregion scripts
@@ -469,7 +491,7 @@ void execThread(SRA::Run& run) {
 }
 
 void printWithMutexLock(const string& output, bool newline) {
-    {
+    {    
         unique_lock<mutex> lck(mtx_cout);
         cout << output;
         if(newline) cout << "\n";
