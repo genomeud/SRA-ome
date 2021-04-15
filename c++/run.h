@@ -24,7 +24,7 @@ namespace SRA {
         public:
 
             //constructor
-            Run(std::string ID, std::string fastq_dir, Layout layout, int sizeCompressed);
+            Run(std::string ID, Layout layout, int sizeCompressed);
 
             //getters
             std::string getRunID() const;

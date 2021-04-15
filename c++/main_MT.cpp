@@ -46,7 +46,6 @@ using namespace filesystem;
     string buildLineToOutput(const string& line, const SRA::Run& run, bool newline);
     void removeTrailingSeparator(path& path, char separator);
     string buildCommand(const string& command, const vector<string>& parameters);
-    vector<string> explode(const string& line, char delim);
     void printAllSizesToFile(const vector<SRA::Run>& runs);
 
 #pragma endregion methods
@@ -90,15 +89,6 @@ using namespace filesystem;
 
 #pragma endregion variables
 
-#pragma region constants
-
-    //indexes of columns in file 'runs_list.csv'
-    const int RUN_IDX = 0;
-    const int LAYOUT_IDX = 1;
-    const int COMPRESSED_SIZE_IDX = 2;
-
-#pragma endregion constants
-
 #pragma region multithread_declaration
 
     //max values for condition variable
@@ -132,7 +122,7 @@ int main(int argc, char *argv[]) {
     const int nOfParamsNeeded = 2;
     
     //input files
-    const char *runs_path;
+    string runs_path;
     path mainOutput_dir;
     path infoFilesOutput_dir;
 
@@ -177,34 +167,17 @@ int main(int argc, char *argv[]) {
     fastQSize_path = infoFilesOutput_dir.native() + "/fastq_files_size.csv";
     updates_path   = infoFilesOutput_dir.native() + "/updates_log.csv";
 
-    //open runs list file in read mode
-    ifstream runs_ifs(runs_path);
-
-    //check if it is open
-    if (!runs_ifs.is_open()) {
+    vector<SRA::Run> runs;
+    if (SRA::getRunsFromFile(runs_path, runs, ',') != 0) {
         cout << "fatal: could not open runs to execute file";
         return 4;
-    }
-
-    char delimiter = ',';
-    string raw_line;
-    vector<SRA::Run> runs;
-
-    //read csv file store each line data to an instance of class Run
-    while (getline(runs_ifs, raw_line)) {
-        vector<string> line = explode(raw_line, delimiter);
-        string runID = line[RUN_IDX];
-        SRA::Layout runLayout = SRA::layoutMap.at(line[LAYOUT_IDX]);
-        int runSizeCompressed = stoi(line[COMPRESSED_SIZE_IDX]);
-        //cout << ID << "\t" << SRA::to_string(runLayout) << "\t" << runSizeCompressed << "\n";
-        path run_dir = mainOutput_dir.native() + "/" + runID;
-        SRA::Run run(runID, run_dir.native(), runLayout, runSizeCompressed);
-        runs.push_back(run);
     }
 
     vector<thread> threads;
 
     for (auto &run : runs) {
+        path run_dir = mainOutput_dir.native() + "/" + run.getRunID();
+        run.setFastq_dir(run_dir.native());
         threads.push_back(thread(execThread, std::ref(run)));
     }
     
@@ -255,12 +228,11 @@ tuple<int, string> execAndPrint(const string& command, const SRA::Run& run, bool
     buildAndPrint(toPrint, run, true);
     tuple<int, string> output = exec(new_command.c_str());
     if(printOutput) {
-        vector<string> lines = explode(std::get<1>(output), '\n');
+        vector<string> lines = SRA::explode(std::get<1>(output), '\n');
         for(const auto &line: lines) {
             buildAndPrint(line, run, true);
         }
     }
-
     return output;
 }
 
@@ -314,15 +286,6 @@ void removeTrailingSeparator(path& path, char separator) {
         path = path.parent_path();
     }
     //cout << path << "\n";
-}
-
-vector<string> explode(const string& line, char delim) {
-    vector<string> result;
-    istringstream iss(line);
-    for (string token; getline(iss, token, delim);) {
-        result.push_back(move(token));
-    }
-    return result;
 }
 
 string buildCommand(const string& command, const vector<string>& parameters) {
@@ -466,7 +429,7 @@ void execThread(SRA::Run& run) {
         //while(!ok) cv.wait(lck);
         cv.wait(
             lck, 
-            []{ return (
+            [] { return (
                     (numOfThreadsDownload < maxNumOfThreadsDownload) && 
                     (sizeTotalDownload < maxSizeTotalDownload)
                 );

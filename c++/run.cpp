@@ -4,9 +4,8 @@
 
 namespace SRA {
 
-    Run::Run(std::string ID, std::string fastq_dir, Layout layout, int sizeCompressed) {
+    Run::Run(std::string ID, Layout layout, int sizeCompressed) {
         this->ID = ID;
-        this->fastq_dir = fastq_dir;
         this->layout = layout;
         this->sizeCompressed = sizeCompressed;
     }
