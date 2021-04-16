@@ -35,7 +35,7 @@ using namespace filesystem;
 
     //region useful
     string buildCommand(string command, vector<string> parameters);
-    vector<string> explode(string const& line, char delim);
+    vector<string> split(string const& line, char delim);
     void printAllSizesToFile(const vector<SRA::Run>& runs);
 
 #pragma endregion methods
@@ -45,35 +45,35 @@ using namespace filesystem;
     #pragma region dirs
 
         //main directory
-        path main_path = "$HOME/SRA";
+        path main_dir = "$HOME/SRA";
         //metadata dir path
-        path metadata_path = main_path.native() + "/metadata";
+        path metadata_dir = main_dir.native() + "/metadata";
         //scripts dir path
-        path scripts_path = main_path.native() + "/scripts";
+        path scripts_dir = main_dir.native() + "/scripts";
 
     #pragma endregion dirs
 
     #pragma region scripts
 
         //scripts file path
-        string execFasterQDump_script   = scripts_path.native() + "/execFasterQDump.sh";
-        string execKraken_script        = scripts_path.native() + "/execKraken.sh";
-        string getFastqFileSize_script  = scripts_path.native() + "/getFastqFileSize.sh";
-        string updateAllRunsFile_script = scripts_path.native() + "/updateAllRunsFile.sh";
-        string deleteFiles_script       = scripts_path.native() + "/deleteFiles.sh";
+        string execFasterQDump_script   = scripts_dir.native() + "/execFasterQDump.sh";
+        string execKraken_script        = scripts_dir.native() + "/execKraken.sh";
+        string getFastqFileSize_script  = scripts_dir.native() + "/getFastqFileSize.sh";
+        string updateAllRunsFile_script = scripts_dir.native() + "/updateAllRunsFile.sh";
+        string deleteFiles_script       = scripts_dir.native() + "/deleteFiles.sh";
 
     #pragma endregion scripts
     
     #pragma region files
 
         //metadata file path
-        string allMetadataInfo_file = metadata_path.native() + "/metadata_filtered_small.csv";
+        string allMetadataInfo_file = metadata_dir.native() + "/metadata_filtered_small.csv";
 
         //output files
-        string resultAll_path;
-        string resultErr_path;
-        string fastQSize_path;
-        string updates_path;
+        string resultAll_outputfile;
+        string resultErr_outputfile;
+        string fastQSize_outputfile;
+        string updates_outputfile;
 
     #pragma endregion files
 
@@ -82,9 +82,9 @@ using namespace filesystem;
 #pragma region constants
 
     //indexes of columns in file 'runs_list.csv'
-    const int RUN_IDX = 0;
-    const int LAYOUT_IDX = 1;
-    const int COMPRESSED_SIZE_IDX = 2;
+    const int RUNIDX_IN_RUNSLIST = 0;
+    const int LAYOUTIDX_IN_RUNSLIST = 1;
+    const int COMPRSIZEIDX_IN_RUNSLIST = 2;
 
 #pragma endregion constants
 
@@ -134,10 +134,10 @@ int main(int argc, char *argv[]) {
     #pragma endregion checkArgs
     
     //output files
-    resultAll_path = infoFilesOutput_dir.native() + "/results_all.csv";
-    resultErr_path = infoFilesOutput_dir.native() + "/results_err.csv";
-    fastQSize_path = infoFilesOutput_dir.native() + "/fastq_files_size.csv";
-    updates_path   = infoFilesOutput_dir.native() + "/updates_log.csv";
+    resultAll_outputfile = infoFilesOutput_dir.native() + "/results_all.csv";
+    resultErr_outputfile = infoFilesOutput_dir.native() + "/results_err.csv";
+    fastQSize_outputfile = infoFilesOutput_dir.native() + "/fastq_files_size.csv";
+    updates_outputfile   = infoFilesOutput_dir.native() + "/updates_log.csv";
 
     //open runs list file in read mode
     ifstream runs_ifs(runs_path);
@@ -154,13 +154,14 @@ int main(int argc, char *argv[]) {
 
     //read csv file store each line data to an instance of class Run
     while (getline(runs_ifs, raw_line)) {
-        vector<string> line = explode(raw_line, delimiter);
-        string runID = line[RUN_IDX];
-        SRA::Layout runLayout = SRA::layoutMap.at(line[LAYOUT_IDX]);
-        int runSizeCompressed = stoi(line[COMPRESSED_SIZE_IDX]);
+        vector<string> line = split(raw_line, delimiter);
+        string runID = line[RUNIDX_IN_RUNSLIST];
+        SRA::Layout runLayout = SRA::layoutMap.at(line[LAYOUTIDX_IN_RUNSLIST]);
+        int runSizeCompressed = stoi(line[COMPRSIZEIDX_IN_RUNSLIST]);
         //cout << ID << "\t" << SRA::to_string(runLayout) << "\t" << runSizeCompressed << "\n";
         path run_dir = mainOutput_dir.native() + "/" + runID;
-        SRA::Run run(runID, run_dir, runLayout, runSizeCompressed);
+        SRA::Run run(runID, runLayout, runSizeCompressed);
+        run.setFastq_dir(run_dir);
         runs.push_back(run);
     }
 
@@ -238,7 +239,7 @@ tuple<int, string> exec_cout(const char* command, bool coutBuffer) {
 #pragma endregion exec
 
 #pragma region useful
-vector<string> explode(string const& line, char delim) {
+vector<string> split(string const& line, char delim) {
     vector<string> result;
     istringstream iss(line);
     for (string token; getline(iss, token, delim);) {
@@ -260,7 +261,7 @@ void printAllSizesToFile(const vector<SRA::Run>& runs) {
     for(auto const &run : runs) {
         //if size >= 0 ==> std::to_string(size)
         //if size  < 0 ==> error ==> some string error
-        string sizeUncompressed = SRA::sizeToString(run.getSizeUncompressed());
+        string sizeUncompressed = SRA::getIfNonNegativeSizeAsStringElseErrorString(run.getSizeUncompressed());
 
         //print to file size compressed and uncompressed
         //TODO

@@ -30,16 +30,18 @@ using namespace filesystem;
 #pragma region methods
 
     //region exec
-    tuple<int, string> execAndPrint(const string& command, const SRA::Run& run, bool printOutput);
+    tuple<int, string> execAndPrint(const string& command, const SRA::Run * run, bool printOutput);
     tuple<int, string> exec(const char* command);
 
-    //region scripts
+    //region scripts for a run
     void startRun(SRA::Run& run);
     void execFasterQDump(SRA::Run& run);
     void execKraken(SRA::Run& run);
     void execGetFastqFileSize(SRA::Run& run);
     void execDeleteFiles(SRA::Run& run);
     void endRun(SRA::Run& run);
+    //region scripts for all runs
+    void execUpdateAllRunsFile(const vector<SRA::Run>& runs);
 
     //region useful
     void buildAndPrint(const string& line, const SRA::Run& run, bool newline);
@@ -55,35 +57,36 @@ using namespace filesystem;
     #pragma region dirs
 
         //main directory
-        path main_path = "$HOME/SRA";
+        path main_dir = "$HOME/SRA";
         //metadata dir path
-        path metadata_path = main_path.native() + "/metadata";
+        path metadata_dir = main_dir.native() + "/metadata";
         //scripts dir path
-        path scripts_path = main_path.native() + "/scripts";
+        path scripts_dir = main_dir.native() + "/scripts";
 
     #pragma endregion dirs
 
     #pragma region scripts
 
         //scripts file path
-        string execFasterQDump_script   = scripts_path.native() + "/execFasterQDump.sh";
-        string execKraken_script        = scripts_path.native() + "/execKraken.sh";
-        string getFastqFileSize_script  = scripts_path.native() + "/getFastqFileSize.sh";
-        string updateAllRunsFile_script = scripts_path.native() + "/updateAllRunsFile.sh";
-        string deleteFiles_script       = scripts_path.native() + "/deleteFiles.sh";
+        string execFasterQDump_script   = scripts_dir.native() + "/execFasterQDump.sh";
+        string execKraken_script        = scripts_dir.native() + "/execKraken.sh";
+        string getFastqFileSize_script  = scripts_dir.native() + "/getFastqFileSize.sh";
+        string updateAllRunsFile_script = scripts_dir.native() + "/updateAllRunsFile.sh";
+        string deleteFiles_script       = scripts_dir.native() + "/deleteFiles.sh";
 
     #pragma endregion scripts
     
     #pragma region files
 
         //metadata file path
-        string allMetadataInfo_file = metadata_path.native() + "/metadata_filtered_small.csv";
+        //string allMetadataInfo_file = metadata_dir.native() + "/metadata_filtered_small.csv";
+        string allMetadataInfo_file = "$HOME/SRA/c++/storeruns/metadata/metadata_COPY_FOR_TESTING.csv";
 
         //output files
-        string resultAll_path;
-        string resultErr_path;
-        string fastQSize_path;
-        string updates_path;
+        string resultAll_outputfile;
+        string resultErr_outputfile;
+        string fastQSize_outputfile;
+        string updates_outputfile;
 
     #pragma endregion files
 
@@ -162,17 +165,17 @@ int main(int argc, char *argv[]) {
     #pragma endregion checkArgs
     
     //output files
-    resultAll_path = infoFilesOutput_dir.native() + "/results_all.csv";
-    resultErr_path = infoFilesOutput_dir.native() + "/results_err.csv";
-    fastQSize_path = infoFilesOutput_dir.native() + "/fastq_files_size.csv";
-    updates_path   = infoFilesOutput_dir.native() + "/updates_log.csv";
+    resultAll_outputfile = infoFilesOutput_dir.native() + "/results_all.csv";
+    resultErr_outputfile = infoFilesOutput_dir.native() + "/results_err.csv";
+    fastQSize_outputfile = infoFilesOutput_dir.native() + "/fastq_files_size.csv";
+    updates_outputfile   = infoFilesOutput_dir.native() + "/updates_log.csv";
 
     vector<SRA::Run> runs;
     if (SRA::getRunsFromFile(runs_path, runs, ',') != 0) {
         cout << "fatal: could not open runs to execute file";
         return 4;
     }
-
+    /*
     vector<thread> threads;
 
     for (auto &run : runs) {
@@ -196,6 +199,26 @@ int main(int argc, char *argv[]) {
         
         //cout << "\n";
     }
+    //from here all runs has ended
+    */
+    int printToFileStatus = -1;
+    vector<string> resultsOfAllRuns = buildOutputForResultAllFile(runs, ',');
+    printToFileStatus = SRA::printToFile(resultAll_outputfile, resultsOfAllRuns);
+    if (printToFileStatus != 0) {
+        cout << "error\n";
+    }
+    vector<string> resultsOfErrRuns = buildOutputForResultErrorFile(runs, ',');
+    printToFileStatus = SRA::printToFile(resultErr_outputfile, resultsOfErrRuns);
+    if (printToFileStatus != 0) {
+        cout << "error\n";
+    }
+    vector<string> fastQSizesOfAllRuns =  buildOutputForFastQSizeFile(runs, '\t');
+    printToFileStatus = SRA::printToFile(fastQSize_outputfile, fastQSizesOfAllRuns);
+    if (printToFileStatus != 0) {
+        cout << "error\n";
+    }
+
+    execUpdateAllRunsFile(runs);
 
     cout << "ended everything ok!\n";
     
@@ -218,19 +241,27 @@ if printOutput == FALSE:
     return type: <exitStatus, buffer>
 useful if is important the output generated
 */
-tuple<int, string> execAndPrint(const string& command, const SRA::Run& run, bool printOutput) {
+tuple<int, string> execAndPrint(const string& command, const SRA::Run * run, bool printOutput) {
 
     //stderr redirection to stdout:
     //popen() cannot handle stderr only stdout
     string new_command = command + " 2>&1";
     //print command will be executed
     string toPrint = new_command;
-    buildAndPrint(toPrint, run, true);
+    if (run != nullptr) {
+        buildAndPrint(toPrint, *run, true);
+    } else {
+        printWithMutexLock(toPrint, true);
+    }
     tuple<int, string> output = exec(new_command.c_str());
     if(printOutput) {
-        vector<string> lines = SRA::explode(std::get<1>(output), '\n');
+        vector<string> lines = SRA::split(std::get<1>(output), '\n');
         for(const auto &line: lines) {
-            buildAndPrint(line, run, true);
+            if (run != nullptr) {
+                buildAndPrint(line, *run, true);
+            } else {
+                printWithMutexLock(line, true);
+            }
         }
     }
     return output;
@@ -297,17 +328,6 @@ string buildCommand(const string& command, const vector<string>& parameters) {
     return cmd;
 }
 
-void printAllSizesToFile(const vector<SRA::Run>& runs) {
-    for(auto const &run : runs) {
-        //if size >= 0 ==> std::to_string(size)
-        //if size  < 0 ==> error ==> some string error
-        string sizeUncompressed = SRA::sizeToString(run.getSizeUncompressed());
-
-        //print to file size compressed and uncompressed
-        //TODO
-    }
-}
-
 #pragma endregion useful
 
 #pragma region scripts
@@ -331,7 +351,7 @@ void execFasterQDump(SRA::Run& run) {
     string cmd = SRA::buildFasterQDump_command(
         execFasterQDump_script, run, run.getFastq_dir()
     );
-    tuple<int, string> output = execAndPrint(cmd, run, true);
+    tuple<int, string> output = execAndPrint(cmd, &run, true);
     int exitCode = std::get<0>(output);
     if(exitCode != 0) {
         //download failed
@@ -350,7 +370,7 @@ void execKraken(SRA::Run& run) {
     string cmd = SRA::buildKraken_command(
         execKraken_script, run.getFastq_dir()
     );
-    tuple<int, string> output = execAndPrint(cmd, run, true);
+    tuple<int, string> output = execAndPrint(cmd, &run, true);
     int exitCode = std::get<0>(output);
     if(exitCode != 0) {
         //kraken failed
@@ -369,7 +389,7 @@ void execGetFastqFileSize(SRA::Run& run) {
     string cmd = SRA::buildGetFastqFileSize_command(
         getFastqFileSize_script, run, run.getFastq_dir()
     );
-    tuple<int, string> output = execAndPrint(cmd, run, false);
+    tuple<int, string> output = execAndPrint(cmd, &run, false);
     int exitCode = std::get<0>(output);
 
     if(exitCode != 0) {
@@ -395,7 +415,7 @@ void execDeleteFiles(SRA::Run& run) {
     string cmd = SRA::buildDeleteFiles_command(
         deleteFiles_script, run, run.getFastq_dir()
     );
-    tuple<int, string> output = execAndPrint(cmd, run, true);
+    tuple<int, string> output = execAndPrint(cmd, &run, true);
     int exitCode = std::get<0>(output);
     if (exitCode == 0) {
         toPrint = "Deleted files correctly!";
@@ -405,8 +425,26 @@ void execDeleteFiles(SRA::Run& run) {
     buildAndPrint(toPrint, run, true);
 }
 
-#pragma endregion scripts
+void execUpdateAllRunsFile(const vector<SRA::Run>& runs) {
+    
+    //take the results of this execution and write the results, 
+    //updating the metadata file with all the runs
+    string toPrint = "updating all runs file...";
+    printWithMutexLock(toPrint, true);
+    string cmd = SRA::buildUpdateAllRunsFile_command(
+        updateAllRunsFile_script, allMetadataInfo_file, resultAll_outputfile, updates_outputfile
+    );
+    tuple<int, string> output = execAndPrint(cmd, nullptr, true);
+    int exitCode = std::get<0>(output);
+    if (exitCode == 0) {
+        toPrint = "Updated all runs file metadata correctly!";
+    } else {
+        toPrint = "error: metada update had an error, check if original file is safe!";
+    }
+    printWithMutexLock(toPrint, true);
+}
 
+#pragma endregion scripts
 
 #pragma region multithread_definition
 

@@ -19,7 +19,7 @@ RTUF_columnValueIdx=$6   #2: DONE = <OK | NO | ERR>
 #get file extension
 AllRunsFileExt='.'`echo $AllRunsFile | sed 's/.*\.//'`
 #get path/to/file without extension
-AllRunsFileName=`echo $AllRunsFile | sed 's/\.[^\.]*$//'`
+AllRunsPathWithNameFileNoExt=`echo $AllRunsFile | sed 's/\.[^\.]*$//'`
 
 updatesLog=$7
 echo -n >$updatesLog
@@ -28,11 +28,11 @@ i=1
 n=`cat "$AllRunsFile" | wc -l`
 
 #temp file
-AllRunsFileTemp="$AllRunsFileName"'_temp'"$AllRunsFileExt"
+AllRunsFileTemp="$AllRunsPathWithNameFileNoExt"'_temp'"$AllRunsFileExt"
 #output files
-AllRunsDoneFile="$AllRunsFileName"'_done'"$AllRunsFileExt"
-AllRunsToDoFile="$AllRunsFileName"'_todo'"$AllRunsFileExt"
-AllRunsBackUpFile="$AllRunsFileName"'_backup'"$AllRunsFileExt"
+AllRunsDoneFile="$AllRunsPathWithNameFileNoExt"'_done'"$AllRunsFileExt"
+AllRunsToDoFile="$AllRunsPathWithNameFileNoExt"'_todo'"$AllRunsFileExt"
+AllRunsBackUpFile="$AllRunsPathWithNameFileNoExt"'_backup'"$AllRunsFileExt"
 
 echo -n >$AllRunsFileTemp
 echo -n >$AllRunsDoneFile
