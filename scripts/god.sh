@@ -40,7 +40,8 @@ fi
 scientificName_idx=9 
 run_idx=8 
 layout_idx=14 
-sizeMB_idx=17 
+sizeMB_idx=17
+maxSizeMB=5500 #facoltative, default: 5000
 
 #   b) execution
 pickRnd_cmd="$pickRandom_script \
@@ -49,7 +50,8 @@ pickRnd_cmd="$pickRandom_script \
     $run_idx \
     $layout_idx \
     $sizeMB_idx \
-    $infoOutDir"
+    $infoOutDir \
+    $maxSizeMB"
 
 echo $pickRnd_cmd
 $pickRnd_cmd
