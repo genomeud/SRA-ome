@@ -1,8 +1,8 @@
 #set -x
 
 #output directories
-#newmainOutDir='/mnt/extra/fzuccato_new/'$(date +'%Y-%m-%g')
-mainOutDir='/mnt/extra/fzuccato_new/2021_04_18/'
+mainOutDir='/mnt/extra/fzuccato_new/'$(date +'%Y_%m_%d')'/'
+#mainOutDir_TEST='/mnt/extra/fzuccato_new/2021_13_32/'
 infoOutDir="$mainOutDir"'.info/'
 researchesOutDir="$mainOutDir"'.researches/'
 
@@ -52,7 +52,7 @@ pickRnd_cmd="$pickRandom_script \
     $infoOutDir"
 
 echo $pickRnd_cmd
-#$pickRnd_cmd
+$pickRnd_cmd
 
 #2,3,4) execFasterQ_Kraken_update
 #   a) parameters
@@ -66,9 +66,9 @@ execAll_cmd="$execFasterQKrakenUpdate_script \
     $metadataAll_file"
 
 echo $execAll_cmd
-#$execAll_cmd
+$execAll_cmd
 
-#5) searchInAnalysis: corona, coronavirus, sars-cov-2
+#5) searchInAnalysis: (corona, coronavirus, sars-cov-2)
 
 fieldIdxs_array=('6' '6' '5')
 valueIdxs_array=('corona' 'coronavirus' '2697049')
