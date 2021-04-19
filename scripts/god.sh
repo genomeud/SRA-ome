@@ -1,7 +1,15 @@
 #set -x
+#"usage: $0 [<outputFolder>]"
+mainOutDir='/mnt/extra/fzuccato_new/'$(date +'%Y_%m_%d')'/'
+
+if test $# -gt 0
+then
+    mainOutDir=$1
+    mainOutDir=`echo "$mainOutDir" | sed s:/$::`
+    mainOutDir="$mainOutDir"'/'
+fi
 
 #output directories
-mainOutDir='/mnt/extra/fzuccato_new/'$(date +'%Y_%m_%d')'/'
 #mainOutDir_TEST='/mnt/extra/fzuccato_new/2021_13_32/'
 infoOutDir="$mainOutDir"'.info/'
 researchesOutDir="$mainOutDir"'.researches/'
