@@ -1,0 +1,1890 @@
+input file: /mnt/extra/fzuccato_new/2021_04_16/.info/runs_list.csv 
+
+1 of 75
+current run: SRR8837388
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8837388 SRR8837388
+spots read      : 186,446
+reads read      : 372,892
+reads written   : 372,892
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8837388_1.fastq SRR8837388_2.fastq 
+--output SRR8837388.kraken 
+--report SRR8837388.kraken.report.txt
+Loading database information... done.
+186446 sequences (93.11 Mbp) processed in 1.683s (6646.7 Kseq/m, 3319.35 Mbp/m).
+  44523 sequences classified (23.88%)
+  141923 sequences unclassified (76.12%)
+analysis done. Deleting .fastq file...
+done: SRR8837388 
+
+2 of 75
+current run: SRR8663103
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8663103 SRR8663103
+spots read      : 71,461
+reads read      : 142,922
+reads written   : 142,922
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8663103_1.fastq SRR8663103_2.fastq 
+--output SRR8663103.kraken 
+--report SRR8663103.kraken.report.txt
+Loading database information... done.
+71461 sequences (35.73 Mbp) processed in 3.884s (1103.9 Kseq/m, 551.95 Mbp/m).
+  71242 sequences classified (99.69%)
+  219 sequences unclassified (0.31%)
+analysis done. Deleting .fastq file...
+done: SRR8663103 
+
+3 of 75
+current run: SRR11558543
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR11558543 SRR11558543
+spots read      : 43,695,326
+reads read      : 87,390,652
+reads written   : 87,390,652
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR11558543_1.fastq SRR11558543_2.fastq 
+--output SRR11558543.kraken 
+--report SRR11558543.kraken.report.txt
+Loading database information... done.
+43695326 sequences (13195.99 Mbp) processed in 242.320s (10819.3 Kseq/m, 3267.41 Mbp/m).
+  13145715 sequences classified (30.08%)
+  30549611 sequences unclassified (69.92%)
+analysis done. Deleting .fastq file...
+done: SRR11558543 
+
+4 of 75
+current run: SRR12009699
+downloading run as .fastq...
+fasterq-dump -O /mnt/extra/fzuccato_new/2021_04_16/SRR12009699 SRR12009699
+spots read      : 81,971,977
+reads read      : 163,943,954
+reads written   : 81,971,977
+reads 0-length  : 81,971,977
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 SRR12009699.fastq 
+--output SRR12009699.kraken 
+--report SRR12009699.kraken.report.txt
+Loading database information... done.
+81971977 sequences (8197.20 Mbp) processed in 156.459s (31435.2 Kseq/m, 3143.52 Mbp/m).
+  6499069 sequences classified (7.93%)
+  75472908 sequences unclassified (92.07%)
+analysis done. Deleting .fastq file...
+done: SRR12009699 
+
+5 of 75
+current run: SRR8792701
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8792701 SRR8792701
+spots read      : 35,285,219
+reads read      : 70,570,438
+reads written   : 70,570,438
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8792701_1.fastq SRR8792701_2.fastq 
+--output SRR8792701.kraken 
+--report SRR8792701.kraken.report.txt
+Loading database information... done.
+35285219 sequences (8821.30 Mbp) processed in 154.651s (13689.6 Kseq/m, 3422.41 Mbp/m).
+  2345784 sequences classified (6.65%)
+  32939435 sequences unclassified (93.35%)
+analysis done. Deleting .fastq file...
+done: SRR8792701 
+
+6 of 75
+current run: DRR184141
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/DRR184141 DRR184141
+spots read      : 22,054,003
+reads read      : 44,108,006
+reads written   : 44,108,006
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired DRR184141_1.fastq DRR184141_2.fastq 
+--output DRR184141.kraken 
+--report DRR184141.kraken.report.txt
+Loading database information... done.
+22054003 sequences (4454.91 Mbp) processed in 80.980s (16340.3 Kseq/m, 3300.75 Mbp/m).
+  6873715 sequences classified (31.17%)
+  15180288 sequences unclassified (68.83%)
+analysis done. Deleting .fastq file...
+done: DRR184141 
+
+7 of 75
+current run: SRR8399393
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8399393 SRR8399393
+spots read      : 35,834,497
+reads read      : 71,668,994
+reads written   : 71,668,994
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8399393_1.fastq SRR8399393_2.fastq 
+--output SRR8399393.kraken 
+--report SRR8399393.kraken.report.txt
+Loading database information... done.
+35834497 sequences (7166.90 Mbp) processed in 98.802s (21761.4 Kseq/m, 4352.28 Mbp/m).
+  20322096 sequences classified (56.71%)
+  15512401 sequences unclassified (43.29%)
+analysis done. Deleting .fastq file...
+done: SRR8399393 
+
+8 of 75
+current run: SRR12730595
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12730595 SRR12730595
+spots read      : 38,301,713
+reads read      : 76,603,426
+reads written   : 76,603,426
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12730595_1.fastq SRR12730595_2.fastq 
+--output SRR12730595.kraken 
+--report SRR12730595.kraken.report.txt
+Loading database information... done.
+38301713 sequences (11567.12 Mbp) processed in 237.134s (9691.1 Kseq/m, 2926.73 Mbp/m).
+  28750446 sequences classified (75.06%)
+  9551267 sequences unclassified (24.94%)
+analysis done. Deleting .fastq file...
+done: SRR12730595 
+
+9 of 75
+current run: SRR12727876
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12727876 SRR12727876
+spots read      : 19,886,513
+reads read      : 39,773,026
+reads written   : 39,773,026
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12727876_1.fastq SRR12727876_2.fastq 
+--output SRR12727876.kraken 
+--report SRR12727876.kraken.report.txt
+Loading database information... done.
+19886513 sequences (5965.95 Mbp) processed in 81.319s (14673.0 Kseq/m, 4401.90 Mbp/m).
+  4360185 sequences classified (21.93%)
+  15526328 sequences unclassified (78.07%)
+analysis done. Deleting .fastq file...
+done: SRR12727876 
+
+10 of 75
+current run: SRR11830160
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR11830160 SRR11830160
+spots read      : 28,719,181
+reads read      : 57,438,362
+reads written   : 57,438,362
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR11830160_1.fastq SRR11830160_2.fastq 
+--output SRR11830160.kraken 
+--report SRR11830160.kraken.report.txt
+Loading database information... done.
+28719181 sequences (8673.19 Mbp) processed in 161.151s (10692.8 Kseq/m, 3229.23 Mbp/m).
+  4860120 sequences classified (16.92%)
+  23859061 sequences unclassified (83.08%)
+analysis done. Deleting .fastq file...
+done: SRR11830160 
+
+11 of 75
+current run: SRR13091435
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR13091435 SRR13091435
+spots read      : 42,992
+reads read      : 85,984
+reads written   : 85,984
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR13091435_1.fastq SRR13091435_2.fastq 
+--output SRR13091435.kraken 
+--report SRR13091435.kraken.report.txt
+Loading database information... done.
+42992 sequences (25.88 Mbp) processed in 0.714s (3612.1 Kseq/m, 2174.48 Mbp/m).
+  42992 sequences classified (100.00%)
+  0 sequences unclassified (0.00%)
+analysis done. Deleting .fastq file...
+done: SRR13091435 
+
+12 of 75
+current run: SRR12629840
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12629840 SRR12629840
+spots read      : 94,399
+reads read      : 188,798
+reads written   : 188,798
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12629840_1.fastq SRR12629840_2.fastq 
+--output SRR12629840.kraken 
+--report SRR12629840.kraken.report.txt
+Loading database information... done.
+94399 sequences (45.86 Mbp) processed in 0.459s (12347.3 Kseq/m, 5998.71 Mbp/m).
+  36736 sequences classified (38.92%)
+  57663 sequences unclassified (61.08%)
+analysis done. Deleting .fastq file...
+done: SRR12629840 
+
+13 of 75
+current run: SRR8512520
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8512520 SRR8512520
+spots read      : 31,644,073
+reads read      : 63,288,146
+reads written   : 63,288,146
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8512520_1.fastq SRR8512520_2.fastq 
+--output SRR8512520.kraken 
+--report SRR8512520.kraken.report.txt
+Loading database information... done.
+31644073 sequences (6328.81 Mbp) processed in 95.129s (19958.7 Kseq/m, 3991.74 Mbp/m).
+  2517530 sequences classified (7.96%)
+  29126543 sequences unclassified (92.04%)
+analysis done. Deleting .fastq file...
+done: SRR8512520 
+
+14 of 75
+current run: SRR9123941
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR9123941 SRR9123941
+spots read      : 13,548
+reads read      : 27,096
+reads written   : 27,096
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR9123941_1.fastq SRR9123941_2.fastq 
+--output SRR9123941.kraken 
+--report SRR9123941.kraken.report.txt
+Loading database information... done.
+13548 sequences (7.28 Mbp) processed in 0.392s (2075.5 Kseq/m, 1114.99 Mbp/m).
+  5433 sequences classified (40.10%)
+  8115 sequences unclassified (59.90%)
+analysis done. Deleting .fastq file...
+done: SRR9123941 
+
+15 of 75
+current run: SRR12816296
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12816296 SRR12816296
+spots read      : 1,255,664
+reads read      : 2,511,328
+reads written   : 2,511,328
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12816296_1.fastq SRR12816296_2.fastq 
+--output SRR12816296.kraken 
+--report SRR12816296.kraken.report.txt
+Loading database information... done.
+1255664 sequences (630.34 Mbp) processed in 12.940s (5822.4 Kseq/m, 2922.84 Mbp/m).
+  1190891 sequences classified (94.84%)
+  64773 sequences unclassified (5.16%)
+analysis done. Deleting .fastq file...
+done: SRR12816296 
+
+16 of 75
+current run: SRR13644973
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR13644973 SRR13644973
+spots read      : 20,448
+reads read      : 40,896
+reads written   : 40,896
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR13644973_1.fastq SRR13644973_2.fastq 
+--output SRR13644973.kraken 
+--report SRR13644973.kraken.report.txt
+Loading database information... done.
+20448 sequences (12.15 Mbp) processed in 0.817s (1502.4 Kseq/m, 892.70 Mbp/m).
+  20434 sequences classified (99.93%)
+  14 sequences unclassified (0.07%)
+analysis done. Deleting .fastq file...
+done: SRR13644973 
+
+17 of 75
+current run: SRR8699278
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8699278 SRR8699278
+spots read      : 80,347
+reads read      : 160,694
+reads written   : 160,694
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8699278_1.fastq SRR8699278_2.fastq 
+--output SRR8699278.kraken 
+--report SRR8699278.kraken.report.txt
+Loading database information... done.
+80347 sequences (40.05 Mbp) processed in 1.766s (2730.3 Kseq/m, 1360.99 Mbp/m).
+  19583 sequences classified (24.37%)
+  60764 sequences unclassified (75.63%)
+analysis done. Deleting .fastq file...
+done: SRR8699278 
+
+18 of 75
+current run: SRR4409176
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR4409176 SRR4409176
+spots read      : 5,041,439
+reads read      : 10,082,878
+reads written   : 10,082,878
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR4409176_1.fastq SRR4409176_2.fastq 
+--output SRR4409176.kraken 
+--report SRR4409176.kraken.report.txt
+Loading database information... done.
+5041439 sequences (2520.72 Mbp) processed in 54.987s (5501.1 Kseq/m, 2750.54 Mbp/m).
+  5013764 sequences classified (99.45%)
+  27675 sequences unclassified (0.55%)
+analysis done. Deleting .fastq file...
+done: SRR4409176 
+
+19 of 75
+current run: SRR8507423
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8507423 SRR8507423
+spots read      : 2,139
+reads read      : 4,278
+reads written   : 4,278
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8507423_1.fastq SRR8507423_2.fastq 
+--output SRR8507423.kraken 
+--report SRR8507423.kraken.report.txt
+Loading database information... done.
+2139 sequences (0.64 Mbp) processed in 0.069s (1873.3 Kseq/m, 561.98 Mbp/m).
+  1666 sequences classified (77.89%)
+  473 sequences unclassified (22.11%)
+analysis done. Deleting .fastq file...
+done: SRR8507423 
+
+20 of 75
+current run: SRR6743968
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR6743968 SRR6743968
+2021-04-16T19:07:33 fasterq-dump.2.10.9 err: query unauthorized while resolving query within virtual file system module - failed to resolve accession 'SRR6743968' - Access denied - please request permission to access phs001523 / DS-PREG-COM-IRB-PUB-MDS in dbGaP. ( 403 )
+Query SRR6743968: Error 403 Access denied - please request permission to access phs001523 / DS-PREG-COM-IRB-PUB-MDS in dbGaP.
+2021-04-16T19:07:33 fasterq-dump.2.10.9 err: invalid accession 'SRR6743968'
+Error: Fastq file downloaded not found
+done: SRR6743968 
+
+21 of 75
+current run: SRR8510281
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8510281 SRR8510281
+spots read      : 2,565,696
+reads read      : 5,131,392
+reads written   : 5,131,392
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8510281_1.fastq SRR8510281_2.fastq 
+--output SRR8510281.kraken 
+--report SRR8510281.kraken.report.txt
+Loading database information... done.
+2565696 sequences (774.84 Mbp) processed in 9.821s (15674.3 Kseq/m, 4733.65 Mbp/m).
+  2556713 sequences classified (99.65%)
+  8983 sequences unclassified (0.35%)
+analysis done. Deleting .fastq file...
+done: SRR8510281 
+
+22 of 75
+current run: SRR13755932
+downloading run as .fastq...
+fasterq-dump -O /mnt/extra/fzuccato_new/2021_04_16/SRR13755932 SRR13755932
+spots read      : 6,241,193
+reads read      : 12,482,386
+reads written   : 6,241,193
+reads 0-length  : 6,241,193
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 SRR13755932.fastq 
+--output SRR13755932.kraken 
+--report SRR13755932.kraken.report.txt
+Loading database information... done.
+6241193 sequences (942.42 Mbp) processed in 15.265s (24530.6 Kseq/m, 3704.12 Mbp/m).
+  5951386 sequences classified (95.36%)
+  289807 sequences unclassified (4.64%)
+analysis done. Deleting .fastq file...
+done: SRR13755932 
+
+23 of 75
+current run: SRR12246113
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12246113 SRR12246113
+spots read      : 28,989
+reads read      : 57,978
+reads written   : 57,978
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12246113_1.fastq SRR12246113_2.fastq 
+--output SRR12246113.kraken 
+--report SRR12246113.kraken.report.txt
+Loading database information... done.
+28989 sequences (17.45 Mbp) processed in 0.848s (2050.7 Kseq/m, 1234.50 Mbp/m).
+  28978 sequences classified (99.96%)
+  11 sequences unclassified (0.04%)
+analysis done. Deleting .fastq file...
+done: SRR12246113 
+
+24 of 75
+current run: SRR12246129
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12246129 SRR12246129
+spots read      : 37,942
+reads read      : 75,884
+reads written   : 75,884
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12246129_1.fastq SRR12246129_2.fastq 
+--output SRR12246129.kraken 
+--report SRR12246129.kraken.report.txt
+Loading database information... done.
+37942 sequences (22.84 Mbp) processed in 0.904s (2518.9 Kseq/m, 1516.36 Mbp/m).
+  37935 sequences classified (99.98%)
+  7 sequences unclassified (0.02%)
+analysis done. Deleting .fastq file...
+done: SRR12246129 
+
+25 of 75
+current run: SRR12246066
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12246066 SRR12246066
+spots read      : 33,278
+reads read      : 66,556
+reads written   : 66,556
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12246066_1.fastq SRR12246066_2.fastq 
+--output SRR12246066.kraken 
+--report SRR12246066.kraken.report.txt
+Loading database information... done.
+33278 sequences (20.03 Mbp) processed in 0.986s (2025.3 Kseq/m, 1219.22 Mbp/m).
+  33262 sequences classified (99.95%)
+  16 sequences unclassified (0.05%)
+analysis done. Deleting .fastq file...
+done: SRR12246066 
+
+26 of 75
+current run: SRR10673283
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR10673283 SRR10673283
+spots read      : 42,888
+reads read      : 85,776
+reads written   : 85,776
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10673283_1.fastq SRR10673283_2.fastq 
+--output SRR10673283.kraken 
+--report SRR10673283.kraken.report.txt
+Loading database information... done.
+42888 sequences (25.82 Mbp) processed in 0.549s (4683.9 Kseq/m, 2819.72 Mbp/m).
+  42837 sequences classified (99.88%)
+  51 sequences unclassified (0.12%)
+analysis done. Deleting .fastq file...
+done: SRR10673283 
+
+27 of 75
+current run: SRR10971381
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR10971381 SRR10971381
+spots read      : 28,282,964
+reads read      : 56,565,928
+reads written   : 56,565,928
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10971381_1.fastq SRR10971381_2.fastq 
+--output SRR10971381.kraken 
+--report SRR10971381.kraken.report.txt
+Loading database information... done.
+28282964 sequences (8031.04 Mbp) processed in 50.752s (33436.6 Kseq/m, 9494.44 Mbp/m).
+  11375336 sequences classified (40.22%)
+  16907628 sequences unclassified (59.78%)
+analysis done. Deleting .fastq file...
+done: SRR10971381 
+
+28 of 75
+current run: SRR11409692
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR11409692 SRR11409692
+spots read      : 165,002
+reads read      : 330,004
+reads written   : 330,004
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR11409692_1.fastq SRR11409692_2.fastq 
+--output SRR11409692.kraken 
+--report SRR11409692.kraken.report.txt
+Loading database information... done.
+165002 sequences (98.54 Mbp) processed in 1.146s (8637.9 Kseq/m, 5158.52 Mbp/m).
+  164966 sequences classified (99.98%)
+  36 sequences unclassified (0.02%)
+analysis done. Deleting .fastq file...
+done: SRR11409692 
+
+29 of 75
+current run: SRR12334940
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12334940 SRR12334940
+spots read      : 667,192
+reads read      : 1,334,384
+reads written   : 1,334,384
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12334940_1.fastq SRR12334940_2.fastq 
+--output SRR12334940.kraken 
+--report SRR12334940.kraken.report.txt
+Loading database information... done.
+667192 sequences (194.82 Mbp) processed in 1.899s (21075.0 Kseq/m, 6153.90 Mbp/m).
+  663853 sequences classified (99.50%)
+  3339 sequences unclassified (0.50%)
+analysis done. Deleting .fastq file...
+done: SRR12334940 
+
+30 of 75
+current run: SRR11803516
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR11803516 SRR11803516
+spots read      : 50,440,823
+reads read      : 100,881,646
+reads written   : 100,881,646
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR11803516_1.fastq SRR11803516_2.fastq 
+--output SRR11803516.kraken 
+--report SRR11803516.kraken.report.txt
+Loading database information... done.
+50440823 sequences (14627.64 Mbp) processed in 310.455s (9748.4 Kseq/m, 2827.01 Mbp/m).
+  46409084 sequences classified (92.01%)
+  4031739 sequences unclassified (7.99%)
+analysis done. Deleting .fastq file...
+done: SRR11803516 
+
+31 of 75
+current run: SRR12183119
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12183119 SRR12183119
+spots read      : 3,087,337
+reads read      : 6,174,674
+reads written   : 6,174,674
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12183119_1.fastq SRR12183119_2.fastq 
+--output SRR12183119.kraken 
+--report SRR12183119.kraken.report.txt
+Loading database information... done.
+3087337 sequences (932.38 Mbp) processed in 9.162s (20217.5 Kseq/m, 6105.68 Mbp/m).
+  3071216 sequences classified (99.48%)
+  16121 sequences unclassified (0.52%)
+analysis done. Deleting .fastq file...
+done: SRR12183119 
+
+32 of 75
+current run: SRR10824642
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR10824642 SRR10824642
+spots read      : 5,852,481
+reads read      : 11,704,962
+reads written   : 11,704,962
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10824642_1.fastq SRR10824642_2.fastq 
+--output SRR10824642.kraken 
+--report SRR10824642.kraken.report.txt
+Loading database information... done.
+5852481 sequences (1657.04 Mbp) processed in 19.465s (18040.4 Kseq/m, 5107.86 Mbp/m).
+  4652048 sequences classified (79.49%)
+  1200433 sequences unclassified (20.51%)
+analysis done. Deleting .fastq file...
+done: SRR10824642 
+
+33 of 75
+current run: SRR12081631
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12081631 SRR12081631
+spots read      : 5,557,781
+reads read      : 11,115,562
+reads written   : 11,115,562
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12081631_1.fastq SRR12081631_2.fastq 
+--output SRR12081631.kraken 
+--report SRR12081631.kraken.report.txt
+Loading database information... done.
+5557781 sequences (1667.33 Mbp) processed in 17.167s (19425.2 Kseq/m, 5827.55 Mbp/m).
+  5026221 sequences classified (90.44%)
+  531560 sequences unclassified (9.56%)
+analysis done. Deleting .fastq file...
+done: SRR12081631 
+
+34 of 75
+current run: SRR10801006
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR10801006 SRR10801006
+spots read      : 21,428,761
+reads read      : 42,857,522
+reads written   : 42,857,522
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10801006_1.fastq SRR10801006_2.fastq 
+--output SRR10801006.kraken 
+--report SRR10801006.kraken.report.txt
+Loading database information... done.
+21428761 sequences (6428.63 Mbp) processed in 59.760s (21514.6 Kseq/m, 6454.39 Mbp/m).
+  2939531 sequences classified (13.72%)
+  18489230 sequences unclassified (86.28%)
+analysis done. Deleting .fastq file...
+done: SRR10801006 
+
+35 of 75
+current run: ERR3586806
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/ERR3586806 ERR3586806
+spots read      : 27,118,903
+reads read      : 54,237,806
+reads written   : 54,237,806
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3586806_1.fastq ERR3586806_2.fastq 
+--output ERR3586806.kraken 
+--report ERR3586806.kraken.report.txt
+Loading database information... done.
+27118903 sequences (5366.30 Mbp) processed in 52.427s (31036.5 Kseq/m, 6141.50 Mbp/m).
+  5717458 sequences classified (21.08%)
+  21401445 sequences unclassified (78.92%)
+analysis done. Deleting .fastq file...
+done: ERR3586806 
+
+36 of 75
+current run: SRR9295811
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR9295811 SRR9295811
+spots read      : 106,476
+reads read      : 212,952
+reads written   : 212,952
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR9295811_1.fastq SRR9295811_2.fastq 
+--output SRR9295811.kraken 
+--report SRR9295811.kraken.report.txt
+Loading database information... done.
+106476 sequences (53.41 Mbp) processed in 0.769s (8305.9 Kseq/m, 4166.47 Mbp/m).
+  105241 sequences classified (98.84%)
+  1235 sequences unclassified (1.16%)
+analysis done. Deleting .fastq file...
+done: SRR9295811 
+
+37 of 75
+current run: SRR13370272
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR13370272 SRR13370272
+spots read      : 42,117,264
+reads read      : 84,234,528
+reads written   : 84,234,528
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR13370272_1.fastq SRR13370272_2.fastq 
+--output SRR13370272.kraken 
+--report SRR13370272.kraken.report.txt
+Loading database information... done.
+42117264 sequences (8469.37 Mbp) processed in 73.460s (34400.2 Kseq/m, 6917.55 Mbp/m).
+  2118593 sequences classified (5.03%)
+  39998671 sequences unclassified (94.97%)
+analysis done. Deleting .fastq file...
+done: SRR13370272 
+
+38 of 75
+current run: ERR3586735
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/ERR3586735 ERR3586735
+spots read      : 19,523,711
+reads read      : 39,047,422
+reads written   : 39,047,422
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3586735_1.fastq ERR3586735_2.fastq 
+--output ERR3586735.kraken 
+--report ERR3586735.kraken.report.txt
+Loading database information... done.
+19523711 sequences (3877.06 Mbp) processed in 38.239s (30634.3 Kseq/m, 6083.42 Mbp/m).
+  6928575 sequences classified (35.49%)
+  12595136 sequences unclassified (64.51%)
+analysis done. Deleting .fastq file...
+done: ERR3586735 
+
+39 of 75
+current run: ERR3587188
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/ERR3587188 ERR3587188
+spots read      : 26,887,555
+reads read      : 53,775,110
+reads written   : 53,775,110
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3587188_1.fastq ERR3587188_2.fastq 
+--output ERR3587188.kraken 
+--report ERR3587188.kraken.report.txt
+Loading database information... done.
+26887555 sequences (5308.64 Mbp) processed in 50.188s (32144.4 Kseq/m, 6346.55 Mbp/m).
+  2947532 sequences classified (10.96%)
+  23940023 sequences unclassified (89.04%)
+analysis done. Deleting .fastq file...
+done: ERR3587188 
+
+40 of 75
+current run: SRR12464135
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12464135 SRR12464135
+spots read      : 70,000
+reads read      : 140,000
+reads written   : 140,000
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12464135_1.fastq SRR12464135_2.fastq 
+--output SRR12464135.kraken 
+--report SRR12464135.kraken.report.txt
+Loading database information... done.
+70000 sequences (34.02 Mbp) processed in 0.437s (9613.7 Kseq/m, 4672.25 Mbp/m).
+  54489 sequences classified (77.84%)
+  15511 sequences unclassified (22.16%)
+analysis done. Deleting .fastq file...
+done: SRR12464135 
+
+41 of 75
+current run: ERR3244813
+downloading run as .fastq...
+fasterq-dump -O /mnt/extra/fzuccato_new/2021_04_16/ERR3244813 ERR3244813
+spots read      : 59,216,728
+reads read      : 59,216,728
+reads written   : 59,216,728
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 ERR3244813.fastq 
+--output ERR3244813.kraken 
+--report ERR3244813.kraken.report.txt
+Loading database information... done.
+59216728 sequences (3020.05 Mbp) processed in 26.258s (135311.0 Kseq/m, 6900.86 Mbp/m).
+  18781712 sequences classified (31.72%)
+  40435016 sequences unclassified (68.28%)
+analysis done. Deleting .fastq file...
+done: ERR3244813 
+
+42 of 75
+current run: SRR13267783
+downloading run as .fastq...
+fasterq-dump -O /mnt/extra/fzuccato_new/2021_04_16/SRR13267783 SRR13267783
+spots read      : 20,745
+reads read      : 41,490
+reads written   : 20,745
+reads 0-length  : 20,745
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 SRR13267783.fastq 
+--output SRR13267783.kraken 
+--report SRR13267783.kraken.report.txt
+Loading database information... done.
+20745 sequences (6.78 Mbp) processed in 0.096s (12914.0 Kseq/m, 4221.35 Mbp/m).
+  10434 sequences classified (50.30%)
+  10311 sequences unclassified (49.70%)
+analysis done. Deleting .fastq file...
+done: SRR13267783 
+
+43 of 75
+current run: ERR3308151
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/ERR3308151 ERR3308151
+spots read      : 29,009
+reads read      : 58,018
+reads written   : 58,018
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3308151_1.fastq ERR3308151_2.fastq 
+--output ERR3308151.kraken 
+--report ERR3308151.kraken.report.txt
+Loading database information... done.
+29009 sequences (16.12 Mbp) processed in 0.455s (3822.5 Kseq/m, 2123.66 Mbp/m).
+  28933 sequences classified (99.74%)
+  76 sequences unclassified (0.26%)
+analysis done. Deleting .fastq file...
+done: ERR3308151 
+
+44 of 75
+current run: SRR9092949
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR9092949 SRR9092949
+spots read      : 69,663
+reads read      : 139,326
+reads written   : 139,326
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR9092949_1.fastq SRR9092949_2.fastq 
+--output SRR9092949.kraken 
+--report SRR9092949.kraken.report.txt
+Loading database information... done.
+69663 sequences (41.94 Mbp) processed in 0.574s (7279.0 Kseq/m, 4381.97 Mbp/m).
+  69579 sequences classified (99.88%)
+  84 sequences unclassified (0.12%)
+analysis done. Deleting .fastq file...
+done: SRR9092949 
+
+45 of 75
+current run: ERR4692020
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/ERR4692020 ERR4692020
+spots read      : 8,461,949
+reads read      : 16,923,898
+reads written   : 16,923,898
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR4692020_1.fastq ERR4692020_2.fastq 
+--output ERR4692020.kraken 
+--report ERR4692020.kraken.report.txt
+Loading database information... done.
+8461949 sequences (1345.85 Mbp) processed in 11.536s (44013.4 Kseq/m, 7000.20 Mbp/m).
+  3241758 sequences classified (38.31%)
+  5220191 sequences unclassified (61.69%)
+analysis done. Deleting .fastq file...
+done: ERR4692020 
+
+46 of 75
+current run: SRR13414697
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR13414697 SRR13414697
+spots read      : 145,240
+reads read      : 290,480
+reads written   : 145,240
+reads 0-length  : 145,240
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 SRR13414697.fastq 
+--output SRR13414697.kraken 
+--report SRR13414697.kraken.report.txt
+Loading database information... done.
+145240 sequences (35.00 Mbp) processed in 0.374s (23289.5 Kseq/m, 5612.77 Mbp/m).
+  144853 sequences classified (99.73%)
+  387 sequences unclassified (0.27%)
+analysis done. Deleting .fastq file...
+done: SRR13414697 
+
+47 of 75
+current run: SRR10095558
+downloading run as .fastq...
+fasterq-dump -O /mnt/extra/fzuccato_new/2021_04_16/SRR10095558 SRR10095558
+spots read      : 15,483,561
+reads read      : 30,967,122
+reads written   : 15,483,561
+reads 0-length  : 15,483,561
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 SRR10095558.fastq 
+--output SRR10095558.kraken 
+--report SRR10095558.kraken.report.txt
+Loading database information... done.
+15483561 sequences (2293.17 Mbp) processed in 21.149s (43926.8 Kseq/m, 6505.72 Mbp/m).
+  1634976 sequences classified (10.56%)
+  13848585 sequences unclassified (89.44%)
+analysis done. Deleting .fastq file...
+done: SRR10095558 
+
+48 of 75
+current run: SRR10336681
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR10336681 SRR10336681
+spots read      : 37,950
+reads read      : 75,900
+reads written   : 75,900
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10336681_1.fastq SRR10336681_2.fastq 
+--output SRR10336681.kraken 
+--report SRR10336681.kraken.report.txt
+Loading database information... done.
+37950 sequences (18.77 Mbp) processed in 0.438s (5199.6 Kseq/m, 2571.41 Mbp/m).
+  37855 sequences classified (99.75%)
+  95 sequences unclassified (0.25%)
+analysis done. Deleting .fastq file...
+done: SRR10336681 
+
+49 of 75
+current run: SRR7904236
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR7904236 SRR7904236
+spots read      : 62,989
+reads read      : 62,989
+reads written   : 62,989
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 SRR7904236.fastq 
+--output SRR7904236.kraken 
+--report SRR7904236.kraken.report.txt
+Loading database information... done.
+62989 sequences (26.15 Mbp) processed in 0.383s (9856.0 Kseq/m, 4090.97 Mbp/m).
+  62839 sequences classified (99.76%)
+  150 sequences unclassified (0.24%)
+analysis done. Deleting .fastq file...
+done: SRR7904236 
+
+50 of 75
+current run: SRR13624809
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR13624809 SRR13624809
+spots read      : 44,482,782
+reads read      : 88,965,564
+reads written   : 88,965,564
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR13624809_1.fastq SRR13624809_2.fastq 
+--output SRR13624809.kraken 
+--report SRR13624809.kraken.report.txt
+Loading database information... done.
+44482782 sequences (13344.83 Mbp) processed in 232.128s (11497.8 Kseq/m, 3449.34 Mbp/m).
+  8380354 sequences classified (18.84%)
+  36102428 sequences unclassified (81.16%)
+analysis done. Deleting .fastq file...
+done: SRR13624809 
+
+51 of 75
+current run: SRR10902462
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR10902462 SRR10902462
+spots read      : 41,913
+reads read      : 83,826
+reads written   : 83,826
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10902462_1.fastq SRR10902462_2.fastq 
+--output SRR10902462.kraken 
+--report SRR10902462.kraken.report.txt
+Loading database information... done.
+41913 sequences (25.23 Mbp) processed in 0.528s (4763.6 Kseq/m, 2867.71 Mbp/m).
+  41840 sequences classified (99.83%)
+  73 sequences unclassified (0.17%)
+analysis done. Deleting .fastq file...
+done: SRR10902462 
+
+52 of 75
+current run: SRR11640408
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR11640408 SRR11640408
+spots read      : 1,186,568
+reads read      : 2,373,136
+reads written   : 2,373,136
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR11640408_1.fastq SRR11640408_2.fastq 
+--output SRR11640408.kraken 
+--report SRR11640408.kraken.report.txt
+Loading database information... done.
+1186568 sequences (225.45 Mbp) processed in 2.178s (32687.1 Kseq/m, 6210.52 Mbp/m).
+  766571 sequences classified (64.60%)
+  419997 sequences unclassified (35.40%)
+analysis done. Deleting .fastq file...
+done: SRR11640408 
+
+53 of 75
+current run: ERR2631574
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/ERR2631574 ERR2631574
+spots read      : 39,220,395
+reads read      : 78,440,790
+reads written   : 78,440,790
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR2631574_1.fastq ERR2631574_2.fastq 
+--output ERR2631574.kraken 
+--report ERR2631574.kraken.report.txt
+Loading database information... done.
+39220395 sequences (11725.35 Mbp) processed in 186.736s (12601.9 Kseq/m, 3767.46 Mbp/m).
+  33415002 sequences classified (85.20%)
+  5805393 sequences unclassified (14.80%)
+analysis done. Deleting .fastq file...
+done: ERR2631574 
+
+54 of 75
+current run: SRR11394391
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR11394391 SRR11394391
+spots read      : 63,779
+reads read      : 127,558
+reads written   : 127,558
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR11394391_1.fastq SRR11394391_2.fastq 
+--output SRR11394391.kraken 
+--report SRR11394391.kraken.report.txt
+Loading database information... done.
+63779 sequences (31.15 Mbp) processed in 0.480s (7978.8 Kseq/m, 3897.16 Mbp/m).
+  63568 sequences classified (99.67%)
+  211 sequences unclassified (0.33%)
+analysis done. Deleting .fastq file...
+done: SRR11394391 
+
+55 of 75
+current run: ERR4703698
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/ERR4703698 ERR4703698
+spots read      : 2,441,446
+reads read      : 4,882,892
+reads written   : 4,881,361
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 ERR4703698.fastq 
+--output ERR4703698.kraken 
+--report ERR4703698.kraken.report.txt
+Loading database information... done.
+1531 sequences (0.38 Mbp) processed in 0.032s (2876.4 Kseq/m, 721.97 Mbp/m).
+  1445 sequences classified (94.38%)
+  86 sequences unclassified (5.62%)
+analysis done. Deleting .fastq file...
+done: ERR4703698 
+
+56 of 75
+current run: ERR4704206
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/ERR4704206 ERR4704206
+spots read      : 2,533,335
+reads read      : 5,066,670
+reads written   : 5,066,144
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 ERR4704206.fastq 
+--output ERR4704206.kraken 
+--report ERR4704206.kraken.report.txt
+Loading database information... done.
+526 sequences (0.13 Mbp) processed in 0.012s (2548.9 Kseq/m, 639.76 Mbp/m).
+  459 sequences classified (87.26%)
+  67 sequences unclassified (12.74%)
+analysis done. Deleting .fastq file...
+done: ERR4704206 
+
+57 of 75
+current run: SRR11968895
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR11968895 SRR11968895
+spots read      : 7,782,472
+reads read      : 15,564,944
+reads written   : 7,782,472
+reads 0-length  : 7,782,472
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR11968895_1.fastq SRR11968895_2.fastq 
+--output SRR11968895.kraken 
+--report SRR11968895.kraken.report.txt
+Loading database information... done.
+3891236 sequences (776.16 Mbp) processed in 7.812s (29886.5 Kseq/m, 5961.25 Mbp/m).
+  3174866 sequences classified (81.59%)
+  716370 sequences unclassified (18.41%)
+analysis done. Deleting .fastq file...
+done: SRR11968895 
+
+58 of 75
+current run: SRR13517442
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR13517442 SRR13517442
+spots read      : 25,606,121
+reads read      : 51,212,242
+reads written   : 51,212,242
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR13517442_1.fastq SRR13517442_2.fastq 
+--output SRR13517442.kraken 
+--report SRR13517442.kraken.report.txt
+Loading database information... done.
+25606121 sequences (7681.84 Mbp) processed in 64.213s (23926.0 Kseq/m, 7177.81 Mbp/m).
+  25543022 sequences classified (99.75%)
+  63099 sequences unclassified (0.25%)
+analysis done. Deleting .fastq file...
+done: SRR13517442 
+
+59 of 75
+current run: SRR8669639
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8669639 SRR8669639
+spots read      : 97,674
+reads read      : 195,348
+reads written   : 195,348
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8669639_1.fastq SRR8669639_2.fastq 
+--output SRR8669639.kraken 
+--report SRR8669639.kraken.report.txt
+Loading database information... done.
+97674 sequences (48.84 Mbp) processed in 0.526s (11150.2 Kseq/m, 5575.10 Mbp/m).
+  27442 sequences classified (28.10%)
+  70232 sequences unclassified (71.90%)
+analysis done. Deleting .fastq file...
+done: SRR8669639 
+
+60 of 75
+current run: SRR8834786
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8834786 SRR8834786
+spots read      : 10,307
+reads read      : 20,614
+reads written   : 20,614
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8834786_1.fastq SRR8834786_2.fastq 
+--output SRR8834786.kraken 
+--report SRR8834786.kraken.report.txt
+Loading database information... done.
+10307 sequences (3.07 Mbp) processed in 0.177s (3491.1 Kseq/m, 1039.56 Mbp/m).
+  3917 sequences classified (38.00%)
+  6390 sequences unclassified (62.00%)
+analysis done. Deleting .fastq file...
+done: SRR8834786 
+
+61 of 75
+current run: SRR8488417
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8488417 SRR8488417
+spots read      : 99,791
+reads read      : 99,791
+reads written   : 99,791
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 SRR8488417.fastq 
+--output SRR8488417.kraken 
+--report SRR8488417.kraken.report.txt
+Loading database information... done.
+99791 sequences (15.90 Mbp) processed in 0.160s (37445.0 Kseq/m, 5965.75 Mbp/m).
+  53458 sequences classified (53.57%)
+  46333 sequences unclassified (46.43%)
+analysis done. Deleting .fastq file...
+done: SRR8488417 
+
+62 of 75
+current run: SRR8834768
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8834768 SRR8834768
+spots read      : 75,155
+reads read      : 150,310
+reads written   : 150,310
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8834768_1.fastq SRR8834768_2.fastq 
+--output SRR8834768.kraken 
+--report SRR8834768.kraken.report.txt
+Loading database information... done.
+75155 sequences (36.00 Mbp) processed in 0.501s (9002.3 Kseq/m, 4311.66 Mbp/m).
+  56566 sequences classified (75.27%)
+  18589 sequences unclassified (24.73%)
+analysis done. Deleting .fastq file...
+done: SRR8834768 
+
+63 of 75
+current run: SRR8420479
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8420479 SRR8420479
+spots read      : 10,472,398
+reads read      : 20,944,796
+reads written   : 20,944,796
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8420479_1.fastq SRR8420479_2.fastq 
+--output SRR8420479.kraken 
+--report SRR8420479.kraken.report.txt
+Loading database information... done.
+10472398 sequences (3162.66 Mbp) processed in 27.017s (23257.7 Kseq/m, 7023.82 Mbp/m).
+  1697337 sequences classified (16.21%)
+  8775061 sequences unclassified (83.79%)
+analysis done. Deleting .fastq file...
+done: SRR8420479 
+
+64 of 75
+current run: SRR8802103
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR8802103 SRR8802103
+spots read      : 170,487
+reads read      : 340,974
+reads written   : 340,974
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR8802103_1.fastq SRR8802103_2.fastq 
+--output SRR8802103.kraken 
+--report SRR8802103.kraken.report.txt
+Loading database information... done.
+170487 sequences (83.20 Mbp) processed in 0.753s (13581.1 Kseq/m, 6627.58 Mbp/m).
+  102732 sequences classified (60.26%)
+  67755 sequences unclassified (39.74%)
+analysis done. Deleting .fastq file...
+done: SRR8802103 
+
+65 of 75
+current run: SRR12667260
+downloading run as .fastq...
+fasterq-dump -O /mnt/extra/fzuccato_new/2021_04_16/SRR12667260 SRR12667260
+spots read      : 41,187
+reads read      : 82,374
+reads written   : 41,187
+reads 0-length  : 41,187
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 SRR12667260.fastq 
+--output SRR12667260.kraken 
+--report SRR12667260.kraken.report.txt
+Loading database information... done.
+41187 sequences (14.70 Mbp) processed in 0.158s (15623.9 Kseq/m, 5576.59 Mbp/m).
+  22612 sequences classified (54.90%)
+  18575 sequences unclassified (45.10%)
+analysis done. Deleting .fastq file...
+done: SRR12667260 
+
+66 of 75
+current run: SRR11622633
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR11622633 SRR11622633
+spots read      : 30,446,945
+reads read      : 60,893,890
+reads written   : 60,893,890
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR11622633_1.fastq SRR11622633_2.fastq 
+--output SRR11622633.kraken 
+--report SRR11622633.kraken.report.txt
+Loading database information... done.
+30446945 sequences (9194.98 Mbp) processed in 87.309s (20923.6 Kseq/m, 6318.94 Mbp/m).
+  10169631 sequences classified (33.40%)
+  20277314 sequences unclassified (66.60%)
+analysis done. Deleting .fastq file...
+done: SRR11622633 
+
+67 of 75
+current run: SRR11178169
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR11178169 SRR11178169
+spots read      : 30,914,534
+reads read      : 61,829,068
+reads written   : 61,829,068
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR11178169_1.fastq SRR11178169_2.fastq 
+--output SRR11178169.kraken 
+--report SRR11178169.kraken.report.txt
+Loading database information... done.
+30914534 sequences (7728.63 Mbp) processed in 66.663s (27824.4 Kseq/m, 6956.11 Mbp/m).
+  3988812 sequences classified (12.90%)
+  26925722 sequences unclassified (87.10%)
+analysis done. Deleting .fastq file...
+done: SRR11178169 
+
+68 of 75
+current run: ERR3327969
+downloading run as .fastq...
+fasterq-dump -O /mnt/extra/fzuccato_new/2021_04_16/ERR3327969 ERR3327969
+spots read      : 30,678,732
+reads read      : 30,678,732
+reads written   : 30,678,732
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 ERR3327969.fastq 
+--output ERR3327969.kraken 
+--report ERR3327969.kraken.report.txt
+Loading database information... done.
+30678732 sequences (2178.19 Mbp) processed in 19.454s (94617.3 Kseq/m, 6717.83 Mbp/m).
+  6088325 sequences classified (19.85%)
+  24590407 sequences unclassified (80.15%)
+analysis done. Deleting .fastq file...
+done: ERR3327969 
+
+69 of 75
+current run: SRR9637792
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR9637792 SRR9637792
+spots read      : 23,834,803
+reads read      : 47,669,606
+reads written   : 47,669,606
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR9637792_1.fastq SRR9637792_2.fastq 
+--output SRR9637792.kraken 
+--report SRR9637792.kraken.report.txt
+Loading database information... done.
+23834803 sequences (7150.44 Mbp) processed in 71.366s (20038.7 Kseq/m, 6011.62 Mbp/m).
+  22557483 sequences classified (94.64%)
+  1277320 sequences unclassified (5.36%)
+analysis done. Deleting .fastq file...
+done: SRR9637792 
+
+70 of 75
+current run: SRR10999795
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR10999795 SRR10999795
+spots read      : 67,594,850
+reads read      : 135,189,700
+reads written   : 135,189,700
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10999795_1.fastq SRR10999795_2.fastq 
+--output SRR10999795.kraken 
+--report SRR10999795.kraken.report.txt
+Loading database information... done.
+67594850 sequences (9918.50 Mbp) processed in 226.073s (17939.7 Kseq/m, 2632.38 Mbp/m).
+  48635055 sequences classified (71.95%)
+  18959795 sequences unclassified (28.05%)
+analysis done. Deleting .fastq file...
+done: SRR10999795 
+
+71 of 75
+current run: SRR12628096
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12628096 SRR12628096
+spots read      : 29,117,910
+reads read      : 58,235,820
+reads written   : 58,235,820
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12628096_1.fastq SRR12628096_2.fastq 
+--output SRR12628096.kraken 
+--report SRR12628096.kraken.report.txt
+Loading database information... done.
+29117910 sequences (5822.01 Mbp) processed in 60.264s (28990.4 Kseq/m, 5796.52 Mbp/m).
+  11859939 sequences classified (40.73%)
+  17257971 sequences unclassified (59.27%)
+analysis done. Deleting .fastq file...
+done: SRR12628096 
+
+72 of 75
+current run: SRR12487699
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR12487699 SRR12487699
+spots read      : 2,275,174
+reads read      : 4,550,348
+reads written   : 4,550,348
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR12487699_1.fastq SRR12487699_2.fastq 
+--output SRR12487699.kraken 
+--report SRR12487699.kraken.report.txt
+Loading database information... done.
+2275174 sequences (1142.14 Mbp) processed in 12.218s (11173.3 Kseq/m, 5609.01 Mbp/m).
+  2131396 sequences classified (93.68%)
+  143778 sequences unclassified (6.32%)
+analysis done. Deleting .fastq file...
+done: SRR12487699 
+
+73 of 75
+current run: SRR12217066
+downloading run as .fastq...
+fasterq-dump -O /mnt/extra/fzuccato_new/2021_04_16/SRR12217066 SRR12217066
+spots read      : 1,703,387
+reads read      : 1,703,387
+reads written   : 1,703,387
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 SRR12217066.fastq 
+--output SRR12217066.kraken 
+--report SRR12217066.kraken.report.txt
+Loading database information... done.
+1703387 sequences (209.52 Mbp) processed in 2.080s (49145.3 Kseq/m, 6044.89 Mbp/m).
+  340410 sequences classified (19.98%)
+  1362977 sequences unclassified (80.02%)
+analysis done. Deleting .fastq file...
+done: SRR12217066 
+
+74 of 75
+current run: SRR11676552
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR11676552 SRR11676552
+spots read      : 20,617,531
+reads read      : 41,235,062
+reads written   : 41,235,062
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR11676552_1.fastq SRR11676552_2.fastq 
+--output SRR11676552.kraken 
+--report SRR11676552.kraken.report.txt
+Loading database information... done.
+20617531 sequences (6226.49 Mbp) processed in 59.815s (20681.3 Kseq/m, 6245.76 Mbp/m).
+  6630474 sequences classified (32.16%)
+  13987057 sequences unclassified (67.84%)
+analysis done. Deleting .fastq file...
+done: SRR11676552 
+
+75 of 75
+current run: SRR10229863
+downloading run as .fastq...
+fasterq-dump --split-files -O /mnt/extra/fzuccato_new/2021_04_16/SRR10229863 SRR10229863
+spots read      : 8,669,421
+reads read      : 17,338,842
+reads written   : 17,338,842
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired SRR10229863_1.fastq SRR10229863_2.fastq 
+--output SRR10229863.kraken 
+--report SRR10229863.kraken.report.txt
+Loading database information... done.
+8669421 sequences (1751.22 Mbp) processed in 15.822s (32875.3 Kseq/m, 6640.81 Mbp/m).
+  5637693 sequences classified (65.03%)
+  3031728 sequences unclassified (34.97%)
+analysis done. Deleting .fastq file...
+done: SRR10229863 
+
+updating runs file
+
+----------------------UPDATE-----------------------------------
+1 of 13192: SRR8837388
+SRR8837388: OK -> OK
+
+----------------------UPDATE-----------------------------------
+140 of 13192: SRR8663103
+SRR8663103: NO -> OK
+
+----------------------UPDATE-----------------------------------
+206 of 13192: SRR11558543
+SRR11558543: OK -> OK
+
+----------------------UPDATE-----------------------------------
+207 of 13192: SRR12009699
+SRR12009699: OK -> OK
+
+----------------------UPDATE-----------------------------------
+209 of 13192: SRR8792701
+SRR8792701: OK -> OK
+
+----------------------UPDATE-----------------------------------
+233 of 13192: DRR184141
+DRR184141: OK -> OK
+
+----------------------UPDATE-----------------------------------
+340 of 13192: SRR8399393
+SRR8399393: NO -> OK
+
+----------------------UPDATE-----------------------------------
+460 of 13192: SRR12730595
+SRR12730595: OK -> OK
+
+----------------------UPDATE-----------------------------------
+462 of 13192: SRR12727876
+SRR12727876: OK -> OK
+running... 500 of 13192
+
+----------------------UPDATE-----------------------------------
+728 of 13192: SRR11830160
+SRR11830160: NO -> OK
+
+----------------------UPDATE-----------------------------------
+804 of 13192: SRR12629840
+SRR12629840: NO -> OK
+
+----------------------UPDATE-----------------------------------
+919 of 13192: SRR13091435
+SRR13091435: NO -> OK
+running... 1000 of 13192
+
+----------------------UPDATE-----------------------------------
+1449 of 13192: SRR8512520
+SRR8512520: NO -> OK
+running... 1500 of 13192
+
+----------------------UPDATE-----------------------------------
+1567 of 13192: SRR9123941
+SRR9123941: NO -> OK
+
+----------------------UPDATE-----------------------------------
+1676 of 13192: SRR12816296
+SRR12816296: OK -> OK
+
+----------------------UPDATE-----------------------------------
+1998 of 13192: SRR13644973
+SRR13644973: NO -> OK
+running... 2000 of 13192
+
+----------------------UPDATE-----------------------------------
+2213 of 13192: SRR8699278
+SRR8699278: NO -> OK
+running... 2500 of 13192
+
+----------------------UPDATE-----------------------------------
+2940 of 13192: SRR4409176
+SRR4409176: NO -> OK
+
+----------------------UPDATE-----------------------------------
+2979 of 13192: SRR6743968
+SRR6743968: NO -> ERR
+running... 3000 of 13192
+
+----------------------UPDATE-----------------------------------
+3324 of 13192: SRR8507423
+SRR8507423: NO -> OK
+
+----------------------UPDATE-----------------------------------
+3409 of 13192: SRR8510281
+SRR8510281: NO -> OK
+running... 3500 of 13192
+
+----------------------UPDATE-----------------------------------
+3504 of 13192: SRR13755932
+SRR13755932: NO -> OK
+
+----------------------UPDATE-----------------------------------
+3890 of 13192: SRR10673283
+SRR10673283: NO -> OK
+running... 4000 of 13192
+
+----------------------UPDATE-----------------------------------
+4178 of 13192: SRR12246066
+SRR12246066: NO -> OK
+
+----------------------UPDATE-----------------------------------
+4225 of 13192: SRR12246113
+SRR12246113: NO -> OK
+
+----------------------UPDATE-----------------------------------
+4241 of 13192: SRR12246129
+SRR12246129: NO -> OK
+running... 4500 of 13192
+
+----------------------UPDATE-----------------------------------
+4695 of 13192: SRR10971381
+SRR10971381: OK -> OK
+
+----------------------UPDATE-----------------------------------
+4768 of 13192: SRR11409692
+SRR11409692: NO -> OK
+running... 5000 of 13192
+
+----------------------UPDATE-----------------------------------
+5077 of 13192: SRR11803516
+SRR11803516: NO -> OK
+
+----------------------UPDATE-----------------------------------
+5182 of 13192: SRR12334940
+SRR12334940: NO -> OK
+
+----------------------UPDATE-----------------------------------
+5450 of 13192: SRR12183119
+SRR12183119: OK -> OK
+running... 5500 of 13192
+
+----------------------UPDATE-----------------------------------
+5537 of 13192: SRR10824642
+SRR10824642: OK -> OK
+
+----------------------UPDATE-----------------------------------
+5574 of 13192: SRR12081631
+SRR12081631: OK -> OK
+
+----------------------UPDATE-----------------------------------
+5815 of 13192: ERR3586735
+ERR3586735: NO -> OK
+
+----------------------UPDATE-----------------------------------
+5886 of 13192: ERR3586806
+ERR3586806: NO -> OK
+running... 6000 of 13192
+
+----------------------UPDATE-----------------------------------
+6268 of 13192: ERR3587188
+ERR3587188: NO -> OK
+
+----------------------UPDATE-----------------------------------
+6473 of 13192: SRR10801006
+SRR10801006: NO -> OK
+running... 6500 of 13192
+
+----------------------UPDATE-----------------------------------
+6750 of 13192: SRR13370272
+SRR13370272: NO -> OK
+running... 7000 of 13192
+
+----------------------UPDATE-----------------------------------
+7380 of 13192: SRR9295811
+SRR9295811: NO -> OK
+
+----------------------UPDATE-----------------------------------
+7454 of 13192: ERR3244813
+ERR3244813: NO -> OK
+
+----------------------UPDATE-----------------------------------
+7467 of 13192: ERR3308151
+ERR3308151: NO -> OK
+running... 7500 of 13192
+running... 8000 of 13192
+
+----------------------UPDATE-----------------------------------
+8258 of 13192: SRR12464135
+SRR12464135: NO -> OK
+
+----------------------UPDATE-----------------------------------
+8338 of 13192: SRR13267783
+SRR13267783: NO -> OK
+running... 8500 of 13192
+
+----------------------UPDATE-----------------------------------
+8571 of 13192: ERR4692020
+ERR4692020: NO -> OK
+
+----------------------UPDATE-----------------------------------
+8795 of 13192: SRR13414697
+SRR13414697: NO -> OK
+running... 9000 of 13192
+
+----------------------UPDATE-----------------------------------
+9109 of 13192: SRR9092949
+SRR9092949: NO -> OK
+
+----------------------UPDATE-----------------------------------
+9209 of 13192: SRR10095558
+SRR10095558: NO -> OK
+
+----------------------UPDATE-----------------------------------
+9285 of 13192: SRR10336681
+SRR10336681: NO -> OK
+
+----------------------UPDATE-----------------------------------
+9414 of 13192: SRR7904236
+SRR7904236: NO -> OK
+
+----------------------UPDATE-----------------------------------
+9469 of 13192: SRR13624809
+SRR13624809: OK -> OK
+
+----------------------UPDATE-----------------------------------
+9479 of 13192: SRR10902462
+SRR10902462: OK -> OK
+
+----------------------UPDATE-----------------------------------
+9495 of 13192: SRR11640408
+SRR11640408: NO -> OK
+running... 9500 of 13192
+
+----------------------UPDATE-----------------------------------
+9505 of 13192: ERR2631574
+ERR2631574: OK -> OK
+
+----------------------UPDATE-----------------------------------
+9577 of 13192: SRR11394391
+SRR11394391: OK -> OK
+running... 10000 of 13192
+
+----------------------UPDATE-----------------------------------
+10076 of 13192: ERR4703698
+ERR4703698: NO -> OK
+
+----------------------UPDATE-----------------------------------
+10110 of 13192: ERR4704206
+ERR4704206: NO -> OK
+
+----------------------UPDATE-----------------------------------
+10470 of 13192: SRR11968895
+SRR11968895: OK -> OK
+running... 10500 of 13192
+
+----------------------UPDATE-----------------------------------
+10501 of 13192: SRR13517442
+SRR13517442: OK -> OK
+
+----------------------UPDATE-----------------------------------
+10523 of 13192: SRR8669639
+SRR8669639: OK -> OK
+
+----------------------UPDATE-----------------------------------
+10884 of 13192: SRR11622633
+SRR11622633: NO -> OK
+running... 11000 of 13192
+
+----------------------UPDATE-----------------------------------
+11327 of 13192: SRR12667260
+SRR12667260: NO -> OK
+running... 11500 of 13192
+
+----------------------UPDATE-----------------------------------
+11520 of 13192: SRR8420479
+SRR8420479: NO -> OK
+
+----------------------UPDATE-----------------------------------
+11631 of 13192: SRR8488417
+SRR8488417: NO -> OK
+
+----------------------UPDATE-----------------------------------
+11684 of 13192: SRR8802103
+SRR8802103: NO -> OK
+
+----------------------UPDATE-----------------------------------
+11775 of 13192: SRR8834768
+SRR8834768: NO -> OK
+
+----------------------UPDATE-----------------------------------
+11793 of 13192: SRR8834786
+SRR8834786: NO -> OK
+running... 12000 of 13192
+running... 12500 of 13192
+
+----------------------UPDATE-----------------------------------
+12626 of 13192: SRR11178169
+SRR11178169: OK -> OK
+
+----------------------UPDATE-----------------------------------
+12653 of 13192: ERR3327969
+ERR3327969: OK -> OK
+
+----------------------UPDATE-----------------------------------
+12660 of 13192: SRR9637792
+SRR9637792: NO -> OK
+
+----------------------UPDATE-----------------------------------
+12711 of 13192: SRR10999795
+SRR10999795: OK -> OK
+
+----------------------UPDATE-----------------------------------
+12717 of 13192: SRR12628096
+SRR12628096: OK -> OK
+
+----------------------UPDATE-----------------------------------
+12729 of 13192: SRR12487699
+SRR12487699: OK -> OK
+
+----------------------UPDATE-----------------------------------
+12807 of 13192: SRR12217066
+SRR12217066: NO -> OK
+
+----------------------UPDATE-----------------------------------
+12967 of 13192: SRR11676552
+SRR11676552: NO -> OK
+running... 13000 of 13192
+
+----------------------UPDATE-----------------------------------
+13120 of 13192: SRR10229863
+SRR10229863: NO -> OK
+update done
+
+end

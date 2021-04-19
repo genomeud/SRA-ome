@@ -1,0 +1,122 @@
+ 64.58	19808	19808	U	0	unclassified
+ 35.42	10862	12	R	1	root
+ 35.33	10835	828	R1	131567	  cellular organisms
+ 32.05	9829	0	D	2759	    Eukaryota
+ 32.05	9829	0	D1	33154	      Opisthokonta
+ 32.05	9829	0	K	33208	        Metazoa
+ 32.05	9829	0	K1	6072	          Eumetazoa
+ 32.05	9829	0	K2	33213	            Bilateria
+ 32.05	9829	0	K3	33511	              Deuterostomia
+ 32.05	9829	0	P	7711	                Chordata
+ 32.05	9829	0	P1	89593	                  Craniata
+ 32.05	9829	0	P2	7742	                    Vertebrata
+ 32.05	9829	0	P3	7776	                      Gnathostomata
+ 32.05	9829	0	P4	117570	                        Teleostomi
+ 32.05	9829	0	P5	117571	                          Euteleostomi
+ 32.05	9829	0	P6	8287	                            Sarcopterygii
+ 32.05	9829	0	P7	1338369	                              Dipnotetrapodomorpha
+ 32.05	9829	0	P8	32523	                                Tetrapoda
+ 32.05	9829	0	P9	32524	                                  Amniota
+ 32.05	9829	0	C	40674	                                    Mammalia
+ 32.05	9829	0	C1	32525	                                      Theria
+ 32.05	9829	0	C2	9347	                                        Eutheria
+ 32.05	9829	0	C3	1437010	                                          Boreoeutheria
+ 32.05	9829	0	C4	314146	                                            Euarchontoglires
+ 32.05	9829	0	O	9443	                                              Primates
+ 32.05	9829	0	O1	376913	                                                Haplorrhini
+ 32.05	9829	0	O2	314293	                                                  Simiiformes
+ 32.05	9829	0	O3	9526	                                                    Catarrhini
+ 32.05	9829	0	O4	314295	                                                      Hominoidea
+ 32.05	9829	0	F	9604	                                                        Hominidae
+ 32.05	9829	0	F1	207598	                                                          Homininae
+ 32.05	9829	0	G	9605	                                                            Homo
+ 32.05	9829	9829	S	9606	                                                              Homo sapiens
+  0.51	156	14	D	2	    Bacteria
+  0.28	85	0	D1	1783272	      Terrabacteria group
+  0.24	75	0	P	1239	        Firmicutes
+  0.24	74	0	C	91061	          Bacilli
+  0.24	74	74	O	1385	            Bacillales
+  0.00	1	0	C	186801	          Clostridia
+  0.00	1	0	O	186802	            Clostridiales
+  0.00	1	0	F	31979	              Clostridiaceae
+  0.00	1	0	G	1485	                Clostridium
+  0.00	1	1	S	1491	                  Clostridium botulinum
+  0.03	10	0	P	201174	        Actinobacteria
+  0.03	10	0	C	1760	          Actinobacteria
+  0.03	8	0	O	85011	            Streptomycetales
+  0.03	8	0	F	2062	              Streptomycetaceae
+  0.03	8	6	G	1883	                Streptomyces
+  0.00	1	1	S	1827580	                  Streptomyces nigra
+  0.00	1	1	S	132473	                  Streptomyces alboniger
+  0.01	2	0	O	85007	            Corynebacteriales
+  0.01	2	0	F	1653	              Corynebacteriaceae
+  0.01	2	0	G	1716	                Corynebacterium
+  0.01	2	0	S	1727	                  Corynebacterium variabile
+  0.01	2	2	S1	858619	                    Corynebacterium variabile DSM 44702
+  0.17	52	0	P	1224	      Proteobacteria
+  0.11	34	0	P1	68525	        delta/epsilon subdivisions
+  0.10	31	0	C	29547	          Epsilonproteobacteria
+  0.10	31	31	O	213849	            Campylobacterales
+  0.01	3	0	C	28221	          Deltaproteobacteria
+  0.01	3	0	O	213115	            Desulfovibrionales
+  0.01	3	0	F	194924	              Desulfovibrionaceae
+  0.01	3	0	G	2773294	                Desulfolutivibrio
+  0.01	3	3	S	2773299	                  Desulfolutivibrio sulfoxidireducens
+  0.05	16	0	C	1236	        Gammaproteobacteria
+  0.02	6	0	O	135614	          Xanthomonadales
+  0.02	6	0	F	32033	            Xanthomonadaceae
+  0.02	6	0	G	338	              Xanthomonas
+  0.02	6	0	S	456327	                Xanthomonas euvesicatoria
+  0.02	6	0	S1	359387	                  Xanthomonas euvesicatoria pv. alfalfae
+  0.02	6	6	S2	1365647	                    Xanthomonas euvesicatoria pv. alfalfae CFBP 3836
+  0.02	6	0	O	135622	          Alteromonadales
+  0.02	6	0	F	267888	            Pseudoalteromonadaceae
+  0.02	6	0	G	53246	              Pseudoalteromonas
+  0.02	6	6	S	161398	                Pseudoalteromonas phenolica
+  0.01	4	0	O	72274	          Pseudomonadales
+  0.01	4	0	F	135621	            Pseudomonadaceae
+  0.01	4	0	G	286	              Pseudomonas
+  0.01	4	0	G1	136843	                Pseudomonas fluorescens group
+  0.01	4	4	S	29442	                  Pseudomonas tolaasii
+  0.00	1	0	C	28211	        Alphaproteobacteria
+  0.00	1	0	O	766	          Rickettsiales
+  0.00	1	0	F	775	            Rickettsiaceae
+  0.00	1	0	G	2115980	              Candidatus Phycorickettsia
+  0.00	1	1	S	2115978	                Candidatus Phycorickettsia trachydisci
+  0.00	1	0	C	28216	        Betaproteobacteria
+  0.00	1	1	O	80840	          Burkholderiales
+  0.01	4	0	D1	1783270	      FCB group
+  0.01	4	0	D2	68336	        Bacteroidetes/Chlorobi group
+  0.01	4	0	P	976	          Bacteroidetes
+  0.01	4	0	C	117743	            Flavobacteriia
+  0.01	4	0	O	200644	              Flavobacteriales
+  0.01	4	0	F	49546	                Flavobacteriaceae
+  0.01	4	0	G	290174	                  Aquimarina
+  0.01	4	0	G1	2627091	                    unclassified Aquimarina
+  0.01	4	4	S	1714849	                      Aquimarina sp. AD10
+  0.00	1	0	P	32066	      Fusobacteria
+  0.00	1	0	C	203490	        Fusobacteriia
+  0.00	1	0	O	203491	          Fusobacteriales
+  0.00	1	0	F	203492	            Fusobacteriaceae
+  0.00	1	1	G	848	              Fusobacterium
+  0.07	22	0	D	2157	    Archaea
+  0.07	21	0	P	28890	      Euryarchaeota
+  0.07	21	21	P1	2283796	        Diaforarchaea group
+  0.00	1	0	D1	1783275	      TACK group
+  0.00	1	0	P	28889	        Crenarchaeota
+  0.00	1	0	C	183924	          Thermoprotei
+  0.00	1	0	O	871006	            Acidilobales
+  0.00	1	0	F	255472	              Caldisphaeraceae
+  0.00	1	0	G	200414	                Caldisphaera
+  0.00	1	0	S	200415	                  Caldisphaera lagunensis
+  0.00	1	1	S1	1056495	                    Caldisphaera lagunensis DSM 15908
+  0.05	14	0	R1	2787854	  other entries
+  0.05	14	14	R2	28384	    other sequences
+  0.00	1	0	D	10239	  Viruses
+  0.00	1	0	D1	2731341	    Duplodnaviria
+  0.00	1	0	D2	2731360	      Heunggongvirae
+  0.00	1	0	P	2731618	        Uroviricota
+  0.00	1	0	C	2731619	          Caudoviricetes
+  0.00	1	0	O	28883	            Caudovirales
+  0.00	1	0	F	10699	              Siphoviridae
+  0.00	1	1	G	2733169	                Austintatiousvirus

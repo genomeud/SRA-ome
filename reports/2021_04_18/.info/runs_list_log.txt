@@ -1,0 +1,295 @@
+grouping lines: aquatic metagenome
+first line: 1, last line: 175, output expected: 2
+84	=>	SRR9677763,PAIRED,36
+172	=>	SRR8173979,PAIRED,3287
+indexes found: 100%: 2 of 2
+
+grouping lines: blood metagenome
+first line: 176, last line: 187, output expected: 1
+185	=>	SRR8792719,PAIRED,5412
+indexes found: 100%: 1 of 1
+
+grouping lines: bovine gut metagenome
+first line: 188, last line: 383, output expected: 2
+375	=>	SRR8399388,PAIRED,2646
+313	=>	SRR8416094,PAIRED,2428
+indexes found: 100%: 2 of 2
+
+grouping lines: bovine metagenome
+first line: 384, last line: 384, output expected: 1
+----- DIDN'T FIND A NOT TOO LARGE RUN, REPETITION SKIPPED --------
+indexes found: 0%: 0 of 1
+
+grouping lines: chicken gut metagenome
+first line: 385, last line: 393, output expected: 1
+386	=>	SRR9217957,PAIRED,20
+indexes found: 100%: 1 of 1
+
+grouping lines: feces metagenome
+first line: 394, last line: 1146, output expected: 8
+974	=>	SRR8529345,PAIRED,26
+1008	=>	SRR8529302,PAIRED,27
+877	=>	SRR8529287,PAIRED,28
+660	=>	SRR10686620,PAIRED,16
+835	=>	SRR8529427,PAIRED,25
+1106	=>	SRR8558507,PAIRED,4683
+482	=>	SRR10016785,PAIRED,903
+606	=>	SRR10686635,PAIRED,11
+indexes found: 100%: 8 of 8
+
+grouping lines: freshwater metagenome
+first line: 1147, last line: 1499, output expected: 4
+1405	=>	SRR12687668,PAIRED,1093
+1369	=>	SRR9123939,PAIRED,3
+1456	=>	SRR12676997,PAIRED,1676
+1363	=>	SRR9123805,PAIRED,7
+indexes found: 100%: 4 of 4
+
+grouping lines: Gallus gallus
+first line: 1500, last line: 1504, output expected: 1
+----- DIDN'T FIND A NOT TOO LARGE RUN, REPETITION SKIPPED --------
+indexes found: 0%: 0 of 1
+
+grouping lines: groundwater metagenome
+first line: 1505, last line: 1506, output expected: 1
+1506	=>	SRR13164873,PAIRED,5209
+indexes found: 100%: 1 of 1
+
+grouping lines: gut metagenome
+first line: 1507, last line: 2047, output expected: 6
+1765	=>	SRR13645023,PAIRED,17
+1626	=>	SRR10664947,PAIRED,2277
+1997	=>	SRR11482488,SINGLE,8
+1581	=>	SRR9161862,SINGLE,571
+1516	=>	SRR12051494,PAIRED,8
+1570	=>	SRR11490246,PAIRED,18
+indexes found: 100%: 6 of 6
+
+grouping lines: Homo sapiens
+first line: 2048, last line: 3167, output expected: 12
+2111	=>	SRR8510276,PAIRED,322
+2166	=>	SRR4409179,PAIRED,1137
+2147	=>	SRR8510303,PAIRED,461
+2357	=>	ERR2592824,SINGLE,34
+3027	=>	SRR10008615,PAIRED,4
+3122	=>	SRR10008940,PAIRED,3
+2664	=>	SRR6744665,PAIRED,5412
+2547	=>	SRR6744487,PAIRED,4412
+2327	=>	ERR2592788,SINGLE,28
+2770	=>	SRR8507438,PAIRED,1
+2608	=>	SRR6744295,PAIRED,4857
+3145	=>	SRR10008751,PAIRED,3
+indexes found: 100%: 12 of 12
+
+grouping lines: hospital metagenome
+first line: 3168, last line: 3302, output expected: 2
+3198	=>	SRR13755986,SINGLE,100
+3214	=>	SRR13755967,SINGLE,1
+indexes found: 100%: 2 of 2
+
+grouping lines: human gut metagenome
+first line: 3303, last line: 4361, output expected: 11
+3627	=>	SRR10007549,PAIRED,15
+3335	=>	SRR10673260,PAIRED,16
+4011	=>	SRR11194575,PAIRED,63
+4121	=>	SRR12246201,PAIRED,12
+4190	=>	SRR12246041,PAIRED,11
+3377	=>	SRR10673327,PAIRED,17
+3664	=>	SRR10801262,SINGLE,103
+4254	=>	SRR12246108,PAIRED,13
+3685	=>	SRR10801264,SINGLE,1860
+4269	=>	SRR12246100,PAIRED,12
+3656	=>	SRR7880367,PAIRED,2053
+indexes found: 100%: 11 of 11
+
+grouping lines: human metagenome
+first line: 4362, last line: 5079, output expected: 8
+4815	=>	SRR11409982,PAIRED,7
+5062	=>	SRR7497398,SINGLE,2814
+4679	=>	SRR11409628,PAIRED,54
+4924	=>	SRR11409780,PAIRED,25
+4852	=>	SRR11409864,PAIRED,15
+4536	=>	SRR12334983,PAIRED,10
+4834	=>	SRR11409947,PAIRED,23
+5063	=>	SRR7497401,SINGLE,3093
+indexes found: 100%: 8 of 8
+
+grouping lines: human nasopharyngeal metagenome
+first line: 5080, last line: 5081, output expected: 1
+5080	=>	SRR12183120,PAIRED,346
+indexes found: 100%: 1 of 1
+
+grouping lines: human oral metagenome
+first line: 5082, last line: 5158, output expected: 1
+5099	=>	SRR10824619,PAIRED,889
+indexes found: 100%: 1 of 1
+
+grouping lines: human viral metagenome
+first line: 5159, last line: 5204, output expected: 1
+5167	=>	SRR12081699,PAIRED,939
+indexes found: 100%: 1 of 1
+
+grouping lines: marine metagenome
+first line: 5205, last line: 6967, output expected: 18
+6262	=>	SRR8566399,PAIRED,1991
+5461	=>	SRR8820979,PAIRED,2800
+6808	=>	ERR4008063,PAIRED,1009
+5844	=>	ERR3587185,PAIRED,3512
+5469	=>	SRR8820932,PAIRED,2347
+6692	=>	SRR13370292,PAIRED,2133
+5480	=>	SRR8820898,PAIRED,2281
+6418	=>	SRR8599968,SINGLE,20
+6252	=>	ERR3586888,PAIRED,3172
+5392	=>	ERR3305379,PAIRED,36
+6008	=>	ERR3587056,PAIRED,1729
+6705	=>	ERR3322234,PAIRED,1029
+6878	=>	SRR9295828,PAIRED,32
+5951	=>	ERR3586993,PAIRED,3565
+6737	=>	ERR3322265,PAIRED,894
+6574	=>	SRR13370261,PAIRED,5243
+6512	=>	SRR6987494,PAIRED,18
+6650	=>	SRR13370341,PAIRED,1859
+indexes found: 100%: 18 of 18
+
+grouping lines: metagenome
+first line: 6968, last line: 7995, output expected: 11
+7332	=>	ERR3308700,PAIRED,4
+7790	=>	SRR9037345,SINGLE,460
+7763	=>	ERR3711672,PAIRED,8
+7296	=>	ERR3660994,PAIRED,3143
+7804	=>	SRR12806217,PAIRED,32
+7620	=>	ERR3308250,PAIRED,4
+7201	=>	SRR11002562,PAIRED,4469
+7500	=>	ERR3308155,PAIRED,13
+7844	=>	SRR8447018,PAIRED,2040
+7433	=>	ERR3308659,PAIRED,6
+7073	=>	SRR11035308,PAIRED,0
+indexes found: 100%: 11 of 11
+
+grouping lines: mouse gut metagenome
+first line: 7996, last line: 8637, output expected: 7
+8066	=>	ERR3328466,SINGLE,2
+8415	=>	ERR3316210,SINGLE,634
+8477	=>	SRR13277331,SINGLE,9
+8156	=>	SRR9092985,PAIRED,19
+8292	=>	SRR7968678,PAIRED,2156
+8204	=>	SRR9092909,PAIRED,18
+8602	=>	SRR12936484,PAIRED,207
+indexes found: 100%: 7 of 7
+
+grouping lines: Mus musculus
+first line: 8638, last line: 8716, output expected: 1
+8678	=>	ERR2828343,SINGLE,93
+indexes found: 100%: 1 of 1
+
+grouping lines: oral metagenome
+first line: 8717, last line: 8759, output expected: 1
+8726	=>	SRR10336654,PAIRED,10
+indexes found: 100%: 1 of 1
+
+grouping lines: pig gut metagenome
+first line: 8760, last line: 8905, output expected: 2
+8889	=>	SRR10238566,SINGLE,9
+8843	=>	SRR13358808,PAIRED,21
+indexes found: 100%: 2 of 2
+
+grouping lines: pig metagenome
+first line: 8906, last line: 8911, output expected: 1
+8908	=>	SRR13624811,PAIRED,5283
+indexes found: 100%: 1 of 1
+
+grouping lines: respiratory tract metagenome
+first line: 8912, last line: 8917, output expected: 1
+8914	=>	SRR11640407,PAIRED,24
+indexes found: 100%: 1 of 1
+
+grouping lines: seawater metagenome
+first line: 8918, last line: 9192, output expected: 3
+8980	=>	SRR10851145,PAIRED,6
+9099	=>	SRR8866398,PAIRED,3193
+9111	=>	SRR9023750,PAIRED,4369
+indexes found: 100%: 3 of 3
+
+grouping lines: Severe acute respiratory syndrome coronavirus 2
+first line: 9193, last line: 9835, output expected: 7
+9497	=>	ERR4703506,PAIRED,183
+9791	=>	ERR4619713,PAIRED,98
+9598	=>	ERR4703639,PAIRED,88
+9430	=>	ERR4704478,PAIRED,163
+9548	=>	ERR4704315,PAIRED,201
+9643	=>	SRR12768797,PAIRED,10
+9612	=>	SRR13050770,PAIRED,879
+indexes found: 100%: 7 of 7
+
+grouping lines: Severe acute respiratory syndrome?related coronavirus
+first line: 9836, last line: 9838, output expected: 1
+9836	=>	SRR11968904,PAIRED,5
+indexes found: 100%: 1 of 1
+
+grouping lines: sheep gut metagenome
+first line: 9839, last line: 9849, output expected: 1
+9843	=>	SRR13517443,PAIRED,443
+indexes found: 100%: 1 of 1
+
+grouping lines: skin metagenome
+first line: 9850, last line: 9867, output expected: 1
+9859	=>	SRR8669645,PAIRED,24
+indexes found: 100%: 1 of 1
+
+grouping lines: soil metagenome
+first line: 9868, last line: 11908, output expected: 21
+11555	=>	SRR9107344,PAIRED,10
+9882	=>	SRR13891624,PAIRED,16
+11428	=>	SRR12667097,SINGLE,18
+11786	=>	SRR9217735,PAIRED,10
+11025	=>	SRR9937960,PAIRED,22
+10128	=>	ERR2004633,PAIRED,1198
+11279	=>	SRR12650061,SINGLE,2
+10510	=>	SRR9923603,PAIRED,11
+11037	=>	SRR9937958,PAIRED,16
+10328	=>	SRR8549876,PAIRED,1253
+10953	=>	SRR10064598,PAIRED,14
+11776	=>	SRR9218272,PAIRED,12
+11197	=>	SRR12667239,SINGLE,13
+11193	=>	SRR12667243,SINGLE,6
+11805	=>	SRR8802107,PAIRED,30
+11189	=>	SRR12667248,SINGLE,5
+11229	=>	SRR12667207,SINGLE,11
+10389	=>	SRR11565415,PAIRED,5374
+10589	=>	SRR9923633,PAIRED,13
+11790	=>	SRR9221213,PAIRED,11
+9988	=>	SRR10362492,PAIRED,10
+indexes found: 100%: 21 of 21
+
+grouping lines: surface metagenome
+first line: 11909, last line: 11912, output expected: 1
+11912	=>	SRR11178178,PAIRED,2705
+indexes found: 100%: 1 of 1
+
+grouping lines: upper respiratory tract metagenome
+first line: 11913, last line: 11952, output expected: 1
+11922	=>	SRR9637790,PAIRED,722
+indexes found: 100%: 1 of 1
+
+grouping lines: viral metagenome
+first line: 11953, last line: 11953, output expected: 1
+----- DIDN'T FIND A NOT TOO LARGE RUN, REPETITION SKIPPED --------
+indexes found: 0%: 0 of 1
+
+grouping lines: wastewater metagenome
+first line: 11954, last line: 12102, output expected: 2
+11959	=>	SRR12217067,SINGLE,85
+11962	=>	SRR12217058,SINGLE,85
+indexes found: 100%: 2 of 2
+
+grouping lines: wetland metagenome
+first line: 12103, last line: 12276, output expected: 2
+12258	=>	SRR11097749,PAIRED,62
+12269	=>	SRR11097760,PAIRED,51
+indexes found: 100%: 2 of 2
+
+grouping lines: whole organism metagenome
+first line: 12277, last line: 12369, output expected: 1
+12344	=>	SRR10229903,PAIRED,767
+indexes found: 100%: 1 of 1
+
