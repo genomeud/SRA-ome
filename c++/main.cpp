@@ -125,7 +125,7 @@ using namespace filesystem;
 
 int main(int argc, char *argv[]) {
 
-    cout << current_path() << "\n";
+    //cout << current_path() << "\n";
     
     const int nOfParamsNeeded = 2;
     
