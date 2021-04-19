@@ -18,7 +18,7 @@ namespace SRA {
             int sizeCompressed = -1;
             int sizeNotCompressed = -1;
             bool inProcess = false;
-            RunStatus status = RunStatus::TO_DO;
+            RunStatus status = RunStatus::NO;
             std::string fastq_dir;
 
         public:

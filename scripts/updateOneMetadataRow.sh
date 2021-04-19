@@ -33,7 +33,7 @@ then
     echo "$line">>$ok_file
 else
     echo "ERROR: STATUS NOT EXPECTED"
-    echo "line: $i: $line"
+    echo "line: $line"
     exit 2
 fi
 

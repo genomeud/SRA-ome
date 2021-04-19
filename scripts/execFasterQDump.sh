@@ -20,11 +20,15 @@ outputDir=$PWD
 if test $# -gt $nOfParamsNeeded
 then
     outputDir=$3
-    mkdir $outputDir 2>/dev/null
+    if ! test -d $outputDir
+    then
+        mkdir $outputDir 2>/dev/null
+    fi
     cd $outputDir
 fi
 
-command="fasterq-dump $layoutOption -O $outputDir $runID"
+command="fasterq-dump $layoutOption $runID"
+#command="fasterq-dump $layoutOption -O $outputDir $runID"
 echo $command
 $command
 #echo "exit status fasterq: " $?

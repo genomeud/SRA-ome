@@ -8,6 +8,8 @@ then
     exit 1
 fi
 
+script_dir=$HOME'/SRA/scripts'
+
 AllRunsFile=$1           #metadata/metadata_filtered_small.csv
 ARF_filterColumnIdx=$2   #8:  RUN
 ARF_columnValueIdx=$3    #19: DONE = <OK | NO | ERR>
@@ -93,7 +95,7 @@ do
     
     lineStatus=`echo "$ARF_newLine" | cut -d',' -f$[$ARF_columnValueIdx]`
 
-    ./updateOneMetadataRow.sh "$ARF_newLine" "$lineStatus" $AllRunsToDoFile $AllRunsErrFile $AllRunsDoneFile
+    $script_dir/updateOneMetadataRow.sh "$ARF_newLine" "$lineStatus" $AllRunsToDoFile $AllRunsErrFile $AllRunsDoneFile
 
     if test $? -ne 0
     then

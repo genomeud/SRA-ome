@@ -1,0 +1,246 @@
+NumOfThreads: 1 <= 5
+TotMemoryUsed: 4681 <= 5000
+2021-04-19 18:50:16	SRR13624801	started: SRR13624801	PAIRED	4681	-1	0	OK
+2021-04-19 18:50:16	SRR13624801	downloading run as .fastq...
+2021-04-19 18:50:16	SRR13624801	$HOME/SRA/scripts/execFasterQDump.sh SRR13624801 PAIRED storeruns2/SRR13624801 2>&1
+NumOfThreads: 2 <= 5
+TotMemoryUsed: 4988 <= 5000
+2021-04-19 18:50:16	SRR12105528	started: SRR12105528	PAIRED	307	-1	0	OK
+2021-04-19 18:50:16	SRR12105528	downloading run as .fastq...
+2021-04-19 18:50:16	SRR12105528	$HOME/SRA/scripts/execFasterQDump.sh SRR12105528 PAIRED storeruns2/SRR12105528 2>&1
+NumOfThreads: 3 <= 5
+TotMemoryUsed: 4999 <= 5000
+2021-04-19 18:50:16	SRR10686618	started: SRR10686618	PAIRED	11	-1	0	OK
+2021-04-19 18:50:16	SRR10686618	downloading run as .fastq...
+2021-04-19 18:50:16	SRR10686618	$HOME/SRA/scripts/execFasterQDump.sh SRR10686618 PAIRED storeruns2/SRR10686618 2>&1
+2021-04-19 18:50:35	SRR10686618	fasterq-dump --split-files -O storeruns2/SRR10686618 SRR10686618
+2021-04-19 18:50:35	SRR10686618	spots read      : 32,722
+2021-04-19 18:50:35	SRR10686618	reads read      : 65,444
+2021-04-19 18:50:35	SRR10686618	reads written   : 65,444
+2021-04-19 18:50:35	SRR10686618	download done correctly!
+2021-04-19 18:50:35	SRR10686618	looking for fastq file size...
+2021-04-19 18:50:35	SRR10686618	$HOME/SRA/scripts/getFastqFileSize.sh storeruns2/SRR10686618 SRR10686618 PAIRED 2>&1
+2021-04-19 18:50:35	SRR10686618	looking for fastq file size...2021-04-19 18:50:35	SRR10686618	ror: get FastqFileSize caused error with exit code:
+2021-04-19 18:50:35	SRR10686618	analysing run with Kraken2...
+2021-04-19 18:50:35	SRR10686618	$HOME/SRA/scripts/execKraken.sh storeruns2/SRR10686618 2>&1
+2021-04-19 18:50:44	SRR10686618	kraken2 
+2021-04-19 18:50:44	SRR10686618	--threads 8 
+2021-04-19 18:50:44	SRR10686618	--db /home/fzuccato/databases/krakenDB16 
+2021-04-19 18:50:44	SRR10686618	--paired SRR10686618_1.fastq SRR10686618_2.fastq 
+2021-04-19 18:50:44	SRR10686618	--output SRR10686618.kraken 
+2021-04-19 18:50:44	SRR10686618	--report SRR10686618.kraken.report.txt
+2021-04-19 18:50:44	SRR10686618	Loading database information... done.
+2021-04-19 18:50:44	SRR10686618	0 sequences (0.00 Mbp) processed in 0.001s (0.0 Kseq/m, 0.00 Mbp/m).
+2021-04-19 18:50:44	SRR10686618	  0 sequences classified (-nan%)
+2021-04-19 18:50:44	SRR10686618	  0 sequences unclassified (-nan%)
+2021-04-19 18:50:44	SRR10686618	Kakren: analysed correctly!
+2021-04-19 18:50:44	SRR10686618	deleting fastq files...
+2021-04-19 18:50:44	SRR10686618	$HOME/SRA/scripts/deleteFiles.sh SRR10686618 storeruns2/SRR10686618 2>&1
+2021-04-19 18:50:44	SRR10686618	ls | egrep SRR10686618(_[1,2])?\.fastq | xargs -d\n rm
+2021-04-19 18:50:44	SRR10686618	rm: missing operand
+2021-04-19 18:50:44	SRR10686618	Try 'rm --help' for more information.
+2021-04-19 18:50:44	SRR10686618	ls | grep SRR10686618.kraken$ | xargs -d\n rm
+2021-04-19 18:50:44	SRR10686618	rm: missing operand
+2021-04-19 18:50:44	SRR10686618	Try 'rm --help' for more information.
+2021-04-19 18:50:44	SRR10686618	warn: error while deleting files..
+2021-04-19 18:50:44	SRR10686618	ended: SRR10686618	PAIRED	11	-1	1	ERR
+NumOfThreads: 2 <= 5
+TotMemoryUsed: 4988 <= 5000
+NumOfThreads: 3 <= 5
+TotMemoryUsed: 4993 <= 5000
+2021-04-19 18:50:44	SRR13224142	started: SRR13224142	PAIRED	5	-1	0	OK
+2021-04-19 18:50:44	SRR13224142	downloading run as .fastq...
+2021-04-19 18:50:44	SRR13224142	$HOME/SRA/scripts/execFasterQDump.sh SRR13224142 PAIRED storeruns2/SRR13224142 2>&1
+NumOfThreads: 4 <= 5
+TotMemoryUsed: 4998 <= 5000
+2021-04-19 18:50:44	ERR3308303	started: ERR3308303	PAIRED	5	-1	0	OK
+2021-04-19 18:50:44	ERR3308303	downloading run as .fastq...
+2021-04-19 18:50:44	ERR3308303	$HOME/SRA/scripts/execFasterQDump.sh ERR3308303 PAIRED storeruns2/ERR3308303 2>&1
+2021-04-19 18:50:52	ERR3308303	fasterq-dump --split-files -O storeruns2/ERR3308303 ERR3308303
+2021-04-19 18:50:52	ERR3308303	spots read      : 16,621
+2021-04-19 18:50:52	ERR3308303	reads read      : 33,242
+2021-04-19 18:50:52	ERR3308303	reads written   : 33,242
+2021-04-19 18:50:52	ERR3308303	download done correctly!
+2021-04-19 18:50:52	ERR3308303	looking for fastq file size...
+2021-04-19 18:50:52	ERR3308303	$HOME/SRA/scripts/getFastqFileSize.sh storeruns2/ERR3308303 ERR3308303 PAIRED 2>&1
+2021-04-19 18:50:52	ERR3308303	looking for fastq file size...2021-04-19 18:50:52	ERR3308303	ror: get FastqFileSize caused error with exit code:
+2021-04-19 18:50:52	ERR3308303	analysing run with Kraken2...
+2021-04-19 18:50:52	ERR3308303	$HOME/SRA/scripts/execKraken.sh storeruns2/ERR3308303 2>&1
+2021-04-19 18:51:07	ERR3308303	kraken2 
+2021-04-19 18:51:07	ERR3308303	--threads 8 
+2021-04-19 18:51:07	ERR3308303	--db /home/fzuccato/databases/krakenDB16 
+2021-04-19 18:51:07	ERR3308303	--paired ERR3308303_1.fastq ERR3308303_2.fastq 
+2021-04-19 18:51:07	ERR3308303	--output ERR3308303.kraken 
+2021-04-19 18:51:07	ERR3308303	--report ERR3308303.kraken.report.txt
+2021-04-19 18:51:07	ERR3308303	Loading database information... done.
+2021-04-19 18:51:07	ERR3308303	0 sequences (0.00 Mbp) processed in 0.002s (0.0 Kseq/m, 0.00 Mbp/m).
+2021-04-19 18:51:07	ERR3308303	  0 sequences classified (-nan%)
+2021-04-19 18:51:07	ERR3308303	  0 sequences unclassified (-nan%)
+2021-04-19 18:51:07	ERR3308303	Kakren: analysed correctly!
+2021-04-19 18:51:07	ERR3308303	deleting fastq files...
+2021-04-19 18:51:07	ERR3308303	$HOME/SRA/scripts/deleteFiles.sh ERR3308303 storeruns2/ERR3308303 2>&1
+2021-04-19 18:51:07	ERR3308303	ls | egrep ERR3308303(_[1,2])?\.fastq | xargs -d\n rm
+2021-04-19 18:51:07	ERR3308303	rm: missing operand
+2021-04-19 18:51:07	ERR3308303	Try 'rm --help' for more information.
+2021-04-19 18:51:07	ERR3308303	ls | grep ERR3308303.kraken$ | xargs -d\n rm
+2021-04-19 18:51:07	ERR3308303	rm: missing operand
+2021-04-19 18:51:07	ERR3308303	Try 'rm --help' for more information.
+2021-04-19 18:51:07	ERR3308303	warn: error while deleting files..
+2021-04-19 18:51:07	ERR3308303	ended: ERR3308303	PAIRED	5	-1	1	ERR
+NumOfThreads: 3 <= 5
+TotMemoryUsed: 4993 <= 5000
+NumOfThreads: 4 <= 5
+TotMemoryUsed: 4995 <= 5000
+2021-04-19 18:51:07	SRR9123802	started: SRR9123802	PAIRED	2	-1	0	OK
+2021-04-19 18:51:07	SRR9123802	downloading run as .fastq...
+2021-04-19 18:51:07	SRR9123802	$HOME/SRA/scripts/execFasterQDump.sh SRR9123802 PAIRED storeruns2/SRR9123802 2>&1
+NumOfThreads: 5 <= 5
+TotMemoryUsed: 4998 <= 5000
+2021-04-19 18:51:07	SRR10008637	started: SRR10008637	PAIRED	3	-1	0	OK
+2021-04-19 18:51:07	SRR10008637	downloading run as .fastq...
+2021-04-19 18:51:07	SRR10008637	$HOME/SRA/scripts/execFasterQDump.sh SRR10008637 PAIRED storeruns2/SRR10008637 2>&1
+2021-04-19 18:51:09	SRR13224142	fasterq-dump --split-files -O storeruns2/SRR13224142 SRR13224142
+2021-04-19 18:51:09	SRR13224142	spots read      : 33,899
+2021-04-19 18:51:09	SRR13224142	reads read      : 67,798
+2021-04-19 18:51:09	SRR13224142	reads written   : 67,798
+2021-04-19 18:51:09	SRR13224142	download done correctly!
+2021-04-19 18:51:09	SRR13224142	looking for fastq file size...
+2021-04-19 18:51:09	SRR13224142	$HOME/SRA/scripts/getFastqFileSize.sh storeruns2/SRR13224142 SRR13224142 PAIRED 2>&1
+2021-04-19 18:51:09	SRR13224142	looking for fastq file size...2021-04-19 18:51:09	SRR13224142	ror: get FastqFileSize caused error with exit code:
+2021-04-19 18:51:09	SRR13224142	analysing run with Kraken2...
+2021-04-19 18:51:09	SRR13224142	$HOME/SRA/scripts/execKraken.sh storeruns2/SRR13224142 2>&1
+2021-04-19 18:51:14	SRR10008637	fasterq-dump --split-files -O storeruns2/SRR10008637 SRR10008637
+2021-04-19 18:51:14	SRR10008637	spots read      : 34,248
+2021-04-19 18:51:14	SRR10008637	reads read      : 68,496
+2021-04-19 18:51:14	SRR10008637	reads written   : 68,496
+2021-04-19 18:51:14	SRR10008637	download done correctly!
+2021-04-19 18:51:14	SRR10008637	looking for fastq file size...
+2021-04-19 18:51:14	SRR10008637	$HOME/SRA/scripts/getFastqFileSize.sh storeruns2/SRR10008637 SRR10008637 PAIRED 2>&1
+2021-04-19 18:51:14	SRR10008637	looking for fastq file size...2021-04-19 18:51:14	SRR10008637	ror: get FastqFileSize caused error with exit code:
+2021-04-19 18:51:14	SRR10008637	analysing run with Kraken2...
+2021-04-19 18:51:14	SRR10008637	$HOME/SRA/scripts/execKraken.sh storeruns2/SRR10008637 2>&1
+2021-04-19 18:51:18	SRR9123802	fasterq-dump --split-files -O storeruns2/SRR9123802 SRR9123802
+2021-04-19 18:51:18	SRR9123802	spots read      : 7,284
+2021-04-19 18:51:18	SRR9123802	reads read      : 14,568
+2021-04-19 18:51:18	SRR9123802	reads written   : 14,568
+2021-04-19 18:51:18	SRR9123802	download done correctly!
+2021-04-19 18:51:18	SRR9123802	looking for fastq file size...
+2021-04-19 18:51:18	SRR9123802	$HOME/SRA/scripts/getFastqFileSize.sh storeruns2/SRR9123802 SRR9123802 PAIRED 2>&1
+2021-04-19 18:51:18	SRR9123802	looking for fastq file size...2021-04-19 18:51:18	SRR9123802	ror: get FastqFileSize caused error with exit code:
+2021-04-19 18:51:18	SRR9123802	analysing run with Kraken2...
+2021-04-19 18:51:18	SRR9123802	$HOME/SRA/scripts/execKraken.sh storeruns2/SRR9123802 2>&1
+2021-04-19 18:51:20	SRR13224142	kraken2 
+2021-04-19 18:51:20	SRR13224142	--threads 8 
+2021-04-19 18:51:20	SRR13224142	--db /home/fzuccato/databases/krakenDB16 
+2021-04-19 18:51:20	SRR13224142	--paired SRR13224142_1.fastq SRR13224142_2.fastq 
+2021-04-19 18:51:20	SRR13224142	--output SRR13224142.kraken 
+2021-04-19 18:51:20	SRR13224142	--report SRR13224142.kraken.report.txt
+2021-04-19 18:51:20	SRR13224142	Loading database information... done.
+2021-04-19 18:51:20	SRR13224142	0 sequences (0.00 Mbp) processed in 0.001s (0.0 Kseq/m, 0.00 Mbp/m).
+2021-04-19 18:51:20	SRR13224142	  0 sequences classified (-nan%)
+2021-04-19 18:51:20	SRR13224142	  0 sequences unclassified (-nan%)
+2021-04-19 18:51:20	SRR13224142	Kakren: analysed correctly!
+2021-04-19 18:51:20	SRR13224142	deleting fastq files...
+2021-04-19 18:51:20	SRR13224142	$HOME/SRA/scripts/deleteFiles.sh SRR13224142 storeruns2/SRR13224142 2>&1
+2021-04-19 18:51:20	SRR13224142	ls | egrep SRR13224142(_[1,2])?\.fastq | xargs -d\n rm
+2021-04-19 18:51:20	SRR13224142	rm: missing operand
+2021-04-19 18:51:20	SRR13224142	Try 'rm --help' for more information.
+2021-04-19 18:51:20	SRR13224142	ls | grep SRR13224142.kraken$ | xargs -d\n rm
+2021-04-19 18:51:20	SRR13224142	rm: missing operand
+2021-04-19 18:51:20	SRR13224142	Try 'rm --help' for more information.
+2021-04-19 18:51:20	SRR13224142	warn: error while deleting files..
+2021-04-19 18:51:20	SRR13224142	ended: SRR13224142	PAIRED	5	-1	1	ERR
+NumOfThreads: 4 <= 5
+TotMemoryUsed: 4993 <= 5000
+2021-04-19 18:51:29	SRR10008637	kraken2 
+2021-04-19 18:51:29	SRR10008637	--threads 8 
+2021-04-19 18:51:29	SRR10008637	--db /home/fzuccato/databases/krakenDB16 
+2021-04-19 18:51:29	SRR10008637	--paired SRR10008637_1.fastq SRR10008637_2.fastq 
+2021-04-19 18:51:29	SRR10008637	--output SRR10008637.kraken 
+2021-04-19 18:51:29	SRR10008637	--report SRR10008637.kraken.report.txt
+2021-04-19 18:51:29	SRR10008637	Loading database information... done.
+2021-04-19 18:51:29	SRR10008637	0 sequences (0.00 Mbp) processed in 0.001s (0.0 Kseq/m, 0.00 Mbp/m).
+2021-04-19 18:51:29	SRR10008637	  0 sequences classified (-nan%)
+2021-04-19 18:51:29	SRR10008637	  0 sequences unclassified (-nan%)
+2021-04-19 18:51:29	SRR10008637	Kakren: analysed correctly!
+2021-04-19 18:51:29	SRR10008637	deleting fastq files...
+2021-04-19 18:51:29	SRR10008637	$HOME/SRA/scripts/deleteFiles.sh SRR10008637 storeruns2/SRR10008637 2>&1
+2021-04-19 18:51:29	SRR10008637	ls | egrep SRR10008637(_[1,2])?\.fastq | xargs -d\n rm
+2021-04-19 18:51:29	SRR10008637	rm: missing operand
+2021-04-19 18:51:29	SRR10008637	Try 'rm --help' for more information.
+2021-04-19 18:51:29	SRR10008637	ls | grep SRR10008637.kraken$ | xargs -d\n rm
+2021-04-19 18:51:29	SRR10008637	rm: missing operand
+2021-04-19 18:51:29	SRR10008637	Try 'rm --help' for more information.
+2021-04-19 18:51:29	SRR10008637	warn: error while deleting files..
+2021-04-19 18:51:29	SRR10008637	ended: SRR10008637	PAIRED	3	-1	1	ERR
+NumOfThreads: 3 <= 5
+TotMemoryUsed: 4990 <= 5000
+NumOfThreads: 4 <= 5
+TotMemoryUsed: 4998 <= 5000
+2021-04-19 18:51:29	SRR10008840	started: SRR10008840	PAIRED	8	-1	0	OK
+2021-04-19 18:51:29	SRR10008840	downloading run as .fastq...
+2021-04-19 18:51:29	SRR10008840	$HOME/SRA/scripts/execFasterQDump.sh SRR10008840 PAIRED storeruns2/SRR10008840 2>&1
+2021-04-19 18:51:40	SRR10008840	fasterq-dump --split-files -O storeruns2/SRR10008840 SRR10008840
+2021-04-19 18:51:40	SRR10008840	spots read      : 95,390
+2021-04-19 18:51:40	SRR10008840	reads read      : 190,780
+2021-04-19 18:51:40	SRR10008840	reads written   : 190,780
+2021-04-19 18:51:40	SRR10008840	download done correctly!
+2021-04-19 18:51:40	SRR10008840	looking for fastq file size...
+2021-04-19 18:51:40	SRR10008840	$HOME/SRA/scripts/getFastqFileSize.sh storeruns2/SRR10008840 SRR10008840 PAIRED 2>&1
+2021-04-19 18:51:40	SRR10008840	looking for fastq file size...2021-04-19 18:51:40	SRR10008840	ror: get FastqFileSize caused error with exit code:
+2021-04-19 18:51:40	SRR10008840	analysing run with Kraken2...
+2021-04-19 18:51:40	SRR10008840	$HOME/SRA/scripts/execKraken.sh storeruns2/SRR10008840 2>&1
+2021-04-19 18:52:28	SRR9123802	kraken2 
+2021-04-19 18:52:28	SRR9123802	--threads 8 
+2021-04-19 18:52:28	SRR9123802	--db /home/fzuccato/databases/krakenDB16 
+2021-04-19 18:52:28	SRR9123802	--paired SRR9123802_1.fastq SRR9123802_2.fastq 
+2021-04-19 18:52:28	SRR9123802	--output SRR9123802.kraken 
+2021-04-19 18:52:28	SRR9123802	--report SRR9123802.kraken.report.txt
+2021-04-19 18:52:28	SRR9123802	Loading database information... done.
+2021-04-19 18:52:28	SRR9123802	0 sequences (0.00 Mbp) processed in 0.001s (0.0 Kseq/m, 0.00 Mbp/m).
+2021-04-19 18:52:28	SRR9123802	  0 sequences classified (-nan%)
+2021-04-19 18:52:28	SRR9123802	  0 sequences unclassified (-nan%)
+2021-04-19 18:52:28	SRR9123802	Kakren: analysed correctly!
+2021-04-19 18:52:28	SRR9123802	deleting fastq files...
+2021-04-19 18:52:28	SRR9123802	$HOME/SRA/scripts/deleteFiles.sh SRR9123802 storeruns2/SRR9123802 2>&1
+2021-04-19 18:52:28	SRR9123802	ls | egrep SRR9123802(_[1,2])?\.fastq | xargs -d\n rm
+2021-04-19 18:52:28	SRR9123802	rm: missing operand
+2021-04-19 18:52:28	SRR9123802	Try 'rm --help' for more information.
+2021-04-19 18:52:28	SRR9123802	ls | grep SRR9123802.kraken$ | xargs -d\n rm
+2021-04-19 18:52:28	SRR9123802	rm: missing operand
+2021-04-19 18:52:28	SRR9123802	Try 'rm --help' for more information.
+2021-04-19 18:52:28	SRR9123802	warn: error while deleting files..
+2021-04-19 18:52:28	SRR9123802	ended: SRR9123802	PAIRED	2	-1	1	ERR
+NumOfThreads: 3 <= 5
+TotMemoryUsed: 4996 <= 5000
+2021-04-19 18:52:38	SRR10008840	kraken2 
+2021-04-19 18:52:38	SRR10008840	--threads 8 
+2021-04-19 18:52:38	SRR10008840	--db /home/fzuccato/databases/krakenDB16 
+2021-04-19 18:52:38	SRR10008840	--paired SRR10008840_1.fastq SRR10008840_2.fastq 
+2021-04-19 18:52:38	SRR10008840	--output SRR10008840.kraken 
+2021-04-19 18:52:38	SRR10008840	--report SRR10008840.kraken.report.txt
+2021-04-19 18:52:38	SRR10008840	Loading database information... done.
+2021-04-19 18:52:38	SRR10008840	0 sequences (0.00 Mbp) processed in 0.001s (0.0 Kseq/m, 0.00 Mbp/m).
+2021-04-19 18:52:38	SRR10008840	  0 sequences classified (-nan%)
+2021-04-19 18:52:38	SRR10008840	  0 sequences unclassified (-nan%)
+2021-04-19 18:52:38	SRR10008840	Kakren: analysed correctly!
+2021-04-19 18:52:38	SRR10008840	deleting fastq files...
+2021-04-19 18:52:38	SRR10008840	$HOME/SRA/scripts/deleteFiles.sh SRR10008840 storeruns2/SRR10008840 2>&1
+2021-04-19 18:52:38	SRR10008840	ls | egrep SRR10008840(_[1,2])?\.fastq | xargs -d\n rm
+2021-04-19 18:52:38	SRR10008840	rm: missing operand
+2021-04-19 18:52:38	SRR10008840	Try 'rm --help' for more information.
+2021-04-19 18:52:38	SRR10008840	ls | grep SRR10008840.kraken$ | xargs -d\n rm
+2021-04-19 18:52:38	SRR10008840	rm: missing operand
+2021-04-19 18:52:38	SRR10008840	Try 'rm --help' for more information.
+2021-04-19 18:52:38	SRR10008840	warn: error while deleting files..
+2021-04-19 18:52:38	SRR10008840	ended: SRR10008840	PAIRED	8	-1	1	ERR
+NumOfThreads: 2 <= 5
+TotMemoryUsed: 4988 <= 5000
+NumOfThreads: 3 <= 5
+TotMemoryUsed: 5007 <= 5000
+NumOfThreads: 4 <= 5
+TotMemoryUsed: 5007 <= 5000
+2021-04-19 18:52:38	SRR10336683	started: SRR10336683	PAIRED	10	-1	0	OK
+2021-04-19 18:52:38	SRR8488407	started: SRR8488407	PAIRED	9	-1	0	OK
+2021-04-19 18:52:38	SRR10336683	downloading run as .fastq...
+2021-04-19 18:52:38	SRR8488407	d

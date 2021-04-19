@@ -8,14 +8,14 @@
 namespace SRA {
 
 	enum class RunStatus {
-		TO_DO,
+		NO,
 		OK,
 		ERR
 	};
 
 	extern std::map<std::string, RunStatus> runStatusMap;
 	/*extern std::map<std::string, RunStatus> runStatusMap = {
-		{ "TO_DO",  RunStatus::TO_DO },
+		{ "NO",  RunStatus::NO },
 		{ "OK",     RunStatus::OK    },
 		{ "ERR",    RunStatus::ERR   }
 	};*/
@@ -24,7 +24,7 @@ namespace SRA {
 	{
 		switch(status)
 		{
-			case RunStatus::TO_DO:  return "TO_DO";  break;
+			case RunStatus::NO:  return "NO";  break;
 			case RunStatus::OK:     return "OK";     break;
 			case RunStatus::ERR:    return "ERR";    break;
 		}

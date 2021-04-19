@@ -14,6 +14,8 @@
 #include <atomic>
 #include <condition_variable>
 #include <mutex>
+//to sort vector
+#include <algorithm>
 //other useful
 #include <string>
 #include <vector>
@@ -49,6 +51,7 @@ using namespace filesystem;
     void removeTrailingSeparator(path& path, char separator);
     string buildCommand(const string& command, const vector<string>& parameters);
     void printAllSizesToFile(const vector<SRA::Run>& runs);
+    bool compareRuns(const SRA::Run& run1, const SRA::Run& run2);
 
 #pragma endregion methods
 
@@ -80,7 +83,7 @@ using namespace filesystem;
 
         //metadata file path
         //string allMetadataInfo_file = metadata_dir.native() + "/metadata_filtered_small.csv";
-        string allMetadataInfo_file = "$HOME/SRA/c++/storeruns/metadata/metadata_COPY_FOR_TESTING.csv";
+        string allMetadataInfo_file = "$HOME/SRA/c++/metadata_COPY_FOR_TESTING/metadata_COPY_FOR_TESTING.csv";
 
         //output files
         string resultAll_outputfile;
@@ -121,6 +124,8 @@ using namespace filesystem;
 #pragma region main
 
 int main(int argc, char *argv[]) {
+
+    cout << current_path() << "\n";
     
     const int nOfParamsNeeded = 2;
     
@@ -132,7 +137,7 @@ int main(int argc, char *argv[]) {
     #pragma region checkArgs
 
     //check params
-    if (argc < nOfParamsNeeded) {
+    if (argc != nOfParamsNeeded + 1) {
         cout << "usage: " << argv[0] << " <runsToExecute> <outputDir>\n";
         return 1;
     } else {
@@ -141,7 +146,7 @@ int main(int argc, char *argv[]) {
         removeTrailingSeparator(mainOutput_dir, '/');
         infoFilesOutput_dir = mainOutput_dir.native() + "/.info";
     }
-    
+
     //check if main output directory exists
     if(!exists(mainOutput_dir)) {
         if(create_directory(mainOutput_dir)) {
@@ -167,15 +172,17 @@ int main(int argc, char *argv[]) {
     //output files
     resultAll_outputfile = infoFilesOutput_dir.native() + "/results_all.csv";
     resultErr_outputfile = infoFilesOutput_dir.native() + "/results_err.csv";
-    fastQSize_outputfile = infoFilesOutput_dir.native() + "/fastq_files_size.csv";
-    updates_outputfile   = infoFilesOutput_dir.native() + "/updates_log.csv";
+    fastQSize_outputfile = infoFilesOutput_dir.native() + "/fastq_files_size.txt";
+    updates_outputfile   = infoFilesOutput_dir.native() + "/updates_log.txt";
 
     vector<SRA::Run> runs;
     if (SRA::getRunsFromFile(runs_path, runs, ',') != 0) {
         cout << "fatal: could not open runs to execute file";
         return 4;
     }
-    /*
+
+    sort(runs.begin(), runs.end(), compareRuns);
+    
     vector<thread> threads;
 
     for (auto &run : runs) {
@@ -184,23 +191,22 @@ int main(int argc, char *argv[]) {
         threads.push_back(thread(execThread, std::ref(run)));
     }
     
-    //for (auto& th : threads) {
-    for(int i = 0; i < threads.size(); i++) {
+    for (auto& th : threads) {
 
-        //th.join();
-        threads[i].join();
+        th.join();
         
         //startRun(runs.at(i));
         //execFasterQDump(runs.at(i));
-        execGetFastqFileSize(runs.at(i));
-        execKraken(runs.at(i));
-        execDeleteFiles(runs.at(i));
-        endRun(runs.at(i));
+        //execGetFastqFileSize(runs.at(i));
+        //execKraken(runs.at(i));
+        //execDeleteFiles(runs.at(i));
+        //endRun(runs.at(i));
         
         //cout << "\n";
     }
+
     //from here all runs has ended
-    */
+    
     int printToFileStatus = -1;
     vector<string> resultsOfAllRuns = buildOutputForResultAllFile(runs, ',');
     printToFileStatus = SRA::printToFile(resultAll_outputfile, resultsOfAllRuns);
@@ -277,6 +283,7 @@ tuple<int, string> exec(const char* command) {
     while (!feof(pipe)) {
         if (fgets(buffer.data(), 128, pipe) != nullptr) {
             result += buffer.data();
+            //cout << result << "\n";
         }
     }
     int exitStatus = WEXITSTATUS(pclose(pipe));
@@ -439,7 +446,7 @@ void execUpdateAllRunsFile(const vector<SRA::Run>& runs) {
     if (exitCode == 0) {
         toPrint = "Updated all runs file metadata correctly!";
     } else {
-        toPrint = "error: metada update had an error, check if original file is safe!";
+        toPrint = "error: metadata update had an error, check if original file is safe!";
     }
     printWithMutexLock(toPrint, true);
 }
@@ -463,13 +470,16 @@ bool checkConditionVariable() {
 //execute a thread
 void execThread(SRA::Run& run) {
     {
+        
         unique_lock<mutex> lck(mtx_exec);
+        int size = run.getSizeCompressed();
+        //bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
         //while(!ok) cv.wait(lck);
         cv.wait(
             lck, 
-            [] { return (
+            [&] { return (
                     (numOfThreadsDownload < maxNumOfThreadsDownload) && 
-                    (sizeTotalDownload < maxSizeTotalDownload)
+                    (sizeTotalDownload + size < maxSizeTotalDownload)
                 );
             }
         );
@@ -477,16 +487,20 @@ void execThread(SRA::Run& run) {
     //started critical section
     numOfThreadsDownload++;
     sizeTotalDownload += run.getSizeCompressed();
-    //printCondVarSituation();
+    printCondVarSituation();
 
     startRun(run);
     execFasterQDump(run);
+    execGetFastqFileSize(run);
+    execKraken(run);
+    execDeleteFiles(run);
+    endRun(run);
 
     //end critical section
     numOfThreadsDownload--;
     sizeTotalDownload -= run.getSizeCompressed();
 
-    //printCondVarSituation();
+    printCondVarSituation();
     //notify other threads to check cv: this thread has finished
     cv.notify_all();
 }
@@ -506,6 +520,11 @@ void printCondVarSituation() {
     memory += " <= " + to_string(maxSizeTotalDownload);
     printWithMutexLock(nOfThreads, true);
     printWithMutexLock(memory, true);
+}
+
+bool compareRuns(const SRA::Run& run1, const SRA::Run& run2) {
+    //want a descending order so > instead of <
+    return run1.getSizeCompressed() > run2.getSizeCompressed();
 }
 
 #pragma endregion multithread_definition
