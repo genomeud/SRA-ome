@@ -25,9 +25,11 @@ rm $AllRunsBackUpFile 2>/dev/null
 #output files
 AllRunsDoneFile="$AllRunsPathWithNameFileNoExt"'_done'"$AllRunsFileExt"
 AllRunsToDoFile="$AllRunsPathWithNameFileNoExt"'_todo'"$AllRunsFileExt"
+AllRunsErrFile="$AllRunsPathWithNameFileNoExt"'_err'"$AllRunsFileExt"
 #clear output files
 echo -n >$AllRunsDoneFile
 echo -n >$AllRunsToDoFile
+echo -n >$AllRunsErrFile
 
 i=1
 n=`cat "$AllRunsFile" | wc -l`
@@ -39,17 +41,18 @@ do
         echo "running... $i of $n"
     fi
 
-    isLineDone=`echo "$ARF_line" | cut -d',' -f$[$doneIdx] | grep 'OK'`
-    
-    if test -z $isLineDone
+    #NB: update also update script!!!
+    #grep OK, test -z ==> NO,ERR in todo, OK in done
+    #grep NO, test -n ==> NO in todo, OK,ERR in todo
+
+    lineStatus=`echo "$ARF_line" | cut -d',' -f$[$doneIdx]`
+
+    ./updateOneMetadataRow.sh "$ARF_line" "$lineStatus" $AllRunsToDoFile $AllRunsErrFile $AllRunsDoneFile
+
+    if test $? -ne 0
     then
-        #line has not been done already with success
-        #put to todo file
-        echo "$ARF_line">>$AllRunsToDoFile
-    else
-        #line has been done already with success
-        #put to ok file
-        echo "$ARF_line">>$AllRunsDoneFile
+        #row update failed ==> quit
+        exit 2
     fi
 
     i=$[$i+1]

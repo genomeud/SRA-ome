@@ -32,11 +32,13 @@ AllRunsFileTemp="$AllRunsPathWithNameFileNoExt"'_temp'"$AllRunsFileExt"
 #output files
 AllRunsDoneFile="$AllRunsPathWithNameFileNoExt"'_done'"$AllRunsFileExt"
 AllRunsToDoFile="$AllRunsPathWithNameFileNoExt"'_todo'"$AllRunsFileExt"
+AllRunsErrFile="$AllRunsPathWithNameFileNoExt"'_err'"$AllRunsFileExt"
 AllRunsBackUpFile="$AllRunsPathWithNameFileNoExt"'_backup'"$AllRunsFileExt"
 
 echo -n >$AllRunsFileTemp
 echo -n >$AllRunsDoneFile
 echo -n >$AllRunsToDoFile
+echo -n >$AllRunsErrFile
 echo -n >$AllRunsBackUpFile
 
 while read ARF_line
@@ -55,7 +57,6 @@ do
         #this line has not changed, print it as original
         #echo NOT_UPDATE
         ARF_newLine=`echo $ARF_line`
-        echo "$ARF_newLine">>$AllRunsFileTemp
     else
         #this line has changed, update column requested
         echo -e "\n"'----------------------UPDATE-----------------------------------'
@@ -85,20 +86,19 @@ do
         #print update done
         ARF_columnOldValue=`echo "$ARF_line" | cut -d',' -f$ARF_columnValueIdx`
         echo -e "$ARF_filterColumn"':' "$ARF_columnOldValue"' -> '"$RTUF_columnNewValue" | tee -a $updatesLog
-        #update line to new file
-        echo "$ARF_newLine" >>$AllRunsFileTemp
     fi
 
-    isLineDone=`echo "$ARF_newLine" | cut -d',' -f$[$ARF_columnValueIdx] | grep 'OK'`
-    if test -z $isLineDone
+    #update line to new file
+    echo "$ARF_newLine" >>$AllRunsFileTemp
+    
+    lineStatus=`echo "$ARF_newLine" | cut -d',' -f$[$ARF_columnValueIdx]`
+
+    ./updateOneMetadataRow.sh "$ARF_newLine" "$lineStatus" $AllRunsToDoFile $AllRunsErrFile $AllRunsDoneFile
+
+    if test $? -ne 0
     then
-        #line has not been done already with success
-        #put to todo file
-        echo "$ARF_newLine">>$AllRunsToDoFile
-    else
-        #line has been done already with success
-        #put to ok file
-        echo "$ARF_newLine">>$AllRunsDoneFile
+        #row update failed ==> quit
+        exit 2
     fi
 
     i=$[$i+1]
