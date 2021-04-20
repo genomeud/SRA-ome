@@ -103,6 +103,8 @@ using namespace filesystem;
     //actual values for condition variable
     atomic<int> sizeTotalDownload = 0;
     atomic<int> numOfThreadsDownload = 0;
+    //execThread if size + threadsize < maxsize && num + 1 < maxnum
+    bool executeThread = false;
 
     //mutexes and condition variable
     mutex mtx_exec;
@@ -470,7 +472,6 @@ bool checkConditionVariable() {
 //execute a thread
 void execThread(SRA::Run& run) {
     {
-        
         unique_lock<mutex> lck(mtx_exec);
         int size = run.getSizeCompressed();
         //bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
