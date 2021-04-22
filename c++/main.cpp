@@ -104,7 +104,7 @@ using namespace filesystem;
     atomic<int> sizeTotalDownload = 0;
     atomic<int> numOfThreadsDownload = 0;
     //execThread if size + threadsize < maxsize && num + 1 < maxnum
-    bool executeThread = false;
+    atomic<bool> executeThread = true;
 
     //mutexes and condition variable
     mutex mtx_exec;
@@ -120,6 +120,8 @@ using namespace filesystem;
     void printWithMutexLock(const string& output, bool newline);
     //print values of actual values and limits
     void printCondVarSituation();
+    //return true if cv are respected, else false 
+    bool checkCV();
 
 #pragma endregion multithread_declaration
 
@@ -365,7 +367,8 @@ void execFasterQDump(SRA::Run& run) {
     if(exitCode != 0) {
         //download failed
         run.setRunStatus(SRA::RunStatus::ERR);
-        toPrint = "error: FasterQDump caused error with exit code:" + exitCode;
+        toPrint = "error: FasterQDump caused error with exit code:";
+        toPrint += exitCode;
     } else {
         toPrint = "download done correctly!";
     }
@@ -384,7 +387,8 @@ void execKraken(SRA::Run& run) {
     if(exitCode != 0) {
         //kraken failed
         run.setRunStatus(SRA::RunStatus::ERR);
-        toPrint = "error: Kraken caused error with exit code:" + exitCode;
+        toPrint = "error: Kraken caused error with exit code: ";
+        toPrint += exitCode;
     } else {
         toPrint = "Kakren: analysed correctly!";
     }
@@ -405,8 +409,8 @@ void execGetFastqFileSize(SRA::Run& run) {
         //getFastqFileSize failed: file not exist?
         run.setRunStatus(SRA::RunStatus::ERR);
         string error = std::get<1>(output);
-        buildAndPrint(toPrint, run, false);
-        toPrint = "error: get FastqFileSize caused error with exit code:" + exitCode;
+        buildAndPrint(error, run, true);
+        toPrint = "error: get FastqFileSize caused error with exit code: " + to_string(exitCode);
 
     } else {
         //getFastqFileSize ok
@@ -474,20 +478,19 @@ void execThread(SRA::Run& run) {
     {
         unique_lock<mutex> lck(mtx_exec);
         int size = run.getSizeCompressed();
-        //bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
-        //while(!ok) cv.wait(lck);
+        bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
+        if (ok) executeThread = true;
+        //while(!executeThread) cv.wait(lck);
         cv.wait(
             lck, 
-            [&] { return (
-                    (numOfThreadsDownload < maxNumOfThreadsDownload) && 
-                    (sizeTotalDownload + size < maxSizeTotalDownload)
-                );
-            }
+            [&] { return ok; }
         );
     }
     //started critical section
     numOfThreadsDownload++;
     sizeTotalDownload += run.getSizeCompressed();
+    executeThread = checkCV();
+
     printCondVarSituation();
 
     startRun(run);
@@ -500,6 +503,7 @@ void execThread(SRA::Run& run) {
     //end critical section
     numOfThreadsDownload--;
     sizeTotalDownload -= run.getSizeCompressed();
+    executeThread = checkCV();
 
     printCondVarSituation();
     //notify other threads to check cv: this thread has finished
@@ -512,6 +516,14 @@ void printWithMutexLock(const string& output, bool newline) {
         cout << output;
         if(newline) cout << "\n";
     }
+}
+
+bool checkCV() {
+    return (
+        (sizeTotalDownload < maxSizeTotalDownload)
+        &&
+        (numOfThreadsDownload < maxNumOfThreadsDownload)
+    );
 }
 
 void printCondVarSituation() {

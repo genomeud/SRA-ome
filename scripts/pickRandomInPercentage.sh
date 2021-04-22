@@ -126,7 +126,7 @@ do
     #number of repetitions that will be done for i-th group
     #repetitions = number of random lines that will be printed for i-th group
     #repetitions = 1 + ( nOfEqualLines % percentage )
-    repetitions=`bc <<< "scale=0; $nOfEqualLines * $percAsNumerator / 100 + 1"`
+    repetitions=$(( $nOfEqualLines * $percAsNumerator / 100 + 1 ))
 
     lastLine=$[$i + $nOfEqualLines - 1]
     echo "grouping lines: $grouping" | tee -a $logFile
@@ -218,7 +218,7 @@ do
         fi
     done
 
-    indexesFoundPercentage=`bc <<< "scale=0; $found / $repetitions * 100"`
+    indexesFoundPercentage=$(( $found / $repetitions * 100 ))
     echo -e "indexes found: $indexesFoundPercentage%: $found of $repetitions\n" | tee -a $logFile
     unset indexesAlreadyPicked
     i=$[$i+$nOfEqualLines]
