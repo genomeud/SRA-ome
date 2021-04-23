@@ -49,7 +49,8 @@ do
     RTUF_filterColumn=`cat "$RunsToUpdateFile" | cut -d',' -f$RTUF_filterColumnIdx | grep -n "$ARF_filterColumn"`
     ARF_newLine=''
 
-    if test $(( $i % 500 )) -eq 0
+    remainder=`echo "$i 500" | awk '{ print ($1 % $2); }'`
+    if test $remainder -eq 0
     then
         echo "running... $i of $n"
     fi
@@ -61,16 +62,18 @@ do
         ARF_newLine=`echo $ARF_line`
     else
         #this line has changed, update column requested
-        echo -e "\n"'----------------------UPDATE-----------------------------------'
+        echo '----------------------UPDATE-----------------------------------'
         echo "$i of $n: $ARF_filterColumn"
         RTUF_lineIdx=`echo "$RTUF_filterColumn" | cut -d':' -f1`
         RTUF_line=`cat "$RunsToUpdateFile" | head -n "$RTUF_lineIdx" | tail -n 1`
         #fields before column to update
-        ARF_lineLeft=`echo "$ARF_line" | cut -d',' -f1-$[$ARF_columnValueIdx-1]`
+        lastLeftIdx=$(($ARF_columnValueIdx-1))
+        ARF_lineLeft=`echo "$ARF_line" | cut -d',' -f1-$lastLeftIdx`
         #field to update
         RTUF_columnNewValue=`echo "$RTUF_line" | cut -d',' -f$RTUF_columnValueIdx`
         #field after column to update
-        ARF_lineRight=`echo "$ARF_line" | cut -d',' -f$[$ARF_columnValueIdx+1]-`
+        firstRightIdx=$(($ARF_columnValueIdx+1))
+        ARF_lineRight=`echo "$ARF_line" | cut -d',' -f$firstRightIdx-`
 
         #field after column to update
         if test -n "$ARF_lineLeft"
@@ -87,13 +90,13 @@ do
 
         #print update done
         ARF_columnOldValue=`echo "$ARF_line" | cut -d',' -f$ARF_columnValueIdx`
-        echo -e "$ARF_filterColumn"':' "$ARF_columnOldValue"' -> '"$RTUF_columnNewValue" | tee -a $updatesLog
+        echo "$ARF_filterColumn"':' "$ARF_columnOldValue"' -> '"$RTUF_columnNewValue" | tee -a $updatesLog
     fi
 
     #update line to new file
     echo "$ARF_newLine" >>$AllRunsFileTemp
     
-    lineStatus=`echo "$ARF_newLine" | cut -d',' -f$[$ARF_columnValueIdx]`
+    lineStatus=`echo "$ARF_newLine" | cut -d',' -f$ARF_columnValueIdx`
 
     $script_dir/updateOneMetadataRow.sh "$ARF_newLine" "$lineStatus" $AllRunsToDoFile $AllRunsErrFile $AllRunsDoneFile
 
@@ -103,7 +106,7 @@ do
         exit 2
     fi
 
-    i=$[$i+1]
+    i=$(($i+1))
 
 done <$AllRunsFile
 
