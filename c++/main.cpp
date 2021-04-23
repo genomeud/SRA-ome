@@ -43,7 +43,7 @@ using namespace filesystem;
     void execDeleteFiles(SRA::Run& run);
     void endRun(SRA::Run& run);
     //region scripts for all runs
-    void execUpdateAllRunsFile(const vector<SRA::Run>& runs);
+    void execUpdateAllRunsFile();
 
     //region useful
     void buildAndPrint(const string& line, const SRA::Run& run, bool newline);
@@ -56,6 +56,8 @@ using namespace filesystem;
 #pragma endregion methods
 
 #pragma region variables
+
+    atomic<int> numOfRunsStarted = 0;
 
     #pragma region dirs
 
@@ -120,8 +122,6 @@ using namespace filesystem;
     void printWithMutexLock(const string& output, bool newline);
     //print values of actual values and limits
     void printCondVarSituation();
-    //return true if cv are respected, else false 
-    bool checkCV();
 
 #pragma endregion multithread_declaration
 
@@ -209,6 +209,8 @@ int main(int argc, char *argv[]) {
         //cout << "\n";
     }
 
+    
+
     //from here all runs has ended
     
     int printToFileStatus = -1;
@@ -227,8 +229,8 @@ int main(int argc, char *argv[]) {
     if (printToFileStatus != 0) {
         cout << "error\n";
     }
-
-    execUpdateAllRunsFile(runs);
+    
+    execUpdateAllRunsFile();
 
     cout << "ended everything ok!\n";
     
@@ -284,10 +286,15 @@ tuple<int, string> exec(const char* command) {
     if (!pipe) {
         throw runtime_error("popen() failed!");
     }
+    string line = "";
     while (!feof(pipe)) {
         if (fgets(buffer.data(), 128, pipe) != nullptr) {
-            result += buffer.data();
-            //cout << result << "\n";
+            line = buffer.data();
+            //return all output
+            result += line;
+            //print only current line
+            //printWithMutexLock(line, true);
+            //cout << line;
         }
     }
     int exitStatus = WEXITSTATUS(pclose(pipe));
@@ -438,7 +445,7 @@ void execDeleteFiles(SRA::Run& run) {
     buildAndPrint(toPrint, run, true);
 }
 
-void execUpdateAllRunsFile(const vector<SRA::Run>& runs) {
+void execUpdateAllRunsFile() {
     
     //take the results of this execution and write the results, 
     //updating the metadata file with all the runs
@@ -473,25 +480,29 @@ bool checkConditionVariable() {
 }
 */
 
-//execute a thread
 void execThread(SRA::Run& run) {
-    {
+    {        
         unique_lock<mutex> lck(mtx_exec);
         int size = run.getSizeCompressed();
-        bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
-        if (ok) executeThread = true;
-        //while(!executeThread) cv.wait(lck);
+        //bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
+        //while(!ok) cv.wait(lck);
         cv.wait(
             lck, 
-            [&] { return ok; }
+            [&] { return (
+                    (numOfThreadsDownload < maxNumOfThreadsDownload) && 
+                    (sizeTotalDownload + size < maxSizeTotalDownload)
+                );
+            }
         );
     }
     //started critical section
     numOfThreadsDownload++;
     sizeTotalDownload += run.getSizeCompressed();
-    executeThread = checkCV();
-
     printCondVarSituation();
+
+    numOfRunsStarted++;
+    string runsStarted = "Number of run started: " + to_string(numOfRunsStarted);
+    printWithMutexLock(runsStarted, true);
 
     startRun(run);
     execFasterQDump(run);
@@ -503,7 +514,6 @@ void execThread(SRA::Run& run) {
     //end critical section
     numOfThreadsDownload--;
     sizeTotalDownload -= run.getSizeCompressed();
-    executeThread = checkCV();
 
     printCondVarSituation();
     //notify other threads to check cv: this thread has finished
@@ -516,14 +526,6 @@ void printWithMutexLock(const string& output, bool newline) {
         cout << output;
         if(newline) cout << "\n";
     }
-}
-
-bool checkCV() {
-    return (
-        (sizeTotalDownload < maxSizeTotalDownload)
-        &&
-        (numOfThreadsDownload < maxNumOfThreadsDownload)
-    );
 }
 
 void printCondVarSituation() {
