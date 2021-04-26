@@ -1,0 +1,224 @@
+input file: /home/fzuccato/fzuccato_new/2021_04_19_mice_intestinal/.info/runs_list.csv 
+
+1 of 8
+current run: ERR3473664
+downloading run as .fastq...
+fasterq-dump --split-files ERR3473664
+spots read      : 51,518,486
+reads read      : 103,036,972
+reads written   : 103,036,972
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3473664_1.fastq ERR3473664_2.fastq 
+--output ERR3473664.kraken 
+--report ERR3473664.kraken.report.txt
+Loading database information... done.
+51518486 sequences (10406.73 Mbp) processed in 222.689s (13880.8 Kseq/m, 2803.93 Mbp/m).
+  10470568 sequences classified (20.32%)
+  41047918 sequences unclassified (79.68%)
+analysis done. Deleting .fastq file...
+done: ERR3473664 
+
+2 of 8
+current run: ERR3473665
+downloading run as .fastq...
+fasterq-dump --split-files ERR3473665
+spots read      : 54,356,835
+reads read      : 108,713,670
+reads written   : 108,713,670
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3473665_1.fastq ERR3473665_2.fastq 
+--output ERR3473665.kraken 
+--report ERR3473665.kraken.report.txt
+Loading database information... done.
+54356835 sequences (10980.08 Mbp) processed in 202.744s (16086.4 Kseq/m, 3249.45 Mbp/m).
+  12532164 sequences classified (23.06%)
+  41824671 sequences unclassified (76.94%)
+analysis done. Deleting .fastq file...
+done: ERR3473665 
+
+3 of 8
+current run: ERR3473666
+downloading run as .fastq...
+fasterq-dump --split-files ERR3473666
+spots read      : 52,252,893
+reads read      : 104,505,786
+reads written   : 104,505,786
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3473666_1.fastq ERR3473666_2.fastq 
+--output ERR3473666.kraken 
+--report ERR3473666.kraken.report.txt
+Loading database information... done.
+52252893 sequences (10555.08 Mbp) processed in 189.223s (16568.6 Kseq/m, 3346.86 Mbp/m).
+  7966738 sequences classified (15.25%)
+  44286155 sequences unclassified (84.75%)
+analysis done. Deleting .fastq file...
+done: ERR3473666 
+
+4 of 8
+current run: ERR3473667
+downloading run as .fastq...
+fasterq-dump --split-files ERR3473667
+spots read      : 58,256,982
+reads read      : 116,513,964
+reads written   : 116,513,964
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3473667_1.fastq ERR3473667_2.fastq 
+--output ERR3473667.kraken 
+--report ERR3473667.kraken.report.txt
+Loading database information... done.
+58256982 sequences (11767.91 Mbp) processed in 254.743s (13721.3 Kseq/m, 2771.71 Mbp/m).
+  17784687 sequences classified (30.53%)
+  40472295 sequences unclassified (69.47%)
+analysis done. Deleting .fastq file...
+done: ERR3473667 
+
+5 of 8
+current run: ERR3473668
+downloading run as .fastq...
+fasterq-dump --split-files ERR3473668
+spots read      : 50,986,731
+reads read      : 101,973,462
+reads written   : 101,973,462
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3473668_1.fastq ERR3473668_2.fastq 
+--output ERR3473668.kraken 
+--report ERR3473668.kraken.report.txt
+Loading database information... done.
+50986731 sequences (10299.32 Mbp) processed in 235.690s (12979.8 Kseq/m, 2621.92 Mbp/m).
+  13919610 sequences classified (27.30%)
+  37067121 sequences unclassified (72.70%)
+analysis done. Deleting .fastq file...
+done: ERR3473668 
+
+6 of 8
+current run: ERR3473669
+downloading run as .fastq...
+fasterq-dump --split-files ERR3473669
+spots read      : 55,380,658
+reads read      : 110,761,316
+reads written   : 110,761,316
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3473669_1.fastq ERR3473669_2.fastq 
+--output ERR3473669.kraken 
+--report ERR3473669.kraken.report.txt
+Loading database information... done.
+55380658 sequences (11186.89 Mbp) processed in 176.812s (18793.1 Kseq/m, 3796.21 Mbp/m).
+  12263271 sequences classified (22.14%)
+  43117387 sequences unclassified (77.86%)
+analysis done. Deleting .fastq file...
+done: ERR3473669 
+
+7 of 8
+current run: ERR3473670
+downloading run as .fastq...
+fasterq-dump --split-files ERR3473670
+spots read      : 51,412,952
+reads read      : 102,825,904
+reads written   : 102,825,904
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3473670_1.fastq ERR3473670_2.fastq 
+--output ERR3473670.kraken 
+--report ERR3473670.kraken.report.txt
+Loading database information... done.
+51412952 sequences (10385.42 Mbp) processed in 96.540s (31953.2 Kseq/m, 6454.55 Mbp/m).
+  12103078 sequences classified (23.54%)
+  39309874 sequences unclassified (76.46%)
+analysis done. Deleting .fastq file...
+done: ERR3473670 
+
+8 of 8
+current run: ERR3473671
+downloading run as .fastq...
+fasterq-dump --split-files ERR3473671
+spots read      : 49,895,941
+reads read      : 99,791,882
+reads written   : 99,791,882
+analysing run with Kraken2...
+kraken2 
+--threads 8 
+--db /home/fzuccato/databases/krakenDB16 
+--paired ERR3473671_1.fastq ERR3473671_2.fastq 
+--output ERR3473671.kraken 
+--report ERR3473671.kraken.report.txt
+Loading database information... done.
+49895941 sequences (10078.98 Mbp) processed in 177.170s (16897.7 Kseq/m, 3413.33 Mbp/m).
+  10281473 sequences classified (20.61%)
+  39614468 sequences unclassified (79.39%)
+analysis done. Deleting .fastq file...
+done: ERR3473671 
+
+updating runs file
+running... 500 of 13192
+running... 1000 of 13192
+running... 1500 of 13192
+running... 2000 of 13192
+running... 2500 of 13192
+running... 3000 of 13192
+running... 3500 of 13192
+running... 4000 of 13192
+running... 4500 of 13192
+running... 5000 of 13192
+running... 5500 of 13192
+running... 6000 of 13192
+running... 6500 of 13192
+running... 7000 of 13192
+running... 7500 of 13192
+----------------------UPDATE-----------------------------------
+7836 of 13192: ERR3473664
+ERR3473664: OK -> OK
+----------------------UPDATE-----------------------------------
+7837 of 13192: ERR3473665
+ERR3473665: OK -> OK
+----------------------UPDATE-----------------------------------
+7838 of 13192: ERR3473666
+ERR3473666: OK -> OK
+----------------------UPDATE-----------------------------------
+7839 of 13192: ERR3473667
+ERR3473667: OK -> OK
+----------------------UPDATE-----------------------------------
+7840 of 13192: ERR3473668
+ERR3473668: OK -> OK
+----------------------UPDATE-----------------------------------
+7841 of 13192: ERR3473669
+ERR3473669: OK -> OK
+----------------------UPDATE-----------------------------------
+7842 of 13192: ERR3473670
+ERR3473670: OK -> OK
+----------------------UPDATE-----------------------------------
+7843 of 13192: ERR3473671
+ERR3473671: OK -> OK
+running... 8000 of 13192
+running... 8500 of 13192
+running... 9000 of 13192
+running... 9500 of 13192
+running... 10000 of 13192
+running... 10500 of 13192
+running... 11000 of 13192
+running... 11500 of 13192
+running... 12000 of 13192
+running... 12500 of 13192
+running... 13000 of 13192
+update done
+
+end
