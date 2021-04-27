@@ -47,7 +47,9 @@ $runFiles \
 --output $outputFile \
 --report $reportFile"
 
-echo $command | sed s/--/"\n"--/g
+#echo $command | sed s/--/"\n"--/g
+echo $command
+
 echo -n `$command`
 
 exit 0
