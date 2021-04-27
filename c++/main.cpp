@@ -57,8 +57,6 @@ using namespace filesystem;
 
 #pragma region variables
 
-    atomic<int> numOfRunsStarted = 0;
-
     #pragma region dirs
 
         //main directory
@@ -99,19 +97,30 @@ using namespace filesystem;
 
 #pragma region multithread_declaration
 
-    //max values for condition variable
+    //max values for condition variable download
     const int maxSizeTotalDownload = 5000;
     const int maxNumOfThreadsDownload = 5;
-    //actual values for condition variable
+    //actual values for condition variable download
     atomic<int> sizeTotalDownload = 0;
     atomic<int> numOfThreadsDownload = 0;
-    //execThread if size + threadsize < maxsize && num + 1 < maxnum
-    atomic<bool> executeThread = true;
+
+    //max values for condition variable analysis
+    const int maxNumOfThreadsAnalysis = 2;
+    //actual values for condition variable analysis
+    atomic<int> numOfThreadsAnalysis = 0;
+
+    //counters
+    atomic<int> numOfRunsStarted = 0;
+    atomic<int> numOfRunsEnded = 0;
+    //total number of runs = runs.size()
+    int totalNumOfRuns;
 
     //mutexes and condition variable
-    mutex mtx_exec;
+    mutex mtx_download;
+    mutex mtx_analysis;
     mutex mtx_cout;
-    condition_variable cv;
+    condition_variable cv_download;
+    condition_variable cv_analysis;
 
     //verify condition variable
     //can brings to error check values onanother method
@@ -122,6 +131,10 @@ using namespace filesystem;
     void printWithMutexLock(const string& output, bool newline);
     //print values of actual values and limits
     void printCondVarSituation();
+    //print number of runs started and ended
+    void printNumberOfRuns();
+    //print printCondVarSituation and printNumberOfRuns
+    void printDebugInfo();
 
 #pragma endregion multithread_declaration
 
@@ -185,6 +198,8 @@ int main(int argc, char *argv[]) {
         return 4;
     }
 
+    totalNumOfRuns = runs.size();
+
     sort(runs.begin(), runs.end(), compareRuns);
     
     vector<thread> threads;
@@ -217,17 +232,17 @@ int main(int argc, char *argv[]) {
     vector<string> resultsOfAllRuns = buildOutputForResultAllFile(runs, ',');
     printToFileStatus = SRA::printToFile(resultAll_outputfile, resultsOfAllRuns);
     if (printToFileStatus != 0) {
-        cout << "error\n";
+        cout << "error writing file " << resultAll_outputfile << "\n";
     }
     vector<string> resultsOfErrRuns = buildOutputForResultErrorFile(runs, ',');
     printToFileStatus = SRA::printToFile(resultErr_outputfile, resultsOfErrRuns);
     if (printToFileStatus != 0) {
-        cout << "error\n";
+        cout << "error writing file " << resultErr_outputfile << "\n";
     }
     vector<string> fastQSizesOfAllRuns =  buildOutputForFastQSizeFile(runs, '\t');
     printToFileStatus = SRA::printToFile(fastQSize_outputfile, fastQSizesOfAllRuns);
     if (printToFileStatus != 0) {
-        cout << "error\n";
+        cout << "error writing file " << fastQSize_outputfile << "\n";
     }
     
     execUpdateAllRunsFile();
@@ -469,7 +484,7 @@ void execUpdateAllRunsFile() {
 #pragma region multithread_definition
 
 //verify condition variable
-//not a good idea to check cv in another method
+//not a good idea to check cv_download in another method
 /*
 bool checkConditionVariable() { 
     //return true if only both conditions are respected
@@ -481,13 +496,15 @@ bool checkConditionVariable() {
 */
 
 void execThread(SRA::Run& run) {
-    {        
-        unique_lock<mutex> lck(mtx_exec);
-        int size = run.getSizeCompressed();
+    int size = run.getSizeCompressed();
+    {
+        //started critical section
+        //see if thread can be executed now (otherwise wait...)
+        unique_lock<mutex> lck_download(mtx_download);
         //bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
-        //while(!ok) cv.wait(lck);
-        cv.wait(
-            lck, 
+        //while(!ok) cv_download.wait(lck_download);
+        cv_download.wait(
+            lck_download, 
             [&] { return (
                     (numOfThreadsDownload < maxNumOfThreadsDownload) && 
                     (sizeTotalDownload + size < maxSizeTotalDownload)
@@ -495,29 +512,111 @@ void execThread(SRA::Run& run) {
             }
         );
     }
-    //started critical section
+
+    this_thread::sleep_for(10000ms);
+
+
+    //end critical section
+    //thread has be chosen to be executed now
+    
+    if(! ((numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload))) {
+        //something gone wrong
+        //wait again
+        string error = "HOLY SHIT -----------------------------------------------------------------------------";
+        printDebugInfo();
+
+        buildAndPrint(error, run, true);
+        {
+            //started critical section
+            //see if thread can be executed now (otherwise wait...)
+            unique_lock<mutex> lck_download(mtx_download);
+            cv_download.wait(
+                lck_download, 
+                [&] { return (
+                        (numOfThreadsDownload < maxNumOfThreadsDownload) && 
+                        (sizeTotalDownload + size < maxSizeTotalDownload)
+                    );
+                }
+            );
+        }
+    }
+    
     numOfThreadsDownload++;
     sizeTotalDownload += run.getSizeCompressed();
-    printCondVarSituation();
+    //printDebugInfo();
 
     numOfRunsStarted++;
-    string runsStarted = "Number of run started: " + to_string(numOfRunsStarted);
-    printWithMutexLock(runsStarted, true);
+    printDebugInfo();
 
     startRun(run);
     execFasterQDump(run);
-    execGetFastqFileSize(run);
-    execKraken(run);
-    execDeleteFiles(run);
-    endRun(run);
 
-    //end critical section
     numOfThreadsDownload--;
     sizeTotalDownload -= run.getSizeCompressed();
 
-    printCondVarSituation();
-    //notify other threads to check cv: this thread has finished
-    cv.notify_all();
+    printDebugInfo();
+    //notify other threads to check , now other threads can start
+    cv_download.notify_one();
+
+    //download has ended so:
+    // - meanwhile this thread ends (kraken has to be done)
+    // - but don't keeping waiting the other threads
+    execGetFastqFileSize(run);
+    {
+        //started critical section
+        //see if thread can be executed now (otherwise wait...)
+        unique_lock<mutex> lck_analysis(mtx_analysis);
+        //bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
+        //while(!ok) cv_download.wait(lck);
+        cv_analysis.wait(
+            lck_analysis, 
+            [] { return (
+                    (numOfThreadsAnalysis < maxNumOfThreadsAnalysis)
+                );
+            }
+        );
+    }
+    
+    this_thread::sleep_for(10000ms);
+
+    if(! (numOfThreadsAnalysis < maxNumOfThreadsAnalysis)) {
+        //something gone wrong
+        //wait again
+        string error = "HOLY SHIT -----------------------------------------------------------------------------";
+        printDebugInfo();
+
+        buildAndPrint(error, run, true);
+        {
+            //started critical section
+            //see if thread can be executed now (otherwise wait...)
+            unique_lock<mutex> lck_analysis(mtx_analysis);
+            //bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
+            //while(!ok) cv_download.wait(lck);
+            cv_analysis.wait(
+                lck_analysis, 
+                [] { return (
+                        (numOfThreadsAnalysis < maxNumOfThreadsAnalysis)
+                    );
+                }
+            );
+        }
+    }
+    numOfThreadsAnalysis++;
+    printDebugInfo();
+    buildAndPrint("started kraken", run, true);
+    execKraken(run);
+
+    numOfThreadsAnalysis--;
+    
+    printDebugInfo();
+
+    cv_analysis.notify_one();
+
+    execDeleteFiles(run);
+    endRun(run);
+
+    numOfRunsEnded++;
+    printDebugInfo();
 }
 
 void printWithMutexLock(const string& output, bool newline) {
@@ -528,13 +627,32 @@ void printWithMutexLock(const string& output, bool newline) {
     }
 }
 
+void printDebugInfo() {
+    printNumberOfRuns();
+    printCondVarSituation();
+}
+
+void printNumberOfRuns() {
+
+    string runsStarted = "Number of threads started:\t" + to_string(numOfRunsStarted);
+    runsStarted += " of " + to_string(totalNumOfRuns);
+    string runsEnded = "Number of threads ended:\t" + to_string(numOfRunsEnded);
+    runsEnded += " of " + to_string(totalNumOfRuns);
+    printWithMutexLock(runsStarted, true);
+    printWithMutexLock(runsEnded, true);
+
+}
+
 void printCondVarSituation() {
-    string nOfThreads = "NumOfThreads: " + to_string(numOfThreadsDownload);
-    nOfThreads += " <= " + to_string(maxNumOfThreadsDownload);
-    string memory = "TotMemoryUsed: " + to_string(sizeTotalDownload);
-    memory += " <= " + to_string(maxSizeTotalDownload);
-    printWithMutexLock(nOfThreads, true);
-    printWithMutexLock(memory, true);
+    string nOfThreadsDownload = "Number of threads download:\t" + to_string(numOfThreadsDownload);
+    nOfThreadsDownload += " <= " + to_string(maxNumOfThreadsDownload);
+    string sizeOfThreadsDownload = "Size of threads download:\t" + to_string(sizeTotalDownload);
+    sizeOfThreadsDownload += " <= " + to_string(maxSizeTotalDownload);
+    string nOfThreadsAnalysis = "Number of threads analysis:\t" + to_string(numOfThreadsAnalysis);
+    nOfThreadsAnalysis += " <= " + to_string(maxNumOfThreadsAnalysis);
+    printWithMutexLock(nOfThreadsDownload, true);
+    printWithMutexLock(sizeOfThreadsDownload, true);
+    printWithMutexLock(nOfThreadsAnalysis, true);
 }
 
 bool compareRuns(const SRA::Run& run1, const SRA::Run& run2) {
