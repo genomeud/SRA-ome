@@ -1,6 +1,6 @@
 #set -x
 #"usage: $0 [<outputFolder>]"
-mainOutDir='/mnt/extra/fzuccato_new/'$(date +'%Y_%m_%d')'/'
+mainOutDir=$HOME'/SRA/reports/'$(date +'%Y_%m_%d')'/'
 
 if test $# -gt 0
 then
