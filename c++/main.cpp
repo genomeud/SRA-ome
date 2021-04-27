@@ -200,6 +200,8 @@ int main(int argc, char *argv[]) {
 
     totalNumOfRuns = runs.size();
 
+    //sort runs: first (biggest size), last (smallest size)
+    //first runs pushed: biggest size ==> first thread launched
     sort(runs.begin(), runs.end(), compareRuns);
     
     vector<thread> threads;
@@ -214,17 +216,7 @@ int main(int argc, char *argv[]) {
 
         th.join();
         
-        //startRun(runs.at(i));
-        //execFasterQDump(runs.at(i));
-        //execGetFastqFileSize(runs.at(i));
-        //execKraken(runs.at(i));
-        //execDeleteFiles(runs.at(i));
-        //endRun(runs.at(i));
-        
-        //cout << "\n";
     }
-
-    
 
     //from here all runs has ended
     
@@ -367,14 +359,14 @@ string buildCommand(const string& command, const vector<string>& parameters) {
 
 void startRun(SRA::Run& run) {
     run.setRunStatus(SRA::RunStatus::OK);
-    string toPrint = "started: " + run.to_string();
-    buildAndPrint(toPrint, run, true);
+    //string toPrint = "started: " + run.to_string();
+    //buildAndPrint(toPrint, run, true);
     run.setInProcess(true);
 }
 
 void endRun(SRA::Run& run) {
-    string toPrint = "ended: " + run.to_string();
-    buildAndPrint(toPrint, run, true);
+    //string toPrint = "ended: " + run.to_string();
+    //buildAndPrint(toPrint, run, true);
     run.setInProcess(false);
 }
 
@@ -464,7 +456,7 @@ void execUpdateAllRunsFile() {
     
     //take the results of this execution and write the results, 
     //updating the metadata file with all the runs
-    string toPrint = "updating all runs file...";
+    string toPrint = "\nupdating all runs file...";
     printWithMutexLock(toPrint, true);
     string cmd = SRA::buildUpdateAllRunsFile_command(
         updateAllRunsFile_script, allMetadataInfo_file, resultAll_outputfile, updates_outputfile
@@ -496,127 +488,104 @@ bool checkConditionVariable() {
 */
 
 void execThread(SRA::Run& run) {
+
     int size = run.getSizeCompressed();
+
     {
-        //started critical section
-        //see if thread can be executed now (otherwise wait...)
+        //start critical section
+
+        //check cv_download to see if thread can be executed now (otherwise wait...)
         unique_lock<mutex> lck_download(mtx_download);
-        //bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
-        //while(!ok) cv_download.wait(lck_download);
         cv_download.wait(
             lck_download, 
             [&] { return (
-                    (numOfThreadsDownload < maxNumOfThreadsDownload) && 
-                    (sizeTotalDownload + size < maxSizeTotalDownload)
+                    (numOfThreadsDownload     <  maxNumOfThreadsDownload) && 
+                    (sizeTotalDownload + size <= maxSizeTotalDownload)
                 );
             }
         );
+
+        //thread has be chosen to be executed
+        //update cv_download before unlock mutex and leave critical section
+        numOfThreadsDownload++;
+        sizeTotalDownload += run.getSizeCompressed();
+        
+        //end critical section
     }
-
-    this_thread::sleep_for(10000ms);
-
-
-    //end critical section
-    //thread has be chosen to be executed now
-    
-    if(! ((numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload))) {
-        //something gone wrong
-        //wait again
-        string error = "HOLY SHIT -----------------------------------------------------------------------------";
-        printDebugInfo();
-
-        buildAndPrint(error, run, true);
-        {
-            //started critical section
-            //see if thread can be executed now (otherwise wait...)
-            unique_lock<mutex> lck_download(mtx_download);
-            cv_download.wait(
-                lck_download, 
-                [&] { return (
-                        (numOfThreadsDownload < maxNumOfThreadsDownload) && 
-                        (sizeTotalDownload + size < maxSizeTotalDownload)
-                    );
-                }
-            );
-        }
-    }
-    
-    numOfThreadsDownload++;
-    sizeTotalDownload += run.getSizeCompressed();
-    //printDebugInfo();
 
     numOfRunsStarted++;
     printDebugInfo();
+    
+    buildAndPrint("started run", run, true);
+    
+    if(! ((numOfThreadsDownload <= maxNumOfThreadsDownload) && (sizeTotalDownload <= maxSizeTotalDownload))) {
+        //something gone wrong
+        string error = "LIMITS ON DOWNLOAD EXCEEDED ---------------------------";
+        buildAndPrint(error, run, true);
+        printDebugInfo();
+    }
+
+    buildAndPrint("started download with fasterq-dump", run, true);
 
     startRun(run);
     execFasterQDump(run);
 
+    //download ended, update cv_download
     numOfThreadsDownload--;
     sizeTotalDownload -= run.getSizeCompressed();
 
     printDebugInfo();
-    //notify other threads to check , now other threads can start
-    cv_download.notify_one();
+    //notify other threads to check cv, now other threads can start
+    cv_download.notify_all();
 
     //download has ended so:
     // - meanwhile this thread ends (kraken has to be done)
     // - but don't keeping waiting the other threads
     execGetFastqFileSize(run);
     {
-        //started critical section
-        //see if thread can be executed now (otherwise wait...)
+        //start critical section
+
+        //check cv_analysis to see if thread can be executed now (otherwise wait...)
         unique_lock<mutex> lck_analysis(mtx_analysis);
-        //bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
-        //while(!ok) cv_download.wait(lck);
         cv_analysis.wait(
             lck_analysis, 
             [] { return (
                     (numOfThreadsAnalysis < maxNumOfThreadsAnalysis)
                 );
             }
-        );
+        );        
+
+        //thread has be chosen to be executed
+        //update cv_analysis before unlock mutex and leave critical section
+        numOfThreadsAnalysis++;
     }
     
-    this_thread::sleep_for(10000ms);
-
-    if(! (numOfThreadsAnalysis < maxNumOfThreadsAnalysis)) {
-        //something gone wrong
-        //wait again
-        string error = "HOLY SHIT -----------------------------------------------------------------------------";
-        printDebugInfo();
-
-        buildAndPrint(error, run, true);
-        {
-            //started critical section
-            //see if thread can be executed now (otherwise wait...)
-            unique_lock<mutex> lck_analysis(mtx_analysis);
-            //bool ok = (numOfThreadsDownload < maxNumOfThreadsDownload) && (sizeTotalDownload + size < maxSizeTotalDownload);
-            //while(!ok) cv_download.wait(lck);
-            cv_analysis.wait(
-                lck_analysis, 
-                [] { return (
-                        (numOfThreadsAnalysis < maxNumOfThreadsAnalysis)
-                    );
-                }
-            );
-        }
-    }
-    numOfThreadsAnalysis++;
     printDebugInfo();
-    buildAndPrint("started kraken", run, true);
+
+    if(! (numOfThreadsAnalysis <= maxNumOfThreadsAnalysis)) {
+        //something gone wrong
+        string error = "LIMITS ON ANALYSIS EXCEEDED ---------------------------";
+        buildAndPrint(error, run, true);
+        printDebugInfo();
+    }
+    
+    buildAndPrint("started analysis with kraken", run, true);
     execKraken(run);
 
     numOfThreadsAnalysis--;
     
     printDebugInfo();
 
-    cv_analysis.notify_one();
+    cv_analysis.notify_all();
 
     execDeleteFiles(run);
     endRun(run);
 
     numOfRunsEnded++;
+    
+    buildAndPrint("ended run", run, true);
     printDebugInfo();
+    
 }
 
 void printWithMutexLock(const string& output, bool newline) {
