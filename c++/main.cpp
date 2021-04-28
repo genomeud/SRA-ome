@@ -400,6 +400,7 @@ void startRun(SRA::Run& run) {
 
 void endRun(SRA::Run& run) {
     string toPrint = "ended " + run.getIdLayoutSizeCompressed(' ');
+    toPrint += " " + SRA::to_string(run.getRunStatus());
     buildAndPrint(toPrint, &run, INFO, true);
     run.setInProcess(false);
 }
