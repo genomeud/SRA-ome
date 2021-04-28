@@ -1,4 +1,4 @@
-#include "run.h"
+#include "run.hpp"
 #include <string>
 #include <filesystem>
 
@@ -76,17 +76,25 @@ namespace SRA {
     }
 
 
-    std::string Run::to_string() const {
+    std::string Run::to_string(char separator) const {
 
         std::string run = "";
         
-        run += ID + "\t";
-        run += SRA::to_string(layout) + "\t";
-        run += std::to_string(sizeCompressed) + "\t";
-        run += std::to_string(sizeNotCompressed) + "\t";
-        run += std::to_string(inProcess) + "\t";
+        run += ID + separator;
+        run += SRA::to_string(layout) + separator;
+        run += std::to_string(sizeCompressed) + separator;
+        run += std::to_string(sizeNotCompressed) + separator;
+        run += std::to_string(inProcess) + separator;
         run += SRA::to_string(status);
 
+        return run;
+    }
+
+    std::string Run::getIdLayoutSizeCompressed(char separator) const {
+        std::string run = "";
+        run += ID + separator;
+        run += SRA::to_string(layout) + separator;
+        run += std::to_string(sizeCompressed) + separator;
         return run;
     }
 }

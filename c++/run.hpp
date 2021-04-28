@@ -1,10 +1,10 @@
-#ifndef RUN_H
-#define RUN_H
+#ifndef RUN_HPP
+#define RUN_HPP
 
 #include <filesystem>
 #include <string>
-#include "layout.h"
-#include "runstatus.h"
+#include "layout.hpp"
+#include "runstatus.hpp"
 
 namespace SRA {
 
@@ -42,8 +42,9 @@ namespace SRA {
             void setFastq_dir(std::string fastq_dir);
 
             //methods
-            std::string to_string() const;
+            std::string to_string(char separator) const;
             std::string to_json() const;
+            std::string getIdLayoutSizeCompressed(char separator) const;
     };
 
 }

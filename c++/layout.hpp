@@ -1,6 +1,5 @@
-
-#ifndef LAYOUT_H
-#define LAYOUT_H
+#ifndef LAYOUT_HPP
+#define LAYOUT_HPP
 
 #include <map>
 #include <string>

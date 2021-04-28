@@ -21,9 +21,11 @@
 #include <vector>
 #include <sstream>
 //to get actual time for log
-#include <time.h>
+//#include <time.h>
 //my SRA library
-#include "sra.h"
+#include "sra.hpp"
+//boost log library
+#include "boost_logger.hpp"
 
 using namespace std;
 //using namespace experimental::filesystem;
@@ -32,7 +34,7 @@ using namespace filesystem;
 #pragma region methods
 
     //region exec
-    tuple<int, string> execAndPrint(const string& command, const SRA::Run * run, bool printOutput);
+    tuple<int, string> execAndPrint(const string& command, const SRA::Run* run, bool printOutput);
     tuple<int, string> exec(const char* command);
 
     //region scripts for a run
@@ -46,8 +48,6 @@ using namespace filesystem;
     void execUpdateAllRunsFile();
 
     //region useful
-    void buildAndPrint(const string& line, const SRA::Run& run, bool newline);
-    string buildLineToOutput(const string& line, const SRA::Run& run, bool newline);
     void removeTrailingSeparator(path& path, char separator);
     string buildCommand(const string& command, const vector<string>& parameters);
     void printAllSizesToFile(const vector<SRA::Run>& runs);
@@ -90,6 +90,8 @@ using namespace filesystem;
         string resultErr_outputfile;
         string fastQSize_outputfile;
         string updates_outputfile;
+        //log file
+        string logfile;
 
     #pragma endregion files
 
@@ -118,7 +120,6 @@ using namespace filesystem;
     //mutexes and condition variable
     mutex mtx_download;
     mutex mtx_analysis;
-    mutex mtx_cout;
     condition_variable cv_download;
     condition_variable cv_analysis;
 
@@ -127,8 +128,6 @@ using namespace filesystem;
     //bool checkConditionVariable();
     //execute a thread
     void execThread(SRA::Run& run);
-    //cout with lock
-    void printWithMutexLock(const string& output, bool newline);
     //print values of actual values and limits
     void printCondVarSituation();
     //print number of runs started and ended
@@ -136,13 +135,28 @@ using namespace filesystem;
     //print printCondVarSituation and printNumberOfRuns
     void printDebugInfo();
 
+    /*
+    //old logger 
+    mutex mtx_cout;
+    //cout with lock
+    void printWithMutexLock(const string& output, bool newline);
+    */
+    //new logger
+    logging::trivial::logger::logger_type myLogger;
+    void buildAndPrint(const string& line, const SRA::Run* run, const logging::trivial::severity_level& level, bool newline);
+    string buildLineToOutput(const string& line, const SRA::Run* run, bool newline);
+
 #pragma endregion multithread_declaration
 
 #pragma region main
 
 int main(int argc, char *argv[]) {
-
-    //cout << current_path() << "\n";
+    
+    BoostLogger::initializeLogger(
+        logging::trivial::trace, false, true, "", BoostLogger::getDefaultFormat()
+    );
+    
+    myLogger = logging::trivial::logger::get();
     
     const int nOfParamsNeeded = 2;
     
@@ -166,20 +180,26 @@ int main(int argc, char *argv[]) {
 
     //check if main output directory exists
     if(!exists(mainOutput_dir)) {
+        string toPrint = "";
         if(create_directory(mainOutput_dir)) {
-            cout << "warn: main output directory didn't exists, created\n";
+            toPrint = "main output directory didn't exists, created";
+            buildAndPrint(toPrint, nullptr, WARNING, true);
         } else {
-            cout << "fatal: main output directory didn't exists, creation failed\n";
+            toPrint = "main output directory didn't exists, creation failed";
+            buildAndPrint(toPrint, nullptr, FATAL, true);
             return 2;
         }
     }
     
     //check if info files output directory exists
     if(!exists(infoFilesOutput_dir)) {
+        string toPrint = "";
         if(create_directory(infoFilesOutput_dir)) {
-            cout << "warn: info files output directory didn't exists, created\n";
+            toPrint = "info files output directory didn't exists, created";
+            buildAndPrint(toPrint, nullptr, WARNING, true);
         } else {
-            cout << "fatal: info files output directory didn't exists, creation failed\n";
+            toPrint = "info files output directory didn't exists, creation failed";
+            buildAndPrint(toPrint, nullptr, FATAL, true);
             return 3;
         }
     }
@@ -191,10 +211,20 @@ int main(int argc, char *argv[]) {
     resultErr_outputfile = infoFilesOutput_dir.native() + "/results_err.csv";
     fastQSize_outputfile = infoFilesOutput_dir.native() + "/fastq_files_size.txt";
     updates_outputfile   = infoFilesOutput_dir.native() + "/updates_log.txt";
+    //log file
+    logfile              = infoFilesOutput_dir.native() + "/log.txt";
 
+    //on top enableconsole
+    //here enable log file
+    BoostLogger::initializeLogger(
+        logging::trivial::trace, true, false, logfile, BoostLogger::getDefaultFormat()
+    );
+    myLogger = logging::trivial::logger::get();
+    
     vector<SRA::Run> runs;
     if (SRA::getRunsFromFile(runs_path, runs, ',') != 0) {
-        cout << "fatal: could not open runs to execute file";
+        string printFatal = "could not open runs to execute file";
+        buildAndPrint(printFatal, nullptr, FATAL, true);
         return 4;
     }
 
@@ -224,22 +254,26 @@ int main(int argc, char *argv[]) {
     vector<string> resultsOfAllRuns = buildOutputForResultAllFile(runs, ',');
     printToFileStatus = SRA::printToFile(resultAll_outputfile, resultsOfAllRuns);
     if (printToFileStatus != 0) {
-        cout << "error writing file " << resultAll_outputfile << "\n";
+        string printError = "failed writing to file " + resultAll_outputfile;
+        buildAndPrint(printError, nullptr, ERROR, true);
     }
     vector<string> resultsOfErrRuns = buildOutputForResultErrorFile(runs, ',');
     printToFileStatus = SRA::printToFile(resultErr_outputfile, resultsOfErrRuns);
     if (printToFileStatus != 0) {
-        cout << "error writing file " << resultErr_outputfile << "\n";
+        string printError = "failed writing to file " + resultErr_outputfile;
+        buildAndPrint(printError, nullptr, ERROR, true);
     }
     vector<string> fastQSizesOfAllRuns =  buildOutputForFastQSizeFile(runs, '\t');
     printToFileStatus = SRA::printToFile(fastQSize_outputfile, fastQSizesOfAllRuns);
     if (printToFileStatus != 0) {
-        cout << "error writing file " << fastQSize_outputfile << "\n";
+        string printError = "failed writing to file " + fastQSize_outputfile;
+        buildAndPrint(printError, nullptr, ERROR, true);
     }
     
     execUpdateAllRunsFile();
 
-    cout << "ended everything ok!\n";
+    string printEnd = "ended everything ok!";
+    buildAndPrint(printEnd, nullptr, ERROR, true);
     
     return 0;
 }
@@ -260,27 +294,19 @@ if printOutput == FALSE:
     return type: <exitStatus, buffer>
 useful if is important the output generated
 */
-tuple<int, string> execAndPrint(const string& command, const SRA::Run * run, bool printOutput) {
+tuple<int, string> execAndPrint(const string& command, const SRA::Run* run, bool printOutput) {
 
     //stderr redirection to stdout:
     //popen() cannot handle stderr only stdout
     string new_command = command + " 2>&1";
     //print command will be executed
     string toPrint = new_command;
-    if (run != nullptr) {
-        buildAndPrint(toPrint, *run, true);
-    } else {
-        printWithMutexLock(toPrint, true);
-    }
+    buildAndPrint(toPrint, run, INFO, true);
     tuple<int, string> output = exec(new_command.c_str());
     if(printOutput) {
         vector<string> lines = SRA::split(std::get<1>(output), '\n');
         for(const auto &line: lines) {
-            if (run != nullptr) {
-                buildAndPrint(line, *run, true);
-            } else {
-                printWithMutexLock(line, true);
-            }
+            buildAndPrint(line, run, INFO, true);
         }
     }
     return output;
@@ -312,23 +338,31 @@ tuple<int, string> exec(const char* command) {
 
 #pragma region useful
 
-void buildAndPrint(const string& line, const SRA::Run& run, bool newline) {
+void buildAndPrint(const string& line, const SRA::Run* run, const logging::trivial::severity_level& level, bool newline) {
     string toPrint = buildLineToOutput(line, run, false);
-    printWithMutexLock(toPrint, newline);
+    BOOST_LOG_STREAM_WITH_PARAMS(myLogger, (boost::log::keywords::severity = level)) << toPrint;
+    //printWithMutexLock(toPrint, newline);
 }
 
-string buildLineToOutput(const string& line, const SRA::Run& run, bool newline) {
-    // Current date/time based on current system
+string buildLineToOutput(const string& line, const SRA::Run* run, bool newline) {
+    /*
+    //Current date/time based on current system
     time_t now = time(0);
     // Convert now to tm struct for local timezone
     struct tm* localtm = localtime(&now);
-    char separator = '\t';
     const int bufSize = 80;
     char timeBuffer [bufSize];
     strftime(timeBuffer, bufSize, "%F %T", localtm);
-    std::string toPrint = timeBuffer;
+    */
+    char separator = '\t';
+    std::string toPrint = "";
+    //toPrint += timeBuffer;
     toPrint += separator;
-    toPrint += run.getRunID();
+    if(run != nullptr) {
+        toPrint += (*run).getRunID();
+    } else {
+        toPrint += "[generic]";
+    }
     toPrint += separator;
     toPrint += line;
     if(newline) toPrint += '\n';
@@ -359,116 +393,131 @@ string buildCommand(const string& command, const vector<string>& parameters) {
 
 void startRun(SRA::Run& run) {
     run.setRunStatus(SRA::RunStatus::OK);
-    //string toPrint = "started: " + run.to_string();
-    //buildAndPrint(toPrint, run, true);
+    string toPrint = "started " + run.getIdLayoutSizeCompressed(' ');
+    buildAndPrint(toPrint, &run, INFO, true);
     run.setInProcess(true);
 }
 
 void endRun(SRA::Run& run) {
-    //string toPrint = "ended: " + run.to_string();
-    //buildAndPrint(toPrint, run, true);
+    string toPrint = "ended " + run.getIdLayoutSizeCompressed(' ');
+    buildAndPrint(toPrint, &run, INFO, true);
     run.setInProcess(false);
 }
 
 void execFasterQDump(SRA::Run& run) {
-    string toPrint = "downloading run as .fastq...";
-    buildAndPrint(toPrint, run, true);
+    string toPrint = "started download with fasterq-dump";
+    buildAndPrint(toPrint, &run, INFO, true);
     string cmd = SRA::buildFasterQDump_command(
         execFasterQDump_script, run, run.getFastq_dir()
     );
     tuple<int, string> output = execAndPrint(cmd, &run, true);
     int exitCode = std::get<0>(output);
+    logging::trivial::severity_level level;
     if(exitCode != 0) {
         //download failed
         run.setRunStatus(SRA::RunStatus::ERR);
-        toPrint = "error: FasterQDump caused error with exit code:";
+        level = ERROR;
+        toPrint = "FasterQDump caused error with exit code:";
         toPrint += exitCode;
     } else {
+        level = INFO;
         toPrint = "download done correctly!";
     }
-    buildAndPrint(toPrint, run, true);
+    buildAndPrint(toPrint, &run, level, true);
 
 }
 
 void execKraken(SRA::Run& run) {
-    string toPrint = "analysing run with Kraken2...";
-    buildAndPrint(toPrint, run, true);
+    string toPrint = "started analysis with kraken";
+    buildAndPrint(toPrint, &run, INFO, true);
     string cmd = SRA::buildKraken_command(
         execKraken_script, run.getFastq_dir()
     );
     tuple<int, string> output = execAndPrint(cmd, &run, true);
     int exitCode = std::get<0>(output);
+    logging::trivial::severity_level level;
     if(exitCode != 0) {
         //kraken failed
         run.setRunStatus(SRA::RunStatus::ERR);
-        toPrint = "error: Kraken caused error with exit code: ";
+        level = ERROR;
+        toPrint = "Kraken caused error with exit code: ";
         toPrint += exitCode;
     } else {
-        toPrint = "Kakren: analysed correctly!";
+        level = INFO;
+        toPrint = "analysis completed correctly!";
     }
-    buildAndPrint(toPrint, run, true);
+    buildAndPrint(toPrint, &run, level, true);
 }
 
 void execGetFastqFileSize(SRA::Run& run) {
     //calculate from filesystem fastq file uncompressed size
     string toPrint = "looking for fastq file size...";
-    buildAndPrint(toPrint, run, true);
+    buildAndPrint(toPrint, &run, INFO, true);
     string cmd = SRA::buildGetFastqFileSize_command(
         getFastqFileSize_script, run, run.getFastq_dir()
     );
     tuple<int, string> output = execAndPrint(cmd, &run, false);
     int exitCode = std::get<0>(output);
+    logging::trivial::severity_level level;
 
     if(exitCode != 0) {
+        level = ERROR;
         //getFastqFileSize failed: file not exist?
         run.setRunStatus(SRA::RunStatus::ERR);
         string error = std::get<1>(output);
-        buildAndPrint(error, run, true);
-        toPrint = "error: get FastqFileSize caused error with exit code: " + to_string(exitCode);
+        buildAndPrint(error, &run, level, true);
+        toPrint = "get FastqFileSize caused error with exit code: " + to_string(exitCode);
 
     } else {
         //getFastqFileSize ok
+        level = INFO;
         int sizeUncompressed = stoi(std::get<1>(output));
         run.setSizeUncompressed(sizeUncompressed);
-        toPrint = "Fastq file size obtained correctly!";
+        toPrint = "fastq file size obtained correctly!";
     }
-    buildAndPrint(toPrint, run, true);
+    buildAndPrint(toPrint, &run, level, true);
 }
 
 void execDeleteFiles(SRA::Run& run) {
     //calculate from filesystem fastq file uncompressed size
     string toPrint = "deleting fastq files...";
-    buildAndPrint(toPrint, run, true);
+    buildAndPrint(toPrint, &run, INFO, true);
     string cmd = SRA::buildDeleteFiles_command(
         deleteFiles_script, run, run.getFastq_dir()
     );
     tuple<int, string> output = execAndPrint(cmd, &run, true);
     int exitCode = std::get<0>(output);
+    logging::trivial::severity_level level;
     if (exitCode == 0) {
-        toPrint = "Deleted files correctly!";
+        level = INFO;
+        toPrint = "deleted files correctly!";
     } else {
-        toPrint = "warn: error while deleting files..";
+        level = WARNING;
+        toPrint = "error while deleting files..";
     }
-    buildAndPrint(toPrint, run, true);
+    buildAndPrint(toPrint, &run, level, true);
 }
 
 void execUpdateAllRunsFile() {
     
     //take the results of this execution and write the results, 
     //updating the metadata file with all the runs
-    string toPrint = "\nupdating all runs file...";
-    printWithMutexLock(toPrint, true);
+    string toPrint = "updating all runs file...";
+    buildAndPrint(toPrint, nullptr, INFO, true);
     string cmd = SRA::buildUpdateAllRunsFile_command(
         updateAllRunsFile_script, allMetadataInfo_file, resultAll_outputfile, updates_outputfile
     );
     tuple<int, string> output = execAndPrint(cmd, nullptr, true);
     int exitCode = std::get<0>(output);
+    logging::trivial::severity_level level;
     if (exitCode == 0) {
-        toPrint = "Updated all runs file metadata correctly!";
+        level = INFO;
+        toPrint = "updated all runs file metadata correctly!";
     } else {
-        toPrint = "error: metadata update had an error, check if original file is safe!";
+        level = ERROR;
+        toPrint = "metadata update had an error, check if original file is safe!";
     }
-    printWithMutexLock(toPrint, true);
+    buildAndPrint(toPrint, nullptr, level, true);
 }
 
 #pragma endregion scripts
@@ -514,18 +563,19 @@ void execThread(SRA::Run& run) {
     }
 
     numOfRunsStarted++;
-    printDebugInfo();
+    //printDebugInfo();
+    printNumberOfRuns();
     
-    buildAndPrint("started run", run, true);
+    //buildAndPrint("info\tstarted run", run, true);
     
     if(! ((numOfThreadsDownload <= maxNumOfThreadsDownload) && (sizeTotalDownload <= maxSizeTotalDownload))) {
         //something gone wrong
         string error = "LIMITS ON DOWNLOAD EXCEEDED ---------------------------";
-        buildAndPrint(error, run, true);
+        buildAndPrint(error, &run, ERROR, true);
         printDebugInfo();
     }
 
-    buildAndPrint("started download with fasterq-dump", run, true);
+    //buildAndPrint("info\tstarted download with fasterq-dump", run, true);
 
     startRun(run);
     execFasterQDump(run);
@@ -534,7 +584,7 @@ void execThread(SRA::Run& run) {
     numOfThreadsDownload--;
     sizeTotalDownload -= run.getSizeCompressed();
 
-    printDebugInfo();
+    //printDebugInfo();
     //notify other threads to check cv, now other threads can start
     cv_download.notify_all();
 
@@ -560,21 +610,21 @@ void execThread(SRA::Run& run) {
         numOfThreadsAnalysis++;
     }
     
-    printDebugInfo();
+    //printDebugInfo();
 
     if(! (numOfThreadsAnalysis <= maxNumOfThreadsAnalysis)) {
         //something gone wrong
         string error = "LIMITS ON ANALYSIS EXCEEDED ---------------------------";
-        buildAndPrint(error, run, true);
+        buildAndPrint(error, &run, ERROR, true);
         printDebugInfo();
     }
     
-    buildAndPrint("started analysis with kraken", run, true);
+    //buildAndPrint("info\tstarted analysis with kraken", run, true);
     execKraken(run);
 
     numOfThreadsAnalysis--;
     
-    printDebugInfo();
+    //printDebugInfo();
 
     cv_analysis.notify_all();
 
@@ -583,11 +633,12 @@ void execThread(SRA::Run& run) {
 
     numOfRunsEnded++;
     
-    buildAndPrint("ended run", run, true);
-    printDebugInfo();
+    //buildAndPrint("info\tended run", run, true);
+    //printDebugInfo();
+    printNumberOfRuns();
     
 }
-
+/*
 void printWithMutexLock(const string& output, bool newline) {
     {    
         unique_lock<mutex> lck(mtx_cout);
@@ -595,6 +646,7 @@ void printWithMutexLock(const string& output, bool newline) {
         if(newline) cout << "\n";
     }
 }
+*/
 
 void printDebugInfo() {
     printNumberOfRuns();
@@ -603,25 +655,30 @@ void printDebugInfo() {
 
 void printNumberOfRuns() {
 
-    string runsStarted = "Number of threads started:\t" + to_string(numOfRunsStarted);
+    string runsStarted = "Number of threads started: " + to_string(numOfRunsStarted);
     runsStarted += " of " + to_string(totalNumOfRuns);
-    string runsEnded = "Number of threads ended:\t" + to_string(numOfRunsEnded);
+    string runsEnded = "Number of threads ended: " + to_string(numOfRunsEnded);
     runsEnded += " of " + to_string(totalNumOfRuns);
-    printWithMutexLock(runsStarted, true);
-    printWithMutexLock(runsEnded, true);
+    buildAndPrint(runsStarted, nullptr, DEBUG, true);
+    buildAndPrint(runsEnded, nullptr, DEBUG, true);
+    //printWithMutexLock(runsStarted, true);
+    //printWithMutexLock(runsEnded, true);
 
 }
 
 void printCondVarSituation() {
-    string nOfThreadsDownload = "Number of threads download:\t" + to_string(numOfThreadsDownload);
+    string nOfThreadsDownload = "Number of threads download: " + to_string(numOfThreadsDownload);
     nOfThreadsDownload += " <= " + to_string(maxNumOfThreadsDownload);
-    string sizeOfThreadsDownload = "Size of threads download:\t" + to_string(sizeTotalDownload);
+    string sizeOfThreadsDownload = "Size of threads download: " + to_string(sizeTotalDownload);
     sizeOfThreadsDownload += " <= " + to_string(maxSizeTotalDownload);
-    string nOfThreadsAnalysis = "Number of threads analysis:\t" + to_string(numOfThreadsAnalysis);
+    string nOfThreadsAnalysis = "Number of threads analysis: " + to_string(numOfThreadsAnalysis);
     nOfThreadsAnalysis += " <= " + to_string(maxNumOfThreadsAnalysis);
-    printWithMutexLock(nOfThreadsDownload, true);
-    printWithMutexLock(sizeOfThreadsDownload, true);
-    printWithMutexLock(nOfThreadsAnalysis, true);
+    buildAndPrint(nOfThreadsDownload, nullptr, DEBUG, true);
+    buildAndPrint(sizeOfThreadsDownload, nullptr, DEBUG, true);
+    buildAndPrint(nOfThreadsAnalysis, nullptr, DEBUG, true);
+    //printWithMutexLock(nOfThreadsDownload, true);
+    //printWithMutexLock(sizeOfThreadsDownload, true);
+    //printWithMutexLock(nOfThreadsAnalysis, true);
 }
 
 bool compareRuns(const SRA::Run& run1, const SRA::Run& run2) {

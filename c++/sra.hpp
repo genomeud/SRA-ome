@@ -7,8 +7,9 @@
 #include <iostream>
 #include <fstream>
 #include <utility>
+#include <vector>
 
-#include "run.h"
+#include "run.hpp"
 
 #define OUT
 
@@ -58,9 +59,9 @@ namespace SRA {
     };
 
     map<string, RunStatus> runStatusMap = {
-        { "TO_DO",  RunStatus::NO },
-        { "OK",     RunStatus::OK    },
-        { "ERR",    RunStatus::ERR   }
+        { "TO_DO",  RunStatus::NO   },
+        { "OK",     RunStatus::OK   },
+        { "ERR",    RunStatus::ERR  }
     };
 
     string buildFasterQDump_command(const string& command, const Run& run, const string& output_dir) {

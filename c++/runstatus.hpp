@@ -1,5 +1,5 @@
-#ifndef RUN_STATUS_H
-#define RUN_STATUS_H
+#ifndef RUN_STATUS_HPP
+#define RUN_STATUS_HPP
 
 #include <map>
 #include <string>
@@ -20,20 +20,17 @@ namespace SRA {
 		{ "ERR",    RunStatus::ERR   }
 	};*/
 	
-	std::string inline to_string(const RunStatus& status)
-	{
-		switch(status)
-		{
-			case RunStatus::NO:  return "NO";  break;
-			case RunStatus::OK:     return "OK";     break;
-			case RunStatus::ERR:    return "ERR";    break;
+	std::string inline to_string(const RunStatus& status) {
+		switch(status) {
+			case RunStatus::NO:	 return "NO";	break;
+			case RunStatus::OK:  return "OK";	break;
+			case RunStatus::ERR: return "ERR";	break;
 		}
 		return nullptr;
 	}
 	
 	/*
-	inline std::ostream &operator << (std::ostream &os, const RunStatus &status)
-	{
+	inline std::ostream &operator << (std::ostream &os, const RunStatus &status) {
 		switch(status)
 		{
 			case RunStatus::TO_DO:  os << "TO_DO";  break;
