@@ -35,12 +35,14 @@ AllRunsFileTemp="$AllRunsPathWithNameFileNoExt"'_temp'"$AllRunsFileExt"
 AllRunsDoneFile="$AllRunsPathWithNameFileNoExt"'_done'"$AllRunsFileExt"
 AllRunsToDoFile="$AllRunsPathWithNameFileNoExt"'_todo'"$AllRunsFileExt"
 AllRunsErrFile="$AllRunsPathWithNameFileNoExt"'_err'"$AllRunsFileExt"
+AllRunsIgnoreFile="$AllRunsPathWithNameFileNoExt"'_ignore'"$AllRunsFileExt"
 AllRunsBackUpFile="$AllRunsPathWithNameFileNoExt"'_backup'"$AllRunsFileExt"
 
 echo -n >$AllRunsFileTemp
 echo -n >$AllRunsDoneFile
 echo -n >$AllRunsToDoFile
 echo -n >$AllRunsErrFile
+echo -n >$AllRunsIgnoreFile
 echo -n >$AllRunsBackUpFile
 
 while read ARF_line
@@ -98,7 +100,7 @@ do
     
     lineStatus=`echo "$ARF_newLine" | cut -d',' -f$ARF_columnValueIdx`
 
-    $script_dir/updateOneMetadataRow.sh "$ARF_newLine" "$lineStatus" $AllRunsToDoFile $AllRunsErrFile $AllRunsDoneFile
+    $script_dir/updateOneMetadataRow.sh "$ARF_newLine" "$lineStatus" $AllRunsToDoFile $AllRunsErrFile $AllRunsDoneFile $AllRunsIgnoreFile
 
     if test $? -ne 0
     then
