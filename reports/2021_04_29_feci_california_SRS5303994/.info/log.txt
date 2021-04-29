@@ -1,0 +1,180 @@
+[2021-04-29 10:32:30.057562]	0x00007fac4a35f700	debug		[generic]	Number of threads started: 3 of 5
+[2021-04-29 10:32:30.057605]	0x00007fac4b361700	debug		[generic]	Number of threads started: 1 of 5
+[2021-04-29 10:32:30.057522]	0x00007fac4ab60700	debug		[generic]	Number of threads started: 2 of 5
+[2021-04-29 10:32:30.057645]	0x00007fac49b5e700	debug		[generic]	Number of threads started: 4 of 5
+[2021-04-29 10:32:30.066780]	0x00007fac4a35f700	debug		[generic]	Number of threads ended: 0 of 5
+[2021-04-29 10:32:30.066793]	0x00007fac49b5e700	debug		[generic]	Number of threads ended: 0 of 5
+[2021-04-29 10:32:30.066808]	0x00007fac4b361700	debug		[generic]	Number of threads ended: 0 of 5
+[2021-04-29 10:32:30.066836]	0x00007fac49b5e700	info		SRR10016797	started SRR10016797 PAIRED 286 
+[2021-04-29 10:32:30.066781]	0x00007fac4ab60700	debug		[generic]	Number of threads ended: 0 of 5
+[2021-04-29 10:32:30.066855]	0x00007fac4ab60700	info		SRR10016799	started SRR10016799 PAIRED 895 
+[2021-04-29 10:32:30.066838]	0x00007fac4b361700	info		SRR10016800	started SRR10016800 PAIRED 906 
+[2021-04-29 10:32:30.066878]	0x00007fac4b361700	info		SRR10016800	started download with fasterq-dump
+[2021-04-29 10:32:30.057736]	0x00007fac4935d700	debug		[generic]	Number of threads started: 5 of 5
+[2021-04-29 10:32:30.066880]	0x00007fac4ab60700	info		SRR10016799	started download with fasterq-dump
+[2021-04-29 10:32:30.066910]	0x00007fac49b5e700	info		SRR10016797	started download with fasterq-dump
+[2021-04-29 10:32:30.066901]	0x00007fac4935d700	debug		[generic]	Number of threads ended: 0 of 5
+[2021-04-29 10:32:30.066930]	0x00007fac4935d700	info		SRR10016798	started SRR10016798 PAIRED 215 
+[2021-04-29 10:32:30.066911]	0x00007fac4ab60700	info		SRR10016799	$HOME/SRA/scripts/execFasterQDump.sh SRR10016799 PAIRED /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016799 2>&1
+[2021-04-29 10:32:30.066953]	0x00007fac4935d700	info		SRR10016798	started download with fasterq-dump
+[2021-04-29 10:32:30.066976]	0x00007fac4b361700	info		SRR10016800	$HOME/SRA/scripts/execFasterQDump.sh SRR10016800 PAIRED /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016800 2>&1
+[2021-04-29 10:32:30.066996]	0x00007fac49b5e700	info		SRR10016797	$HOME/SRA/scripts/execFasterQDump.sh SRR10016797 PAIRED /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016797 2>&1
+[2021-04-29 10:32:30.067066]	0x00007fac4935d700	info		SRR10016798	$HOME/SRA/scripts/execFasterQDump.sh SRR10016798 PAIRED /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016798 2>&1
+[2021-04-29 10:32:30.067097]	0x00007fac4a35f700	info		SRR10016796	started SRR10016796 PAIRED 389 
+[2021-04-29 10:32:30.067124]	0x00007fac4a35f700	info		SRR10016796	started download with fasterq-dump
+[2021-04-29 10:32:30.067176]	0x00007fac4a35f700	info		SRR10016796	$HOME/SRA/scripts/execFasterQDump.sh SRR10016796 PAIRED /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016796 2>&1
+[2021-04-29 10:36:31.526626]	0x00007fac4935d700	info		SRR10016798	fasterq-dump --split-files SRR10016798
+[2021-04-29 10:36:31.526691]	0x00007fac4935d700	info		SRR10016798	spots read      : 1,264,169
+[2021-04-29 10:36:31.526705]	0x00007fac4935d700	info		SRR10016798	reads read      : 2,528,338
+[2021-04-29 10:36:31.526720]	0x00007fac4935d700	info		SRR10016798	reads written   : 2,528,338
+[2021-04-29 10:36:31.526734]	0x00007fac4935d700	info		SRR10016798	download done correctly!
+[2021-04-29 10:36:31.526753]	0x00007fac4935d700	info		SRR10016798	looking for fastq file size...
+[2021-04-29 10:36:31.526769]	0x00007fac4935d700	info		SRR10016798	$HOME/SRA/scripts/getFastqFileSize.sh /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016798 SRR10016798 PAIRED 2>&1
+[2021-04-29 10:36:31.535047]	0x00007fac4935d700	info		SRR10016798	fastq file size obtained correctly!
+[2021-04-29 10:36:31.535124]	0x00007fac4935d700	info		SRR10016798	started analysis with kraken
+[2021-04-29 10:36:31.535143]	0x00007fac4935d700	info		SRR10016798	$HOME/SRA/scripts/execKraken.sh /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016798 2>&1
+[2021-04-29 10:36:44.707676]	0x00007fac4935d700	info		SRR10016798	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired SRR10016798_1.fastq SRR10016798_2.fastq --output SRR10016798.kraken --report SRR10016798.kraken.report.txt
+[2021-04-29 10:36:44.707729]	0x00007fac4935d700	info		SRR10016798	Loading database information... done.
+[2021-04-29 10:36:44.707744]	0x00007fac4935d700	info		SRR10016798	1264169 sequences (379.25 Mbp) processed in 4.015s (18891.7 Kseq/m, 5667.52 Mbp/m).
+[2021-04-29 10:36:44.707758]	0x00007fac4935d700	info		SRR10016798	  463689 sequences classified (36.68%)
+[2021-04-29 10:36:44.707771]	0x00007fac4935d700	info		SRR10016798	  800480 sequences unclassified (63.32%)
+[2021-04-29 10:36:44.707784]	0x00007fac4935d700	info		SRR10016798	analysis completed correctly!
+[2021-04-29 10:36:44.707799]	0x00007fac4935d700	info		SRR10016798	deleting fastq files...
+[2021-04-29 10:36:44.707814]	0x00007fac4935d700	info		SRR10016798	$HOME/SRA/scripts/deleteFiles.sh SRR10016798 /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016798 true false 2>&1
+[2021-04-29 10:36:44.863369]	0x00007fac4935d700	info		SRR10016798	deleted files correctly!
+[2021-04-29 10:36:44.863486]	0x00007fac4935d700	info		SRR10016798	ended SRR10016798 PAIRED 215  OK
+[2021-04-29 10:36:44.863581]	0x00007fac4935d700	debug		[generic]	Number of threads started: 5 of 5
+[2021-04-29 10:36:44.863647]	0x00007fac4935d700	debug		[generic]	Number of threads ended: 1 of 5
+[2021-04-29 10:37:34.903997]	0x00007fac49b5e700	info		SRR10016797	fasterq-dump --split-files SRR10016797
+[2021-04-29 10:37:34.904048]	0x00007fac49b5e700	info		SRR10016797	spots read      : 1,835,196
+[2021-04-29 10:37:34.904063]	0x00007fac49b5e700	info		SRR10016797	reads read      : 3,670,392
+[2021-04-29 10:37:34.904085]	0x00007fac49b5e700	info		SRR10016797	reads written   : 3,670,392
+[2021-04-29 10:37:34.904101]	0x00007fac49b5e700	info		SRR10016797	download done correctly!
+[2021-04-29 10:37:34.904116]	0x00007fac49b5e700	info		SRR10016797	looking for fastq file size...
+[2021-04-29 10:37:34.904132]	0x00007fac49b5e700	info		SRR10016797	$HOME/SRA/scripts/getFastqFileSize.sh /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016797 SRR10016797 PAIRED 2>&1
+[2021-04-29 10:37:34.911231]	0x00007fac49b5e700	info		SRR10016797	fastq file size obtained correctly!
+[2021-04-29 10:37:34.911285]	0x00007fac49b5e700	info		SRR10016797	started analysis with kraken
+[2021-04-29 10:37:34.911303]	0x00007fac49b5e700	info		SRR10016797	$HOME/SRA/scripts/execKraken.sh /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016797 2>&1
+[2021-04-29 10:37:49.365467]	0x00007fac49b5e700	info		SRR10016797	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired SRR10016797_1.fastq SRR10016797_2.fastq --output SRR10016797.kraken --report SRR10016797.kraken.report.txt
+[2021-04-29 10:37:49.365554]	0x00007fac49b5e700	info		SRR10016797	Loading database information... done.
+[2021-04-29 10:37:49.365618]	0x00007fac49b5e700	info		SRR10016797	1835196 sequences (550.56 Mbp) processed in 5.650s (19489.7 Kseq/m, 5846.90 Mbp/m).
+[2021-04-29 10:37:49.365683]	0x00007fac49b5e700	info		SRR10016797	  681002 sequences classified (37.11%)
+[2021-04-29 10:37:49.365699]	0x00007fac49b5e700	info		SRR10016797	  1154194 sequences unclassified (62.89%)
+[2021-04-29 10:37:49.365724]	0x00007fac49b5e700	info		SRR10016797	analysis completed correctly!
+[2021-04-29 10:37:49.365771]	0x00007fac49b5e700	info		SRR10016797	deleting fastq files...
+[2021-04-29 10:37:49.365787]	0x00007fac49b5e700	info		SRR10016797	$HOME/SRA/scripts/deleteFiles.sh SRR10016797 /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016797 true false 2>&1
+[2021-04-29 10:37:54.853862]	0x00007fac49b5e700	info		SRR10016797	deleted files correctly!
+[2021-04-29 10:37:54.853922]	0x00007fac49b5e700	info		SRR10016797	ended SRR10016797 PAIRED 286  OK
+[2021-04-29 10:37:54.853938]	0x00007fac49b5e700	debug		[generic]	Number of threads started: 5 of 5
+[2021-04-29 10:37:54.853952]	0x00007fac49b5e700	debug		[generic]	Number of threads ended: 2 of 5
+[2021-04-29 10:38:00.920571]	0x00007fac4a35f700	info		SRR10016796	fasterq-dump --split-files SRR10016796
+[2021-04-29 10:38:00.920637]	0x00007fac4a35f700	info		SRR10016796	spots read      : 2,171,903
+[2021-04-29 10:38:00.920652]	0x00007fac4a35f700	info		SRR10016796	reads read      : 4,343,806
+[2021-04-29 10:38:00.920665]	0x00007fac4a35f700	info		SRR10016796	reads written   : 4,343,806
+[2021-04-29 10:38:00.920680]	0x00007fac4a35f700	info		SRR10016796	download done correctly!
+[2021-04-29 10:38:00.920694]	0x00007fac4a35f700	info		SRR10016796	looking for fastq file size...
+[2021-04-29 10:38:00.920709]	0x00007fac4a35f700	info		SRR10016796	$HOME/SRA/scripts/getFastqFileSize.sh /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016796 SRR10016796 PAIRED 2>&1
+[2021-04-29 10:38:00.928356]	0x00007fac4a35f700	info		SRR10016796	fastq file size obtained correctly!
+[2021-04-29 10:38:00.928424]	0x00007fac4a35f700	info		SRR10016796	started analysis with kraken
+[2021-04-29 10:38:00.928442]	0x00007fac4a35f700	info		SRR10016796	$HOME/SRA/scripts/execKraken.sh /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016796 2>&1
+[2021-04-29 10:38:17.309626]	0x00007fac4a35f700	info		SRR10016796	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired SRR10016796_1.fastq SRR10016796_2.fastq --output SRR10016796.kraken --report SRR10016796.kraken.report.txt
+[2021-04-29 10:38:17.309678]	0x00007fac4a35f700	info		SRR10016796	Loading database information... done.
+[2021-04-29 10:38:17.309692]	0x00007fac4a35f700	info		SRR10016796	2171903 sequences (651.57 Mbp) processed in 6.870s (18968.8 Kseq/m, 5690.63 Mbp/m).
+[2021-04-29 10:38:17.309703]	0x00007fac4a35f700	info		SRR10016796	  808105 sequences classified (37.21%)
+[2021-04-29 10:38:17.309714]	0x00007fac4a35f700	info		SRR10016796	  1363798 sequences unclassified (62.79%)
+[2021-04-29 10:38:17.309726]	0x00007fac4a35f700	info		SRR10016796	analysis completed correctly!
+[2021-04-29 10:38:17.309739]	0x00007fac4a35f700	info		SRR10016796	deleting fastq files...
+[2021-04-29 10:38:17.309752]	0x00007fac4a35f700	info		SRR10016796	$HOME/SRA/scripts/deleteFiles.sh SRR10016796 /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016796 true false 2>&1
+[2021-04-29 10:38:17.593915]	0x00007fac4a35f700	info		SRR10016796	deleted files correctly!
+[2021-04-29 10:38:17.593966]	0x00007fac4a35f700	info		SRR10016796	ended SRR10016796 PAIRED 389  OK
+[2021-04-29 10:38:17.593982]	0x00007fac4a35f700	debug		[generic]	Number of threads started: 5 of 5
+[2021-04-29 10:38:17.593997]	0x00007fac4a35f700	debug		[generic]	Number of threads ended: 3 of 5
+[2021-04-29 10:47:27.279807]	0x00007fac4b361700	info		SRR10016800	fasterq-dump --split-files SRR10016800
+[2021-04-29 10:47:27.279883]	0x00007fac4b361700	info		SRR10016800	spots read      : 6,982,583
+[2021-04-29 10:47:27.279902]	0x00007fac4b361700	info		SRR10016800	reads read      : 13,965,166
+[2021-04-29 10:47:27.279916]	0x00007fac4b361700	info		SRR10016800	reads written   : 13,965,166
+[2021-04-29 10:47:27.279931]	0x00007fac4b361700	info		SRR10016800	download done correctly!
+[2021-04-29 10:47:27.279946]	0x00007fac4b361700	info		SRR10016800	looking for fastq file size...
+[2021-04-29 10:47:27.279961]	0x00007fac4b361700	info		SRR10016800	$HOME/SRA/scripts/getFastqFileSize.sh /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016800 SRR10016800 PAIRED 2>&1
+[2021-04-29 10:47:27.288371]	0x00007fac4b361700	info		SRR10016800	fastq file size obtained correctly!
+[2021-04-29 10:47:27.288443]	0x00007fac4b361700	info		SRR10016800	started analysis with kraken
+[2021-04-29 10:47:27.288461]	0x00007fac4b361700	info		SRR10016800	$HOME/SRA/scripts/execKraken.sh /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016800 2>&1
+[2021-04-29 10:47:30.610556]	0x00007fac4ab60700	info		SRR10016799	fasterq-dump --split-files SRR10016799
+[2021-04-29 10:47:30.610624]	0x00007fac4ab60700	info		SRR10016799	spots read      : 6,882,630
+[2021-04-29 10:47:30.610640]	0x00007fac4ab60700	info		SRR10016799	reads read      : 13,765,260
+[2021-04-29 10:47:30.610653]	0x00007fac4ab60700	info		SRR10016799	reads written   : 13,765,260
+[2021-04-29 10:47:30.610667]	0x00007fac4ab60700	info		SRR10016799	download done correctly!
+[2021-04-29 10:47:30.610681]	0x00007fac4ab60700	info		SRR10016799	looking for fastq file size...
+[2021-04-29 10:47:30.610698]	0x00007fac4ab60700	info		SRR10016799	$HOME/SRA/scripts/getFastqFileSize.sh /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016799 SRR10016799 PAIRED 2>&1
+[2021-04-29 10:47:30.618705]	0x00007fac4ab60700	info		SRR10016799	fastq file size obtained correctly!
+[2021-04-29 10:47:30.618775]	0x00007fac4ab60700	info		SRR10016799	started analysis with kraken
+[2021-04-29 10:47:30.618792]	0x00007fac4ab60700	info		SRR10016799	$HOME/SRA/scripts/execKraken.sh /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016799 2>&1
+[2021-04-29 10:47:52.717398]	0x00007fac4b361700	info		SRR10016800	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired SRR10016800_1.fastq SRR10016800_2.fastq --output SRR10016800.kraken --report SRR10016800.kraken.report.txt
+[2021-04-29 10:47:52.717469]	0x00007fac4b361700	info		SRR10016800	Loading database information... done.
+[2021-04-29 10:47:52.717484]	0x00007fac4b361700	info		SRR10016800	6982583 sequences (1396.52 Mbp) processed in 16.557s (25303.9 Kseq/m, 5060.78 Mbp/m).
+[2021-04-29 10:47:52.717499]	0x00007fac4b361700	info		SRR10016800	  2212776 sequences classified (31.69%)
+[2021-04-29 10:47:52.717511]	0x00007fac4b361700	info		SRR10016800	  4769807 sequences unclassified (68.31%)
+[2021-04-29 10:47:52.717525]	0x00007fac4b361700	info		SRR10016800	analysis completed correctly!
+[2021-04-29 10:47:52.717539]	0x00007fac4b361700	info		SRR10016800	deleting fastq files...
+[2021-04-29 10:47:52.717553]	0x00007fac4b361700	info		SRR10016800	$HOME/SRA/scripts/deleteFiles.sh SRR10016800 /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016800 true false 2>&1
+[2021-04-29 10:47:57.108551]	0x00007fac4b361700	info		SRR10016800	deleted files correctly!
+[2021-04-29 10:47:57.108624]	0x00007fac4b361700	info		SRR10016800	ended SRR10016800 PAIRED 906  OK
+[2021-04-29 10:47:57.108684]	0x00007fac4b361700	debug		[generic]	Number of threads started: 5 of 5
+[2021-04-29 10:47:57.108768]	0x00007fac4b361700	debug		[generic]	Number of threads ended: 4 of 5
+[2021-04-29 10:48:16.823455]	0x00007fac4ab60700	info		SRR10016799	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired SRR10016799_1.fastq SRR10016799_2.fastq --output SRR10016799.kraken --report SRR10016799.kraken.report.txt
+[2021-04-29 10:48:16.823525]	0x00007fac4ab60700	info		SRR10016799	Loading database information... done.
+[2021-04-29 10:48:16.823541]	0x00007fac4ab60700	info		SRR10016799	6882630 sequences (1376.53 Mbp) processed in 34.053s (12126.8 Kseq/m, 2425.35 Mbp/m).
+[2021-04-29 10:48:16.823558]	0x00007fac4ab60700	info		SRR10016799	  2184452 sequences classified (31.74%)
+[2021-04-29 10:48:16.823571]	0x00007fac4ab60700	info		SRR10016799	  4698178 sequences unclassified (68.26%)
+[2021-04-29 10:48:16.823586]	0x00007fac4ab60700	info		SRR10016799	analysis completed correctly!
+[2021-04-29 10:48:16.823600]	0x00007fac4ab60700	info		SRR10016799	deleting fastq files...
+[2021-04-29 10:48:16.823615]	0x00007fac4ab60700	info		SRR10016799	$HOME/SRA/scripts/deleteFiles.sh SRR10016799 /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/SRR10016799 true false 2>&1
+[2021-04-29 10:48:17.493198]	0x00007fac4ab60700	info		SRR10016799	deleted files correctly!
+[2021-04-29 10:48:17.493265]	0x00007fac4ab60700	info		SRR10016799	ended SRR10016799 PAIRED 895  OK
+[2021-04-29 10:48:17.493281]	0x00007fac4ab60700	debug		[generic]	Number of threads started: 5 of 5
+[2021-04-29 10:48:17.493296]	0x00007fac4ab60700	debug		[generic]	Number of threads ended: 5 of 5
+[2021-04-29 10:48:17.493565]	0x00007fac4b365740	info		[generic]	updating all runs file...
+[2021-04-29 10:48:17.493604]	0x00007fac4b365740	info		[generic]	$HOME/SRA/scripts/updateAllRunsFile.sh $HOME/SRA/metadata/metadata_filtered_small.csv 8 19 /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/.info/results_all.csv 1 2 /home/fzuccato/SRA/reports/2021_04_29_feci_california_SRS5303994/.info/updates_log.txt 2>&1
+[2021-04-29 10:49:29.125521]	0x00007fac4b365740	info		[generic]	running... 500 of 13192
+[2021-04-29 10:49:29.125587]	0x00007fac4b365740	info		[generic]	----------------------UPDATE-----------------------------------
+[2021-04-29 10:49:29.125634]	0x00007fac4b365740	info		[generic]	585 of 13192: SRR10016796
+[2021-04-29 10:49:29.125648]	0x00007fac4b365740	info		[generic]	SRR10016796: NO -> OK
+[2021-04-29 10:49:29.125692]	0x00007fac4b365740	info		[generic]	----------------------UPDATE-----------------------------------
+[2021-04-29 10:49:29.125706]	0x00007fac4b365740	info		[generic]	586 of 13192: SRR10016797
+[2021-04-29 10:49:29.125738]	0x00007fac4b365740	info		[generic]	SRR10016797: NO -> OK
+[2021-04-29 10:49:29.125751]	0x00007fac4b365740	info		[generic]	----------------------UPDATE-----------------------------------
+[2021-04-29 10:49:29.125779]	0x00007fac4b365740	info		[generic]	587 of 13192: SRR10016798
+[2021-04-29 10:49:29.125792]	0x00007fac4b365740	info		[generic]	SRR10016798: NO -> OK
+[2021-04-29 10:49:29.125805]	0x00007fac4b365740	info		[generic]	----------------------UPDATE-----------------------------------
+[2021-04-29 10:49:29.125817]	0x00007fac4b365740	info		[generic]	588 of 13192: SRR10016799
+[2021-04-29 10:49:29.125868]	0x00007fac4b365740	info		[generic]	SRR10016799: OK -> OK
+[2021-04-29 10:49:29.125892]	0x00007fac4b365740	info		[generic]	----------------------UPDATE-----------------------------------
+[2021-04-29 10:49:29.125933]	0x00007fac4b365740	info		[generic]	589 of 13192: SRR10016800
+[2021-04-29 10:49:29.125946]	0x00007fac4b365740	info		[generic]	SRR10016800: NO -> OK
+[2021-04-29 10:49:29.125957]	0x00007fac4b365740	info		[generic]	running... 1000 of 13192
+[2021-04-29 10:49:29.125969]	0x00007fac4b365740	info		[generic]	running... 1500 of 13192
+[2021-04-29 10:49:29.126012]	0x00007fac4b365740	info		[generic]	running... 2000 of 13192
+[2021-04-29 10:49:29.126026]	0x00007fac4b365740	info		[generic]	running... 2500 of 13192
+[2021-04-29 10:49:29.126037]	0x00007fac4b365740	info		[generic]	running... 3000 of 13192
+[2021-04-29 10:49:29.126049]	0x00007fac4b365740	info		[generic]	running... 3500 of 13192
+[2021-04-29 10:49:29.126061]	0x00007fac4b365740	info		[generic]	running... 4000 of 13192
+[2021-04-29 10:49:29.126073]	0x00007fac4b365740	info		[generic]	running... 4500 of 13192
+[2021-04-29 10:49:29.126085]	0x00007fac4b365740	info		[generic]	running... 5000 of 13192
+[2021-04-29 10:49:29.126097]	0x00007fac4b365740	info		[generic]	running... 5500 of 13192
+[2021-04-29 10:49:29.126109]	0x00007fac4b365740	info		[generic]	running... 6000 of 13192
+[2021-04-29 10:49:29.126120]	0x00007fac4b365740	info		[generic]	running... 6500 of 13192
+[2021-04-29 10:49:29.126132]	0x00007fac4b365740	info		[generic]	running... 7000 of 13192
+[2021-04-29 10:49:29.126148]	0x00007fac4b365740	info		[generic]	running... 7500 of 13192
+[2021-04-29 10:49:29.126160]	0x00007fac4b365740	info		[generic]	running... 8000 of 13192
+[2021-04-29 10:49:29.126172]	0x00007fac4b365740	info		[generic]	running... 8500 of 13192
+[2021-04-29 10:49:29.126220]	0x00007fac4b365740	info		[generic]	running... 9000 of 13192
+[2021-04-29 10:49:29.126233]	0x00007fac4b365740	info		[generic]	running... 9500 of 13192
+[2021-04-29 10:49:29.126275]	0x00007fac4b365740	info		[generic]	running... 10000 of 13192
+[2021-04-29 10:49:29.126288]	0x00007fac4b365740	info		[generic]	running... 10500 of 13192
+[2021-04-29 10:49:29.126300]	0x00007fac4b365740	info		[generic]	running... 11000 of 13192
+[2021-04-29 10:49:29.126312]	0x00007fac4b365740	info		[generic]	running... 11500 of 13192
+[2021-04-29 10:49:29.126341]	0x00007fac4b365740	info		[generic]	running... 12000 of 13192
+[2021-04-29 10:49:29.126354]	0x00007fac4b365740	info		[generic]	running... 12500 of 13192
+[2021-04-29 10:49:29.126366]	0x00007fac4b365740	info		[generic]	running... 13000 of 13192
+[2021-04-29 10:49:29.126414]	0x00007fac4b365740	info		[generic]	updated all runs file metadata correctly!
+[2021-04-29 10:49:29.126429]	0x00007fac4b365740	info		[generic]	ended everything ok!
