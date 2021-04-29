@@ -5,6 +5,7 @@ nOfParamsNeeded=4
 if test $# -ne $nOfParamsNeeded
 then
     echo "usage: $0 <inputFile> <keyField> <allDataFile> <fieldToAdd>"
+    echo "example: $0 /path/to/runs_list.csv 1 $HOME/SRA/metadata/metadata_filtered_small.csv 14,17"
     exit 1
 fi
 
