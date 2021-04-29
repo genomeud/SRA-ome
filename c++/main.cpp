@@ -251,18 +251,30 @@ int main(int argc, char *argv[]) {
     //from here all runs has ended
     
     int printToFileStatus = -1;
+
+    //prints to results_all.csv
+    //line example: RUN,OK|ERR
     vector<string> resultsOfAllRuns = buildOutputForResultAllFile(runs, ',');
     printToFileStatus = SRA::printToFile(resultAll_outputfile, resultsOfAllRuns);
     if (printToFileStatus != 0) {
         string printError = "failed writing to file " + resultAll_outputfile;
         buildAndPrint(printError, nullptr, ERROR, true);
     }
+
+    //prints to results_err.csv (if there are errors)
+    //line example: RUN,ERR
     vector<string> resultsOfErrRuns = buildOutputForResultErrorFile(runs, ',');
-    printToFileStatus = SRA::printToFile(resultErr_outputfile, resultsOfErrRuns);
-    if (printToFileStatus != 0) {
-        string printError = "failed writing to file " + resultErr_outputfile;
-        buildAndPrint(printError, nullptr, ERROR, true);
+    if(resultsOfErrRuns.size() > 0) {
+        //only if some runs gave error then make error file
+        printToFileStatus = SRA::printToFile(resultErr_outputfile, resultsOfErrRuns);
+        if (printToFileStatus != 0) {
+            string printError = "failed writing to file " + resultErr_outputfile;
+            buildAndPrint(printError, nullptr, ERROR, true);
+        }
     }
+
+    //prints to fastq_files_size.txt
+    //line example: RUN sizeCompressed  sizeNotCompressed
     vector<string> fastQSizesOfAllRuns =  buildOutputForFastQSizeFile(runs, '\t');
     printToFileStatus = SRA::printToFile(fastQSize_outputfile, fastQSizesOfAllRuns);
     if (printToFileStatus != 0) {
@@ -270,6 +282,7 @@ int main(int argc, char *argv[]) {
         buildAndPrint(printError, nullptr, ERROR, true);
     }
     
+    //updates status OK|ERR of runs executed to the metadata.csv file
     execUpdateAllRunsFile();
 
     string printEnd = "ended everything ok!";
