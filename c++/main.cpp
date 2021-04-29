@@ -98,9 +98,9 @@ using namespace filesystem;
     #pragma region parameters
     
         //delete files *.fastq yes/no 
-        bool deleteFastq = true;
+        bool deleteFastqFiles = true;
         //delete files *.kraken yes/no 
-        bool deleteKraken = true;
+        bool deleteKrakenFiles = true;
         //input file
         string runs_path;
         //input directory
@@ -507,7 +507,7 @@ void execDeleteFiles(SRA::Run& run) {
     string toPrint = "deleting fastq files...";
     buildAndPrint(toPrint, &run, INFO, true);
     string cmd = SRA::buildDeleteFiles_command(
-        deleteFiles_script, run, run.getFastq_dir(), deleteFastq, deleteKraken
+        deleteFiles_script, run, run.getFastq_dir(), deleteFastqFiles, deleteKrakenFiles
     );
     tuple<int, string> output = execAndPrint(cmd, &run, true);
     int exitCode = std::get<0>(output);

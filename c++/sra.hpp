@@ -59,7 +59,7 @@ namespace SRA {
     };
 
     map<string, RunStatus> runStatusMap = {
-        { "TO_DO",  RunStatus::NO   },
+        { "TO_DO",  RunStatus::TO_DO   },
         { "OK",     RunStatus::OK   },
         { "ERR",    RunStatus::ERR  }
     };

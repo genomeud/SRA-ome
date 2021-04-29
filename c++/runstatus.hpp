@@ -8,23 +8,26 @@
 namespace SRA {
 
 	enum class RunStatus {
-		NO,
+		TO_DO,
 		OK,
-		ERR
+		ERR,
+		IGNORE
 	};
 
 	extern std::map<std::string, RunStatus> runStatusMap;
 	/*extern std::map<std::string, RunStatus> runStatusMap = {
-		{ "NO",  RunStatus::NO },
-		{ "OK",     RunStatus::OK    },
-		{ "ERR",    RunStatus::ERR   }
+		{ "TO_DO",  RunStatus::TO_DO  },
+		{ "OK",     RunStatus::OK     },
+		{ "ERR",    RunStatus::ERR    },
+		{ "IGNORE", RunStatus::IGNORE }
 	};*/
 	
 	std::string inline to_string(const RunStatus& status) {
 		switch(status) {
-			case RunStatus::NO:	 return "NO";	break;
-			case RunStatus::OK:  return "OK";	break;
-			case RunStatus::ERR: return "ERR";	break;
+			case RunStatus::TO_DO:	return "TO_DO";	 break;
+			case RunStatus::OK:  	return "OK";	 break;
+			case RunStatus::ERR: 	return "ERR";	 break;
+			case RunStatus::IGNORE:	return "IGNORE"; break;
 		}
 		return nullptr;
 	}
@@ -36,6 +39,7 @@ namespace SRA {
 			case RunStatus::TO_DO:  os << "TO_DO";  break;
 			case RunStatus::OK:     os << "OK";     break;
 			case RunStatus::ERR:    os << "ERR";    break;
+			case RunStatus::IGNORE: os << "IGNORE"; break;
 		}
 		return os;
 	}
