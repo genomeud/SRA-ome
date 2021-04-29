@@ -82,8 +82,8 @@ using namespace filesystem;
     #pragma region files
 
         //metadata file path
-        //string allMetadataInfo_file = metadata_dir.native() + "/metadata_filtered_small.csv";
-        string allMetadataInfo_file = "$HOME/SRA/c++/metadata_COPY_FOR_TESTING/metadata_COPY_FOR_TESTING.csv";
+        string allMetadataInfo_file = metadata_dir.native() + "/metadata_filtered_small.csv";
+        //string allMetadataInfo_file = "$HOME/SRA/c++/metadata_COPY_FOR_TESTING/metadata_COPY_FOR_TESTING.csv";
 
         //output files
         string resultAll_outputfile;
@@ -273,7 +273,7 @@ int main(int argc, char *argv[]) {
     execUpdateAllRunsFile();
 
     string printEnd = "ended everything ok!";
-    buildAndPrint(printEnd, nullptr, ERROR, true);
+    buildAndPrint(printEnd, nullptr, INFO, true);
     
     return 0;
 }
@@ -483,8 +483,10 @@ void execDeleteFiles(SRA::Run& run) {
     //calculate from filesystem fastq file uncompressed size
     string toPrint = "deleting fastq files...";
     buildAndPrint(toPrint, &run, INFO, true);
+    bool deleteFastq = true;
+    bool deleteKraken = false;
     string cmd = SRA::buildDeleteFiles_command(
-        deleteFiles_script, run, run.getFastq_dir()
+        deleteFiles_script, run, run.getFastq_dir(), deleteFastq, deleteKraken
     );
     tuple<int, string> output = execAndPrint(cmd, &run, true);
     int exitCode = std::get<0>(output);

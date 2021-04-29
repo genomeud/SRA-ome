@@ -37,7 +37,7 @@ namespace SRA {
     string buildFasterQDump_command(const string& command, const Run& run, const string& output_dir);
     string buildKraken_command(const string& command, const string& input_dir);
     string buildGetFastqFileSize_command(const string& command, const Run& run, const string& input_dir);
-    string buildDeleteFiles_command(const string& command, const Run& run, const string& dir);
+    string buildDeleteFiles_command(const string& command, const Run& run, const string& dir, bool deleteFastq, bool deleteKraken);
     string buildUpdateAllRunsFile_command(const string& command, const string& metadata_inputfile, const string& resultAll_inputfile, const string& updatesLog_outputfile);
     //output building
     vector<string> buildOutputForResultAllFile(const vector<Run>& runs, char delimiter);
@@ -49,7 +49,7 @@ namespace SRA {
     string getIfNonNegativeSizeAsStringElseErrorString(int size);
     int getRunsFromFile(const string& filePath, OUT vector<Run>& runs, char delimiter);
     vector<string> split(const string& line, char delim);
-
+    string to_string(bool boolean);
 
     //string to enum
 
@@ -87,10 +87,12 @@ namespace SRA {
         return cmd;
     }
 
-    string buildDeleteFiles_command(const string& command, const Run& run, const string& dir) {
+    string buildDeleteFiles_command(const string& command, const Run& run, const string& dir, bool deleteFastq, bool deleteKraken) {
         string cmd = command + " ";
         cmd += run.getRunID() + " ";
-        cmd += dir;
+        cmd += dir + " ";
+        cmd += to_string(deleteFastq) + " ";
+        cmd += to_string(deleteKraken);
         return cmd;
     }
 
@@ -186,6 +188,11 @@ namespace SRA {
             lines.push_back(line);
         }
         return lines;
+    }
+
+    string to_string(bool boolean) {
+        if (boolean) return "true";
+        else         return "false";
     }
 
 }
