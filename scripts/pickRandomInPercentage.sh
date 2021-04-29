@@ -27,7 +27,7 @@ then
     MAX_SIZE_MB=$7
 fi
 
-cd /usr/tmp
+cd $outputDir
 
 #temp files
 tmpCountUniqGroupingFile=tmpCountUniqGroupingFile.txt
@@ -38,8 +38,8 @@ echo -n >$tmpAllRunsSorted
 echo -n >$tmpPossibleRunsSorted
 
 #output and log files
-outputFile=$outputDir'/runs_list.csv'
-logFile=$outputDir/'runs_list_log.txt'
+outputFile='runs_list.csv'
+logFile='runs_list_log.txt'
 echo -n >$outputFile
 echo -n >$logFile
 
