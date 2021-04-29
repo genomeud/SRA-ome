@@ -95,6 +95,21 @@ using namespace filesystem;
 
     #pragma endregion files
 
+    #pragma region parameters
+    
+        //delete files *.fastq yes/no 
+        bool deleteFastq = true;
+        //delete files *.kraken yes/no 
+        bool deleteKraken = true;
+        //input file
+        string runs_path;
+        //input directory
+        path mainOutput_dir;
+        //mainOutput_dir/.info
+        path infoFilesOutput_dir;
+
+    #pragma endregion parameters
+
 #pragma endregion variables
 
 #pragma region multithread_declaration
@@ -159,11 +174,6 @@ int main(int argc, char *argv[]) {
     myLogger = logging::trivial::logger::get();
     
     const int nOfParamsNeeded = 2;
-    
-    //input files
-    string runs_path;
-    path mainOutput_dir;
-    path infoFilesOutput_dir;
 
     #pragma region checkArgs
 
@@ -496,8 +506,6 @@ void execDeleteFiles(SRA::Run& run) {
     //calculate from filesystem fastq file uncompressed size
     string toPrint = "deleting fastq files...";
     buildAndPrint(toPrint, &run, INFO, true);
-    bool deleteFastq = true;
-    bool deleteKraken = false;
     string cmd = SRA::buildDeleteFiles_command(
         deleteFiles_script, run, run.getFastq_dir(), deleteFastq, deleteKraken
     );
