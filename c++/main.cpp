@@ -484,20 +484,38 @@ void execGetFastqFileSize(SRA::Run& run) {
     int exitCode = std::get<0>(output);
     logging::trivial::severity_level level;
 
-    if(exitCode != 0) {
+    if(exitCode == 0) {
+        //OK
+        level = INFO;
+        int sizeUncompressed = stoi(std::get<1>(output));
+        run.setSizeUncompressed(sizeUncompressed);
+        toPrint = "fastq file size obtained correctly!";
+    
+    } else if (exitCode > 0) {
+        //WARNING
+        level = WARNING;
+        //probably layout was wrong:
+        // - is PAIRED but found 1 run
+        // - is SINGLE but found 2 run
+        //print warn message, no need to put run status to error
+        //output expected:
+        //'size''\n''warn_message'
+        vector<string> outputs = SRA::split(std::get<1>(output), '\n');
+        int sizeUncompressed = stoi(outputs.at(0));
+        run.setSizeUncompressed(sizeUncompressed);
+        string warning = outputs.at(1);
+        buildAndPrint(warning, &run, level, true);
+        toPrint = "getFastqFileSize caused warning with exit code: " + to_string(exitCode);
+
+    } else {
+        //ERROR
         level = ERROR;
         //getFastqFileSize failed: file not exist?
         run.setRunStatus(SRA::RunStatus::ERR);
         string error = std::get<1>(output);
         buildAndPrint(error, &run, level, true);
-        toPrint = "get FastqFileSize caused error with exit code: " + to_string(exitCode);
+        toPrint = "getFastqFileSize caused error with exit code: " + to_string(exitCode);
 
-    } else {
-        //getFastqFileSize ok
-        level = INFO;
-        int sizeUncompressed = stoi(std::get<1>(output));
-        run.setSizeUncompressed(sizeUncompressed);
-        toPrint = "fastq file size obtained correctly!";
     }
     buildAndPrint(toPrint, &run, level, true);
 }
