@@ -1,0 +1,8 @@
+NB:
+These two runs gave error because in SRA they are marked as 'SINGLE', but in reality their layout is 'PAIRED': 
+infact both of them after fasterq-dump produced 2 fastq files.
+Now we will make a notice to SRA, but in reality the analysis went good without any problem
+So we will save them with an OK and not ERR. 
+
+SRR9860477,OK
+SRR8377841,OK
