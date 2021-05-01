@@ -94,7 +94,7 @@ namespace SRA {
         std::string run = "";
         run += ID + separator;
         run += SRA::to_string(layout) + separator;
-        run += std::to_string(sizeCompressed) + separator;
+        run += std::to_string(sizeCompressed);
         return run;
     }
 }

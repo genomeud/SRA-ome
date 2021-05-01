@@ -423,6 +423,7 @@ void startRun(SRA::Run& run) {
 
 void endRun(SRA::Run& run) {
     string toPrint = "ended " + run.getIdLayoutSizeCompressed(' ');
+    toPrint += " -> " + to_string(run.getSizeUncompressed());
     toPrint += " " + SRA::to_string(run.getRunStatus());
     buildAndPrint(toPrint, &run, INFO, true);
     run.setInProcess(false);
@@ -491,7 +492,7 @@ void execGetFastqFileSize(SRA::Run& run) {
         run.setSizeUncompressed(sizeUncompressed);
         toPrint = "fastq file size obtained correctly!";
     
-    } else if (exitCode > 0) {
+    } else if (exitCode > 100) {
         //WARNING
         level = WARNING;
         //probably layout was wrong:

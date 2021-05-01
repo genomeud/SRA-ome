@@ -9,6 +9,7 @@ metadata/*
 runs/analysis/2021_03_26/[A-Z]RR*
 *.xml
 c++/storeruns*/*
+c++/wrong_*/*
 c++/*.out
 c++/*.o
 c++/test*.cpp
