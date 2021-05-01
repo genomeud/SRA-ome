@@ -8,9 +8,7 @@ metadata/*
 #runs/analysis/[A-Z]RR*
 runs/analysis/2021_03_26/[A-Z]RR*
 *.xml
-c++/storeruns*/*
-c++/wrong_*/*
+c++/*/*
 c++/*.out
 c++/*.o
 c++/test*.cpp
-c++/metadata_COPY_FOR_TESTING/*
