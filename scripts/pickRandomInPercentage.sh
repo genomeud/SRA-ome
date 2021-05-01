@@ -27,19 +27,19 @@ then
     MAX_SIZE_MB=$7
 fi
 
-cd $outputDir
+#cd $outputDir
 
 #temp files
-tmpCountUniqGroupingFile=tmpCountUniqGroupingFile.txt
-tmpAllRunsSorted=tmpAllRunsSorted.txt
-tmpPossibleRunsSorted=tmpPossibleRunsSorted.txt
+tmpCountUniqGroupingFile=$outputDir/tmpCountUniqGroupingFile.txt
+tmpAllRunsSorted=$outputDir/tmpAllRunsSorted.txt
+tmpPossibleRunsSorted=$outputDir/tmpPossibleRunsSorted.txt
 echo -n >$tmpCountUniqGroupingFile
 echo -n >$tmpAllRunsSorted
 echo -n >$tmpPossibleRunsSorted
 
 #output and log files
-outputFile='runs_list.csv'
-logFile='runs_list_log.txt'
+outputFile=$outputDir/'runs_list.csv'
+logFile=$outputDir/'runs_list_log.txt'
 echo -n >$outputFile
 echo -n >$logFile
 
