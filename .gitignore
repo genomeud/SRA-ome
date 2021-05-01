@@ -2,8 +2,10 @@
 *.kraken
 *.fa
 *bowtie2
-metadata/experiment_formatted.xml
-metadata/*
+metadata/*metadata_*
+metadata/**/**.xml
+metadata/**/**.csv
+metadata/**/**.sh
 #runs/**/[A-Z]RR*
 #runs/analysis/[A-Z]RR*
 runs/analysis/2021_03_26/[A-Z]RR*
