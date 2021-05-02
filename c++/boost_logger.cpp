@@ -5,7 +5,7 @@
 namespace BoostLogger {
         
     std::string getDefaultFormat() {
-        return "[%TimeStamp%]\t%ThreadID%\t%Severity%\t%Message%";
+        return "%TimeStamp%\t%ThreadID%\t%Severity%\t%Message%";
     }
 
     void initializeLogger(const logging::trivial::severity_level& minLevel, bool enableFile, bool enableConsole, const std::string& logFile, const std::string& format) {
@@ -31,7 +31,6 @@ namespace BoostLogger {
                 )*/
             );
         }      
-       
         
         logging::add_common_attributes();
 
