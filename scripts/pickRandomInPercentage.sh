@@ -18,8 +18,8 @@ valueFieldIdx3=$5       #size [MB]
 outputDir=`echo "$6" | sed s:/$::`
 mkdir $outputDir 2>/dev/null
 #doneFieldIdx=$6        #done == NO
-MAX_SIZE_MB=5000        #size [MB]
-#for example: 0.5 ==> 0,5 / 100 = 0,005
+MAX_SIZE_MB=10000       #size [MB]
+#for example: 0,5 ==> 0,5 / 100 = 0,005
 percAsNumerator=1     #0 <= percAsNumerator <= 100
 
 if test $# -gt $nOfParamsNeeded
