@@ -115,7 +115,7 @@ using namespace filesystem;
 #pragma region multithread_declaration
 
     //max values for condition variable download
-    const int maxSizeTotalDownload = 5000;
+    const int maxSizeTotalDownload = 10000;
     const int maxNumOfThreadsDownload = 5;
     //actual values for condition variable download
     atomic<int> sizeTotalDownload = 0;
@@ -158,7 +158,7 @@ using namespace filesystem;
     */
     //new logger
     logging::trivial::logger::logger_type myLogger;
-    void buildAndPrint(const string& line, const SRA::Run* run, const logging::trivial::severity_level& level, bool newline);
+    void buildAndPrint(const string& line, const SRA::Run* run, const logging::trivial::severity_level& level);
     string buildLineToOutput(const string& line, const SRA::Run* run, bool newline);
 
 #pragma endregion multithread_declaration
@@ -193,10 +193,10 @@ int main(int argc, char *argv[]) {
         string toPrint = "";
         if(create_directory(mainOutput_dir)) {
             toPrint = "main output directory didn't exists, created";
-            buildAndPrint(toPrint, nullptr, WARNING, true);
+            buildAndPrint(toPrint, nullptr, WARNING);
         } else {
             toPrint = "main output directory didn't exists, creation failed";
-            buildAndPrint(toPrint, nullptr, FATAL, true);
+            buildAndPrint(toPrint, nullptr, FATAL);
             return 2;
         }
     }
@@ -206,10 +206,10 @@ int main(int argc, char *argv[]) {
         string toPrint = "";
         if(create_directory(infoFilesOutput_dir)) {
             toPrint = "info files output directory didn't exists, created";
-            buildAndPrint(toPrint, nullptr, WARNING, true);
+            buildAndPrint(toPrint, nullptr, WARNING);
         } else {
             toPrint = "info files output directory didn't exists, creation failed";
-            buildAndPrint(toPrint, nullptr, FATAL, true);
+            buildAndPrint(toPrint, nullptr, FATAL);
             return 3;
         }
     }
@@ -234,7 +234,7 @@ int main(int argc, char *argv[]) {
     vector<SRA::Run> runs;
     if (SRA::getRunsFromFile(runs_path, runs, ',') != 0) {
         string printFatal = "could not open runs to execute file";
-        buildAndPrint(printFatal, nullptr, FATAL, true);
+        buildAndPrint(printFatal, nullptr, FATAL);
         return 4;
     }
 
@@ -253,9 +253,7 @@ int main(int argc, char *argv[]) {
     }
     
     for (auto& th : threads) {
-
         th.join();
-        
     }
 
     //from here all runs has ended
@@ -268,7 +266,7 @@ int main(int argc, char *argv[]) {
     printToFileStatus = SRA::printToFile(resultAll_outputfile, resultsOfAllRuns);
     if (printToFileStatus != 0) {
         string printError = "failed writing to file " + resultAll_outputfile;
-        buildAndPrint(printError, nullptr, ERROR, true);
+        buildAndPrint(printError, nullptr, ERROR);
     }
 
     //prints to results_err.csv (if there are errors)
@@ -279,7 +277,7 @@ int main(int argc, char *argv[]) {
         printToFileStatus = SRA::printToFile(resultErr_outputfile, resultsOfErrRuns);
         if (printToFileStatus != 0) {
             string printError = "failed writing to file " + resultErr_outputfile;
-            buildAndPrint(printError, nullptr, ERROR, true);
+            buildAndPrint(printError, nullptr, ERROR);
         }
     }
 
@@ -289,14 +287,14 @@ int main(int argc, char *argv[]) {
     printToFileStatus = SRA::printToFile(fastQSize_outputfile, fastQSizesOfAllRuns);
     if (printToFileStatus != 0) {
         string printError = "failed writing to file " + fastQSize_outputfile;
-        buildAndPrint(printError, nullptr, ERROR, true);
+        buildAndPrint(printError, nullptr, ERROR);
     }
     
     //updates status OK|ERR of runs executed to the metadata.csv file
     execUpdateAllRunsFile();
 
     string printEnd = "ended everything ok!";
-    buildAndPrint(printEnd, nullptr, INFO, true);
+    buildAndPrint(printEnd, nullptr, INFO);
     
     return 0;
 }
@@ -324,12 +322,16 @@ tuple<int, string> execAndPrint(const string& command, const SRA::Run* run, bool
     string new_command = command + " 2>&1";
     //print command will be executed
     string toPrint = new_command;
-    buildAndPrint(toPrint, run, INFO, true);
+    buildAndPrint(toPrint, run, INFO);
     tuple<int, string> output = exec(new_command.c_str());
+    logging::trivial::severity_level level = INFO;
+    int exitCode = std::get<0>(output);
+    if(exitCode > 0)    level = ERROR;
+    if(exitCode > 100)  level = WARNING;
     if(printOutput) {
         vector<string> lines = SRA::split(std::get<1>(output), '\n');
         for(const auto &line: lines) {
-            buildAndPrint(line, run, INFO, true);
+            buildAndPrint(line, run, level);
         }
     }
     return output;
@@ -361,7 +363,7 @@ tuple<int, string> exec(const char* command) {
 
 #pragma region useful
 
-void buildAndPrint(const string& line, const SRA::Run* run, const logging::trivial::severity_level& level, bool newline) {
+void buildAndPrint(const string& line, const SRA::Run* run, const logging::trivial::severity_level& level) {
     string toPrint = buildLineToOutput(line, run, false);
     BOOST_LOG_STREAM_WITH_PARAMS(myLogger, (boost::log::keywords::severity = level)) << toPrint;
     //printWithMutexLock(toPrint, newline);
@@ -380,7 +382,7 @@ string buildLineToOutput(const string& line, const SRA::Run* run, bool newline) 
     char separator = '\t';
     std::string toPrint = "";
     //toPrint += timeBuffer;
-    toPrint += separator;
+    //toPrint += separator;
     if(run != nullptr) {
         toPrint += (*run).getRunID();
     } else {
@@ -417,21 +419,23 @@ string buildCommand(const string& command, const vector<string>& parameters) {
 void startRun(SRA::Run& run) {
     run.setRunStatus(SRA::RunStatus::OK);
     string toPrint = "started " + run.getIdLayoutSizeCompressed(' ');
-    buildAndPrint(toPrint, &run, INFO, true);
+    buildAndPrint(toPrint, &run, INFO);
     run.setInProcess(true);
 }
 
 void endRun(SRA::Run& run) {
-    string toPrint = "ended " + run.getIdLayoutSizeCompressed(' ');
-    toPrint += " -> " + to_string(run.getSizeUncompressed());
-    toPrint += " " + SRA::to_string(run.getRunStatus());
-    buildAndPrint(toPrint, &run, INFO, true);
+    string toPrint = "ended " + run.getRunID() + " ";
+    toPrint += SRA::to_string(run.getRunStatus()) + " ";
+    toPrint += SRA::to_string(run.getLayout()) + " ";
+    toPrint += std::to_string(run.getSizeCompressed()) + " -> ";
+    toPrint += SRA::getIfNonNegativeSizeAsStringElseErrorString(run.getSizeUncompressed());
+    buildAndPrint(toPrint, &run, INFO);
     run.setInProcess(false);
 }
 
 void execFasterQDump(SRA::Run& run) {
     string toPrint = "started download with fasterq-dump";
-    buildAndPrint(toPrint, &run, INFO, true);
+    buildAndPrint(toPrint, &run, INFO);
     string cmd = SRA::buildFasterQDump_command(
         execFasterQDump_script, run, run.getFastq_dir()
     );
@@ -442,19 +446,17 @@ void execFasterQDump(SRA::Run& run) {
         //download failed
         run.setRunStatus(SRA::RunStatus::ERR);
         level = ERROR;
-        toPrint = "FasterQDump caused error with exit code:";
-        toPrint += exitCode;
+        toPrint = "FasterQ-Dump caused error with exit code: " + to_string(exitCode);
     } else {
         level = INFO;
         toPrint = "download done correctly!";
     }
-    buildAndPrint(toPrint, &run, level, true);
-
+    buildAndPrint(toPrint, &run, level);
 }
 
 void execKraken(SRA::Run& run) {
     string toPrint = "started analysis with kraken";
-    buildAndPrint(toPrint, &run, INFO, true);
+    buildAndPrint(toPrint, &run, INFO);
     string cmd = SRA::buildKraken_command(
         execKraken_script, run.getFastq_dir()
     );
@@ -465,19 +467,18 @@ void execKraken(SRA::Run& run) {
         //kraken failed
         run.setRunStatus(SRA::RunStatus::ERR);
         level = ERROR;
-        toPrint = "Kraken caused error with exit code: ";
-        toPrint += exitCode;
+        toPrint = "Kraken caused error with exit code: " + to_string(exitCode);
     } else {
         level = INFO;
         toPrint = "analysis completed correctly!";
     }
-    buildAndPrint(toPrint, &run, level, true);
+    buildAndPrint(toPrint, &run, level);
 }
 
 void execGetFastqFileSize(SRA::Run& run) {
     //calculate from filesystem fastq file uncompressed size
     string toPrint = "looking for fastq file size...";
-    buildAndPrint(toPrint, &run, INFO, true);
+    buildAndPrint(toPrint, &run, INFO);
     string cmd = SRA::buildGetFastqFileSize_command(
         getFastqFileSize_script, run, run.getFastq_dir()
     );
@@ -505,7 +506,7 @@ void execGetFastqFileSize(SRA::Run& run) {
         int sizeUncompressed = stoi(outputs.at(0));
         run.setSizeUncompressed(sizeUncompressed);
         string warning = outputs.at(1);
-        buildAndPrint(warning, &run, level, true);
+        buildAndPrint(warning, &run, level);
         toPrint = "getFastqFileSize caused warning with exit code: " + to_string(exitCode);
 
     } else {
@@ -514,17 +515,17 @@ void execGetFastqFileSize(SRA::Run& run) {
         //getFastqFileSize failed: file not exist?
         run.setRunStatus(SRA::RunStatus::ERR);
         string error = std::get<1>(output);
-        buildAndPrint(error, &run, level, true);
+        buildAndPrint(error, &run, level);
         toPrint = "getFastqFileSize caused error with exit code: " + to_string(exitCode);
 
     }
-    buildAndPrint(toPrint, &run, level, true);
+    buildAndPrint(toPrint, &run, level);
 }
 
 void execDeleteFiles(SRA::Run& run) {
     //calculate from filesystem fastq file uncompressed size
     string toPrint = "deleting fastq files...";
-    buildAndPrint(toPrint, &run, INFO, true);
+    buildAndPrint(toPrint, &run, INFO);
     string cmd = SRA::buildDeleteFiles_command(
         deleteFiles_script, run, run.getFastq_dir(), deleteFastqFiles, deleteKrakenFiles
     );
@@ -535,10 +536,10 @@ void execDeleteFiles(SRA::Run& run) {
         level = INFO;
         toPrint = "deleted files correctly!";
     } else {
-        level = WARNING;
+        level = ERROR;
         toPrint = "error while deleting files..";
     }
-    buildAndPrint(toPrint, &run, level, true);
+    buildAndPrint(toPrint, &run, level);
 }
 
 void execUpdateAllRunsFile() {
@@ -546,7 +547,7 @@ void execUpdateAllRunsFile() {
     //take the results of this execution and write the results, 
     //updating the metadata file with all the runs
     string toPrint = "updating all runs file...";
-    buildAndPrint(toPrint, nullptr, INFO, true);
+    buildAndPrint(toPrint, nullptr, INFO);
     string cmd = SRA::buildUpdateAllRunsFile_command(
         updateAllRunsFile_script, allMetadataInfo_file, resultAll_outputfile, updates_outputfile
     );
@@ -560,7 +561,7 @@ void execUpdateAllRunsFile() {
         level = ERROR;
         toPrint = "metadata update had an error, check if original file is safe!";
     }
-    buildAndPrint(toPrint, nullptr, level, true);
+    buildAndPrint(toPrint, nullptr, level);
 }
 
 #pragma endregion scripts
@@ -582,7 +583,6 @@ bool checkConditionVariable() {
 void execThread(SRA::Run& run) {
 
     int size = run.getSizeCompressed();
-
     {
         //start critical section
 
@@ -609,16 +609,16 @@ void execThread(SRA::Run& run) {
     //printDebugInfo();
     printNumberOfRuns();
     
-    //buildAndPrint("info\tstarted run", run, true);
+    //buildAndPrint("info\tstarted run", run);
     
     if(! ((numOfThreadsDownload <= maxNumOfThreadsDownload) && (sizeTotalDownload <= maxSizeTotalDownload))) {
         //something gone wrong
         string error = "LIMITS ON DOWNLOAD EXCEEDED ---------------------------";
-        buildAndPrint(error, &run, ERROR, true);
+        buildAndPrint(error, &run, ERROR);
         printDebugInfo();
     }
 
-    //buildAndPrint("info\tstarted download with fasterq-dump", run, true);
+    //buildAndPrint("info\tstarted download with fasterq-dump", run);
 
     startRun(run);
     execFasterQDump(run);
@@ -634,7 +634,9 @@ void execThread(SRA::Run& run) {
     //download has ended so:
     // - meanwhile this thread ends (kraken has to be done)
     // - but don't keeping waiting the other threads
-    execGetFastqFileSize(run);
+    if(run.getRunStatus() != SRA::RunStatus::ERR) {
+        execGetFastqFileSize(run);
+    }
     {
         //start critical section
 
@@ -658,25 +660,26 @@ void execThread(SRA::Run& run) {
     if(! (numOfThreadsAnalysis <= maxNumOfThreadsAnalysis)) {
         //something gone wrong
         string error = "LIMITS ON ANALYSIS EXCEEDED ---------------------------";
-        buildAndPrint(error, &run, ERROR, true);
+        buildAndPrint(error, &run, ERROR);
         printDebugInfo();
     }
     
-    //buildAndPrint("info\tstarted analysis with kraken", run, true);
-    execKraken(run);
+    //buildAndPrint("info\tstarted analysis with kraken", run);
+    if(run.getRunStatus() != SRA::RunStatus::ERR) {
+        execKraken(run);
+    }
 
     numOfThreadsAnalysis--;
     
     //printDebugInfo();
 
     cv_analysis.notify_all();
-
     execDeleteFiles(run);
     endRun(run);
 
     numOfRunsEnded++;
     
-    //buildAndPrint("info\tended run", run, true);
+    //buildAndPrint("info\tended run", run);
     //printDebugInfo();
     printNumberOfRuns();
     
@@ -702,8 +705,8 @@ void printNumberOfRuns() {
     runsStarted += " of " + to_string(totalNumOfRuns);
     string runsEnded = "Number of threads ended: " + to_string(numOfRunsEnded);
     runsEnded += " of " + to_string(totalNumOfRuns);
-    buildAndPrint(runsStarted, nullptr, DEBUG, true);
-    buildAndPrint(runsEnded, nullptr, DEBUG, true);
+    buildAndPrint(runsStarted, nullptr, DEBUG);
+    buildAndPrint(runsEnded, nullptr, DEBUG);
     //printWithMutexLock(runsStarted, true);
     //printWithMutexLock(runsEnded, true);
 
@@ -716,9 +719,9 @@ void printCondVarSituation() {
     sizeOfThreadsDownload += " <= " + to_string(maxSizeTotalDownload);
     string nOfThreadsAnalysis = "Number of threads analysis: " + to_string(numOfThreadsAnalysis);
     nOfThreadsAnalysis += " <= " + to_string(maxNumOfThreadsAnalysis);
-    buildAndPrint(nOfThreadsDownload, nullptr, DEBUG, true);
-    buildAndPrint(sizeOfThreadsDownload, nullptr, DEBUG, true);
-    buildAndPrint(nOfThreadsAnalysis, nullptr, DEBUG, true);
+    buildAndPrint(nOfThreadsDownload, nullptr, DEBUG);
+    buildAndPrint(sizeOfThreadsDownload, nullptr, DEBUG);
+    buildAndPrint(nOfThreadsAnalysis, nullptr, DEBUG);
     //printWithMutexLock(nOfThreadsDownload, true);
     //printWithMutexLock(sizeOfThreadsDownload, true);
     //printWithMutexLock(nOfThreadsAnalysis, true);
