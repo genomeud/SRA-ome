@@ -1,0 +1,90 @@
+2021-05-03 09:45:08.072400	0x00007fa8d4ea5700	debug	[generic]	Number of threads started: 1 of 2
+2021-05-03 09:45:08.072708	0x00007fa8d4ea5700	debug	[generic]	Number of threads ended: 0 of 2
+2021-05-03 09:45:08.072734	0x00007fa8d4ea5700	info	SRR10837445	started SRR10837445 PAIRED 9540
+2021-05-03 09:45:08.072746	0x00007fa8d4ea5700	info	SRR10837445	started download with fasterq-dump
+2021-05-03 09:45:08.072762	0x00007fa8d4ea5700	info	SRR10837445	$HOME/SRA/scripts/execFasterQDump.sh SRR10837445 PAIRED /home/fzuccato/SRA/reports/2021_05_03_sheep/SRR10837445 2>&1
+2021-05-03 12:50:26.413132	0x00007fa8d4ea5700	info	SRR10837445	fasterq-dump --split-files SRR10837445
+2021-05-03 12:50:26.493889	0x00007fa8d4ea5700	info	SRR10837445	spots read      : 109,330,227
+2021-05-03 12:50:26.493960	0x00007fa8d4ea5700	info	SRR10837445	reads read      : 218,660,454
+2021-05-03 12:50:26.493974	0x00007fa8d4ea5700	info	SRR10837445	reads written   : 218,660,454
+2021-05-03 12:50:26.493991	0x00007fa8d4ea5700	info	SRR10837445	download done correctly!
+2021-05-03 12:50:26.494039	0x00007fa8d4ea5700	info	SRR10837445	looking for fastq file size...
+2021-05-03 12:50:26.494055	0x00007fa8d4ea5700	info	SRR10837445	$HOME/SRA/scripts/getFastqFileSize.sh /home/fzuccato/SRA/reports/2021_05_03_sheep/SRR10837445 SRR10837445 PAIRED 2>&1
+2021-05-03 12:50:26.506096	0x00007fa8d46a4700	debug	[generic]	Number of threads started: 2 of 2
+2021-05-03 12:50:26.506191	0x00007fa8d46a4700	debug	[generic]	Number of threads ended: 0 of 2
+2021-05-03 12:50:26.506212	0x00007fa8d46a4700	info	SRR10838682	started SRR10838682 PAIRED 6606
+2021-05-03 12:50:26.506224	0x00007fa8d46a4700	info	SRR10838682	started download with fasterq-dump
+2021-05-03 12:50:26.506236	0x00007fa8d46a4700	info	SRR10838682	$HOME/SRA/scripts/execFasterQDump.sh SRR10838682 PAIRED /home/fzuccato/SRA/reports/2021_05_03_sheep/SRR10838682 2>&1
+2021-05-03 12:50:26.821750	0x00007fa8d4ea5700	info	SRR10837445	fastq file size obtained correctly!
+2021-05-03 12:50:26.823943	0x00007fa8d4ea5700	info	SRR10837445	started analysis with kraken
+2021-05-03 12:50:26.824053	0x00007fa8d4ea5700	info	SRR10837445	$HOME/SRA/scripts/execKraken.sh /home/fzuccato/SRA/reports/2021_05_03_sheep/SRR10837445 2>&1
+2021-05-03 13:04:00.530755	0x00007fa8d4ea5700	info	SRR10837445	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired SRR10837445_1.fastq SRR10837445_2.fastq --output SRR10837445.kraken --report SRR10837445.kraken.report.txt
+2021-05-03 13:04:00.540240	0x00007fa8d4ea5700	info	SRR10837445	Loading database information... done.
+2021-05-03 13:04:00.540260	0x00007fa8d4ea5700	info	SRR10837445	109330227 sequences (33017.73 Mbp) processed in 680.322s (9642.2 Kseq/m, 2911.95 Mbp/m).
+2021-05-03 13:04:00.540272	0x00007fa8d4ea5700	info	SRR10837445	  41464484 sequences classified (37.93%)
+2021-05-03 13:04:00.540283	0x00007fa8d4ea5700	info	SRR10837445	  67865743 sequences unclassified (62.07%)
+2021-05-03 13:04:00.540298	0x00007fa8d4ea5700	info	SRR10837445	analysis completed correctly!
+2021-05-03 13:04:00.540310	0x00007fa8d4ea5700	info	SRR10837445	deleting fastq files...
+2021-05-03 13:04:00.540324	0x00007fa8d4ea5700	info	SRR10837445	$HOME/SRA/scripts/deleteFiles.sh SRR10837445 /home/fzuccato/SRA/reports/2021_05_03_sheep/SRR10837445 true true 2>&1
+2021-05-03 13:04:06.070589	0x00007fa8d4ea5700	info	SRR10837445	deleted files correctly!
+2021-05-03 13:04:06.070666	0x00007fa8d4ea5700	info	SRR10837445	ended SRR10837445 OK PAIRED 9540 -> 80896
+2021-05-03 13:04:06.070681	0x00007fa8d4ea5700	debug	[generic]	Number of threads started: 2 of 2
+2021-05-03 13:04:06.070693	0x00007fa8d4ea5700	debug	[generic]	Number of threads ended: 1 of 2
+2021-05-03 14:39:12.239963	0x00007fa8d46a4700	info	SRR10838682	fasterq-dump --split-files SRR10838682
+2021-05-03 14:39:12.404871	0x00007fa8d46a4700	info	SRR10838682	spots read      : 77,653,709
+2021-05-03 14:39:12.404906	0x00007fa8d46a4700	info	SRR10838682	reads read      : 155,307,418
+2021-05-03 14:39:12.404919	0x00007fa8d46a4700	info	SRR10838682	reads written   : 155,307,418
+2021-05-03 14:39:12.404935	0x00007fa8d46a4700	info	SRR10838682	download done correctly!
+2021-05-03 14:39:12.404948	0x00007fa8d46a4700	info	SRR10838682	looking for fastq file size...
+2021-05-03 14:39:12.404961	0x00007fa8d46a4700	info	SRR10838682	$HOME/SRA/scripts/getFastqFileSize.sh /home/fzuccato/SRA/reports/2021_05_03_sheep/SRR10838682 SRR10838682 PAIRED 2>&1
+2021-05-03 14:39:12.754050	0x00007fa8d46a4700	info	SRR10838682	fastq file size obtained correctly!
+2021-05-03 14:39:12.754247	0x00007fa8d46a4700	info	SRR10838682	started analysis with kraken
+2021-05-03 14:39:12.754348	0x00007fa8d46a4700	info	SRR10838682	$HOME/SRA/scripts/execKraken.sh /home/fzuccato/SRA/reports/2021_05_03_sheep/SRR10838682 2>&1
+2021-05-03 14:46:30.147525	0x00007fa8d46a4700	info	SRR10838682	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired SRR10838682_1.fastq SRR10838682_2.fastq --output SRR10838682.kraken --report SRR10838682.kraken.report.txt
+2021-05-03 14:46:30.177754	0x00007fa8d46a4700	info	SRR10838682	Loading database information... done.
+2021-05-03 14:46:30.177786	0x00007fa8d46a4700	info	SRR10838682	77653709 sequences (23451.42 Mbp) processed in 352.670s (13211.3 Kseq/m, 3989.81 Mbp/m).
+2021-05-03 14:46:30.177799	0x00007fa8d46a4700	info	SRR10838682	  16861601 sequences classified (21.71%)
+2021-05-03 14:46:30.177812	0x00007fa8d46a4700	info	SRR10838682	  60792108 sequences unclassified (78.29%)
+2021-05-03 14:46:30.177828	0x00007fa8d46a4700	info	SRR10838682	analysis completed correctly!
+2021-05-03 14:46:30.177843	0x00007fa8d46a4700	info	SRR10838682	deleting fastq files...
+2021-05-03 14:46:30.177858	0x00007fa8d46a4700	info	SRR10838682	$HOME/SRA/scripts/deleteFiles.sh SRR10838682 /home/fzuccato/SRA/reports/2021_05_03_sheep/SRR10838682 true true 2>&1
+2021-05-03 14:46:34.574334	0x00007fa8d46a4700	info	SRR10838682	deleted files correctly!
+2021-05-03 14:46:34.574522	0x00007fa8d46a4700	info	SRR10838682	ended SRR10838682 OK PAIRED 6606 -> 57382
+2021-05-03 14:46:34.574622	0x00007fa8d46a4700	debug	[generic]	Number of threads started: 2 of 2
+2021-05-03 14:46:34.574717	0x00007fa8d46a4700	debug	[generic]	Number of threads ended: 2 of 2
+2021-05-03 14:46:34.632746	0x00007fa8d4ea9740	info	[generic]	updating all runs file...
+2021-05-03 14:46:34.645058	0x00007fa8d4ea9740	info	[generic]	$HOME/SRA/scripts/updateAllRunsFile.sh $HOME/SRA/metadata/metadata_filtered_small.csv 8 19 /home/fzuccato/SRA/reports/2021_05_03_sheep/.info/results_all.csv 1 2 /home/fzuccato/SRA/reports/2021_05_03_sheep/.info/updates_log.txt 2>&1
+2021-05-03 14:48:45.860607	0x00007fa8d4ea9740	info	[generic]	running... 500 of 13192
+2021-05-03 14:48:45.860789	0x00007fa8d4ea9740	info	[generic]	running... 1000 of 13192
+2021-05-03 14:48:45.860887	0x00007fa8d4ea9740	info	[generic]	running... 1500 of 13192
+2021-05-03 14:48:45.860981	0x00007fa8d4ea9740	info	[generic]	running... 2000 of 13192
+2021-05-03 14:48:45.861075	0x00007fa8d4ea9740	info	[generic]	running... 2500 of 13192
+2021-05-03 14:48:45.861168	0x00007fa8d4ea9740	info	[generic]	running... 3000 of 13192
+2021-05-03 14:48:45.861261	0x00007fa8d4ea9740	info	[generic]	running... 3500 of 13192
+2021-05-03 14:48:45.861354	0x00007fa8d4ea9740	info	[generic]	running... 4000 of 13192
+2021-05-03 14:48:45.861447	0x00007fa8d4ea9740	info	[generic]	running... 4500 of 13192
+2021-05-03 14:48:45.861540	0x00007fa8d4ea9740	info	[generic]	running... 5000 of 13192
+2021-05-03 14:48:45.861633	0x00007fa8d4ea9740	info	[generic]	running... 5500 of 13192
+2021-05-03 14:48:45.861725	0x00007fa8d4ea9740	info	[generic]	running... 6000 of 13192
+2021-05-03 14:48:45.861818	0x00007fa8d4ea9740	info	[generic]	running... 6500 of 13192
+2021-05-03 14:48:45.861925	0x00007fa8d4ea9740	info	[generic]	running... 7000 of 13192
+2021-05-03 14:48:45.862019	0x00007fa8d4ea9740	info	[generic]	running... 7500 of 13192
+2021-05-03 14:48:45.862116	0x00007fa8d4ea9740	info	[generic]	running... 8000 of 13192
+2021-05-03 14:48:45.862199	0x00007fa8d4ea9740	info	[generic]	running... 8500 of 13192
+2021-05-03 14:48:45.862279	0x00007fa8d4ea9740	info	[generic]	running... 9000 of 13192
+2021-05-03 14:48:45.862358	0x00007fa8d4ea9740	info	[generic]	running... 9500 of 13192
+2021-05-03 14:48:45.868947	0x00007fa8d4ea9740	info	[generic]	running... 10000 of 13192
+2021-05-03 14:48:45.869064	0x00007fa8d4ea9740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-03 14:48:45.869160	0x00007fa8d4ea9740	info	[generic]	10485 of 13192: SRR10837445
+2021-05-03 14:48:45.869253	0x00007fa8d4ea9740	info	[generic]	SRR10837445: TO_DO -> OK
+2021-05-03 14:48:45.869345	0x00007fa8d4ea9740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-03 14:48:45.869441	0x00007fa8d4ea9740	info	[generic]	10486 of 13192: SRR10838682
+2021-05-03 14:48:45.869533	0x00007fa8d4ea9740	info	[generic]	SRR10838682: TO_DO -> OK
+2021-05-03 14:48:45.869625	0x00007fa8d4ea9740	info	[generic]	running... 10500 of 13192
+2021-05-03 14:48:45.869717	0x00007fa8d4ea9740	info	[generic]	running... 11000 of 13192
+2021-05-03 14:48:45.869810	0x00007fa8d4ea9740	info	[generic]	running... 11500 of 13192
+2021-05-03 14:48:45.869912	0x00007fa8d4ea9740	info	[generic]	running... 12000 of 13192
+2021-05-03 14:48:45.870006	0x00007fa8d4ea9740	info	[generic]	running... 12500 of 13192
+2021-05-03 14:48:45.870098	0x00007fa8d4ea9740	info	[generic]	running... 13000 of 13192
+2021-05-03 14:48:45.870194	0x00007fa8d4ea9740	info	[generic]	updated all runs file metadata correctly!
+2021-05-03 14:48:45.870289	0x00007fa8d4ea9740	info	[generic]	ended everything ok!
