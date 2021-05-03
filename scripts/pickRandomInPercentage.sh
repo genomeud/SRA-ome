@@ -126,7 +126,9 @@ do
     #number of repetitions that will be done for i-th group
     #repetitions = number of random lines that will be printed for i-th group
     #repetitions = 1 + ( nOfEqualLines % percentage )
-    repetitions=$(( $nOfEqualLines * $percAsNumerator / 100 + 1 ))
+    #repetitions=$(( $nOfEqualLines * $percAsNumerator / 100 + 1 ))
+    repetitions_float=`echo "$nOfEqualLines $percAsNumerator" | awk '{ print ($1 * $2 / 100 + 1); }'`
+    repetitions=${repetitions_float%.*}
 
     lastLine=$[$i + $nOfEqualLines - 1]
     echo "grouping lines: $grouping" | tee -a $logFile
@@ -218,7 +220,7 @@ do
         fi
     done
 
-    indexesFoundPercentage=$(( $found / $repetitions * 100 ))
+    indexesFoundPercentage=`echo "$found $repetitions" | awk '{ printf("%.4g", $1 / $2 * 100); }'`
     echo -e "indexes found: $indexesFoundPercentage%: $found of $repetitions\n" | tee -a $logFile
     unset indexesAlreadyPicked
     i=$[$i+$nOfEqualLines]
