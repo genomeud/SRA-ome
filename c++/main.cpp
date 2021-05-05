@@ -674,7 +674,7 @@ void execThread(SRA::Run& run) {
     //printDebugInfo();
 
     cv_analysis.notify_all();
-    if(run.getSizeUncompressed() > 0) {
+    if(run.getSizeUncompressed() >= 0) {
         //some files has been downloaded => delete them
         //delete files indipendently if run caused error or not
         //can't risk to occupy too much disk space
