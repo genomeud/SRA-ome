@@ -1,0 +1,960 @@
+2021-05-03 18:02:18.862530	0x00007f8cf0283700	debug	[generic]	Number of threads started: 1 of 31
+2021-05-03 18:02:18.870998	0x00007f8cf0283700	debug	[generic]	Number of threads ended: 0 of 31
+2021-05-03 18:02:18.872086	0x00007f8cf0283700	info	ERR3587135	started ERR3587135 PAIRED 9778
+2021-05-03 18:02:18.873143	0x00007f8cf0283700	info	ERR3587135	started download with fasterq-dump
+2021-05-03 18:02:18.874330	0x00007f8cf0283700	info	ERR3587135	$HOME/SRA/scripts/execFasterQDump.sh ERR3587135 PAIRED ./ERR3587135 2>&1
+2021-05-03 20:00:37.167081	0x00007f8cf0283700	info	ERR3587135	fasterq-dump --split-files ERR3587135
+2021-05-03 20:00:37.196294	0x00007f8cf0283700	info	ERR3587135	spots read      : 82,594,959
+2021-05-03 20:00:37.196313	0x00007f8cf0283700	info	ERR3587135	reads read      : 165,189,918
+2021-05-03 20:00:37.196327	0x00007f8cf0283700	info	ERR3587135	reads written   : 165,189,918
+2021-05-03 20:00:37.196341	0x00007f8cf0283700	info	ERR3587135	download done correctly!
+2021-05-03 20:00:37.196421	0x00007f8cf0283700	info	ERR3587135	looking for fastq file size...
+2021-05-03 20:00:37.196456	0x00007f8cf0283700	info	ERR3587135	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587135 ERR3587135 PAIRED 2>&1
+2021-05-03 20:00:37.240018	0x00007f8cdca6c700	debug	[generic]	Number of threads started: 4 of 31
+2021-05-03 20:00:37.240067	0x00007f8cdca6c700	debug	[generic]	Number of threads ended: 0 of 31
+2021-05-03 20:00:37.240100	0x00007f8cdca6c700	info	ERR3586930	started ERR3586930 PAIRED 2153
+2021-05-03 20:00:37.240083	0x00007f8cdd26d700	debug	[generic]	Number of threads started: 3 of 31
+2021-05-03 20:00:37.240157	0x00007f8cdca6c700	info	ERR3586930	started download with fasterq-dump
+2021-05-03 20:00:37.240152	0x00007f8cdd26d700	debug	[generic]	Number of threads ended: 0 of 31
+2021-05-03 20:00:37.240178	0x00007f8cdca6c700	info	ERR3586930	$HOME/SRA/scripts/execFasterQDump.sh ERR3586930 PAIRED ./ERR3586930 2>&1
+2021-05-03 20:00:37.240175	0x00007f8cdd26d700	info	ERR3587049	started ERR3587049 PAIRED 2514
+2021-05-03 20:00:37.240192	0x00007f8cdd26d700	info	ERR3587049	started download with fasterq-dump
+2021-05-03 20:00:37.240219	0x00007f8cdd26d700	info	ERR3587049	$HOME/SRA/scripts/execFasterQDump.sh ERR3587049 PAIRED ./ERR3587049 2>&1
+2021-05-03 20:00:37.240045	0x00007f8ce4a7c700	debug	[generic]	Number of threads started: 2 of 31
+2021-05-03 20:00:37.241746	0x00007f8ce4a7c700	debug	[generic]	Number of threads ended: 0 of 31
+2021-05-03 20:00:37.241765	0x00007f8ce4a7c700	info	ERR3586817	started ERR3586817 PAIRED 3865
+2021-05-03 20:00:37.241778	0x00007f8ce4a7c700	info	ERR3586817	started download with fasterq-dump
+2021-05-03 20:00:37.241793	0x00007f8ce4a7c700	info	ERR3586817	$HOME/SRA/scripts/execFasterQDump.sh ERR3586817 PAIRED ./ERR3586817 2>&1
+2021-05-03 20:00:37.353664	0x00007f8cf0283700	info	ERR3587135	fastq file size obtained correctly!
+2021-05-03 20:00:37.361375	0x00007f8cf0283700	info	ERR3587135	started analysis with kraken
+2021-05-03 20:00:37.361398	0x00007f8cf0283700	info	ERR3587135	$HOME/SRA/scripts/execKraken.sh ./ERR3587135 2>&1
+2021-05-03 20:06:48.290777	0x00007f8cf0283700	info	ERR3587135	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587135_1.fastq ERR3587135_2.fastq --output ERR3587135.kraken --report ERR3587135.kraken.report.txt
+2021-05-03 20:06:48.302567	0x00007f8cf0283700	info	ERR3587135	Loading database information... done.
+2021-05-03 20:06:48.302616	0x00007f8cf0283700	info	ERR3587135	82594959 sequences (15908.29 Mbp) processed in 304.664s (16266.1 Kseq/m, 3132.95 Mbp/m).
+2021-05-03 20:06:48.302652	0x00007f8cf0283700	info	ERR3587135	  18881010 sequences classified (22.86%)
+2021-05-03 20:06:48.302688	0x00007f8cf0283700	info	ERR3587135	  63713949 sequences unclassified (77.14%)
+2021-05-03 20:06:48.302725	0x00007f8cf0283700	info	ERR3587135	analysis completed correctly!
+2021-05-03 20:06:48.302762	0x00007f8cf0283700	info	ERR3587135	deleting fastq files...
+2021-05-03 20:06:48.302799	0x00007f8cf0283700	info	ERR3587135	$HOME/SRA/scripts/deleteFiles.sh ERR3587135 ./ERR3587135 true true 2>&1
+2021-05-03 20:06:51.880295	0x00007f8cf0283700	info	ERR3587135	deleted files correctly!
+2021-05-03 20:06:51.880345	0x00007f8cf0283700	info	ERR3587135	ended ERR3587135 OK PAIRED 9778 -> 43412
+2021-05-03 20:06:51.880361	0x00007f8cf0283700	debug	[generic]	Number of threads started: 4 of 31
+2021-05-03 20:06:51.880374	0x00007f8cf0283700	debug	[generic]	Number of threads ended: 1 of 31
+2021-05-03 20:22:32.828786	0x00007f8cdd26d700	info	ERR3587049	fasterq-dump --split-files ERR3587049
+2021-05-03 20:22:32.833972	0x00007f8cdd26d700	info	ERR3587049	spots read      : 20,926,255
+2021-05-03 20:22:32.833999	0x00007f8cdd26d700	info	ERR3587049	reads read      : 41,852,510
+2021-05-03 20:22:32.834012	0x00007f8cdd26d700	info	ERR3587049	reads written   : 41,852,510
+2021-05-03 20:22:32.834027	0x00007f8cdd26d700	info	ERR3587049	download done correctly!
+2021-05-03 20:22:32.834099	0x00007f8cdd26d700	info	ERR3587049	looking for fastq file size...
+2021-05-03 20:22:32.834119	0x00007f8cdd26d700	info	ERR3587049	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587049 ERR3587049 PAIRED 2>&1
+2021-05-03 20:22:32.852263	0x00007f8cdda6e700	debug	[generic]	Number of threads started: 5 of 31
+2021-05-03 20:22:32.852362	0x00007f8cdda6e700	debug	[generic]	Number of threads ended: 1 of 31
+2021-05-03 20:22:32.852381	0x00007f8cdda6e700	info	ERR3586871	started ERR3586871 PAIRED 2677
+2021-05-03 20:22:32.852394	0x00007f8cdda6e700	info	ERR3586871	started download with fasterq-dump
+2021-05-03 20:22:32.852419	0x00007f8cdda6e700	info	ERR3586871	$HOME/SRA/scripts/execFasterQDump.sh ERR3586871 PAIRED ./ERR3586871 2>&1
+2021-05-03 20:22:33.131848	0x00007f8cdd26d700	info	ERR3587049	fastq file size obtained correctly!
+2021-05-03 20:22:33.131925	0x00007f8cdd26d700	info	ERR3587049	started analysis with kraken
+2021-05-03 20:22:33.131943	0x00007f8cdd26d700	info	ERR3587049	$HOME/SRA/scripts/execKraken.sh ./ERR3587049 2>&1
+2021-05-03 20:24:38.992513	0x00007f8cdd26d700	info	ERR3587049	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587049_1.fastq ERR3587049_2.fastq --output ERR3587049.kraken --report ERR3587049.kraken.report.txt
+2021-05-03 20:24:38.992588	0x00007f8cdd26d700	info	ERR3587049	Loading database information... done.
+2021-05-03 20:24:38.992603	0x00007f8cdd26d700	info	ERR3587049	20926255 sequences (4165.37 Mbp) processed in 44.916s (27954.0 Kseq/m, 5564.23 Mbp/m).
+2021-05-03 20:24:38.992632	0x00007f8cdd26d700	info	ERR3587049	  5118261 sequences classified (24.46%)
+2021-05-03 20:24:38.992646	0x00007f8cdd26d700	info	ERR3587049	  15807994 sequences unclassified (75.54%)
+2021-05-03 20:24:38.992660	0x00007f8cdd26d700	info	ERR3587049	analysis completed correctly!
+2021-05-03 20:24:38.992674	0x00007f8cdd26d700	info	ERR3587049	deleting fastq files...
+2021-05-03 20:24:38.992688	0x00007f8cdd26d700	info	ERR3587049	$HOME/SRA/scripts/deleteFiles.sh ERR3587049 ./ERR3587049 true true 2>&1
+2021-05-03 20:24:41.167851	0x00007f8cdd26d700	info	ERR3587049	deleted files correctly!
+2021-05-03 20:24:41.167927	0x00007f8cdd26d700	info	ERR3587049	ended ERR3587049 OK PAIRED 2514 -> 13363
+2021-05-03 20:24:41.167945	0x00007f8cdd26d700	debug	[generic]	Number of threads started: 5 of 31
+2021-05-03 20:24:41.167958	0x00007f8cdd26d700	debug	[generic]	Number of threads ended: 2 of 31
+2021-05-03 20:29:16.067458	0x00007f8cdca6c700	info	ERR3586930	fasterq-dump --split-files ERR3586930
+2021-05-03 20:29:16.071471	0x00007f8cdca6c700	info	ERR3586930	spots read      : 16,643,690
+2021-05-03 20:29:16.071489	0x00007f8cdca6c700	info	ERR3586930	reads read      : 33,287,380
+2021-05-03 20:29:16.071503	0x00007f8cdca6c700	info	ERR3586930	reads written   : 33,287,380
+2021-05-03 20:29:16.071518	0x00007f8cdca6c700	info	ERR3586930	download done correctly!
+2021-05-03 20:29:16.071583	0x00007f8cdca6c700	info	ERR3586930	looking for fastq file size...
+2021-05-03 20:29:16.071620	0x00007f8ce0a74700	debug	[generic]	Number of threads started: 6 of 31
+2021-05-03 20:29:16.071629	0x00007f8cdca6c700	info	ERR3586930	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586930 ERR3586930 PAIRED 2>&1
+2021-05-03 20:29:16.071724	0x00007f8ce0a74700	debug	[generic]	Number of threads ended: 2 of 31
+2021-05-03 20:29:16.080239	0x00007f8ce0a74700	info	ERR3587071	started ERR3587071 PAIRED 3214
+2021-05-03 20:29:16.080265	0x00007f8ce0a74700	info	ERR3587071	started download with fasterq-dump
+2021-05-03 20:29:16.080282	0x00007f8ce0a74700	info	ERR3587071	$HOME/SRA/scripts/execFasterQDump.sh ERR3587071 PAIRED ./ERR3587071 2>&1
+2021-05-03 20:29:16.089484	0x00007f8cdca6c700	info	ERR3586930	fastq file size obtained correctly!
+2021-05-03 20:29:16.089555	0x00007f8cdca6c700	info	ERR3586930	started analysis with kraken
+2021-05-03 20:29:16.089574	0x00007f8cdca6c700	info	ERR3586930	$HOME/SRA/scripts/execKraken.sh ./ERR3586930 2>&1
+2021-05-03 20:30:31.654490	0x00007f8cdca6c700	info	ERR3586930	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586930_1.fastq ERR3586930_2.fastq --output ERR3586930.kraken --report ERR3586930.kraken.report.txt
+2021-05-03 20:30:31.654560	0x00007f8cdca6c700	info	ERR3586930	Loading database information... done.
+2021-05-03 20:30:31.654575	0x00007f8cdca6c700	info	ERR3586930	16643690 sequences (3325.01 Mbp) processed in 31.007s (32206.0 Kseq/m, 6434.00 Mbp/m).
+2021-05-03 20:30:31.654589	0x00007f8cdca6c700	info	ERR3586930	  3484772 sequences classified (20.94%)
+2021-05-03 20:30:31.654602	0x00007f8cdca6c700	info	ERR3586930	  13158918 sequences unclassified (79.06%)
+2021-05-03 20:30:31.654617	0x00007f8cdca6c700	info	ERR3586930	analysis completed correctly!
+2021-05-03 20:30:31.654630	0x00007f8cdca6c700	info	ERR3586930	deleting fastq files...
+2021-05-03 20:30:31.654646	0x00007f8cdca6c700	info	ERR3586930	$HOME/SRA/scripts/deleteFiles.sh ERR3586930 ./ERR3586930 true true 2>&1
+2021-05-03 20:30:32.972838	0x00007f8cdca6c700	info	ERR3586930	deleted files correctly!
+2021-05-03 20:30:32.972909	0x00007f8cdca6c700	info	ERR3586930	ended ERR3586930 OK PAIRED 2153 -> 8917
+2021-05-03 20:30:32.972925	0x00007f8cdca6c700	debug	[generic]	Number of threads started: 6 of 31
+2021-05-03 20:30:32.972940	0x00007f8cdca6c700	debug	[generic]	Number of threads ended: 3 of 31
+2021-05-03 20:33:02.712325	0x00007f8ce4a7c700	info	ERR3586817	fasterq-dump --split-files ERR3586817
+2021-05-03 20:33:02.716018	0x00007f8ce4a7c700	info	ERR3586817	spots read      : 28,833,975
+2021-05-03 20:33:02.716035	0x00007f8ce4a7c700	info	ERR3586817	reads read      : 57,667,950
+2021-05-03 20:33:02.716049	0x00007f8ce4a7c700	info	ERR3586817	reads written   : 57,667,950
+2021-05-03 20:33:02.716063	0x00007f8ce4a7c700	info	ERR3586817	download done correctly!
+2021-05-03 20:33:02.716127	0x00007f8ce4a7c700	info	ERR3586817	looking for fastq file size...
+2021-05-03 20:33:02.716145	0x00007f8ce4a7c700	info	ERR3586817	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586817 ERR3586817 PAIRED 2>&1
+2021-05-03 20:33:02.716156	0x00007f8ce1a76700	debug	[generic]	Number of threads started: 7 of 31
+2021-05-03 20:33:02.716262	0x00007f8ce1a76700	debug	[generic]	Number of threads ended: 3 of 31
+2021-05-03 20:33:02.716281	0x00007f8ce1a76700	info	ERR3586855	started ERR3586855 PAIRED 3398
+2021-05-03 20:33:02.716296	0x00007f8ce1a76700	info	ERR3586855	started download with fasterq-dump
+2021-05-03 20:33:02.716312	0x00007f8ce1a76700	info	ERR3586855	$HOME/SRA/scripts/execFasterQDump.sh ERR3586855 PAIRED ./ERR3586855 2>&1
+2021-05-03 20:33:02.726209	0x00007f8ce4a7c700	info	ERR3586817	fastq file size obtained correctly!
+2021-05-03 20:33:02.726260	0x00007f8ce4a7c700	info	ERR3586817	started analysis with kraken
+2021-05-03 20:33:02.726277	0x00007f8ce4a7c700	info	ERR3586817	$HOME/SRA/scripts/execKraken.sh ./ERR3586817 2>&1
+2021-05-03 20:34:53.257627	0x00007f8ce4a7c700	info	ERR3586817	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586817_1.fastq ERR3586817_2.fastq --output ERR3586817.kraken --report ERR3586817.kraken.report.txt
+2021-05-03 20:34:53.257681	0x00007f8ce4a7c700	info	ERR3586817	Loading database information... done.
+2021-05-03 20:34:53.257696	0x00007f8ce4a7c700	info	ERR3586817	28833975 sequences (5681.12 Mbp) processed in 93.499s (18503.2 Kseq/m, 3645.67 Mbp/m).
+2021-05-03 20:34:53.257710	0x00007f8ce4a7c700	info	ERR3586817	  4566465 sequences classified (15.84%)
+2021-05-03 20:34:53.257722	0x00007f8ce4a7c700	info	ERR3586817	  24267510 sequences unclassified (84.16%)
+2021-05-03 20:34:53.257736	0x00007f8ce4a7c700	info	ERR3586817	analysis completed correctly!
+2021-05-03 20:34:53.257749	0x00007f8ce4a7c700	info	ERR3586817	deleting fastq files...
+2021-05-03 20:34:53.257763	0x00007f8ce4a7c700	info	ERR3586817	$HOME/SRA/scripts/deleteFiles.sh ERR3586817 ./ERR3586817 true true 2>&1
+2021-05-03 20:34:55.928935	0x00007f8ce4a7c700	info	ERR3586817	deleted files correctly!
+2021-05-03 20:34:55.928987	0x00007f8ce4a7c700	info	ERR3586817	ended ERR3586817 OK PAIRED 3865 -> 18091
+2021-05-03 20:34:55.929004	0x00007f8ce4a7c700	debug	[generic]	Number of threads started: 7 of 31
+2021-05-03 20:34:55.929017	0x00007f8ce4a7c700	debug	[generic]	Number of threads ended: 4 of 31
+2021-05-03 20:54:19.227397	0x00007f8ce0a74700	info	ERR3587071	fasterq-dump --split-files ERR3587071
+2021-05-03 20:54:19.227465	0x00007f8ce0a74700	info	ERR3587071	spots read      : 25,134,184
+2021-05-03 20:54:19.227511	0x00007f8ce0a74700	info	ERR3587071	reads read      : 50,268,368
+2021-05-03 20:54:19.227525	0x00007f8ce0a74700	info	ERR3587071	reads written   : 50,268,368
+2021-05-03 20:54:19.227571	0x00007f8ce0a74700	info	ERR3587071	download done correctly!
+2021-05-03 20:54:19.227661	0x00007f8ce0a74700	info	ERR3587071	looking for fastq file size...
+2021-05-03 20:54:19.227680	0x00007f8ce0a74700	info	ERR3587071	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587071 ERR3587071 PAIRED 2>&1
+2021-05-03 20:54:19.235034	0x00007f8cdea70700	debug	[generic]	Number of threads started: 8 of 31
+2021-05-03 20:54:19.235077	0x00007f8cdea70700	debug	[generic]	Number of threads ended: 4 of 31
+2021-05-03 20:54:19.235115	0x00007f8cdea70700	info	ERR3586844	started ERR3586844 PAIRED 2958
+2021-05-03 20:54:19.235130	0x00007f8cdea70700	info	ERR3586844	started download with fasterq-dump
+2021-05-03 20:54:19.235168	0x00007f8cdea70700	info	ERR3586844	$HOME/SRA/scripts/execFasterQDump.sh ERR3586844 PAIRED ./ERR3586844 2>&1
+2021-05-03 20:54:19.383667	0x00007f8ce0a74700	info	ERR3587071	fastq file size obtained correctly!
+2021-05-03 20:54:19.383740	0x00007f8ce0a74700	info	ERR3587071	started analysis with kraken
+2021-05-03 20:54:19.383757	0x00007f8ce0a74700	info	ERR3587071	$HOME/SRA/scripts/execKraken.sh ./ERR3587071 2>&1
+2021-05-03 20:57:59.269026	0x00007f8cdda6e700	info	ERR3586871	fasterq-dump --split-files ERR3586871
+2021-05-03 20:57:59.269089	0x00007f8cdda6e700	info	ERR3586871	spots read      : 21,227,871
+2021-05-03 20:57:59.269133	0x00007f8cdda6e700	info	ERR3586871	reads read      : 42,455,742
+2021-05-03 20:57:59.269169	0x00007f8cdda6e700	info	ERR3586871	reads written   : 42,455,742
+2021-05-03 20:57:59.269192	0x00007f8cdda6e700	info	ERR3586871	download done correctly!
+2021-05-03 20:57:59.269247	0x00007f8cdda6e700	info	ERR3586871	looking for fastq file size...
+2021-05-03 20:57:59.269314	0x00007f8cdda6e700	info	ERR3586871	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586871 ERR3586871 PAIRED 2>&1
+2021-05-03 20:57:59.276144	0x00007f8ce3279700	debug	[generic]	Number of threads started: 9 of 31
+2021-05-03 20:57:59.276239	0x00007f8ce3279700	debug	[generic]	Number of threads ended: 4 of 31
+2021-05-03 20:57:59.276257	0x00007f8ce3279700	info	ERR3586793	started ERR3586793 PAIRED 3558
+2021-05-03 20:57:59.276272	0x00007f8ce3279700	info	ERR3586793	started download with fasterq-dump
+2021-05-03 20:57:59.276287	0x00007f8ce3279700	info	ERR3586793	$HOME/SRA/scripts/execFasterQDump.sh ERR3586793 PAIRED ./ERR3586793 2>&1
+2021-05-03 20:57:59.313821	0x00007f8cdda6e700	info	ERR3586871	fastq file size obtained correctly!
+2021-05-03 20:57:59.313886	0x00007f8cdda6e700	info	ERR3586871	started analysis with kraken
+2021-05-03 20:57:59.313904	0x00007f8cdda6e700	info	ERR3586871	$HOME/SRA/scripts/execKraken.sh ./ERR3586871 2>&1
+2021-05-03 21:05:21.294633	0x00007f8ce1a76700	info	ERR3586855	fasterq-dump --split-files ERR3586855
+2021-05-03 21:05:23.014200	0x00007f8ce1a76700	info	ERR3586855	spots read      : 26,891,813
+2021-05-03 21:05:23.014235	0x00007f8ce1a76700	info	ERR3586855	reads read      : 53,783,626
+2021-05-03 21:05:23.310008	0x00007f8ce1a76700	info	ERR3586855	reads written   : 53,783,626
+2021-05-03 21:05:23.310062	0x00007f8ce1a76700	info	ERR3586855	download done correctly!
+2021-05-03 21:05:23.310128	0x00007f8ce1a76700	info	ERR3586855	looking for fastq file size...
+2021-05-03 21:05:23.310147	0x00007f8ce1a76700	info	ERR3586855	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586855 ERR3586855 PAIRED 2>&1
+2021-05-03 21:05:23.360165	0x00007f8cdf271700	debug	[generic]	Number of threads started: 10 of 31
+2021-05-03 21:05:23.375832	0x00007f8cdf271700	debug	[generic]	Number of threads ended: 4 of 31
+2021-05-03 21:05:23.375857	0x00007f8cdf271700	info	ERR3587031	started ERR3587031 PAIRED 3075
+2021-05-03 21:05:23.375872	0x00007f8cdf271700	info	ERR3587031	started download with fasterq-dump
+2021-05-03 21:05:23.375886	0x00007f8cdf271700	info	ERR3587031	$HOME/SRA/scripts/execFasterQDump.sh ERR3587031 PAIRED ./ERR3587031 2>&1
+2021-05-03 21:05:24.716404	0x00007f8ce1a76700	info	ERR3586855	fastq file size obtained correctly!
+2021-05-03 21:05:57.606322	0x00007f8cdda6e700	info	ERR3586871	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586871_1.fastq ERR3586871_2.fastq --output ERR3586871.kraken --report ERR3586871.kraken.report.txt
+2021-05-03 21:05:57.606375	0x00007f8cdda6e700	info	ERR3586871	Loading database information... done.
+2021-05-03 21:05:57.606390	0x00007f8cdda6e700	info	ERR3586871	21227871 sequences (4201.94 Mbp) processed in 449.156s (2835.7 Kseq/m, 561.31 Mbp/m).
+2021-05-03 21:05:57.606404	0x00007f8cdda6e700	info	ERR3586871	  5092666 sequences classified (23.99%)
+2021-05-03 21:05:57.606416	0x00007f8cdda6e700	info	ERR3586871	  16135205 sequences unclassified (76.01%)
+2021-05-03 21:05:57.606430	0x00007f8cdda6e700	info	ERR3586871	analysis completed correctly!
+2021-05-03 21:05:57.606447	0x00007f8cdda6e700	info	ERR3586871	deleting fastq files...
+2021-05-03 21:05:57.606461	0x00007f8cdda6e700	info	ERR3586871	$HOME/SRA/scripts/deleteFiles.sh ERR3586871 ./ERR3586871 true true 2>&1
+2021-05-03 21:05:57.606494	0x00007f8ce1a76700	info	ERR3586855	started analysis with kraken
+2021-05-03 21:05:57.606582	0x00007f8ce1a76700	info	ERR3586855	$HOME/SRA/scripts/execKraken.sh ./ERR3586855 2>&1
+2021-05-03 21:05:58.663842	0x00007f8cdda6e700	info	ERR3586871	deleted files correctly!
+2021-05-03 21:05:58.663898	0x00007f8cdda6e700	info	ERR3586871	ended ERR3586871 OK PAIRED 2677 -> 11320
+2021-05-03 21:05:58.663913	0x00007f8cdda6e700	debug	[generic]	Number of threads started: 10 of 31
+2021-05-03 21:05:58.663926	0x00007f8cdda6e700	debug	[generic]	Number of threads ended: 5 of 31
+2021-05-03 21:06:01.179719	0x00007f8ce0a74700	info	ERR3587071	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587071_1.fastq ERR3587071_2.fastq --output ERR3587071.kraken --report ERR3587071.kraken.report.txt
+2021-05-03 21:06:01.179797	0x00007f8ce0a74700	info	ERR3587071	Loading database information... done.
+2021-05-03 21:06:01.179813	0x00007f8ce0a74700	info	ERR3587071	25134184 sequences (4888.63 Mbp) processed in 656.141s (2298.4 Kseq/m, 447.03 Mbp/m).
+2021-05-03 21:06:01.179830	0x00007f8ce0a74700	info	ERR3587071	  7108711 sequences classified (28.28%)
+2021-05-03 21:06:01.179842	0x00007f8ce0a74700	info	ERR3587071	  18025473 sequences unclassified (71.72%)
+2021-05-03 21:06:01.179856	0x00007f8ce0a74700	info	ERR3587071	analysis completed correctly!
+2021-05-03 21:06:01.179871	0x00007f8ce0a74700	info	ERR3587071	deleting fastq files...
+2021-05-03 21:06:01.179886	0x00007f8ce0a74700	info	ERR3587071	$HOME/SRA/scripts/deleteFiles.sh ERR3587071 ./ERR3587071 true true 2>&1
+2021-05-03 21:06:03.892381	0x00007f8ce0a74700	info	ERR3587071	deleted files correctly!
+2021-05-03 21:06:03.892446	0x00007f8ce0a74700	info	ERR3587071	ended ERR3587071 OK PAIRED 3214 -> 15829
+2021-05-03 21:06:03.892462	0x00007f8ce0a74700	debug	[generic]	Number of threads started: 10 of 31
+2021-05-03 21:06:03.892478	0x00007f8ce0a74700	debug	[generic]	Number of threads ended: 6 of 31
+2021-05-03 21:08:32.827434	0x00007f8ce1a76700	info	ERR3586855	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586855_1.fastq ERR3586855_2.fastq --output ERR3586855.kraken --report ERR3586855.kraken.report.txt
+2021-05-03 21:08:32.827506	0x00007f8ce1a76700	info	ERR3586855	Loading database information... done.
+2021-05-03 21:08:32.827521	0x00007f8ce1a76700	info	ERR3586855	26891813 sequences (5377.82 Mbp) processed in 80.206s (20117.1 Kseq/m, 4023.03 Mbp/m).
+2021-05-03 21:08:32.827535	0x00007f8ce1a76700	info	ERR3586855	  7366848 sequences classified (27.39%)
+2021-05-03 21:08:32.827548	0x00007f8ce1a76700	info	ERR3586855	  19524965 sequences unclassified (72.61%)
+2021-05-03 21:08:32.827562	0x00007f8ce1a76700	info	ERR3586855	analysis completed correctly!
+2021-05-03 21:08:32.827576	0x00007f8ce1a76700	info	ERR3586855	deleting fastq files...
+2021-05-03 21:08:32.827591	0x00007f8ce1a76700	info	ERR3586855	$HOME/SRA/scripts/deleteFiles.sh ERR3586855 ./ERR3586855 true true 2>&1
+2021-05-03 21:08:34.784129	0x00007f8ce1a76700	info	ERR3586855	deleted files correctly!
+2021-05-03 21:08:34.784199	0x00007f8ce1a76700	info	ERR3586855	ended ERR3586855 OK PAIRED 3398 -> 17029
+2021-05-03 21:08:34.784216	0x00007f8ce1a76700	debug	[generic]	Number of threads started: 10 of 31
+2021-05-03 21:08:34.784231	0x00007f8ce1a76700	debug	[generic]	Number of threads ended: 7 of 31
+2021-05-03 21:25:20.681145	0x00007f8ce3279700	info	ERR3586793	fasterq-dump --split-files ERR3586793
+2021-05-03 21:25:20.878528	0x00007f8ce3279700	info	ERR3586793	spots read      : 26,626,667
+2021-05-03 21:25:20.878551	0x00007f8ce3279700	info	ERR3586793	reads read      : 53,253,334
+2021-05-03 21:25:20.878564	0x00007f8ce3279700	info	ERR3586793	reads written   : 53,253,334
+2021-05-03 21:25:20.878580	0x00007f8ce3279700	info	ERR3586793	download done correctly!
+2021-05-03 21:25:20.878636	0x00007f8ce3279700	info	ERR3586793	looking for fastq file size...
+2021-05-03 21:25:20.878685	0x00007f8ce3279700	info	ERR3586793	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586793 ERR3586793 PAIRED 2>&1
+2021-05-03 21:25:20.878677	0x00007f8ce2a78700	debug	[generic]	Number of threads started: 11 of 31
+2021-05-03 21:25:20.878724	0x00007f8ce2a78700	debug	[generic]	Number of threads ended: 7 of 31
+2021-05-03 21:25:20.878818	0x00007f8ce2a78700	info	ERR3587028	started ERR3587028 PAIRED 3467
+2021-05-03 21:25:20.878835	0x00007f8ce2a78700	info	ERR3587028	started download with fasterq-dump
+2021-05-03 21:25:20.878850	0x00007f8ce2a78700	info	ERR3587028	$HOME/SRA/scripts/execFasterQDump.sh ERR3587028 PAIRED ./ERR3587028 2>&1
+2021-05-03 21:25:20.890373	0x00007f8ce3279700	info	ERR3586793	fastq file size obtained correctly!
+2021-05-03 21:25:20.890445	0x00007f8ce3279700	info	ERR3586793	started analysis with kraken
+2021-05-03 21:25:20.890465	0x00007f8ce3279700	info	ERR3586793	$HOME/SRA/scripts/execKraken.sh ./ERR3586793 2>&1
+2021-05-03 21:26:53.638315	0x00007f8ce3279700	info	ERR3586793	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586793_1.fastq ERR3586793_2.fastq --output ERR3586793.kraken --report ERR3586793.kraken.report.txt
+2021-05-03 21:26:53.638382	0x00007f8ce3279700	info	ERR3586793	Loading database information... done.
+2021-05-03 21:26:53.638397	0x00007f8ce3279700	info	ERR3586793	26626667 sequences (5259.76 Mbp) processed in 66.308s (24093.8 Kseq/m, 4759.43 Mbp/m).
+2021-05-03 21:26:53.638415	0x00007f8ce3279700	info	ERR3586793	  4518082 sequences classified (16.97%)
+2021-05-03 21:26:53.638428	0x00007f8ce3279700	info	ERR3586793	  22108585 sequences unclassified (83.03%)
+2021-05-03 21:26:53.638442	0x00007f8ce3279700	info	ERR3586793	analysis completed correctly!
+2021-05-03 21:26:53.638456	0x00007f8ce3279700	info	ERR3586793	deleting fastq files...
+2021-05-03 21:26:53.638472	0x00007f8ce3279700	info	ERR3586793	$HOME/SRA/scripts/deleteFiles.sh ERR3586793 ./ERR3586793 true true 2>&1
+2021-05-03 21:26:56.101226	0x00007f8ce3279700	info	ERR3586793	deleted files correctly!
+2021-05-03 21:26:56.101296	0x00007f8ce3279700	info	ERR3586793	ended ERR3586793 OK PAIRED 3558 -> 16728
+2021-05-03 21:26:56.101312	0x00007f8ce3279700	debug	[generic]	Number of threads started: 11 of 31
+2021-05-03 21:26:56.101328	0x00007f8ce3279700	debug	[generic]	Number of threads ended: 8 of 31
+2021-05-03 21:32:22.127215	0x00007f8cdea70700	info	ERR3586844	fasterq-dump --split-files ERR3586844
+2021-05-03 21:32:22.132544	0x00007f8cdea70700	info	ERR3586844	spots read      : 23,623,990
+2021-05-03 21:32:22.132562	0x00007f8cdea70700	info	ERR3586844	reads read      : 47,247,980
+2021-05-03 21:32:22.132576	0x00007f8cdea70700	info	ERR3586844	reads written   : 47,247,980
+2021-05-03 21:32:22.132589	0x00007f8cdea70700	info	ERR3586844	download done correctly!
+2021-05-03 21:32:22.132640	0x00007f8cdea70700	info	ERR3586844	looking for fastq file size...
+2021-05-03 21:32:22.132657	0x00007f8cdea70700	info	ERR3586844	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586844 ERR3586844 PAIRED 2>&1
+2021-05-03 21:32:22.132691	0x00007f8ce2277700	debug	[generic]	Number of threads started: 12 of 31
+2021-05-03 21:32:22.132793	0x00007f8ce2277700	debug	[generic]	Number of threads ended: 8 of 31
+2021-05-03 21:32:22.132812	0x00007f8ce2277700	info	ERR3587087	started ERR3587087 PAIRED 3404
+2021-05-03 21:32:22.132837	0x00007f8ce2277700	info	ERR3587087	started download with fasterq-dump
+2021-05-03 21:32:22.132852	0x00007f8ce2277700	info	ERR3587087	$HOME/SRA/scripts/execFasterQDump.sh ERR3587087 PAIRED ./ERR3587087 2>&1
+2021-05-03 21:32:22.187923	0x00007f8cdea70700	info	ERR3586844	fastq file size obtained correctly!
+2021-05-03 21:32:22.187975	0x00007f8cdea70700	info	ERR3586844	started analysis with kraken
+2021-05-03 21:32:22.187993	0x00007f8cdea70700	info	ERR3586844	$HOME/SRA/scripts/execKraken.sh ./ERR3586844 2>&1
+2021-05-03 21:33:55.457650	0x00007f8cdea70700	info	ERR3586844	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586844_1.fastq ERR3586844_2.fastq --output ERR3586844.kraken --report ERR3586844.kraken.report.txt
+2021-05-03 21:33:55.457699	0x00007f8cdea70700	info	ERR3586844	Loading database information... done.
+2021-05-03 21:33:55.457713	0x00007f8cdea70700	info	ERR3586844	23623990 sequences (4657.00 Mbp) processed in 68.434s (20712.6 Kseq/m, 4083.08 Mbp/m).
+2021-05-03 21:33:55.457727	0x00007f8cdea70700	info	ERR3586844	  5415896 sequences classified (22.93%)
+2021-05-03 21:33:55.457739	0x00007f8cdea70700	info	ERR3586844	  18208094 sequences unclassified (77.07%)
+2021-05-03 21:33:55.457753	0x00007f8cdea70700	info	ERR3586844	analysis completed correctly!
+2021-05-03 21:33:55.457766	0x00007f8cdea70700	info	ERR3586844	deleting fastq files...
+2021-05-03 21:33:55.457779	0x00007f8cdea70700	info	ERR3586844	$HOME/SRA/scripts/deleteFiles.sh ERR3586844 ./ERR3586844 true true 2>&1
+2021-05-03 21:33:57.207777	0x00007f8cdea70700	info	ERR3586844	deleted files correctly!
+2021-05-03 21:33:57.207830	0x00007f8cdea70700	info	ERR3586844	ended ERR3586844 OK PAIRED 2958 -> 12570
+2021-05-03 21:33:57.207846	0x00007f8cdea70700	debug	[generic]	Number of threads started: 12 of 31
+2021-05-03 21:33:57.207859	0x00007f8cdea70700	debug	[generic]	Number of threads ended: 9 of 31
+2021-05-03 21:43:26.093270	0x00007f8cdf271700	info	ERR3587031	fasterq-dump --split-files ERR3587031
+2021-05-03 21:43:26.093336	0x00007f8cdf271700	info	ERR3587031	spots read      : 24,237,081
+2021-05-03 21:43:26.093351	0x00007f8cdf271700	info	ERR3587031	reads read      : 48,474,162
+2021-05-03 21:43:26.093364	0x00007f8cdf271700	info	ERR3587031	reads written   : 48,474,162
+2021-05-03 21:43:26.093378	0x00007f8cdf271700	info	ERR3587031	download done correctly!
+2021-05-03 21:43:26.093465	0x00007f8cdf271700	info	ERR3587031	looking for fastq file size...
+2021-05-03 21:43:26.093482	0x00007f8cdf271700	info	ERR3587031	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587031 ERR3587031 PAIRED 2>&1
+2021-05-03 21:43:26.093520	0x00007f8cde26f700	debug	[generic]	Number of threads started: 13 of 31
+2021-05-03 21:43:26.093624	0x00007f8cde26f700	debug	[generic]	Number of threads ended: 9 of 31
+2021-05-03 21:43:26.093642	0x00007f8cde26f700	info	ERR3586851	started ERR3586851 PAIRED 2865
+2021-05-03 21:43:26.093657	0x00007f8cde26f700	info	ERR3586851	started download with fasterq-dump
+2021-05-03 21:43:26.093673	0x00007f8cde26f700	info	ERR3586851	$HOME/SRA/scripts/execFasterQDump.sh ERR3586851 PAIRED ./ERR3586851 2>&1
+2021-05-03 21:43:26.105300	0x00007f8cdf271700	info	ERR3587031	fastq file size obtained correctly!
+2021-05-03 21:43:26.105374	0x00007f8cdf271700	info	ERR3587031	started analysis with kraken
+2021-05-03 21:43:26.105391	0x00007f8cdf271700	info	ERR3587031	$HOME/SRA/scripts/execKraken.sh ./ERR3587031 2>&1
+2021-05-03 21:45:11.782811	0x00007f8cdf271700	info	ERR3587031	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587031_1.fastq ERR3587031_2.fastq --output ERR3587031.kraken --report ERR3587031.kraken.report.txt
+2021-05-03 21:45:11.782883	0x00007f8cdf271700	info	ERR3587031	Loading database information... done.
+2021-05-03 21:45:11.782900	0x00007f8cdf271700	info	ERR3587031	24237081 sequences (4802.73 Mbp) processed in 89.193s (16304.3 Kseq/m, 3230.80 Mbp/m).
+2021-05-03 21:45:11.782914	0x00007f8cdf271700	info	ERR3587031	  4356861 sequences classified (17.98%)
+2021-05-03 21:45:11.782928	0x00007f8cdf271700	info	ERR3587031	  19880220 sequences unclassified (82.02%)
+2021-05-03 21:45:11.782941	0x00007f8cdf271700	info	ERR3587031	analysis completed correctly!
+2021-05-03 21:45:11.782955	0x00007f8cdf271700	info	ERR3587031	deleting fastq files...
+2021-05-03 21:45:11.782970	0x00007f8cdf271700	info	ERR3587031	$HOME/SRA/scripts/deleteFiles.sh ERR3587031 ./ERR3587031 true true 2>&1
+2021-05-03 21:45:13.869680	0x00007f8cdf271700	info	ERR3587031	deleted files correctly!
+2021-05-03 21:45:13.869755	0x00007f8cdf271700	info	ERR3587031	ended ERR3587031 OK PAIRED 3075 -> 12947
+2021-05-03 21:45:13.869772	0x00007f8cdf271700	debug	[generic]	Number of threads started: 13 of 31
+2021-05-03 21:45:13.869786	0x00007f8cdf271700	debug	[generic]	Number of threads ended: 10 of 31
+2021-05-03 21:58:23.155392	0x00007f8ce2277700	info	ERR3587087	fasterq-dump --split-files ERR3587087
+2021-05-03 21:58:23.155446	0x00007f8ce2277700	info	ERR3587087	spots read      : 27,889,021
+2021-05-03 21:58:23.155460	0x00007f8ce2277700	info	ERR3587087	reads read      : 55,778,042
+2021-05-03 21:58:23.155473	0x00007f8ce2277700	info	ERR3587087	reads written   : 55,778,042
+2021-05-03 21:58:23.155487	0x00007f8ce2277700	info	ERR3587087	download done correctly!
+2021-05-03 21:58:23.155551	0x00007f8ce2277700	info	ERR3587087	looking for fastq file size...
+2021-05-03 21:58:23.155568	0x00007f8ce2277700	info	ERR3587087	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587087 ERR3587087 PAIRED 2>&1
+2021-05-03 21:58:23.155593	0x00007f8ce1275700	debug	[generic]	Number of threads started: 14 of 31
+2021-05-03 21:58:23.155696	0x00007f8ce1275700	debug	[generic]	Number of threads ended: 10 of 31
+2021-05-03 21:58:23.155714	0x00007f8ce1275700	info	ERR3586887	started ERR3586887 PAIRED 3217
+2021-05-03 21:58:23.155729	0x00007f8ce1275700	info	ERR3586887	started download with fasterq-dump
+2021-05-03 21:58:23.155745	0x00007f8ce1275700	info	ERR3586887	$HOME/SRA/scripts/execFasterQDump.sh ERR3586887 PAIRED ./ERR3586887 2>&1
+2021-05-03 21:58:23.343882	0x00007f8ce2277700	info	ERR3587087	fastq file size obtained correctly!
+2021-05-03 21:58:23.343957	0x00007f8ce2277700	info	ERR3587087	started analysis with kraken
+2021-05-03 21:58:23.343974	0x00007f8ce2277700	info	ERR3587087	$HOME/SRA/scripts/execKraken.sh ./ERR3587087 2>&1
+2021-05-03 22:01:16.253992	0x00007f8ce2277700	info	ERR3587087	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587087_1.fastq ERR3587087_2.fastq --output ERR3587087.kraken --report ERR3587087.kraken.report.txt
+2021-05-03 22:01:16.254064	0x00007f8ce2277700	info	ERR3587087	Loading database information... done.
+2021-05-03 22:01:16.254109	0x00007f8ce2277700	info	ERR3587087	27889021 sequences (5451.16 Mbp) processed in 148.657s (11256.4 Kseq/m, 2200.16 Mbp/m).
+2021-05-03 22:01:16.254136	0x00007f8ce2277700	info	ERR3587087	  6426890 sequences classified (23.04%)
+2021-05-03 22:01:16.254151	0x00007f8ce2277700	info	ERR3587087	  21462131 sequences unclassified (76.96%)
+2021-05-03 22:01:16.254165	0x00007f8ce2277700	info	ERR3587087	analysis completed correctly!
+2021-05-03 22:01:16.254179	0x00007f8ce2277700	info	ERR3587087	deleting fastq files...
+2021-05-03 22:01:16.254193	0x00007f8ce2277700	info	ERR3587087	$HOME/SRA/scripts/deleteFiles.sh ERR3587087 ./ERR3587087 true true 2>&1
+2021-05-03 22:01:20.993095	0x00007f8ce2277700	info	ERR3587087	deleted files correctly!
+2021-05-03 22:01:20.993162	0x00007f8ce2277700	info	ERR3587087	ended ERR3587087 OK PAIRED 3404 -> 17200
+2021-05-03 22:01:20.993178	0x00007f8ce2277700	debug	[generic]	Number of threads started: 14 of 31
+2021-05-03 22:01:20.993194	0x00007f8ce2277700	debug	[generic]	Number of threads ended: 11 of 31
+2021-05-03 22:37:12.936609	0x00007f8ce2a78700	info	ERR3587028	fasterq-dump --split-files ERR3587028
+2021-05-03 22:37:12.936664	0x00007f8ce2a78700	info	ERR3587028	spots read      : 26,103,394
+2021-05-03 22:37:12.936679	0x00007f8ce2a78700	info	ERR3587028	reads read      : 52,206,788
+2021-05-03 22:37:12.936692	0x00007f8ce2a78700	info	ERR3587028	reads written   : 52,206,788
+2021-05-03 22:37:12.936706	0x00007f8ce2a78700	info	ERR3587028	download done correctly!
+2021-05-03 22:37:12.936750	0x00007f8ce2a78700	info	ERR3587028	looking for fastq file size...
+2021-05-03 22:37:12.936767	0x00007f8ce2a78700	info	ERR3587028	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587028 ERR3587028 PAIRED 2>&1
+2021-05-03 22:37:12.936772	0x00007f8ce0273700	debug	[generic]	Number of threads started: 15 of 31
+2021-05-03 22:37:12.936859	0x00007f8ce0273700	debug	[generic]	Number of threads ended: 11 of 31
+2021-05-03 22:37:12.936877	0x00007f8ce0273700	info	ERR3587096	started ERR3587096 PAIRED 3204
+2021-05-03 22:37:12.936891	0x00007f8ce0273700	info	ERR3587096	started download with fasterq-dump
+2021-05-03 22:37:12.936906	0x00007f8ce0273700	info	ERR3587096	$HOME/SRA/scripts/execFasterQDump.sh ERR3587096 PAIRED ./ERR3587096 2>&1
+2021-05-03 22:37:12.948269	0x00007f8ce2a78700	info	ERR3587028	fastq file size obtained correctly!
+2021-05-03 22:37:12.948343	0x00007f8ce2a78700	info	ERR3587028	started analysis with kraken
+2021-05-03 22:37:12.948359	0x00007f8ce2a78700	info	ERR3587028	$HOME/SRA/scripts/execKraken.sh ./ERR3587028 2>&1
+2021-05-03 22:38:14.399730	0x00007f8ce2a78700	info	ERR3587028	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587028_1.fastq ERR3587028_2.fastq --output ERR3587028.kraken --report ERR3587028.kraken.report.txt
+2021-05-03 22:38:14.399800	0x00007f8ce2a78700	info	ERR3587028	Loading database information... done.
+2021-05-03 22:38:14.399816	0x00007f8ce2a78700	info	ERR3587028	26103394 sequences (5161.83 Mbp) processed in 50.724s (30877.3 Kseq/m, 6105.84 Mbp/m).
+2021-05-03 22:38:14.399830	0x00007f8ce2a78700	info	ERR3587028	  6354801 sequences classified (24.34%)
+2021-05-03 22:38:14.399843	0x00007f8ce2a78700	info	ERR3587028	  19748593 sequences unclassified (75.66%)
+2021-05-03 22:38:14.399857	0x00007f8ce2a78700	info	ERR3587028	analysis completed correctly!
+2021-05-03 22:38:14.399871	0x00007f8ce2a78700	info	ERR3587028	deleting fastq files...
+2021-05-03 22:38:14.399885	0x00007f8ce2a78700	info	ERR3587028	$HOME/SRA/scripts/deleteFiles.sh ERR3587028 ./ERR3587028 true true 2>&1
+2021-05-03 22:38:16.513600	0x00007f8ce2a78700	info	ERR3587028	deleted files correctly!
+2021-05-03 22:38:16.513666	0x00007f8ce2a78700	info	ERR3587028	ended ERR3587028 OK PAIRED 3467 -> 13928
+2021-05-03 22:38:16.513682	0x00007f8ce2a78700	debug	[generic]	Number of threads started: 15 of 31
+2021-05-03 22:38:16.513695	0x00007f8ce2a78700	debug	[generic]	Number of threads ended: 12 of 31
+2021-05-03 22:57:22.025538	0x00007f8cde26f700	info	ERR3586851	fasterq-dump --split-files ERR3586851
+2021-05-03 22:57:22.025593	0x00007f8cde26f700	info	ERR3586851	spots read      : 22,645,734
+2021-05-03 22:57:22.025640	0x00007f8cde26f700	info	ERR3586851	reads read      : 45,291,468
+2021-05-03 22:57:22.025655	0x00007f8cde26f700	info	ERR3586851	reads written   : 45,291,468
+2021-05-03 22:57:22.025683	0x00007f8cde26f700	info	ERR3586851	download done correctly!
+2021-05-03 22:57:22.025731	0x00007f8cde26f700	info	ERR3586851	looking for fastq file size...
+2021-05-03 22:57:22.025748	0x00007f8cde26f700	info	ERR3586851	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586851 ERR3586851 PAIRED 2>&1
+2021-05-03 22:57:22.025786	0x00007f8cdfa72700	debug	[generic]	Number of threads started: 16 of 31
+2021-05-03 22:57:22.025904	0x00007f8cdfa72700	debug	[generic]	Number of threads ended: 12 of 31
+2021-05-03 22:57:22.025924	0x00007f8cdfa72700	info	ERR3586753	started ERR3586753 PAIRED 3139
+2021-05-03 22:57:22.025939	0x00007f8cdfa72700	info	ERR3586753	started download with fasterq-dump
+2021-05-03 22:57:22.025954	0x00007f8cdfa72700	info	ERR3586753	$HOME/SRA/scripts/execFasterQDump.sh ERR3586753 PAIRED ./ERR3586753 2>&1
+2021-05-03 22:57:22.036028	0x00007f8cde26f700	info	ERR3586851	fastq file size obtained correctly!
+2021-05-03 22:57:22.036079	0x00007f8cde26f700	info	ERR3586851	started analysis with kraken
+2021-05-03 22:57:22.036095	0x00007f8cde26f700	info	ERR3586851	$HOME/SRA/scripts/execKraken.sh ./ERR3586851 2>&1
+2021-05-03 22:59:46.011941	0x00007f8cde26f700	info	ERR3586851	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586851_1.fastq ERR3586851_2.fastq --output ERR3586851.kraken --report ERR3586851.kraken.report.txt
+2021-05-03 22:59:46.012010	0x00007f8cde26f700	info	ERR3586851	Loading database information... done.
+2021-05-03 22:59:46.012025	0x00007f8cde26f700	info	ERR3586851	22645734 sequences (4518.65 Mbp) processed in 123.068s (11040.6 Kseq/m, 2203.00 Mbp/m).
+2021-05-03 22:59:46.012039	0x00007f8cde26f700	info	ERR3586851	  7251225 sequences classified (32.02%)
+2021-05-03 22:59:46.012052	0x00007f8cde26f700	info	ERR3586851	  15394509 sequences unclassified (67.98%)
+2021-05-03 22:59:46.012065	0x00007f8cde26f700	info	ERR3586851	analysis completed correctly!
+2021-05-03 22:59:46.012079	0x00007f8cde26f700	info	ERR3586851	deleting fastq files...
+2021-05-03 22:59:46.012093	0x00007f8cde26f700	info	ERR3586851	$HOME/SRA/scripts/deleteFiles.sh ERR3586851 ./ERR3586851 true true 2>&1
+2021-05-03 22:59:47.949771	0x00007f8cde26f700	info	ERR3586851	deleted files correctly!
+2021-05-03 22:59:47.949848	0x00007f8cde26f700	info	ERR3586851	ended ERR3586851 OK PAIRED 2865 -> 12154
+2021-05-03 22:59:47.949864	0x00007f8cde26f700	debug	[generic]	Number of threads started: 16 of 31
+2021-05-03 22:59:47.949887	0x00007f8cde26f700	debug	[generic]	Number of threads ended: 13 of 31
+2021-05-03 23:13:14.229499	0x00007f8ce1275700	info	ERR3586887	fasterq-dump --split-files ERR3586887
+2021-05-03 23:13:14.229554	0x00007f8ce1275700	info	ERR3586887	spots read      : 25,328,628
+2021-05-03 23:13:14.229569	0x00007f8ce1275700	info	ERR3586887	reads read      : 50,657,256
+2021-05-03 23:13:14.229582	0x00007f8ce1275700	info	ERR3586887	reads written   : 50,657,256
+2021-05-03 23:13:14.229595	0x00007f8ce1275700	info	ERR3586887	download done correctly!
+2021-05-03 23:13:14.229638	0x00007f8ce1275700	info	ERR3586887	looking for fastq file size...
+2021-05-03 23:13:14.229655	0x00007f8ce1275700	info	ERR3586887	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586887 ERR3586887 PAIRED 2>&1
+2021-05-03 23:13:14.229711	0x00007f8ce3a7a700	debug	[generic]	Number of threads started: 17 of 31
+2021-05-03 23:13:14.229821	0x00007f8ce3a7a700	debug	[generic]	Number of threads ended: 13 of 31
+2021-05-03 23:13:14.229991	0x00007f8ce3a7a700	info	ERR3587153	started ERR3587153 PAIRED 3636
+2021-05-03 23:13:14.230086	0x00007f8ce3a7a700	info	ERR3587153	started download with fasterq-dump
+2021-05-03 23:13:14.230180	0x00007f8ce3a7a700	info	ERR3587153	$HOME/SRA/scripts/execFasterQDump.sh ERR3587153 PAIRED ./ERR3587153 2>&1
+2021-05-03 23:13:14.239906	0x00007f8ce1275700	info	ERR3586887	fastq file size obtained correctly!
+2021-05-03 23:13:14.239961	0x00007f8ce1275700	info	ERR3586887	started analysis with kraken
+2021-05-03 23:13:14.239978	0x00007f8ce1275700	info	ERR3586887	$HOME/SRA/scripts/execKraken.sh ./ERR3586887 2>&1
+2021-05-03 23:14:55.456113	0x00007f8ce1275700	info	ERR3586887	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586887_1.fastq ERR3586887_2.fastq --output ERR3586887.kraken --report ERR3586887.kraken.report.txt
+2021-05-03 23:14:55.456185	0x00007f8ce1275700	info	ERR3586887	Loading database information... done.
+2021-05-03 23:14:55.456201	0x00007f8ce1275700	info	ERR3586887	25328628 sequences (5004.24 Mbp) processed in 82.697s (18376.8 Kseq/m, 3630.75 Mbp/m).
+2021-05-03 23:14:55.456218	0x00007f8ce1275700	info	ERR3586887	  7540193 sequences classified (29.77%)
+2021-05-03 23:14:55.505775	0x00007f8ce1275700	info	ERR3586887	  17788435 sequences unclassified (70.23%)
+2021-05-03 23:14:55.505801	0x00007f8ce1275700	info	ERR3586887	analysis completed correctly!
+2021-05-03 23:14:55.505815	0x00007f8ce1275700	info	ERR3586887	deleting fastq files...
+2021-05-03 23:14:55.505830	0x00007f8ce1275700	info	ERR3586887	$HOME/SRA/scripts/deleteFiles.sh ERR3586887 ./ERR3586887 true true 2>&1
+2021-05-03 23:14:57.947557	0x00007f8ce1275700	info	ERR3586887	deleted files correctly!
+2021-05-03 23:14:57.947639	0x00007f8ce1275700	info	ERR3586887	ended ERR3586887 OK PAIRED 3217 -> 15916
+2021-05-03 23:14:57.947655	0x00007f8ce1275700	debug	[generic]	Number of threads started: 17 of 31
+2021-05-03 23:14:57.947668	0x00007f8ce1275700	debug	[generic]	Number of threads ended: 14 of 31
+2021-05-03 23:22:01.502077	0x00007f8ce0273700	info	ERR3587096	fasterq-dump --split-files ERR3587096
+2021-05-03 23:22:01.507448	0x00007f8ce0273700	info	ERR3587096	spots read      : 26,686,106
+2021-05-03 23:22:01.507540	0x00007f8ce0273700	info	ERR3587096	reads read      : 53,372,212
+2021-05-03 23:22:01.507612	0x00007f8ce0273700	info	ERR3587096	reads written   : 53,372,212
+2021-05-03 23:22:01.507675	0x00007f8ce0273700	info	ERR3587096	download done correctly!
+2021-05-03 23:22:01.507767	0x00007f8ce0273700	info	ERR3587096	looking for fastq file size...
+2021-05-03 23:22:01.507863	0x00007f8ce0273700	info	ERR3587096	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587096 ERR3587096 PAIRED 2>&1
+2021-05-03 23:22:01.519280	0x00007f8ce0273700	info	ERR3587096	fastq file size obtained correctly!
+2021-05-03 23:22:01.519354	0x00007f8ce0273700	info	ERR3587096	started analysis with kraken
+2021-05-03 23:22:01.519400	0x00007f8ce0273700	info	ERR3587096	$HOME/SRA/scripts/execKraken.sh ./ERR3587096 2>&1
+2021-05-03 23:24:39.462559	0x00007f8ce0273700	info	ERR3587096	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587096_1.fastq ERR3587096_2.fastq --output ERR3587096.kraken --report ERR3587096.kraken.report.txt
+2021-05-03 23:24:39.462629	0x00007f8ce0273700	info	ERR3587096	Loading database information... done.
+2021-05-03 23:24:39.462645	0x00007f8ce0273700	info	ERR3587096	26686106 sequences (5269.20 Mbp) processed in 142.457s (11239.6 Kseq/m, 2219.27 Mbp/m).
+2021-05-03 23:24:39.462660	0x00007f8ce0273700	info	ERR3587096	  10134558 sequences classified (37.98%)
+2021-05-03 23:24:39.462673	0x00007f8ce0273700	info	ERR3587096	  16551548 sequences unclassified (62.02%)
+2021-05-03 23:24:39.462689	0x00007f8ce0273700	info	ERR3587096	analysis completed correctly!
+2021-05-03 23:24:39.462703	0x00007f8ce0273700	info	ERR3587096	deleting fastq files...
+2021-05-03 23:24:39.462718	0x00007f8ce0273700	info	ERR3587096	$HOME/SRA/scripts/deleteFiles.sh ERR3587096 ./ERR3587096 true true 2>&1
+2021-05-03 23:24:41.904245	0x00007f8ce0273700	info	ERR3587096	deleted files correctly!
+2021-05-03 23:24:41.904315	0x00007f8ce0273700	info	ERR3587096	ended ERR3587096 OK PAIRED 3204 -> 16562
+2021-05-03 23:24:41.904331	0x00007f8ce0273700	debug	[generic]	Number of threads started: 17 of 31
+2021-05-03 23:24:41.904345	0x00007f8ce0273700	debug	[generic]	Number of threads ended: 15 of 31
+2021-05-03 23:41:57.023918	0x00007f8cdfa72700	info	ERR3586753	fasterq-dump --split-files ERR3586753
+2021-05-03 23:41:57.023982	0x00007f8cdfa72700	info	ERR3586753	spots read      : 24,012,763
+2021-05-03 23:41:57.023997	0x00007f8cdfa72700	info	ERR3586753	reads read      : 48,025,526
+2021-05-03 23:41:57.024010	0x00007f8cdfa72700	info	ERR3586753	reads written   : 48,025,526
+2021-05-03 23:41:57.024024	0x00007f8cdfa72700	info	ERR3586753	download done correctly!
+2021-05-03 23:41:57.024067	0x00007f8ce627f700	debug	[generic]	Number of threads started: 18 of 31
+2021-05-03 23:41:57.024068	0x00007f8cdfa72700	info	ERR3586753	looking for fastq file size...
+2021-05-03 23:41:57.024121	0x00007f8cdfa72700	info	ERR3586753	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586753 ERR3586753 PAIRED 2>&1
+2021-05-03 23:41:57.024149	0x00007f8ce627f700	debug	[generic]	Number of threads ended: 15 of 31
+2021-05-03 23:41:57.024258	0x00007f8ce627f700	info	ERR3586823	started ERR3586823 PAIRED 3990
+2021-05-03 23:41:57.024276	0x00007f8ce627f700	info	ERR3586823	started download with fasterq-dump
+2021-05-03 23:41:57.024291	0x00007f8ce627f700	info	ERR3586823	$HOME/SRA/scripts/execFasterQDump.sh ERR3586823 PAIRED ./ERR3586823 2>&1
+2021-05-03 23:41:57.033972	0x00007f8cdfa72700	info	ERR3586753	fastq file size obtained correctly!
+2021-05-03 23:41:57.034024	0x00007f8cdfa72700	info	ERR3586753	started analysis with kraken
+2021-05-03 23:41:57.034040	0x00007f8cdfa72700	info	ERR3586753	$HOME/SRA/scripts/execKraken.sh ./ERR3586753 2>&1
+2021-05-03 23:44:57.751339	0x00007f8ce3a7a700	info	ERR3587153	fasterq-dump --split-files ERR3587153
+2021-05-03 23:44:57.751396	0x00007f8ce3a7a700	info	ERR3587153	spots read      : 27,530,006
+2021-05-03 23:44:57.751411	0x00007f8ce3a7a700	info	ERR3587153	reads read      : 55,060,012
+2021-05-03 23:44:57.751423	0x00007f8ce3a7a700	info	ERR3587153	reads written   : 55,060,012
+2021-05-03 23:44:57.751437	0x00007f8ce3a7a700	info	ERR3587153	download done correctly!
+2021-05-03 23:44:57.751476	0x00007f8ce3a7a700	info	ERR3587153	looking for fastq file size...
+2021-05-03 23:44:57.751510	0x00007f8ce3a7a700	info	ERR3587153	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587153 ERR3587153 PAIRED 2>&1
+2021-05-03 23:44:57.751506	0x00007f8ced27d700	debug	[generic]	Number of threads started: 19 of 31
+2021-05-03 23:44:57.751581	0x00007f8ced27d700	debug	[generic]	Number of threads ended: 15 of 31
+2021-05-03 23:44:57.751599	0x00007f8ced27d700	info	ERR3586814	started ERR3586814 PAIRED 4211
+2021-05-03 23:44:57.751613	0x00007f8ced27d700	info	ERR3586814	started download with fasterq-dump
+2021-05-03 23:44:57.751628	0x00007f8ced27d700	info	ERR3586814	$HOME/SRA/scripts/execFasterQDump.sh ERR3586814 PAIRED ./ERR3586814 2>&1
+2021-05-03 23:44:57.761392	0x00007f8ce3a7a700	info	ERR3587153	fastq file size obtained correctly!
+2021-05-03 23:44:57.761444	0x00007f8ce3a7a700	info	ERR3587153	started analysis with kraken
+2021-05-03 23:44:57.761468	0x00007f8ce3a7a700	info	ERR3587153	$HOME/SRA/scripts/execKraken.sh ./ERR3587153 2>&1
+2021-05-03 23:48:23.058843	0x00007f8cdfa72700	info	ERR3586753	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586753_1.fastq ERR3586753_2.fastq --output ERR3586753.kraken --report ERR3586753.kraken.report.txt
+2021-05-03 23:48:23.058898	0x00007f8cdfa72700	info	ERR3586753	Loading database information... done.
+2021-05-03 23:48:23.058913	0x00007f8cdfa72700	info	ERR3586753	24012763 sequences (4773.50 Mbp) processed in 363.902s (3959.2 Kseq/m, 787.05 Mbp/m).
+2021-05-03 23:48:23.058926	0x00007f8cdfa72700	info	ERR3586753	  7844065 sequences classified (32.67%)
+2021-05-03 23:48:23.058938	0x00007f8cdfa72700	info	ERR3586753	  16168698 sequences unclassified (67.33%)
+2021-05-03 23:48:23.058952	0x00007f8cdfa72700	info	ERR3586753	analysis completed correctly!
+2021-05-03 23:48:23.058965	0x00007f8cdfa72700	info	ERR3586753	deleting fastq files...
+2021-05-03 23:48:23.058980	0x00007f8cdfa72700	info	ERR3586753	$HOME/SRA/scripts/deleteFiles.sh ERR3586753 ./ERR3586753 true true 2>&1
+2021-05-03 23:48:24.444965	0x00007f8cdfa72700	info	ERR3586753	deleted files correctly!
+2021-05-03 23:48:24.445019	0x00007f8cdfa72700	info	ERR3586753	ended ERR3586753 OK PAIRED 3139 -> 12857
+2021-05-03 23:48:24.445036	0x00007f8cdfa72700	debug	[generic]	Number of threads started: 19 of 31
+2021-05-03 23:48:24.445050	0x00007f8cdfa72700	debug	[generic]	Number of threads ended: 16 of 31
+2021-05-03 23:49:03.131339	0x00007f8ce3a7a700	info	ERR3587153	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587153_1.fastq ERR3587153_2.fastq --output ERR3587153.kraken --report ERR3587153.kraken.report.txt
+2021-05-03 23:49:03.131406	0x00007f8ce3a7a700	info	ERR3587153	Loading database information... done.
+2021-05-03 23:49:03.131422	0x00007f8ce3a7a700	info	ERR3587153	27530006 sequences (5438.92 Mbp) processed in 223.942s (7376.0 Kseq/m, 1457.23 Mbp/m).
+2021-05-03 23:49:03.131437	0x00007f8ce3a7a700	info	ERR3587153	  4473609 sequences classified (16.25%)
+2021-05-03 23:49:03.131451	0x00007f8ce3a7a700	info	ERR3587153	  23056397 sequences unclassified (83.75%)
+2021-05-03 23:49:03.215665	0x00007f8ce3a7a700	info	ERR3587153	analysis completed correctly!
+2021-05-03 23:49:03.215704	0x00007f8ce3a7a700	info	ERR3587153	deleting fastq files...
+2021-05-03 23:49:03.215720	0x00007f8ce3a7a700	info	ERR3587153	$HOME/SRA/scripts/deleteFiles.sh ERR3587153 ./ERR3587153 true true 2>&1
+2021-05-03 23:49:05.182696	0x00007f8ce3a7a700	info	ERR3587153	deleted files correctly!
+2021-05-03 23:49:05.182761	0x00007f8ce3a7a700	info	ERR3587153	ended ERR3587153 OK PAIRED 3636 -> 17090
+2021-05-03 23:49:05.182778	0x00007f8ce3a7a700	debug	[generic]	Number of threads started: 19 of 31
+2021-05-03 23:49:05.182791	0x00007f8ce3a7a700	debug	[generic]	Number of threads ended: 17 of 31
+2021-05-04 00:29:27.752467	0x00007f8ce627f700	info	ERR3586823	fasterq-dump --split-files ERR3586823
+2021-05-04 00:29:27.763439	0x00007f8ce627f700	info	ERR3586823	spots read      : 29,775,162
+2021-05-04 00:29:27.763456	0x00007f8ce627f700	info	ERR3586823	reads read      : 59,550,324
+2021-05-04 00:29:27.763469	0x00007f8ce627f700	info	ERR3586823	reads written   : 59,550,324
+2021-05-04 00:29:27.763484	0x00007f8ce627f700	info	ERR3586823	download done correctly!
+2021-05-04 00:29:27.763563	0x00007f8ce7fff700	debug	[generic]	Number of threads started: 20 of 31
+2021-05-04 00:29:27.763539	0x00007f8ce627f700	info	ERR3586823	looking for fastq file size...
+2021-05-04 00:29:27.777520	0x00007f8ce627f700	info	ERR3586823	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586823 ERR3586823 PAIRED 2>&1
+2021-05-04 00:29:27.777540	0x00007f8ce7fff700	debug	[generic]	Number of threads ended: 17 of 31
+2021-05-04 00:29:27.777560	0x00007f8ce7fff700	info	ERR3586809	started ERR3586809 PAIRED 4123
+2021-05-04 00:29:27.777575	0x00007f8ce7fff700	info	ERR3586809	started download with fasterq-dump
+2021-05-04 00:29:27.777590	0x00007f8ce7fff700	info	ERR3586809	$HOME/SRA/scripts/execFasterQDump.sh ERR3586809 PAIRED ./ERR3586809 2>&1
+2021-05-04 00:29:29.124684	0x00007f8ce627f700	info	ERR3586823	fastq file size obtained correctly!
+2021-05-04 00:29:29.124736	0x00007f8ce627f700	info	ERR3586823	started analysis with kraken
+2021-05-04 00:29:29.124752	0x00007f8ce627f700	info	ERR3586823	$HOME/SRA/scripts/execKraken.sh ./ERR3586823 2>&1
+2021-05-04 00:32:15.063226	0x00007f8ce627f700	info	ERR3586823	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586823_1.fastq ERR3586823_2.fastq --output ERR3586823.kraken --report ERR3586823.kraken.report.txt
+2021-05-04 00:32:15.063300	0x00007f8ce627f700	info	ERR3586823	Loading database information... done.
+2021-05-04 00:32:15.063316	0x00007f8ce627f700	info	ERR3586823	29775162 sequences (5904.89 Mbp) processed in 53.696s (33270.7 Kseq/m, 6598.12 Mbp/m).
+2021-05-04 00:32:15.063330	0x00007f8ce627f700	info	ERR3586823	  4037144 sequences classified (13.56%)
+2021-05-04 00:32:15.063344	0x00007f8ce627f700	info	ERR3586823	  25738018 sequences unclassified (86.44%)
+2021-05-04 00:32:15.063358	0x00007f8ce627f700	info	ERR3586823	analysis completed correctly!
+2021-05-04 00:32:15.063374	0x00007f8ce627f700	info	ERR3586823	deleting fastq files...
+2021-05-04 00:32:15.063389	0x00007f8ce627f700	info	ERR3586823	$HOME/SRA/scripts/deleteFiles.sh ERR3586823 ./ERR3586823 true true 2>&1
+2021-05-04 00:32:17.516369	0x00007f8ce627f700	info	ERR3586823	deleted files correctly!
+2021-05-04 00:32:17.516436	0x00007f8ce627f700	info	ERR3586823	ended ERR3586823 OK PAIRED 3990 -> 15934
+2021-05-04 00:32:17.516453	0x00007f8ce627f700	debug	[generic]	Number of threads started: 20 of 31
+2021-05-04 00:32:17.516465	0x00007f8ce627f700	debug	[generic]	Number of threads ended: 18 of 31
+2021-05-04 00:34:44.270194	0x00007f8ced27d700	info	ERR3586814	fasterq-dump --split-files ERR3586814
+2021-05-04 00:34:44.275560	0x00007f8ced27d700	info	ERR3586814	spots read      : 31,875,042
+2021-05-04 00:34:44.275580	0x00007f8ced27d700	info	ERR3586814	reads read      : 63,750,084
+2021-05-04 00:34:44.275594	0x00007f8ced27d700	info	ERR3586814	reads written   : 63,750,084
+2021-05-04 00:34:44.275607	0x00007f8ced27d700	info	ERR3586814	download done correctly!
+2021-05-04 00:34:44.275642	0x00007f8ced27d700	info	ERR3586814	looking for fastq file size...
+2021-05-04 00:34:44.275660	0x00007f8ced27d700	info	ERR3586814	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586814 ERR3586814 PAIRED 2>&1
+2021-05-04 00:34:44.275650	0x00007f8ceda7e700	debug	[generic]	Number of threads started: 21 of 31
+2021-05-04 00:34:44.275729	0x00007f8ceda7e700	debug	[generic]	Number of threads ended: 18 of 31
+2021-05-04 00:34:44.275769	0x00007f8ceda7e700	info	ERR3587168	started ERR3587168 PAIRED 4979
+2021-05-04 00:34:44.275784	0x00007f8ceda7e700	info	ERR3587168	started download with fasterq-dump
+2021-05-04 00:34:44.275832	0x00007f8ceda7e700	info	ERR3587168	$HOME/SRA/scripts/execFasterQDump.sh ERR3587168 PAIRED ./ERR3587168 2>&1
+2021-05-04 00:34:44.378225	0x00007f8ced27d700	info	ERR3586814	fastq file size obtained correctly!
+2021-05-04 00:34:44.378298	0x00007f8ced27d700	info	ERR3586814	started analysis with kraken
+2021-05-04 00:34:44.378315	0x00007f8ced27d700	info	ERR3586814	$HOME/SRA/scripts/execKraken.sh ./ERR3586814 2>&1
+2021-05-04 00:38:13.742902	0x00007f8ced27d700	info	ERR3586814	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586814_1.fastq ERR3586814_2.fastq --output ERR3586814.kraken --report ERR3586814.kraken.report.txt
+2021-05-04 00:38:13.742977	0x00007f8ced27d700	info	ERR3586814	Loading database information... done.
+2021-05-04 00:38:13.743020	0x00007f8ced27d700	info	ERR3586814	31875042 sequences (6313.47 Mbp) processed in 59.519s (32132.7 Kseq/m, 6364.50 Mbp/m).
+2021-05-04 00:38:13.743061	0x00007f8ced27d700	info	ERR3586814	  4800207 sequences classified (15.06%)
+2021-05-04 00:38:13.743075	0x00007f8ced27d700	info	ERR3586814	  27074835 sequences unclassified (84.94%)
+2021-05-04 00:38:13.743103	0x00007f8ced27d700	info	ERR3586814	analysis completed correctly!
+2021-05-04 00:38:13.743118	0x00007f8ced27d700	info	ERR3586814	deleting fastq files...
+2021-05-04 00:38:13.743133	0x00007f8ced27d700	info	ERR3586814	$HOME/SRA/scripts/deleteFiles.sh ERR3586814 ./ERR3586814 true true 2>&1
+2021-05-04 00:38:16.372626	0x00007f8ced27d700	info	ERR3586814	deleted files correctly!
+2021-05-04 00:38:16.372696	0x00007f8ced27d700	info	ERR3586814	ended ERR3586814 OK PAIRED 4211 -> 17049
+2021-05-04 00:38:16.372713	0x00007f8ced27d700	debug	[generic]	Number of threads started: 21 of 31
+2021-05-04 00:38:16.372726	0x00007f8ced27d700	debug	[generic]	Number of threads ended: 19 of 31
+2021-05-04 01:10:38.835169	0x00007f8ceda7e700	info	ERR3587168	fasterq-dump --split-files ERR3587168
+2021-05-04 01:10:38.835217	0x00007f8ceda7e700	info	ERR3587168	spots read      : 39,814,759
+2021-05-04 01:10:38.835232	0x00007f8ceda7e700	info	ERR3587168	reads read      : 79,629,518
+2021-05-04 01:10:38.835245	0x00007f8ceda7e700	info	ERR3587168	reads written   : 79,629,518
+2021-05-04 01:10:38.835259	0x00007f8ceda7e700	info	ERR3587168	download done correctly!
+2021-05-04 01:10:38.835296	0x00007f8ceda7e700	info	ERR3587168	looking for fastq file size...
+2021-05-04 01:10:38.835310	0x00007f8ce527d700	debug	[generic]	Number of threads started: 22 of 31
+2021-05-04 01:10:38.835312	0x00007f8ceda7e700	info	ERR3587168	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587168 ERR3587168 PAIRED 2>&1
+2021-05-04 01:10:38.835359	0x00007f8ce527d700	debug	[generic]	Number of threads ended: 19 of 31
+2021-05-04 01:10:38.835376	0x00007f8ce527d700	info	ERR3586921	started ERR3586921 PAIRED 3916
+2021-05-04 01:10:38.835389	0x00007f8ce527d700	info	ERR3586921	started download with fasterq-dump
+2021-05-04 01:10:38.835404	0x00007f8ce527d700	info	ERR3586921	$HOME/SRA/scripts/execFasterQDump.sh ERR3586921 PAIRED ./ERR3586921 2>&1
+2021-05-04 01:10:38.901464	0x00007f8ceda7e700	info	ERR3587168	fastq file size obtained correctly!
+2021-05-04 01:10:38.901516	0x00007f8ceda7e700	info	ERR3587168	started analysis with kraken
+2021-05-04 01:10:38.901532	0x00007f8ceda7e700	info	ERR3587168	$HOME/SRA/scripts/execKraken.sh ./ERR3587168 2>&1
+2021-05-04 01:14:25.444626	0x00007f8ceda7e700	info	ERR3587168	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587168_1.fastq ERR3587168_2.fastq --output ERR3587168.kraken --report ERR3587168.kraken.report.txt
+2021-05-04 01:14:25.675811	0x00007f8ceda7e700	info	ERR3587168	Loading database information... done.
+2021-05-04 01:14:25.675855	0x00007f8ceda7e700	info	ERR3587168	39814759 sequences (7914.54 Mbp) processed in 122.100s (19565.1 Kseq/m, 3889.22 Mbp/m).
+2021-05-04 01:14:25.675870	0x00007f8ceda7e700	info	ERR3587168	  11817596 sequences classified (29.68%)
+2021-05-04 01:14:25.675884	0x00007f8ceda7e700	info	ERR3587168	  27997163 sequences unclassified (70.32%)
+2021-05-04 01:14:25.675898	0x00007f8ceda7e700	info	ERR3587168	analysis completed correctly!
+2021-05-04 01:14:25.675912	0x00007f8ceda7e700	info	ERR3587168	deleting fastq files...
+2021-05-04 01:14:25.675926	0x00007f8ceda7e700	info	ERR3587168	$HOME/SRA/scripts/deleteFiles.sh ERR3587168 ./ERR3587168 true true 2>&1
+2021-05-04 01:14:28.758510	0x00007f8ceda7e700	info	ERR3587168	deleted files correctly!
+2021-05-04 01:14:28.758559	0x00007f8ceda7e700	info	ERR3587168	ended ERR3587168 OK PAIRED 4979 -> 24835
+2021-05-04 01:14:28.758575	0x00007f8ceda7e700	debug	[generic]	Number of threads started: 22 of 31
+2021-05-04 01:14:28.758588	0x00007f8ceda7e700	debug	[generic]	Number of threads ended: 20 of 31
+2021-05-04 01:20:31.547151	0x00007f8ce7fff700	info	ERR3586809	fasterq-dump --split-files ERR3586809
+2021-05-04 01:20:31.547209	0x00007f8ce7fff700	info	ERR3586809	spots read      : 31,401,032
+2021-05-04 01:20:31.547224	0x00007f8ce7fff700	info	ERR3586809	reads read      : 62,802,064
+2021-05-04 01:20:31.547237	0x00007f8ce7fff700	info	ERR3586809	reads written   : 62,802,064
+2021-05-04 01:20:31.547251	0x00007f8ce7fff700	info	ERR3586809	download done correctly!
+2021-05-04 01:20:31.547283	0x00007f8ce7fff700	info	ERR3586809	looking for fastq file size...
+2021-05-04 01:20:31.547299	0x00007f8ce7fff700	info	ERR3586809	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586809 ERR3586809 PAIRED 2>&1
+2021-05-04 01:20:31.547340	0x00007f8ceca7c700	debug	[generic]	Number of threads started: 23 of 31
+2021-05-04 01:20:31.547443	0x00007f8ceca7c700	debug	[generic]	Number of threads ended: 20 of 31
+2021-05-04 01:20:31.547462	0x00007f8ceca7c700	info	ERR3586810	started ERR3586810 PAIRED 4176
+2021-05-04 01:20:31.547475	0x00007f8ceca7c700	info	ERR3586810	started download with fasterq-dump
+2021-05-04 01:20:31.547490	0x00007f8ceca7c700	info	ERR3586810	$HOME/SRA/scripts/execFasterQDump.sh ERR3586810 PAIRED ./ERR3586810 2>&1
+2021-05-04 01:20:31.560481	0x00007f8ce7fff700	info	ERR3586809	fastq file size obtained correctly!
+2021-05-04 01:20:31.560533	0x00007f8ce7fff700	info	ERR3586809	started analysis with kraken
+2021-05-04 01:20:31.560548	0x00007f8ce7fff700	info	ERR3586809	$HOME/SRA/scripts/execKraken.sh ./ERR3586809 2>&1
+2021-05-04 01:23:00.922821	0x00007f8ce7fff700	info	ERR3586809	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586809_1.fastq ERR3586809_2.fastq --output ERR3586809.kraken --report ERR3586809.kraken.report.txt
+2021-05-04 01:23:00.922870	0x00007f8ce7fff700	info	ERR3586809	Loading database information... done.
+2021-05-04 01:23:00.922885	0x00007f8ce7fff700	info	ERR3586809	31401032 sequences (6208.45 Mbp) processed in 116.583s (16160.7 Kseq/m, 3195.21 Mbp/m).
+2021-05-04 01:23:00.922899	0x00007f8ce7fff700	info	ERR3586809	  6909006 sequences classified (22.00%)
+2021-05-04 01:23:00.922911	0x00007f8ce7fff700	info	ERR3586809	  24492026 sequences unclassified (78.00%)
+2021-05-04 01:23:00.922925	0x00007f8ce7fff700	info	ERR3586809	analysis completed correctly!
+2021-05-04 01:23:00.922938	0x00007f8ce7fff700	info	ERR3586809	deleting fastq files...
+2021-05-04 01:23:00.922952	0x00007f8ce7fff700	info	ERR3586809	$HOME/SRA/scripts/deleteFiles.sh ERR3586809 ./ERR3586809 true true 2>&1
+2021-05-04 01:23:03.177169	0x00007f8ce7fff700	info	ERR3586809	deleted files correctly!
+2021-05-04 01:23:03.177221	0x00007f8ce7fff700	info	ERR3586809	ended ERR3586809 OK PAIRED 4123 -> 16773
+2021-05-04 01:23:03.177239	0x00007f8ce7fff700	debug	[generic]	Number of threads started: 23 of 31
+2021-05-04 01:23:03.177252	0x00007f8ce7fff700	debug	[generic]	Number of threads ended: 21 of 31
+2021-05-04 01:55:21.416284	0x00007f8ce527d700	info	ERR3586921	fasterq-dump --split-files ERR3586921
+2021-05-04 01:55:21.416336	0x00007f8ce527d700	info	ERR3586921	spots read      : 30,149,541
+2021-05-04 01:55:21.416351	0x00007f8ce527d700	info	ERR3586921	reads read      : 60,299,082
+2021-05-04 01:55:21.416365	0x00007f8ce527d700	info	ERR3586921	reads written   : 60,299,082
+2021-05-04 01:55:21.416378	0x00007f8ce527d700	info	ERR3586921	download done correctly!
+2021-05-04 01:55:21.416410	0x00007f8ce527d700	info	ERR3586921	looking for fastq file size...
+2021-05-04 01:55:21.416425	0x00007f8ce527d700	info	ERR3586921	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586921 ERR3586921 PAIRED 2>&1
+2021-05-04 01:55:21.416445	0x00007f8ce77fe700	debug	[generic]	Number of threads started: 24 of 31
+2021-05-04 01:55:21.416540	0x00007f8ce77fe700	debug	[generic]	Number of threads ended: 21 of 31
+2021-05-04 01:55:21.416558	0x00007f8ce77fe700	info	ERR3587089	started ERR3587089 PAIRED 4031
+2021-05-04 01:55:21.416590	0x00007f8ce77fe700	info	ERR3587089	started download with fasterq-dump
+2021-05-04 01:55:21.416605	0x00007f8ce77fe700	info	ERR3587089	$HOME/SRA/scripts/execFasterQDump.sh ERR3587089 PAIRED ./ERR3587089 2>&1
+2021-05-04 01:55:21.428013	0x00007f8ce527d700	info	ERR3586921	fastq file size obtained correctly!
+2021-05-04 01:55:21.428085	0x00007f8ce527d700	info	ERR3586921	started analysis with kraken
+2021-05-04 01:55:21.428103	0x00007f8ce527d700	info	ERR3586921	$HOME/SRA/scripts/execKraken.sh ./ERR3586921 2>&1
+2021-05-04 01:57:30.499444	0x00007f8ce527d700	info	ERR3586921	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586921_1.fastq ERR3586921_2.fastq --output ERR3586921.kraken --report ERR3586921.kraken.report.txt
+2021-05-04 01:57:30.499521	0x00007f8ce527d700	info	ERR3586921	Loading database information... done.
+2021-05-04 01:57:30.499536	0x00007f8ce527d700	info	ERR3586921	30149541 sequences (6032.11 Mbp) processed in 102.496s (17649.2 Kseq/m, 3531.13 Mbp/m).
+2021-05-04 01:57:30.499550	0x00007f8ce527d700	info	ERR3586921	  7678036 sequences classified (25.47%)
+2021-05-04 01:57:30.499563	0x00007f8ce527d700	info	ERR3586921	  22471505 sequences unclassified (74.53%)
+2021-05-04 01:57:30.499576	0x00007f8ce527d700	info	ERR3586921	analysis completed correctly!
+2021-05-04 01:57:30.499590	0x00007f8ce527d700	info	ERR3586921	deleting fastq files...
+2021-05-04 01:57:30.499604	0x00007f8ce527d700	info	ERR3586921	$HOME/SRA/scripts/deleteFiles.sh ERR3586921 ./ERR3586921 true true 2>&1
+2021-05-04 01:57:33.120393	0x00007f8ce527d700	info	ERR3586921	deleted files correctly!
+2021-05-04 01:57:33.120462	0x00007f8ce527d700	info	ERR3586921	ended ERR3586921 OK PAIRED 3916 -> 16241
+2021-05-04 01:57:33.120479	0x00007f8ce527d700	debug	[generic]	Number of threads started: 24 of 31
+2021-05-04 01:57:33.120492	0x00007f8ce527d700	debug	[generic]	Number of threads ended: 22 of 31
+2021-05-04 02:09:06.558032	0x00007f8ceca7c700	info	ERR3586810	fasterq-dump --split-files ERR3586810
+2021-05-04 02:09:06.558190	0x00007f8ceca7c700	info	ERR3586810	spots read      : 31,606,800
+2021-05-04 02:09:06.558209	0x00007f8ceca7c700	info	ERR3586810	reads read      : 63,213,600
+2021-05-04 02:09:06.558224	0x00007f8ceca7c700	info	ERR3586810	reads written   : 63,213,600
+2021-05-04 02:09:06.558238	0x00007f8ceca7c700	info	ERR3586810	download done correctly!
+2021-05-04 02:09:06.558267	0x00007f8ceca7c700	info	ERR3586810	looking for fastq file size...
+2021-05-04 02:09:06.558283	0x00007f8ceca7c700	info	ERR3586810	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586810 ERR3586810 PAIRED 2>&1
+2021-05-04 02:09:06.558322	0x00007f8ce427b700	debug	[generic]	Number of threads started: 25 of 31
+2021-05-04 02:09:06.558399	0x00007f8ce427b700	debug	[generic]	Number of threads ended: 22 of 31
+2021-05-04 02:09:06.558417	0x00007f8ce427b700	info	ERR3587103	started ERR3587103 PAIRED 3761
+2021-05-04 02:09:06.558438	0x00007f8ce427b700	info	ERR3587103	started download with fasterq-dump
+2021-05-04 02:09:06.558455	0x00007f8ce427b700	info	ERR3587103	$HOME/SRA/scripts/execFasterQDump.sh ERR3587103 PAIRED ./ERR3587103 2>&1
+2021-05-04 02:09:06.585953	0x00007f8ceca7c700	info	ERR3586810	fastq file size obtained correctly!
+2021-05-04 02:09:06.884259	0x00007f8ceca7c700	info	ERR3586810	started analysis with kraken
+2021-05-04 02:09:06.884302	0x00007f8ceca7c700	info	ERR3586810	$HOME/SRA/scripts/execKraken.sh ./ERR3586810 2>&1
+2021-05-04 02:11:15.478339	0x00007f8ceca7c700	info	ERR3586810	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586810_1.fastq ERR3586810_2.fastq --output ERR3586810.kraken --report ERR3586810.kraken.report.txt
+2021-05-04 02:11:15.478408	0x00007f8ceca7c700	info	ERR3586810	Loading database information... done.
+2021-05-04 02:11:15.478424	0x00007f8ceca7c700	info	ERR3586810	31606800 sequences (6248.65 Mbp) processed in 99.031s (19149.6 Kseq/m, 3785.87 Mbp/m).
+2021-05-04 02:11:15.478437	0x00007f8ceca7c700	info	ERR3586810	  6952807 sequences classified (22.00%)
+2021-05-04 02:11:15.478450	0x00007f8ceca7c700	info	ERR3586810	  24653993 sequences unclassified (78.00%)
+2021-05-04 02:11:15.478464	0x00007f8ceca7c700	info	ERR3586810	analysis completed correctly!
+2021-05-04 02:11:15.478477	0x00007f8ceca7c700	info	ERR3586810	deleting fastq files...
+2021-05-04 02:11:15.478492	0x00007f8ceca7c700	info	ERR3586810	$HOME/SRA/scripts/deleteFiles.sh ERR3586810 ./ERR3586810 true true 2>&1
+2021-05-04 02:11:20.939026	0x00007f8ceca7c700	info	ERR3586810	deleted files correctly!
+2021-05-04 02:11:20.939098	0x00007f8ceca7c700	info	ERR3586810	ended ERR3586810 OK PAIRED 4176 -> 16882
+2021-05-04 02:11:20.939116	0x00007f8ceca7c700	debug	[generic]	Number of threads started: 25 of 31
+2021-05-04 02:11:20.939130	0x00007f8ceca7c700	debug	[generic]	Number of threads ended: 23 of 31
+2021-05-04 02:26:06.157321	0x00007f8ce77fe700	info	ERR3587089	fasterq-dump --split-files ERR3587089
+2021-05-04 02:26:06.157369	0x00007f8ce77fe700	info	ERR3587089	spots read      : 35,350,840
+2021-05-04 02:26:06.157416	0x00007f8ce77fe700	info	ERR3587089	reads read      : 70,701,680
+2021-05-04 02:26:06.157450	0x00007f8ce77fe700	info	ERR3587089	reads written   : 70,701,680
+2021-05-04 02:26:06.157464	0x00007f8ce77fe700	info	ERR3587089	download done correctly!
+2021-05-04 02:26:06.157492	0x00007f8ce77fe700	info	ERR3587089	looking for fastq file size...
+2021-05-04 02:26:06.157521	0x00007f8ce5a7e700	debug	[generic]	Number of threads started: 26 of 31
+2021-05-04 02:26:06.157507	0x00007f8ce77fe700	info	ERR3587089	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587089 ERR3587089 PAIRED 2>&1
+2021-05-04 02:26:06.157601	0x00007f8ce5a7e700	debug	[generic]	Number of threads ended: 23 of 31
+2021-05-04 02:26:06.157655	0x00007f8ce5a7e700	info	ERR3587194	started ERR3587194 PAIRED 3959
+2021-05-04 02:26:06.157671	0x00007f8ce5a7e700	info	ERR3587194	started download with fasterq-dump
+2021-05-04 02:26:06.157706	0x00007f8ce5a7e700	info	ERR3587194	$HOME/SRA/scripts/execFasterQDump.sh ERR3587194 PAIRED ./ERR3587194 2>&1
+2021-05-04 02:26:06.169383	0x00007f8ce77fe700	info	ERR3587089	fastq file size obtained correctly!
+2021-05-04 02:26:06.169457	0x00007f8ce77fe700	info	ERR3587089	started analysis with kraken
+2021-05-04 02:26:06.169474	0x00007f8ce77fe700	info	ERR3587089	$HOME/SRA/scripts/execKraken.sh ./ERR3587089 2>&1
+2021-05-04 02:28:20.067209	0x00007f8ce77fe700	info	ERR3587089	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587089_1.fastq ERR3587089_2.fastq --output ERR3587089.kraken --report ERR3587089.kraken.report.txt
+2021-05-04 02:28:20.067281	0x00007f8ce77fe700	info	ERR3587089	Loading database information... done.
+2021-05-04 02:28:20.067296	0x00007f8ce77fe700	info	ERR3587089	35350840 sequences (6576.70 Mbp) processed in 122.728s (17282.6 Kseq/m, 3215.27 Mbp/m).
+2021-05-04 02:28:20.067310	0x00007f8ce77fe700	info	ERR3587089	  9973175 sequences classified (28.21%)
+2021-05-04 02:28:20.067323	0x00007f8ce77fe700	info	ERR3587089	  25377665 sequences unclassified (71.79%)
+2021-05-04 02:28:20.067336	0x00007f8ce77fe700	info	ERR3587089	analysis completed correctly!
+2021-05-04 02:28:20.067350	0x00007f8ce77fe700	info	ERR3587089	deleting fastq files...
+2021-05-04 02:28:20.067363	0x00007f8ce77fe700	info	ERR3587089	$HOME/SRA/scripts/deleteFiles.sh ERR3587089 ./ERR3587089 true true 2>&1
+2021-05-04 02:28:23.133012	0x00007f8ce77fe700	info	ERR3587089	deleted files correctly!
+2021-05-04 02:28:23.133084	0x00007f8ce77fe700	info	ERR3587089	ended ERR3587089 OK PAIRED 4031 -> 21166
+2021-05-04 02:28:23.133100	0x00007f8ce77fe700	debug	[generic]	Number of threads started: 26 of 31
+2021-05-04 02:28:23.133112	0x00007f8ce77fe700	debug	[generic]	Number of threads ended: 24 of 31
+2021-05-04 02:37:31.816631	0x00007f8ce427b700	info	ERR3587103	fasterq-dump --split-files ERR3587103
+2021-05-04 02:37:31.816680	0x00007f8ce427b700	info	ERR3587103	spots read      : 31,023,834
+2021-05-04 02:37:31.816697	0x00007f8ce427b700	info	ERR3587103	reads read      : 62,047,668
+2021-05-04 02:37:31.816710	0x00007f8ce427b700	info	ERR3587103	reads written   : 62,047,668
+2021-05-04 02:37:31.816723	0x00007f8ce427b700	info	ERR3587103	download done correctly!
+2021-05-04 02:37:31.816747	0x00007f8ce427b700	info	ERR3587103	looking for fastq file size...
+2021-05-04 02:37:31.816765	0x00007f8ce427b700	info	ERR3587103	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587103 ERR3587103 PAIRED 2>&1
+2021-05-04 02:37:31.828579	0x00007f8ce427b700	info	ERR3587103	fastq file size obtained correctly!
+2021-05-04 02:37:31.828630	0x00007f8ce427b700	info	ERR3587103	started analysis with kraken
+2021-05-04 02:37:31.828647	0x00007f8ce427b700	info	ERR3587103	$HOME/SRA/scripts/execKraken.sh ./ERR3587103 2>&1
+2021-05-04 02:39:02.336819	0x00007f8ce427b700	info	ERR3587103	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587103_1.fastq ERR3587103_2.fastq --output ERR3587103.kraken --report ERR3587103.kraken.report.txt
+2021-05-04 02:39:02.336885	0x00007f8ce427b700	info	ERR3587103	Loading database information... done.
+2021-05-04 02:39:02.336900	0x00007f8ce427b700	info	ERR3587103	31023834 sequences (6116.92 Mbp) processed in 70.880s (26261.8 Kseq/m, 5178.00 Mbp/m).
+2021-05-04 02:39:02.336923	0x00007f8ce427b700	info	ERR3587103	  12120766 sequences classified (39.07%)
+2021-05-04 02:39:02.336937	0x00007f8ce427b700	info	ERR3587103	  18903068 sequences unclassified (60.93%)
+2021-05-04 02:39:02.336951	0x00007f8ce427b700	info	ERR3587103	analysis completed correctly!
+2021-05-04 02:39:02.336964	0x00007f8ce427b700	info	ERR3587103	deleting fastq files...
+2021-05-04 02:39:02.336978	0x00007f8ce427b700	info	ERR3587103	$HOME/SRA/scripts/deleteFiles.sh ERR3587103 ./ERR3587103 true true 2>&1
+2021-05-04 02:39:05.197740	0x00007f8ce427b700	info	ERR3587103	deleted files correctly!
+2021-05-04 02:39:05.197807	0x00007f8ce427b700	info	ERR3587103	ended ERR3587103 OK PAIRED 3761 -> 19244
+2021-05-04 02:39:05.197823	0x00007f8ce427b700	debug	[generic]	Number of threads started: 26 of 31
+2021-05-04 02:39:05.197837	0x00007f8ce427b700	debug	[generic]	Number of threads ended: 25 of 31
+2021-05-04 03:10:55.500741	0x00007f8ce5a7e700	info	ERR3587194	fasterq-dump --split-files ERR3587194
+2021-05-04 03:10:55.500789	0x00007f8ce5a7e700	info	ERR3587194	spots read      : 31,809,429
+2021-05-04 03:10:55.500804	0x00007f8ce5a7e700	info	ERR3587194	reads read      : 63,618,858
+2021-05-04 03:10:55.500817	0x00007f8ce5a7e700	info	ERR3587194	reads written   : 63,618,858
+2021-05-04 03:10:55.500830	0x00007f8ce5a7e700	info	ERR3587194	download done correctly!
+2021-05-04 03:10:55.500855	0x00007f8ce5a7e700	info	ERR3587194	looking for fastq file size...
+2021-05-04 03:10:55.500868	0x00007f8ce6a80700	debug	[generic]	Number of threads started: 27 of 31
+2021-05-04 03:10:55.500870	0x00007f8ce5a7e700	info	ERR3587194	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587194 ERR3587194 PAIRED 2>&1
+2021-05-04 03:10:55.500912	0x00007f8ce6a80700	debug	[generic]	Number of threads ended: 25 of 31
+2021-05-04 03:10:55.500927	0x00007f8ce6a80700	info	ERR3586978	started ERR3586978 PAIRED 8660
+2021-05-04 03:10:55.500939	0x00007f8ce6a80700	info	ERR3586978	started download with fasterq-dump
+2021-05-04 03:10:55.500951	0x00007f8ce6a80700	info	ERR3586978	$HOME/SRA/scripts/execFasterQDump.sh ERR3586978 PAIRED ./ERR3586978 2>&1
+2021-05-04 03:10:55.510665	0x00007f8ce5a7e700	info	ERR3587194	fastq file size obtained correctly!
+2021-05-04 03:10:55.510715	0x00007f8ce5a7e700	info	ERR3587194	started analysis with kraken
+2021-05-04 03:10:55.529299	0x00007f8ce5a7e700	info	ERR3587194	$HOME/SRA/scripts/execKraken.sh ./ERR3587194 2>&1
+2021-05-04 03:12:50.457980	0x00007f8ce5a7e700	info	ERR3587194	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587194_1.fastq ERR3587194_2.fastq --output ERR3587194.kraken --report ERR3587194.kraken.report.txt
+2021-05-04 03:12:50.458050	0x00007f8ce5a7e700	info	ERR3587194	Loading database information... done.
+2021-05-04 03:12:50.458066	0x00007f8ce5a7e700	info	ERR3587194	31809429 sequences (6283.57 Mbp) processed in 99.756s (19132.3 Kseq/m, 3779.35 Mbp/m).
+2021-05-04 03:12:50.458080	0x00007f8ce5a7e700	info	ERR3587194	  11262711 sequences classified (35.41%)
+2021-05-04 03:12:50.458092	0x00007f8ce5a7e700	info	ERR3587194	  20546718 sequences unclassified (64.59%)
+2021-05-04 03:12:50.458105	0x00007f8ce5a7e700	info	ERR3587194	analysis completed correctly!
+2021-05-04 03:12:50.458118	0x00007f8ce5a7e700	info	ERR3587194	deleting fastq files...
+2021-05-04 03:12:50.458132	0x00007f8ce5a7e700	info	ERR3587194	$HOME/SRA/scripts/deleteFiles.sh ERR3587194 ./ERR3587194 true true 2>&1
+2021-05-04 03:12:53.758384	0x00007f8ce5a7e700	info	ERR3587194	deleted files correctly!
+2021-05-04 03:12:53.758461	0x00007f8ce5a7e700	info	ERR3587194	ended ERR3587194 OK PAIRED 3959 -> 16981
+2021-05-04 03:12:53.758478	0x00007f8ce5a7e700	debug	[generic]	Number of threads started: 27 of 31
+2021-05-04 03:12:53.758491	0x00007f8ce5a7e700	debug	[generic]	Number of threads ended: 26 of 31
+2021-05-04 04:53:25.338481	0x00007f8ce6a80700	info	ERR3586978	fasterq-dump --split-files ERR3586978
+2021-05-04 04:53:25.341745	0x00007f8ce6a80700	info	ERR3586978	spots read      : 99,014,886
+2021-05-04 04:53:25.341763	0x00007f8ce6a80700	info	ERR3586978	reads read      : 198,029,772
+2021-05-04 04:53:25.341776	0x00007f8ce6a80700	info	ERR3586978	reads written   : 198,029,772
+2021-05-04 04:53:25.341792	0x00007f8ce6a80700	info	ERR3586978	download done correctly!
+2021-05-04 04:53:25.341814	0x00007f8ce6a80700	info	ERR3586978	looking for fastq file size...
+2021-05-04 04:53:25.341829	0x00007f8cefa82700	debug	[generic]	Number of threads started: 28 of 31
+2021-05-04 04:53:25.341830	0x00007f8ce6a80700	info	ERR3586978	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586978 ERR3586978 PAIRED 2>&1
+2021-05-04 04:53:25.341882	0x00007f8cefa82700	debug	[generic]	Number of threads ended: 26 of 31
+2021-05-04 04:53:25.341900	0x00007f8cefa82700	info	ERR3586952	started ERR3586952 PAIRED 9656
+2021-05-04 04:53:25.341914	0x00007f8cefa82700	info	ERR3586952	started download with fasterq-dump
+2021-05-04 04:53:25.341929	0x00007f8cefa82700	info	ERR3586952	$HOME/SRA/scripts/execFasterQDump.sh ERR3586952 PAIRED ./ERR3586952 2>&1
+2021-05-04 04:53:25.425646	0x00007f8ce6a80700	info	ERR3586978	fastq file size obtained correctly!
+2021-05-04 04:53:25.425698	0x00007f8ce6a80700	info	ERR3586978	started analysis with kraken
+2021-05-04 04:53:25.425714	0x00007f8ce6a80700	info	ERR3586978	$HOME/SRA/scripts/execKraken.sh ./ERR3586978 2>&1
+2021-05-04 04:58:24.287764	0x00007f8ce6a80700	info	ERR3586978	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586978_1.fastq ERR3586978_2.fastq --output ERR3586978.kraken --report ERR3586978.kraken.report.txt
+2021-05-04 04:58:24.287823	0x00007f8ce6a80700	info	ERR3586978	Loading database information... done.
+2021-05-04 04:58:24.287838	0x00007f8ce6a80700	info	ERR3586978	99014886 sequences (19339.54 Mbp) processed in 274.699s (21626.9 Kseq/m, 4224.15 Mbp/m).
+2021-05-04 04:58:24.287851	0x00007f8ce6a80700	info	ERR3586978	  15583279 sequences classified (15.74%)
+2021-05-04 04:58:24.287864	0x00007f8ce6a80700	info	ERR3586978	  83431607 sequences unclassified (84.26%)
+2021-05-04 04:58:24.287877	0x00007f8ce6a80700	info	ERR3586978	analysis completed correctly!
+2021-05-04 04:58:24.287891	0x00007f8ce6a80700	info	ERR3586978	deleting fastq files...
+2021-05-04 04:58:24.287905	0x00007f8ce6a80700	info	ERR3586978	$HOME/SRA/scripts/deleteFiles.sh ERR3586978 ./ERR3586978 true true 2>&1
+2021-05-04 04:58:27.685887	0x00007f8ce6a80700	info	ERR3586978	deleted files correctly!
+2021-05-04 04:58:27.685939	0x00007f8ce6a80700	info	ERR3586978	ended ERR3586978 OK PAIRED 8660 -> 52601
+2021-05-04 04:58:27.685983	0x00007f8ce6a80700	debug	[generic]	Number of threads started: 28 of 31
+2021-05-04 04:58:27.686008	0x00007f8ce6a80700	debug	[generic]	Number of threads ended: 27 of 31
+2021-05-04 06:43:26.925787	0x00007f8cefa82700	info	ERR3586952	fasterq-dump --split-files ERR3586952
+2021-05-04 06:43:27.170747	0x00007f8cefa82700	info	ERR3586952	spots read      : 80,748,801
+2021-05-04 06:43:27.170766	0x00007f8cefa82700	info	ERR3586952	reads read      : 161,497,602
+2021-05-04 06:43:27.170779	0x00007f8cefa82700	info	ERR3586952	reads written   : 161,497,602
+2021-05-04 06:43:27.170793	0x00007f8cefa82700	info	ERR3586952	download done correctly!
+2021-05-04 06:43:27.170813	0x00007f8cefa82700	info	ERR3586952	looking for fastq file size...
+2021-05-04 06:43:27.170828	0x00007f8cefa82700	info	ERR3586952	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586952 ERR3586952 PAIRED 2>&1
+2021-05-04 06:43:27.170878	0x00007f8ceea80700	debug	[generic]	Number of threads started: 29 of 31
+2021-05-04 06:43:27.170987	0x00007f8ceea80700	debug	[generic]	Number of threads ended: 27 of 31
+2021-05-04 06:43:27.171006	0x00007f8ceea80700	info	ERR3586959	started ERR3586959 PAIRED 7603
+2021-05-04 06:43:27.171022	0x00007f8ceea80700	info	ERR3586959	started download with fasterq-dump
+2021-05-04 06:43:27.171040	0x00007f8ceea80700	info	ERR3586959	$HOME/SRA/scripts/execFasterQDump.sh ERR3586959 PAIRED ./ERR3586959 2>&1
+2021-05-04 06:43:27.936708	0x00007f8cefa82700	info	ERR3586952	fastq file size obtained correctly!
+2021-05-04 06:43:27.936760	0x00007f8cefa82700	info	ERR3586952	started analysis with kraken
+2021-05-04 06:43:27.936776	0x00007f8cefa82700	info	ERR3586952	$HOME/SRA/scripts/execKraken.sh ./ERR3586952 2>&1
+2021-05-04 06:49:34.405374	0x00007f8cefa82700	info	ERR3586952	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586952_1.fastq ERR3586952_2.fastq --output ERR3586952.kraken --report ERR3586952.kraken.report.txt
+2021-05-04 06:49:34.405427	0x00007f8cefa82700	info	ERR3586952	Loading database information... done.
+2021-05-04 06:49:34.405443	0x00007f8cefa82700	info	ERR3586952	80748801 sequences (15900.36 Mbp) processed in 287.129s (16873.7 Kseq/m, 3322.62 Mbp/m).
+2021-05-04 06:49:34.405455	0x00007f8cefa82700	info	ERR3586952	  14875750 sequences classified (18.42%)
+2021-05-04 06:49:34.405466	0x00007f8cefa82700	info	ERR3586952	  65873051 sequences unclassified (81.58%)
+2021-05-04 06:49:34.405478	0x00007f8cefa82700	info	ERR3586952	analysis completed correctly!
+2021-05-04 06:49:34.405490	0x00007f8cefa82700	info	ERR3586952	deleting fastq files...
+2021-05-04 06:49:34.405502	0x00007f8cefa82700	info	ERR3586952	$HOME/SRA/scripts/deleteFiles.sh ERR3586952 ./ERR3586952 true true 2>&1
+2021-05-04 06:49:37.995847	0x00007f8cefa82700	info	ERR3586952	deleted files correctly!
+2021-05-04 06:49:37.995897	0x00007f8cefa82700	info	ERR3586952	ended ERR3586952 OK PAIRED 9656 -> 43142
+2021-05-04 06:49:37.995914	0x00007f8cefa82700	debug	[generic]	Number of threads started: 29 of 31
+2021-05-04 06:49:37.995927	0x00007f8cefa82700	debug	[generic]	Number of threads ended: 28 of 31
+2021-05-04 08:12:01.773217	0x00007f8ceea80700	info	ERR3586959	fasterq-dump --split-files ERR3586959
+2021-05-04 08:12:01.773296	0x00007f8ceea80700	info	ERR3586959	spots read      : 66,575,926
+2021-05-04 08:12:01.773312	0x00007f8ceea80700	info	ERR3586959	reads read      : 133,151,852
+2021-05-04 08:12:01.773326	0x00007f8ceea80700	info	ERR3586959	reads written   : 133,151,852
+2021-05-04 08:12:01.773340	0x00007f8ceea80700	info	ERR3586959	download done correctly!
+2021-05-04 08:12:01.773362	0x00007f8ceea80700	info	ERR3586959	looking for fastq file size...
+2021-05-04 08:12:01.773378	0x00007f8ceea80700	info	ERR3586959	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586959 ERR3586959 PAIRED 2>&1
+2021-05-04 08:12:01.773403	0x00007f8cef281700	debug	[generic]	Number of threads started: 30 of 31
+2021-05-04 08:12:01.773481	0x00007f8cef281700	debug	[generic]	Number of threads ended: 28 of 31
+2021-05-04 08:12:01.773498	0x00007f8cef281700	info	ERR3587139	started ERR3587139 PAIRED 9200
+2021-05-04 08:12:01.822523	0x00007f8cef281700	info	ERR3587139	started download with fasterq-dump
+2021-05-04 08:12:01.822566	0x00007f8cef281700	info	ERR3587139	$HOME/SRA/scripts/execFasterQDump.sh ERR3587139 PAIRED ./ERR3587139 2>&1
+2021-05-04 08:12:03.105029	0x00007f8ceea80700	info	ERR3586959	fastq file size obtained correctly!
+2021-05-04 08:12:03.105101	0x00007f8ceea80700	info	ERR3586959	started analysis with kraken
+2021-05-04 08:12:03.105118	0x00007f8ceea80700	info	ERR3586959	$HOME/SRA/scripts/execKraken.sh ./ERR3586959 2>&1
+2021-05-04 08:16:45.557015	0x00007f8ceea80700	info	ERR3586959	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586959_1.fastq ERR3586959_2.fastq --output ERR3586959.kraken --report ERR3586959.kraken.report.txt
+2021-05-04 08:16:45.557153	0x00007f8ceea80700	info	ERR3586959	Loading database information... done.
+2021-05-04 08:16:45.557170	0x00007f8ceea80700	info	ERR3586959	66575926 sequences (12938.05 Mbp) processed in 201.104s (19863.1 Kseq/m, 3860.10 Mbp/m).
+2021-05-04 08:16:45.557185	0x00007f8ceea80700	info	ERR3586959	  10871394 sequences classified (16.33%)
+2021-05-04 08:16:45.557199	0x00007f8ceea80700	info	ERR3586959	  55704532 sequences unclassified (83.67%)
+2021-05-04 08:16:45.557212	0x00007f8ceea80700	info	ERR3586959	analysis completed correctly!
+2021-05-04 08:16:45.557225	0x00007f8ceea80700	info	ERR3586959	deleting fastq files...
+2021-05-04 08:16:45.557239	0x00007f8ceea80700	info	ERR3586959	$HOME/SRA/scripts/deleteFiles.sh ERR3586959 ./ERR3586959 true true 2>&1
+2021-05-04 08:16:48.955391	0x00007f8ceea80700	info	ERR3586959	deleted files correctly!
+2021-05-04 08:16:48.955446	0x00007f8ceea80700	info	ERR3586959	ended ERR3586959 OK PAIRED 7603 -> 35214
+2021-05-04 08:16:48.955462	0x00007f8ceea80700	debug	[generic]	Number of threads started: 30 of 31
+2021-05-04 08:16:48.955475	0x00007f8ceea80700	debug	[generic]	Number of threads ended: 29 of 31
+2021-05-04 11:05:18.142617	0x00007f8cef281700	info	ERR3587139	fasterq-dump --split-files ERR3587139
+2021-05-04 11:05:18.147930	0x00007f8cef281700	info	ERR3587139	spots read      : 80,514,157
+2021-05-04 11:05:18.147948	0x00007f8cef281700	info	ERR3587139	reads read      : 161,028,314
+2021-05-04 11:05:18.147959	0x00007f8cef281700	info	ERR3587139	reads written   : 161,028,314
+2021-05-04 11:05:18.147971	0x00007f8cef281700	info	ERR3587139	download done correctly!
+2021-05-04 11:05:18.147989	0x00007f8cef281700	info	ERR3587139	looking for fastq file size...
+2021-05-04 11:05:18.148004	0x00007f8cef281700	info	ERR3587139	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3587139 ERR3587139 PAIRED 2>&1
+2021-05-04 11:05:18.148051	0x00007f8cee27f700	debug	[generic]	Number of threads started: 31 of 31
+2021-05-04 11:05:18.148159	0x00007f8cee27f700	debug	[generic]	Number of threads ended: 29 of 31
+2021-05-04 11:05:18.148177	0x00007f8cee27f700	info	ERR3586892	started ERR3586892 PAIRED 7513
+2021-05-04 11:05:18.148189	0x00007f8cee27f700	info	ERR3586892	started download with fasterq-dump
+2021-05-04 11:05:18.148204	0x00007f8cee27f700	info	ERR3586892	$HOME/SRA/scripts/execFasterQDump.sh ERR3586892 PAIRED ./ERR3586892 2>&1
+2021-05-04 11:05:18.261292	0x00007f8cef281700	info	ERR3587139	fastq file size obtained correctly!
+2021-05-04 11:05:18.261348	0x00007f8cef281700	info	ERR3587139	started analysis with kraken
+2021-05-04 11:05:18.261366	0x00007f8cef281700	info	ERR3587139	$HOME/SRA/scripts/execKraken.sh ./ERR3587139 2>&1
+2021-05-04 11:10:46.461000	0x00007f8cef281700	info	ERR3587139	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587139_1.fastq ERR3587139_2.fastq --output ERR3587139.kraken --report ERR3587139.kraken.report.txt
+2021-05-04 11:10:46.477200	0x00007f8cef281700	info	ERR3587139	Loading database information... done.
+2021-05-04 11:10:46.477217	0x00007f8cef281700	info	ERR3587139	80514157 sequences (16006.72 Mbp) processed in 208.461s (23173.9 Kseq/m, 4607.12 Mbp/m).
+2021-05-04 11:10:46.477231	0x00007f8cef281700	info	ERR3587139	  9688167 sequences classified (12.03%)
+2021-05-04 11:10:46.477243	0x00007f8cef281700	info	ERR3587139	  70825990 sequences unclassified (87.97%)
+2021-05-04 11:10:46.477256	0x00007f8cef281700	info	ERR3587139	analysis completed correctly!
+2021-05-04 11:10:46.477269	0x00007f8cef281700	info	ERR3587139	deleting fastq files...
+2021-05-04 11:10:46.477283	0x00007f8cef281700	info	ERR3587139	$HOME/SRA/scripts/deleteFiles.sh ERR3587139 ./ERR3587139 true true 2>&1
+2021-05-04 11:10:51.312923	0x00007f8cef281700	info	ERR3587139	deleted files correctly!
+2021-05-04 11:10:51.312971	0x00007f8cef281700	info	ERR3587139	ended ERR3587139 OK PAIRED 9200 -> 43319
+2021-05-04 11:10:51.312987	0x00007f8cef281700	debug	[generic]	Number of threads started: 31 of 31
+2021-05-04 11:10:51.313000	0x00007f8cef281700	debug	[generic]	Number of threads ended: 30 of 31
+2021-05-04 13:28:42.171085	0x00007f8cee27f700	info	ERR3586892	fasterq-dump --split-files ERR3586892
+2021-05-04 13:28:42.171143	0x00007f8cee27f700	info	ERR3586892	spots read      : 65,733,734
+2021-05-04 13:28:42.171158	0x00007f8cee27f700	info	ERR3586892	reads read      : 131,467,468
+2021-05-04 13:28:42.171171	0x00007f8cee27f700	info	ERR3586892	reads written   : 131,467,468
+2021-05-04 13:28:42.171185	0x00007f8cee27f700	info	ERR3586892	download done correctly!
+2021-05-04 13:28:42.171198	0x00007f8cee27f700	info	ERR3586892	looking for fastq file size...
+2021-05-04 13:28:42.171212	0x00007f8cee27f700	info	ERR3586892	$HOME/SRA/scripts/getFastqFileSize.sh ./ERR3586892 ERR3586892 PAIRED 2>&1
+2021-05-04 13:28:42.400568	0x00007f8cee27f700	info	ERR3586892	fastq file size obtained correctly!
+2021-05-04 13:28:42.400617	0x00007f8cee27f700	info	ERR3586892	started analysis with kraken
+2021-05-04 13:28:42.400632	0x00007f8cee27f700	info	ERR3586892	$HOME/SRA/scripts/execKraken.sh ./ERR3586892 2>&1
+2021-05-04 13:33:54.807697	0x00007f8cee27f700	info	ERR3586892	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3586892_1.fastq ERR3586892_2.fastq --output ERR3586892.kraken --report ERR3586892.kraken.report.txt
+2021-05-04 13:33:54.827462	0x00007f8cee27f700	info	ERR3586892	Loading database information... done.
+2021-05-04 13:33:54.827481	0x00007f8cee27f700	info	ERR3586892	65733734 sequences (12937.17 Mbp) processed in 226.643s (17401.9 Kseq/m, 3424.91 Mbp/m).
+2021-05-04 13:33:54.827494	0x00007f8cee27f700	info	ERR3586892	  8494795 sequences classified (12.92%)
+2021-05-04 13:33:54.827507	0x00007f8cee27f700	info	ERR3586892	  57238939 sequences unclassified (87.08%)
+2021-05-04 13:33:54.827521	0x00007f8cee27f700	info	ERR3586892	analysis completed correctly!
+2021-05-04 13:33:54.827534	0x00007f8cee27f700	info	ERR3586892	deleting fastq files...
+2021-05-04 13:33:54.827548	0x00007f8cee27f700	info	ERR3586892	$HOME/SRA/scripts/deleteFiles.sh ERR3586892 ./ERR3586892 true true 2>&1
+2021-05-04 13:33:58.273757	0x00007f8cee27f700	info	ERR3586892	deleted files correctly!
+2021-05-04 13:33:58.273806	0x00007f8cee27f700	info	ERR3586892	ended ERR3586892 OK PAIRED 7513 -> 35089
+2021-05-04 13:33:58.273822	0x00007f8cee27f700	debug	[generic]	Number of threads started: 31 of 31
+2021-05-04 13:33:58.273835	0x00007f8cee27f700	debug	[generic]	Number of threads ended: 31 of 31
+2021-05-04 13:33:58.577142	0x00007f8cf0287740	info	[generic]	updating all runs file...
+2021-05-04 13:33:58.589674	0x00007f8cf0287740	info	[generic]	$HOME/SRA/scripts/updateAllRunsFile.sh $HOME/SRA/metadata/metadata_filtered_small.csv 8 19 ./.info/results_all.csv 1 2 ./.info/updates_log.txt 2>&1
+2021-05-04 13:35:12.442229	0x00007f8cf0287740	info	[generic]	running... 500 of 13192
+2021-05-04 13:35:12.442297	0x00007f8cf0287740	info	[generic]	running... 1000 of 13192
+2021-05-04 13:35:12.442311	0x00007f8cf0287740	info	[generic]	running... 1500 of 13192
+2021-05-04 13:35:12.442324	0x00007f8cf0287740	info	[generic]	running... 2000 of 13192
+2021-05-04 13:35:12.442345	0x00007f8cf0287740	info	[generic]	running... 2500 of 13192
+2021-05-04 13:35:12.442359	0x00007f8cf0287740	info	[generic]	running... 3000 of 13192
+2021-05-04 13:35:12.442373	0x00007f8cf0287740	info	[generic]	running... 3500 of 13192
+2021-05-04 13:35:12.442386	0x00007f8cf0287740	info	[generic]	running... 4000 of 13192
+2021-05-04 13:35:12.442399	0x00007f8cf0287740	info	[generic]	running... 4500 of 13192
+2021-05-04 13:35:12.500269	0x00007f8cf0287740	info	[generic]	running... 5000 of 13192
+2021-05-04 13:35:12.500294	0x00007f8cf0287740	info	[generic]	running... 5500 of 13192
+2021-05-04 13:35:12.500308	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500321	0x00007f8cf0287740	info	[generic]	5833 of 13192: ERR3586753
+2021-05-04 13:35:12.500337	0x00007f8cf0287740	info	[generic]	ERR3586753: TO_DO -> OK
+2021-05-04 13:35:12.500348	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500361	0x00007f8cf0287740	info	[generic]	5873 of 13192: ERR3586793
+2021-05-04 13:35:12.500373	0x00007f8cf0287740	info	[generic]	ERR3586793: TO_DO -> OK
+2021-05-04 13:35:12.500386	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500399	0x00007f8cf0287740	info	[generic]	5889 of 13192: ERR3586809
+2021-05-04 13:35:12.500412	0x00007f8cf0287740	info	[generic]	ERR3586809: TO_DO -> OK
+2021-05-04 13:35:12.500424	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500436	0x00007f8cf0287740	info	[generic]	5890 of 13192: ERR3586810
+2021-05-04 13:35:12.500448	0x00007f8cf0287740	info	[generic]	ERR3586810: TO_DO -> OK
+2021-05-04 13:35:12.500461	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500473	0x00007f8cf0287740	info	[generic]	5894 of 13192: ERR3586814
+2021-05-04 13:35:12.500486	0x00007f8cf0287740	info	[generic]	ERR3586814: TO_DO -> OK
+2021-05-04 13:35:12.500497	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500510	0x00007f8cf0287740	info	[generic]	5897 of 13192: ERR3586817
+2021-05-04 13:35:12.500523	0x00007f8cf0287740	info	[generic]	ERR3586817: TO_DO -> OK
+2021-05-04 13:35:12.500535	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500547	0x00007f8cf0287740	info	[generic]	5903 of 13192: ERR3586823
+2021-05-04 13:35:12.500560	0x00007f8cf0287740	info	[generic]	ERR3586823: TO_DO -> OK
+2021-05-04 13:35:12.500572	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500584	0x00007f8cf0287740	info	[generic]	5924 of 13192: ERR3586844
+2021-05-04 13:35:12.500597	0x00007f8cf0287740	info	[generic]	ERR3586844: TO_DO -> OK
+2021-05-04 13:35:12.500609	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500621	0x00007f8cf0287740	info	[generic]	5931 of 13192: ERR3586851
+2021-05-04 13:35:12.500633	0x00007f8cf0287740	info	[generic]	ERR3586851: TO_DO -> OK
+2021-05-04 13:35:12.500644	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500656	0x00007f8cf0287740	info	[generic]	5935 of 13192: ERR3586855
+2021-05-04 13:35:12.500669	0x00007f8cf0287740	info	[generic]	ERR3586855: TO_DO -> OK
+2021-05-04 13:35:12.500681	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500693	0x00007f8cf0287740	info	[generic]	5951 of 13192: ERR3586871
+2021-05-04 13:35:12.500706	0x00007f8cf0287740	info	[generic]	ERR3586871: TO_DO -> OK
+2021-05-04 13:35:12.500718	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500731	0x00007f8cf0287740	info	[generic]	5967 of 13192: ERR3586887
+2021-05-04 13:35:12.500744	0x00007f8cf0287740	info	[generic]	ERR3586887: TO_DO -> OK
+2021-05-04 13:35:12.500755	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500768	0x00007f8cf0287740	info	[generic]	5972 of 13192: ERR3586892
+2021-05-04 13:35:12.500779	0x00007f8cf0287740	info	[generic]	ERR3586892: TO_DO -> OK
+2021-05-04 13:35:12.500791	0x00007f8cf0287740	info	[generic]	running... 6000 of 13192
+2021-05-04 13:35:12.500803	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500816	0x00007f8cf0287740	info	[generic]	6001 of 13192: ERR3586921
+2021-05-04 13:35:12.500827	0x00007f8cf0287740	info	[generic]	ERR3586921: TO_DO -> OK
+2021-05-04 13:35:12.500839	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500853	0x00007f8cf0287740	info	[generic]	6010 of 13192: ERR3586930
+2021-05-04 13:35:12.500866	0x00007f8cf0287740	info	[generic]	ERR3586930: TO_DO -> OK
+2021-05-04 13:35:12.500878	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500891	0x00007f8cf0287740	info	[generic]	6032 of 13192: ERR3586952
+2021-05-04 13:35:12.500907	0x00007f8cf0287740	info	[generic]	ERR3586952: TO_DO -> OK
+2021-05-04 13:35:12.500919	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500932	0x00007f8cf0287740	info	[generic]	6039 of 13192: ERR3586959
+2021-05-04 13:35:12.500943	0x00007f8cf0287740	info	[generic]	ERR3586959: TO_DO -> OK
+2021-05-04 13:35:12.500956	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.500968	0x00007f8cf0287740	info	[generic]	6058 of 13192: ERR3586978
+2021-05-04 13:35:12.500979	0x00007f8cf0287740	info	[generic]	ERR3586978: TO_DO -> OK
+2021-05-04 13:35:12.500991	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501003	0x00007f8cf0287740	info	[generic]	6108 of 13192: ERR3587028
+2021-05-04 13:35:12.501014	0x00007f8cf0287740	info	[generic]	ERR3587028: TO_DO -> OK
+2021-05-04 13:35:12.501026	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501039	0x00007f8cf0287740	info	[generic]	6111 of 13192: ERR3587031
+2021-05-04 13:35:12.501050	0x00007f8cf0287740	info	[generic]	ERR3587031: TO_DO -> OK
+2021-05-04 13:35:12.501062	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501073	0x00007f8cf0287740	info	[generic]	6129 of 13192: ERR3587049
+2021-05-04 13:35:12.501085	0x00007f8cf0287740	info	[generic]	ERR3587049: TO_DO -> OK
+2021-05-04 13:35:12.501096	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501108	0x00007f8cf0287740	info	[generic]	6151 of 13192: ERR3587071
+2021-05-04 13:35:12.501119	0x00007f8cf0287740	info	[generic]	ERR3587071: TO_DO -> OK
+2021-05-04 13:35:12.501131	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501144	0x00007f8cf0287740	info	[generic]	6167 of 13192: ERR3587087
+2021-05-04 13:35:12.501155	0x00007f8cf0287740	info	[generic]	ERR3587087: TO_DO -> OK
+2021-05-04 13:35:12.501167	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501179	0x00007f8cf0287740	info	[generic]	6169 of 13192: ERR3587089
+2021-05-04 13:35:12.501190	0x00007f8cf0287740	info	[generic]	ERR3587089: TO_DO -> OK
+2021-05-04 13:35:12.501202	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501214	0x00007f8cf0287740	info	[generic]	6176 of 13192: ERR3587096
+2021-05-04 13:35:12.501226	0x00007f8cf0287740	info	[generic]	ERR3587096: TO_DO -> OK
+2021-05-04 13:35:12.501237	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501251	0x00007f8cf0287740	info	[generic]	6183 of 13192: ERR3587103
+2021-05-04 13:35:12.501262	0x00007f8cf0287740	info	[generic]	ERR3587103: TO_DO -> OK
+2021-05-04 13:35:12.501274	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501287	0x00007f8cf0287740	info	[generic]	6215 of 13192: ERR3587135
+2021-05-04 13:35:12.501313	0x00007f8cf0287740	info	[generic]	ERR3587135: TO_DO -> OK
+2021-05-04 13:35:12.501328	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501341	0x00007f8cf0287740	info	[generic]	6219 of 13192: ERR3587139
+2021-05-04 13:35:12.501353	0x00007f8cf0287740	info	[generic]	ERR3587139: TO_DO -> OK
+2021-05-04 13:35:12.501365	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501378	0x00007f8cf0287740	info	[generic]	6233 of 13192: ERR3587153
+2021-05-04 13:35:12.501390	0x00007f8cf0287740	info	[generic]	ERR3587153: TO_DO -> OK
+2021-05-04 13:35:12.501401	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501414	0x00007f8cf0287740	info	[generic]	6248 of 13192: ERR3587168
+2021-05-04 13:35:12.501425	0x00007f8cf0287740	info	[generic]	ERR3587168: TO_DO -> OK
+2021-05-04 13:35:12.501437	0x00007f8cf0287740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 13:35:12.501449	0x00007f8cf0287740	info	[generic]	6274 of 13192: ERR3587194
+2021-05-04 13:35:12.501460	0x00007f8cf0287740	info	[generic]	ERR3587194: TO_DO -> OK
+2021-05-04 13:35:12.501473	0x00007f8cf0287740	info	[generic]	running... 6500 of 13192
+2021-05-04 13:35:12.501484	0x00007f8cf0287740	info	[generic]	running... 7000 of 13192
+2021-05-04 13:35:12.501496	0x00007f8cf0287740	info	[generic]	running... 7500 of 13192
+2021-05-04 13:35:12.501508	0x00007f8cf0287740	info	[generic]	running... 8000 of 13192
+2021-05-04 13:35:12.501519	0x00007f8cf0287740	info	[generic]	running... 8500 of 13192
+2021-05-04 13:35:12.501531	0x00007f8cf0287740	info	[generic]	running... 9000 of 13192
+2021-05-04 13:35:12.501542	0x00007f8cf0287740	info	[generic]	running... 9500 of 13192
+2021-05-04 13:35:12.501553	0x00007f8cf0287740	info	[generic]	running... 10000 of 13192
+2021-05-04 13:35:12.501564	0x00007f8cf0287740	info	[generic]	running... 10500 of 13192
+2021-05-04 13:35:12.501576	0x00007f8cf0287740	info	[generic]	running... 11000 of 13192
+2021-05-04 13:35:12.501587	0x00007f8cf0287740	info	[generic]	running... 11500 of 13192
+2021-05-04 13:35:12.501598	0x00007f8cf0287740	info	[generic]	running... 12000 of 13192
+2021-05-04 13:35:12.501610	0x00007f8cf0287740	info	[generic]	running... 12500 of 13192
+2021-05-04 13:35:12.501622	0x00007f8cf0287740	info	[generic]	running... 13000 of 13192
+2021-05-04 13:35:12.501639	0x00007f8cf0287740	info	[generic]	updated all runs file metadata correctly!
+2021-05-04 13:35:12.501653	0x00007f8cf0287740	info	[generic]	ended everything ok!

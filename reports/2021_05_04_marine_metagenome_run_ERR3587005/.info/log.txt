@@ -1,0 +1,60 @@
+2021-05-04 16:09:46.336110	0x00007f7ea158e700	debug	[generic]	Number of threads started: 1 of 1
+2021-05-04 16:09:46.336396	0x00007f7ea158e700	debug	[generic]	Number of threads ended: 0 of 1
+2021-05-04 16:09:46.336427	0x00007f7ea158e700	info	ERR3587005	started ERR3587005 PAIRED 2396
+2021-05-04 16:09:46.336443	0x00007f7ea158e700	info	ERR3587005	started download with fasterq-dump
+2021-05-04 16:09:46.336463	0x00007f7ea158e700	info	ERR3587005	$HOME/SRA/scripts/execFasterQDump.sh ERR3587005 PAIRED /home/fzuccato/SRA/reports/2021_05_04_marine_metagenome_ERR3587005/ERR3587005 2>&1
+2021-05-04 16:58:03.341987	0x00007f7ea158e700	info	ERR3587005	fasterq-dump --split-files ERR3587005
+2021-05-04 16:58:03.342192	0x00007f7ea158e700	info	ERR3587005	spots read      : 19,201,127
+2021-05-04 16:58:03.342289	0x00007f7ea158e700	info	ERR3587005	reads read      : 38,402,254
+2021-05-04 16:58:03.342392	0x00007f7ea158e700	info	ERR3587005	reads written   : 38,402,254
+2021-05-04 16:58:03.342487	0x00007f7ea158e700	info	ERR3587005	download done correctly!
+2021-05-04 16:58:03.342588	0x00007f7ea158e700	info	ERR3587005	looking for fastq file size...
+2021-05-04 16:58:03.342683	0x00007f7ea158e700	info	ERR3587005	$HOME/SRA/scripts/getFastqFileSize.sh /home/fzuccato/SRA/reports/2021_05_04_marine_metagenome_ERR3587005/ERR3587005 ERR3587005 PAIRED 2>&1
+2021-05-04 16:58:03.389637	0x00007f7ea158e700	info	ERR3587005	fastq file size obtained correctly!
+2021-05-04 16:58:03.389796	0x00007f7ea158e700	info	ERR3587005	started analysis with kraken
+2021-05-04 16:58:03.389817	0x00007f7ea158e700	info	ERR3587005	$HOME/SRA/scripts/execKraken.sh /home/fzuccato/SRA/reports/2021_05_04_marine_metagenome_ERR3587005/ERR3587005 2>&1
+2021-05-04 16:59:56.586571	0x00007f7ea158e700	info	ERR3587005	kraken2 --threads 8 --db /home/fzuccato/databases/krakenDB16 --paired ERR3587005_1.fastq ERR3587005_2.fastq --output ERR3587005.kraken --report ERR3587005.kraken.report.txt
+2021-05-04 16:59:56.586644	0x00007f7ea158e700	info	ERR3587005	Loading database information... done.
+2021-05-04 16:59:56.586657	0x00007f7ea158e700	info	ERR3587005	19201127 sequences (3739.35 Mbp) processed in 32.365s (35596.2 Kseq/m, 6932.22 Mbp/m).
+2021-05-04 16:59:56.586669	0x00007f7ea158e700	info	ERR3587005	  2966061 sequences classified (15.45%)
+2021-05-04 16:59:56.586680	0x00007f7ea158e700	info	ERR3587005	  16235066 sequences unclassified (84.55%)
+2021-05-04 16:59:56.586692	0x00007f7ea158e700	info	ERR3587005	analysis completed correctly!
+2021-05-04 16:59:56.586704	0x00007f7ea158e700	info	ERR3587005	deleting fastq files...
+2021-05-04 16:59:56.586718	0x00007f7ea158e700	info	ERR3587005	$HOME/SRA/scripts/deleteFiles.sh ERR3587005 /home/fzuccato/SRA/reports/2021_05_04_marine_metagenome_ERR3587005/ERR3587005 true true 2>&1
+2021-05-04 16:59:58.080330	0x00007f7ea158e700	info	ERR3587005	deleted files correctly!
+2021-05-04 16:59:58.080379	0x00007f7ea158e700	info	ERR3587005	ended ERR3587005 OK PAIRED 2396 -> 10111
+2021-05-04 16:59:58.080395	0x00007f7ea158e700	debug	[generic]	Number of threads started: 1 of 1
+2021-05-04 16:59:58.080407	0x00007f7ea158e700	debug	[generic]	Number of threads ended: 1 of 1
+2021-05-04 16:59:58.080705	0x00007f7ea1592740	info	[generic]	updating all runs file...
+2021-05-04 16:59:58.080911	0x00007f7ea1592740	info	[generic]	$HOME/SRA/scripts/updateAllRunsFile.sh $HOME/SRA/metadata/metadata_filtered_small.csv 8 19 /home/fzuccato/SRA/reports/2021_05_04_marine_metagenome_ERR3587005/.info/results_all.csv 1 2 /home/fzuccato/SRA/reports/2021_05_04_marine_metagenome_ERR3587005/.info/updates_log.txt 2>&1
+2021-05-04 17:01:11.619815	0x00007f7ea1592740	info	[generic]	running... 500 of 13192
+2021-05-04 17:01:11.619882	0x00007f7ea1592740	info	[generic]	running... 1000 of 13192
+2021-05-04 17:01:11.619895	0x00007f7ea1592740	info	[generic]	running... 1500 of 13192
+2021-05-04 17:01:11.619906	0x00007f7ea1592740	info	[generic]	running... 2000 of 13192
+2021-05-04 17:01:11.619916	0x00007f7ea1592740	info	[generic]	running... 2500 of 13192
+2021-05-04 17:01:11.619926	0x00007f7ea1592740	info	[generic]	running... 3000 of 13192
+2021-05-04 17:01:11.619936	0x00007f7ea1592740	info	[generic]	running... 3500 of 13192
+2021-05-04 17:01:11.619946	0x00007f7ea1592740	info	[generic]	running... 4000 of 13192
+2021-05-04 17:01:11.619956	0x00007f7ea1592740	info	[generic]	running... 4500 of 13192
+2021-05-04 17:01:11.619966	0x00007f7ea1592740	info	[generic]	running... 5000 of 13192
+2021-05-04 17:01:11.619976	0x00007f7ea1592740	info	[generic]	running... 5500 of 13192
+2021-05-04 17:01:11.619986	0x00007f7ea1592740	info	[generic]	running... 6000 of 13192
+2021-05-04 17:01:11.619996	0x00007f7ea1592740	info	[generic]	----------------------UPDATE-----------------------------------
+2021-05-04 17:01:11.620006	0x00007f7ea1592740	info	[generic]	6085 of 13192: ERR3587005
+2021-05-04 17:01:11.620015	0x00007f7ea1592740	info	[generic]	ERR3587005: TO_DO -> OK
+2021-05-04 17:01:11.620025	0x00007f7ea1592740	info	[generic]	running... 6500 of 13192
+2021-05-04 17:01:11.620035	0x00007f7ea1592740	info	[generic]	running... 7000 of 13192
+2021-05-04 17:01:11.620045	0x00007f7ea1592740	info	[generic]	running... 7500 of 13192
+2021-05-04 17:01:11.620055	0x00007f7ea1592740	info	[generic]	running... 8000 of 13192
+2021-05-04 17:01:11.620065	0x00007f7ea1592740	info	[generic]	running... 8500 of 13192
+2021-05-04 17:01:11.620075	0x00007f7ea1592740	info	[generic]	running... 9000 of 13192
+2021-05-04 17:01:11.620085	0x00007f7ea1592740	info	[generic]	running... 9500 of 13192
+2021-05-04 17:01:11.620095	0x00007f7ea1592740	info	[generic]	running... 10000 of 13192
+2021-05-04 17:01:11.620104	0x00007f7ea1592740	info	[generic]	running... 10500 of 13192
+2021-05-04 17:01:11.620114	0x00007f7ea1592740	info	[generic]	running... 11000 of 13192
+2021-05-04 17:01:11.620124	0x00007f7ea1592740	info	[generic]	running... 11500 of 13192
+2021-05-04 17:01:11.620135	0x00007f7ea1592740	info	[generic]	running... 12000 of 13192
+2021-05-04 17:01:11.620146	0x00007f7ea1592740	info	[generic]	running... 12500 of 13192
+2021-05-04 17:01:11.620156	0x00007f7ea1592740	info	[generic]	running... 13000 of 13192
+2021-05-04 17:01:11.620168	0x00007f7ea1592740	info	[generic]	updated all runs file metadata correctly!
+2021-05-04 17:01:11.620179	0x00007f7ea1592740	info	[generic]	ended everything ok!
