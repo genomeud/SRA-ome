@@ -15,8 +15,6 @@ then
     delimiter="$2"
 fi
 
-inputfile=$1
-
 outputFile='SRAStudyTitle.txt'
 logFile='SRAStudyTitle_log.txt'
 
