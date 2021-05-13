@@ -1,5 +1,4 @@
-#!/bin/zsh
-#set -x
+set -x
 
 inputFile=$1
 delimiter="$2"
@@ -20,20 +19,35 @@ n=`cat $inputFile | wc -l`
 while read line
 do
     #change " to '
-    noDoubleQuote=`echo "$line" | tr \" \'`
-    hasSingleQuote=`echo "$noDoubleQuote" | grep \'`
+    convertDoubleQuoteToSingle=`echo "$line" | tr \" \'`
+    
+    hasSingleQuote=`echo "$convertDoubleQuoteToSingle" | grep \'`
+    
+    nOfSingleQuote=`echo "$convertDoubleQuoteToSingle" | sed s/[^\']//g | wc -c`
+    nOfSingleQuote=$(($nOfSingleQuote - 1)) 
 
-    if test -z "$hasSingleQuote"
-    then
-        #line has no escapers so we assume delimiter is only is the right places
-        echo "$line">>$cleanFile
-    else
-        #line has escapers so we assume delimiter is also in the mid of a field
-        leftLine=`echo $hasSingleQuote | cut -d\' -f1`
-        rightLine=`echo $hasSingleQuote | cut -d\' -f3`
-        problematicField=`echo $hasSingleQuote | cut -d\' -f2 | tr -d "$delimiter"`
-        echo "$leftLine""$problematicField""$rightLine" | tr -d \' >>$cleanFile
-    fi
+    newLine=$convertDoubleQuoteToSingle
+
+    if ! test -z $hasSingleQuote
+    while test $nOfSingleQuote -gt 0
+    do
+        if test $nOfSingleQuote -eq 1
+        then
+            #newLine=`echo $newLine | tr \' ' '`
+            nOfSingleQuote=$(($nOfSingleQuote - 1))
+        else
+            #line has escapers so we assume delimiter is also in the mid of a field
+            startOfLine=`echo $newLine | cut -d\' -f1`
+            endOfLine=`echo $newLine | cut -d\' -f3-`
+            problematicField=`echo $newLine | cut -d\' -f2 | tr -d "$delimiter"`
+            newLine="$startOfLine"\'"$problematicField"\'"$endOfLine"
+            nOfSingleQuote=$(($nOfSingleQuote - 2))
+        fi
+    done
+
+    #sleep 5
+
+    echo "$newLine">>$cleanFile
 
     divisor=500
     remainder=$(($i%$divisor))
