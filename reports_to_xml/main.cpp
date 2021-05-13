@@ -15,13 +15,15 @@ using namespace std;
 
 vector<string> split(const string& line, char delim);
 int removeStartingCharacters(string& line, char toRemove);
-string rkLevel_rkIndex_NameToString(char rank_level, int rank_index, const string& name);
+//string rkLevel_rkIndex_NameToString(char rank_level, int rank_index, const string& name);
 string XML_Header(const string& line);
 string XML_Trailer(const string& line);
-string buildXMLLine(char rank_lvl, int rank_idx, const string& name, char separator, int nOfSeparators, bool header);
+string buildElementForXML(char rank_lvl, int rank_idx, char separator, int nOfSeparators, bool header);
 string buildDataForXML(const vector<string>& values, char separator, int nOfSeparators);
 void addSeparators(char separator, int nOfSeparators, string &output);
 void convertKrakenSampleReportFromTxtToXML(ifstream & runs_ifs, char outputFileDelimiter, OUT string& output);
+
+const string XML_ROOT = "REPORT";
 
 int main(int argc, char *argv[]) {
 
@@ -83,6 +85,7 @@ string XML_Trailer(const string& line) {
     return "</" + line + ">";
 }
 
+/*
 string rkLevel_rkIndex_NameToString(char rank_level, int rank_index, const string& name) {
     string output = "";
     output += rank_level;
@@ -91,6 +94,7 @@ string rkLevel_rkIndex_NameToString(char rank_level, int rank_index, const strin
     output += name;
     return output;
 }
+*/
 
 int removeStartingCharacters(string& line, char toRemove) {
     int count = -1;
@@ -115,10 +119,11 @@ void addSeparators(char separator, int nOfSeparators, string &output) {
     }
 }
 
-string buildXMLLine(char rank_lvl, int rank_idx, const string& name, char separator, int nOfSeparators, bool header) {
+string buildElementForXML(char rank_lvl, int rank_idx, char separator, int nOfSeparators, bool header) {
     string output = "";
     addSeparators(separator, nOfSeparators, output);
-    string raw = rkLevel_rkIndex_NameToString(rank_lvl, rank_idx, name);
+    //string raw = rkLevel_rkIndex_NameToString(rank_lvl, rank_idx, name);
+    string raw = krakensamplereport::getRankNameFromRankChar(rank_lvl);
     if(header) {
         output += XML_Header(raw);
     } else {
@@ -149,8 +154,7 @@ string buildDataForXML(const vector<string>& values, char separator, int nOfSepa
 //output string is passed as output reference parameter (for efficiency reason, can be very big)
 void convertKrakenSampleReportFromTxtToXML(ifstream & runs_ifs, char outputFileDelimiter, OUT string& output) {
     
-    output = "";
-    string lineToAdd;
+    output = XML_Header(XML_ROOT) + "\n";
 
     char inputFileFieldsDelimiter = '\t';
     char inputFileTreeDelimiter = ' ';
@@ -167,7 +171,8 @@ void convertKrakenSampleReportFromTxtToXML(ifstream & runs_ifs, char outputFileD
 
     //all parents of the current line
     //vector using push_back() and pop_back() represents a stack: (LIFO politic)
-    vector<tuple<char, int, int, string>> parents;
+    //<rank_lvl, rank_idx, num_spaces>
+    vector<tuple<char, int, int>> parents;
 
     while (getline(runs_ifs, raw_line)) {
 
@@ -202,12 +207,11 @@ void convertKrakenSampleReportFromTxtToXML(ifstream & runs_ifs, char outputFileD
             bool isChild;
             do {
                 //get last element, check if it is a parent of the current line
-                tuple<char, int, int, string> parent = parents.back();
+                tuple<char, int, int> parent = parents.back();
                 
                 char rank_lvl_prec = std::get<0>(parent);
                 int rank_idx_prec = std::get<1>(parent);
                 int num_spaces_prec = std::get<2>(parent);
-                string name_prec = std::get<3>(parent);
 
                 //sometimes fails, for example in this case:
                 /*
@@ -229,15 +233,13 @@ void convertKrakenSampleReportFromTxtToXML(ifstream & runs_ifs, char outputFileD
                     parents.pop_back();
                     
                     //print xml trailer of the removed parent
-                    lineToAdd = buildXMLLine(
+                    output += buildElementForXML(
                         rank_lvl_prec,
                         rank_idx_prec,
-                        name_prec,
                         outputFileDelimiter,
-                        parents.size(),
+                        parents.size() + 1,
                         false
                     );
-                    output += lineToAdd;
                 }
 
             } while(!isChild && parents.size() > 0);
@@ -245,22 +247,22 @@ void convertKrakenSampleReportFromTxtToXML(ifstream & runs_ifs, char outputFileD
         }
 
         //add current line as a possible parent for next line         
-        tuple<char, int, int, string> current = std::make_tuple(
-            rank_lvl_cur, rank_idx_cur, num_spaces_cur, name_cur
+        tuple<char, int, int> current = std::make_tuple(
+            rank_lvl_cur, rank_idx_cur, num_spaces_cur
         );
     
-        lineToAdd = buildXMLLine(
+        output += buildElementForXML(
             rank_lvl_cur,
             rank_idx_cur,
-            name_cur,
             outputFileDelimiter,
-            parents.size(),
+            parents.size() + 1,
             true
         );
 
-        output += lineToAdd;
-
-        output += buildDataForXML(line, outputFileDelimiter, parents.size() + 1);
+        output += buildDataForXML(
+            line, outputFileDelimiter, 
+            parents.size() + 2
+        );
         
         parents.push_back(current);
 
@@ -268,17 +270,17 @@ void convertKrakenSampleReportFromTxtToXML(ifstream & runs_ifs, char outputFileD
 
     while(parents.size() > 0) {
         //print remaining parents
-        tuple<char, int, int, string> parent = parents.back();
+        tuple<char, int, int> parent = parents.back();
         parents.pop_back();
-        lineToAdd = buildXMLLine(
+        
+        output += buildElementForXML(
             std::get<0>(parent),
             std::get<1>(parent),
-            std::get<3>(parent),
             outputFileDelimiter,
-            parents.size(),
+            parents.size() + 1,
             false
         );
-        output += lineToAdd;
-        
     }
+
+    output += XML_Trailer(XML_ROOT) + "\n";
 }

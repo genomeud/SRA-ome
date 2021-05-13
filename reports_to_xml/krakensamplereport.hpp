@@ -32,35 +32,33 @@ namespace krakensamplereport {
         "SCIENTIFIC_NAME"
     };
 
-    #define NUMBER_OF_RANKS 9
-
-    const char ranks [NUMBER_OF_RANKS] = {
-        'R', //root
-        'D', //domain
-        'K', //kingdom
-        'P', //phylum
-        'C', //class
-        'O', //order
-        'F', //family
-        'G', //genus
-        'S' //species
+    //<tree_position, char, name>
+    const vector<tuple<int, char, string>> ranks = {
+        std::make_tuple(0, 'U', "UNCLASSIFIED"),
+        std::make_tuple(0, 'R', "ROOT"),
+        std::make_tuple(1, 'D', "DOMAIN"),
+        std::make_tuple(2, 'K', "KINGDOM"),
+        std::make_tuple(3, 'P', "PHYLUM"),
+        std::make_tuple(4, 'C', "CLASS"),
+        std::make_tuple(5, 'O', "ORDER"),
+        std::make_tuple(6, 'F', "FAMILY"),
+        std::make_tuple(7, 'G', "GENUS"),
+        std::make_tuple(8, 'S', "SPECIES")
     };
-
-    const char unclassified_rank = 'U';
-    const int unclassified_index = 0;
-
     
     int compare (char rankLevel1, int rankIndex1, char rankLevel2, int rankIndex2);
     int indexOf(const char * array, int n, char element);
     tuple<char, int> getRankLevelAndRankIndex(const string& rankRow);
+    int getRankImportanceFromRankChar(char element);
+    string getRankNameFromRankChar(char element);
     
     //K > C   ==> 1
     //K1 > K2 ==> 1
     //K1 = K1 ==> 0
     //G < K   ==> -1
     int compare (char rankLevel1, int rankIndex1, char rankLevel2, int rankIndex2) {
-        int level1_as_int = indexOf(ranks, NUMBER_OF_RANKS, rankLevel1);
-        int level2_as_int = indexOf(ranks, NUMBER_OF_RANKS, rankLevel2);
+        int level1_as_int = getRankImportanceFromRankChar(rankLevel1);
+        int level2_as_int = getRankImportanceFromRankChar(rankLevel2);
         if(level1_as_int == -1 || level2_as_int == -1) {
             cout << "error in rank\n";
             return -2;
@@ -76,13 +74,22 @@ namespace krakensamplereport {
         }
     }
 
-    int indexOf(const char * array, int n, char element) {
-        if(element == unclassified_rank) return unclassified_index;
-        int i = 0;
-        while(i < n && array[i] != element) {
-            i++;
+    int getRankImportanceFromRankChar(char element) {
+        for (int i = 0; i < ranks.size(); i++) {
+            if (element == std::get<1>(ranks.at(i))) {
+                return std::get<0>(ranks.at(i));
+            }
         }
-        return i < n ? i : -1;
+        return -1;
+    }
+    
+    string getRankNameFromRankChar(char element) {
+        for (int i = 0; i < ranks.size(); i++) {
+            if (element == std::get<1>(ranks.at(i))) {
+                return std::get<2>(ranks.at(i));
+            }
+        }
+        return nullptr;
     }
 
     //first char:   rank level
@@ -91,7 +98,7 @@ namespace krakensamplereport {
         char rank_lvl = rankRow.at(0);
         int rank_idx = 0;
         //check if it is valid
-        if(indexOf(ranks, NUMBER_OF_RANKS, rank_lvl) < 0) {
+        if(getRankImportanceFromRankChar(rank_lvl) < 0) {
             cout << "error in rank\n";
             return std::make_tuple(-1, -1);
         }
@@ -100,7 +107,7 @@ namespace krakensamplereport {
         }
         return std::make_tuple(rank_lvl, rank_idx);
     }
-
+    
 }
 
 #endif
