@@ -1,0 +1,89 @@
+ 29.06	15352	15352	U	0	unclassified
+ 70.94	37471	0	R	1	root
+ 70.94	37471	0	R1	131567	  cellular organisms
+ 70.88	37439	30840	D	2	    Bacteria
+ 11.57	6109	0	D1	1783272	      Terrabacteria group
+ 11.56	6107	0	P	1239	        Firmicutes
+ 11.55	6103	0	C	91061	          Bacilli
+ 11.55	6102	3533	O	1385	            Bacillales
+  4.74	2506	0	F	90964	              Staphylococcaceae
+  4.74	2506	0	G	1279	                Staphylococcus
+  4.74	2506	2506	S	1280	                  Staphylococcus aureus
+  0.12	63	0	F	186817	              Bacillaceae
+  0.12	63	0	G	1386	                Bacillus
+  0.12	63	0	G1	86661	                  Bacillus cereus group
+  0.12	63	0	S	1396	                    Bacillus cereus
+  0.12	63	63	S1	526973	                      Bacillus cereus m1293
+  0.00	1	0	O	186826	            Lactobacillales
+  0.00	1	0	F	81852	              Enterococcaceae
+  0.00	1	0	G	1350	                Enterococcus
+  0.00	1	1	S	33945	                  Enterococcus avium
+  0.01	4	0	C	186801	          Clostridia
+  0.01	4	0	O	186802	            Clostridiales
+  0.01	4	0	F	541000	              Ruminococcaceae
+  0.01	4	0	G	946234	                Flavonifractor
+  0.01	4	4	S	292800	                  Flavonifractor plautii
+  0.00	1	0	P	200795	        Chloroflexi
+  0.00	1	0	C	32061	          Chloroflexia
+  0.00	1	0	O	32064	            Chloroflexales
+  0.00	1	0	O1	1508594	              Chloroflexineae
+  0.00	1	0	F	1106	                Chloroflexaceae
+  0.00	1	0	G	1107	                  Chloroflexus
+  0.00	1	1	S	1108	                    Chloroflexus aurantiacus
+  0.00	1	0	P	201174	        Actinobacteria
+  0.00	1	0	C	1760	          Actinobacteria
+  0.00	1	0	O	85011	            Streptomycetales
+  0.00	1	0	F	2062	              Streptomycetaceae
+  0.00	1	0	G	1883	                Streptomyces
+  0.00	1	1	S	188770	                  Streptomyces koyangensis
+  0.93	490	0	P	1224	      Proteobacteria
+  0.91	481	0	C	28216	        Betaproteobacteria
+  0.91	481	0	O	80840	          Burkholderiales
+  0.91	481	0	F	75682	            Oxalobacteraceae
+  0.91	481	0	G	29580	              Janthinobacterium
+  0.91	481	0	S	55508	                Janthinobacterium agaricidamnosum
+  0.91	481	481	S1	1349767	                  Janthinobacterium agaricidamnosum NBRC 102515 = DSM 9628
+  0.01	5	0	C	1236	        Gammaproteobacteria
+  0.01	4	0	O	135619	          Oceanospirillales
+  0.01	4	0	F	28256	            Halomonadaceae
+  0.01	4	0	G	2745	              Halomonas
+  0.01	4	4	S	1081866	                Halomonas socia
+  0.00	1	0	O	135614	          Xanthomonadales
+  0.00	1	0	F	32033	            Xanthomonadaceae
+  0.00	1	0	G	338	              Xanthomonas
+  0.00	1	0	G1	2643310	                unclassified Xanthomonas
+  0.00	1	1	S	2724123	                  Xanthomonas sp. SI
+  0.01	4	0	C	28211	        Alphaproteobacteria
+  0.01	4	0	C1	82117	          Alphaproteobacteria incertae sedis
+  0.01	4	0	G	1632780	            Phreatobacter
+  0.01	4	4	S	1868589	              Phreatobacter cathodiphilus
+  0.06	32	0	D	2759	    Eukaryota
+  0.06	32	0	D1	33154	      Opisthokonta
+  0.06	32	0	K	33208	        Metazoa
+  0.06	32	0	K1	6072	          Eumetazoa
+  0.06	32	0	K2	33213	            Bilateria
+  0.06	32	0	K3	33511	              Deuterostomia
+  0.06	32	0	P	7711	                Chordata
+  0.06	32	0	P1	89593	                  Craniata
+  0.06	32	0	P2	7742	                    Vertebrata
+  0.06	32	0	P3	7776	                      Gnathostomata
+  0.06	32	0	P4	117570	                        Teleostomi
+  0.06	32	0	P5	117571	                          Euteleostomi
+  0.06	32	0	P6	8287	                            Sarcopterygii
+  0.06	32	0	P7	1338369	                              Dipnotetrapodomorpha
+  0.06	32	0	P8	32523	                                Tetrapoda
+  0.06	32	0	P9	32524	                                  Amniota
+  0.06	32	0	C	40674	                                    Mammalia
+  0.06	32	0	C1	32525	                                      Theria
+  0.06	32	0	C2	9347	                                        Eutheria
+  0.06	32	0	C3	1437010	                                          Boreoeutheria
+  0.06	32	0	C4	314146	                                            Euarchontoglires
+  0.06	32	0	O	9443	                                              Primates
+  0.06	32	0	O1	376913	                                                Haplorrhini
+  0.06	32	0	O2	314293	                                                  Simiiformes
+  0.06	32	0	O3	9526	                                                    Catarrhini
+  0.06	32	0	O4	314295	                                                      Hominoidea
+  0.06	32	0	F	9604	                                                        Hominidae
+  0.06	32	0	F1	207598	                                                          Homininae
+  0.06	32	0	G	9605	                                                            Homo
+  0.06	32	32	S	9606	                                                              Homo sapiens
