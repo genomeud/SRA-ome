@@ -1,0 +1,88 @@
+  0.51	312	312	U	0	unclassified
+ 99.49	60729	0	R	1	root
+ 99.49	60729	222	R1	131567	  cellular organisms
+ 98.80	60309	928	D	2	    Bacteria
+ 94.13	57458	1	D1	1783272	      Terrabacteria group
+ 94.12	57452	50007	P	1239	        Firmicutes
+ 10.34	6313	0	C	91061	          Bacilli
+ 10.34	6311	0	O	1385	            Bacillales
+ 10.34	6311	0	F	186817	              Bacillaceae
+ 10.34	6311	0	G	1386	                Bacillus
+ 10.34	6310	0	G1	86661	                  Bacillus cereus group
+ 10.34	6310	0	S	1396	                    Bacillus cereus
+ 10.34	6310	6310	S1	526973	                      Bacillus cereus m1293
+  0.00	1	1	S	1397	                  Bacillus circulans
+  0.00	2	0	O	186826	            Lactobacillales
+  0.00	2	0	F	1300	              Streptococcaceae
+  0.00	2	0	G	1301	                Streptococcus
+  0.00	2	2	S	149016	                  Streptococcus urinalis
+  1.85	1132	0	C	186801	          Clostridia
+  1.85	1132	0	O	186802	            Clostridiales
+  1.85	1132	0	F	31979	              Clostridiaceae
+  1.85	1132	0	G	1485	                Clostridium
+  1.85	1132	1132	S	1491	                  Clostridium botulinum
+  0.01	5	0	D2	1798711	        Cyanobacteria/Melainabacteria group
+  0.01	5	0	P	1117	          Cyanobacteria
+  0.01	5	0	O	1161	            Nostocales
+  0.01	5	0	F	119859	              Tolypothrichaceae
+  0.01	5	0	G	111782	                Tolypothrix
+  0.01	5	0	G1	2649714	                  unclassified Tolypothrix
+  0.01	5	5	S	2099387	                    Tolypothrix sp. PCC 7910
+  3.15	1923	17	P	1224	      Proteobacteria
+  3.12	1902	0	C	1236	        Gammaproteobacteria
+  3.00	1829	0	O	135619	          Oceanospirillales
+  3.00	1829	0	F	28256	            Halomonadaceae
+  3.00	1829	0	G	2745	              Halomonas
+  3.00	1829	0	G1	2609666	                unclassified Halomonas
+  3.00	1829	1829	S	2306583	                  Halomonas sp. JS92-SW72
+  0.12	73	0	O	72274	          Pseudomonadales
+  0.12	72	0	F	468	            Moraxellaceae
+  0.12	72	0	G	469	              Acinetobacter
+  0.12	72	0	G1	909768	                Acinetobacter calcoaceticus/baumannii complex
+  0.12	72	72	S	470	                  Acinetobacter baumannii
+  0.00	1	0	F	135621	            Pseudomonadaceae
+  0.00	1	0	G	286	              Pseudomonas
+  0.00	1	0	G1	136845	                Pseudomonas putida group
+  0.00	1	1	S	303	                  Pseudomonas putida
+  0.00	3	0	C	28216	        Betaproteobacteria
+  0.00	3	0	O	80840	          Burkholderiales
+  0.00	3	0	F	80864	            Comamonadaceae
+  0.00	3	0	G	47420	              Hydrogenophaga
+  0.00	3	0	G1	2610897	                unclassified Hydrogenophaga
+  0.00	3	3	S	2184519	                  Hydrogenophaga sp. NH-16
+  0.00	1	0	C	28211	        Alphaproteobacteria
+  0.00	1	0	O	356	          Rhizobiales
+  0.00	1	0	F	69277	            Phyllobacteriaceae
+  0.00	1	0	G	31988	              Aminobacter
+  0.00	1	1	S	83263	                Aminobacter aminovorans
+  0.32	196	0	D	2759	    Eukaryota
+  0.32	196	0	D1	33154	      Opisthokonta
+  0.32	196	0	K	33208	        Metazoa
+  0.32	196	0	K1	6072	          Eumetazoa
+  0.32	196	0	K2	33213	            Bilateria
+  0.32	196	0	K3	33511	              Deuterostomia
+  0.32	196	0	P	7711	                Chordata
+  0.32	196	0	P1	89593	                  Craniata
+  0.32	196	0	P2	7742	                    Vertebrata
+  0.32	196	0	P3	7776	                      Gnathostomata
+  0.32	196	0	P4	117570	                        Teleostomi
+  0.32	196	0	P5	117571	                          Euteleostomi
+  0.32	196	0	P6	8287	                            Sarcopterygii
+  0.32	196	0	P7	1338369	                              Dipnotetrapodomorpha
+  0.32	196	0	P8	32523	                                Tetrapoda
+  0.32	196	0	P9	32524	                                  Amniota
+  0.32	196	0	C	40674	                                    Mammalia
+  0.32	196	0	C1	32525	                                      Theria
+  0.32	196	0	C2	9347	                                        Eutheria
+  0.32	196	0	C3	1437010	                                          Boreoeutheria
+  0.32	196	0	C4	314146	                                            Euarchontoglires
+  0.32	196	0	O	9443	                                              Primates
+  0.32	196	0	O1	376913	                                                Haplorrhini
+  0.32	196	0	O2	314293	                                                  Simiiformes
+  0.32	196	0	O3	9526	                                                    Catarrhini
+  0.32	196	0	O4	314295	                                                      Hominoidea
+  0.32	196	0	F	9604	                                                        Hominidae
+  0.32	196	0	F1	207598	                                                          Homininae
+  0.32	196	0	G	9605	                                                            Homo
+  0.32	196	196	S	9606	                                                              Homo sapiens
+  0.00	2	2	D	2157	    Archaea
