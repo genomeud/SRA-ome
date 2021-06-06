@@ -20,7 +20,7 @@ mkdir $outputDir 2>/dev/null
 #doneFieldIdx=$6        #done == NO
 MAX_SIZE_MB=10000       #size [MB]
 #for example: 0,5 ==> 0,5 / 100 = 0,005
-percAsNumerator=2     #0 <= percAsNumerator <= 100
+percAsNumerator=3     #0 <= percAsNumerator <= 100
 
 if test $# -gt $nOfParamsNeeded
 then

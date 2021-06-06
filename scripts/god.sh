@@ -8,6 +8,14 @@ then
     mainOutDir=$1
     mainOutDir=`echo "$mainOutDir" | sed s:/$::`
     mainOutDir="$mainOutDir"'/'
+else
+    i=0
+    while test -d $mainOutDir
+    do
+        i=$(($i+1))
+        mainOutDir=$HOME'/SRA/reports/'$(date +'%Y_%m_%d')'_'$i'/'
+    done
+
 fi
 
 #output directories
