@@ -1,0 +1,83 @@
+ 48.49	9924	9924	U	0	unclassified
+ 51.51	10541	0	R	1	root
+ 51.51	10541	0	R1	131567	  cellular organisms
+ 51.36	10511	7174	D	2	    Bacteria
+ 14.32	2931	0	D1	1783272	      Terrabacteria group
+ 14.32	2930	0	P	1239	        Firmicutes
+ 14.32	2930	0	C	91061	          Bacilli
+ 14.32	2930	2274	O	1385	            Bacillales
+  1.84	376	0	F	186817	              Bacillaceae
+  1.84	376	0	G	1386	                Bacillus
+  1.84	376	0	G1	86661	                  Bacillus cereus group
+  1.84	376	0	S	1396	                    Bacillus cereus
+  1.84	376	376	S1	526973	                      Bacillus cereus m1293
+  1.37	280	0	F	90964	              Staphylococcaceae
+  1.37	280	0	G	1279	                Staphylococcus
+  1.37	280	280	S	1280	                  Staphylococcus aureus
+  0.00	1	0	P	201174	        Actinobacteria
+  0.00	1	0	C	1760	          Actinobacteria
+  0.00	1	0	O	85007	            Corynebacteriales
+  0.00	1	0	F	1762	              Mycobacteriaceae
+  0.00	1	0	G	1763	                Mycobacterium
+  0.00	1	0	G1	120793	                  Mycobacterium avium complex (MAC)
+  0.00	1	1	S	1767	                    Mycobacterium intracellulare
+  1.98	406	0	P	1224	      Proteobacteria
+  1.65	337	0	C	28216	        Betaproteobacteria
+  1.65	337	0	O	80840	          Burkholderiales
+  1.63	333	0	F	75682	            Oxalobacteraceae
+  1.63	333	0	G	29580	              Janthinobacterium
+  1.63	333	0	S	55508	                Janthinobacterium agaricidamnosum
+  1.63	333	333	S1	1349767	                  Janthinobacterium agaricidamnosum NBRC 102515 = DSM 9628
+  0.02	4	0	F	119060	            Burkholderiaceae
+  0.01	3	3	G	48736	              Ralstonia
+  0.00	1	0	G	106589	              Cupriavidus
+  0.00	1	1	S	164546	                Cupriavidus taiwanensis
+  0.32	65	0	C	28211	        Alphaproteobacteria
+  0.20	41	0	O	356	          Rhizobiales
+  0.20	40	0	F	69277	            Phyllobacteriaceae
+  0.20	40	0	G	274591	              Hoeflea
+  0.20	40	0	G1	2614931	                unclassified Hoeflea
+  0.20	40	40	S	1620421	                  Hoeflea sp. IMCC20628
+  0.00	1	0	F	41294	            Bradyrhizobiaceae
+  0.00	1	0	G	374	              Bradyrhizobium
+  0.00	1	1	S	1325090	                Bradyrhizobium guangdongense
+  0.12	24	0	C1	82117	          Alphaproteobacteria incertae sedis
+  0.12	24	0	G	1632780	            Phreatobacter
+  0.12	24	24	S	1868589	              Phreatobacter cathodiphilus
+  0.02	4	0	C	1236	        Gammaproteobacteria
+  0.02	4	0	O	135619	          Oceanospirillales
+  0.02	4	0	F	28256	            Halomonadaceae
+  0.02	4	0	G	2745	              Halomonas
+  0.01	3	0	G1	2609666	                unclassified Halomonas
+  0.01	3	3	S	2306583	                  Halomonas sp. JS92-SW72
+  0.00	1	1	S	1081866	                Halomonas socia
+  0.15	30	0	D	2759	    Eukaryota
+  0.15	30	0	D1	33154	      Opisthokonta
+  0.15	30	0	K	33208	        Metazoa
+  0.15	30	0	K1	6072	          Eumetazoa
+  0.15	30	0	K2	33213	            Bilateria
+  0.15	30	0	K3	33511	              Deuterostomia
+  0.15	30	0	P	7711	                Chordata
+  0.15	30	0	P1	89593	                  Craniata
+  0.15	30	0	P2	7742	                    Vertebrata
+  0.15	30	0	P3	7776	                      Gnathostomata
+  0.15	30	0	P4	117570	                        Teleostomi
+  0.15	30	0	P5	117571	                          Euteleostomi
+  0.15	30	0	P6	8287	                            Sarcopterygii
+  0.15	30	0	P7	1338369	                              Dipnotetrapodomorpha
+  0.15	30	0	P8	32523	                                Tetrapoda
+  0.15	30	0	P9	32524	                                  Amniota
+  0.15	30	0	C	40674	                                    Mammalia
+  0.15	30	0	C1	32525	                                      Theria
+  0.15	30	0	C2	9347	                                        Eutheria
+  0.15	30	0	C3	1437010	                                          Boreoeutheria
+  0.15	30	0	C4	314146	                                            Euarchontoglires
+  0.15	30	0	O	9443	                                              Primates
+  0.15	30	0	O1	376913	                                                Haplorrhini
+  0.15	30	0	O2	314293	                                                  Simiiformes
+  0.15	30	0	O3	9526	                                                    Catarrhini
+  0.15	30	0	O4	314295	                                                      Hominoidea
+  0.15	30	0	F	9604	                                                        Hominidae
+  0.15	30	0	F1	207598	                                                          Homininae
+  0.15	30	0	G	9605	                                                            Homo
+  0.15	30	30	S	9606	                                                              Homo sapiens
