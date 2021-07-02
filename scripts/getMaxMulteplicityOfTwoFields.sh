@@ -1,35 +1,39 @@
 #set -x
-
 nOfParamsNeeded=3
 
 if test $# -lt $nOfParamsNeeded
 then
-    echo "usage: $0 <file.csv> <fieldIdx1> <fieldIdx2>"
+    echo "usage: $0 <file.csv> <fieldIdx1> <fieldIdx2> [<delimiter=','>]"
     exit 1
 fi
 
 #check if two fields are (1,1), (1,M), (M,M)
 
 output_dir='test'
+delimiter=','
 
 file=$1
 field1=$2
 field2=$3
+if test $# -gt $nOfParamsNeeded
+then
+    delimiter=$4
+fi
 output_file_both=$output_dir'/''fields_'${field1}'_'${field2}'.txt'
 output_file_1=$output_dir'/''field_'${field1}'.txt'
 output_file_2=$output_dir'/''field_'${field2}'.txt'
 
 cat $file | \
-cut -d',' -f$field1,$field2 | \
+cut -d "$delimiter" -f$field1,$field2 | \
 sort | \
 uniq -c | \
 tr -s ' ' | \
 cut -d' ' -f2- | \
-sed s/' '/','/ \
+sed s/' '/$delimiter/ \
 >$output_file_both
 
 cat $output_file_both | \
-cut -d',' -f2 | \
+cut -d "$delimiter" -f2 | \
 uniq -c | \
 tr -s ' ' | \
 cut -d' ' -f2- | \
@@ -37,7 +41,7 @@ grep -v ^'1 ' \
 >$output_file_1
 
 cat $output_file_both | \
-cut -d',' -f3 | \
+cut -d "$delimiter" -f3 | \
 uniq -c | \
 tr -s ' ' | \
 cut -d' ' -f2- | \
