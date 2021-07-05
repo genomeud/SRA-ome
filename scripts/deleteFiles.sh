@@ -54,6 +54,11 @@ then
     krakenStatus=$?
 fi
 
+#delete temp download files
+#large files, fasterqdump autodeletes them unless there is error
+#we want to delete them in any case
+find . -type d -name "fasterq.tmp.*" -exec rm -rf {} \; 2>>/dev/null
+
 ok=0
 if test $fastqStatus -ne 0
 then
