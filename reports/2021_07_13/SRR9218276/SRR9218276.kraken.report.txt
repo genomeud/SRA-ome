@@ -1,0 +1,105 @@
+  0.46	254	254	U	0	unclassified
+ 99.54	55207	1	R	1	root
+ 99.54	55205	140	R1	131567	  cellular organisms
+ 99.06	54938	857	D	2	    Bacteria
+ 93.99	52129	2	D1	1783272	      Terrabacteria group
+ 93.98	52123	42743	P	1239	        Firmicutes
+ 16.10	8928	0	C	91061	          Bacilli
+ 16.09	8925	0	O	1385	            Bacillales
+ 16.09	8923	0	F	186817	              Bacillaceae
+ 16.09	8922	0	G	1386	                Bacillus
+ 16.09	8921	0	G1	86661	                  Bacillus cereus group
+ 16.09	8921	0	S	1396	                    Bacillus cereus
+ 16.09	8921	8921	S1	526973	                      Bacillus cereus m1293
+  0.00	1	1	S	1397	                  Bacillus circulans
+  0.00	1	0	G	2675234	                Alkalihalobacillus
+  0.00	1	1	S	79880	                  Alkalihalobacillus clausii
+  0.00	2	0	F	186822	              Paenibacillaceae
+  0.00	2	0	G	44249	                Paenibacillus
+  0.00	1	1	S	1870820	                  Paenibacillus ihbetae
+  0.00	1	0	G1	185978	                  unclassified Paenibacillus
+  0.00	1	1	S	324057	                    Paenibacillus sp. JDR-2
+  0.01	3	0	O	186826	            Lactobacillales
+  0.01	3	0	F	1300	              Streptococcaceae
+  0.01	3	0	G	1301	                Streptococcus
+  0.01	3	3	S	149016	                  Streptococcus urinalis
+  0.81	452	0	C	186801	          Clostridia
+  0.81	452	0	O	186802	            Clostridiales
+  0.81	452	0	F	31979	              Clostridiaceae
+  0.81	452	0	G	1485	                Clostridium
+  0.81	452	452	S	1491	                  Clostridium botulinum
+  0.01	4	0	D2	1798711	        Cyanobacteria/Melainabacteria group
+  0.01	4	0	P	1117	          Cyanobacteria
+  0.01	4	0	O	1161	            Nostocales
+  0.01	4	0	F	119859	              Tolypothrichaceae
+  0.01	4	0	G	111782	                Tolypothrix
+  0.01	4	0	G1	2649714	                  unclassified Tolypothrix
+  0.01	4	4	S	2099387	                    Tolypothrix sp. PCC 7910
+  3.52	1952	6	P	1224	      Proteobacteria
+  3.50	1943	0	C	1236	        Gammaproteobacteria
+  3.26	1807	0	O	135619	          Oceanospirillales
+  3.26	1807	0	F	28256	            Halomonadaceae
+  3.26	1807	0	G	2745	              Halomonas
+  3.26	1807	0	G1	2609666	                unclassified Halomonas
+  3.26	1807	1807	S	2306583	                  Halomonas sp. JS92-SW72
+  0.25	136	0	O	72274	          Pseudomonadales
+  0.25	136	0	F	468	            Moraxellaceae
+  0.25	136	0	G	469	              Acinetobacter
+  0.25	136	0	G1	909768	                Acinetobacter calcoaceticus/baumannii complex
+  0.25	136	136	S	470	                  Acinetobacter baumannii
+  0.00	2	0	C	28211	        Alphaproteobacteria
+  0.00	1	0	O	356	          Rhizobiales
+  0.00	1	0	F	2036754	            Chelatococcaceae
+  0.00	1	0	G	28209	              Chelatococcus
+  0.00	1	1	S	444444	                Chelatococcus daeguensis
+  0.00	1	0	O	204455	          Rhodobacterales
+  0.00	1	0	F	31989	            Rhodobacteraceae
+  0.00	1	0	G	1649279	              Epibacterium
+  0.00	1	1	S	379347	                Epibacterium mobile
+  0.00	1	0	C	28216	        Betaproteobacteria
+  0.00	1	0	O	80840	          Burkholderiales
+  0.00	1	0	F	119060	            Burkholderiaceae
+  0.00	1	0	G	1822464	              Paraburkholderia
+  0.00	1	0	S	261302	                Paraburkholderia phytofirmans
+  0.00	1	1	S1	1417228	                  Paraburkholderia phytofirmans OLGA172
+  0.23	125	0	D	2759	    Eukaryota
+  0.23	125	0	D1	33154	      Opisthokonta
+  0.23	125	0	K	33208	        Metazoa
+  0.23	125	0	K1	6072	          Eumetazoa
+  0.23	125	0	K2	33213	            Bilateria
+  0.23	125	0	K3	33511	              Deuterostomia
+  0.23	125	0	P	7711	                Chordata
+  0.23	125	0	P1	89593	                  Craniata
+  0.23	125	0	P2	7742	                    Vertebrata
+  0.23	125	0	P3	7776	                      Gnathostomata
+  0.23	125	0	P4	117570	                        Teleostomi
+  0.23	125	0	P5	117571	                          Euteleostomi
+  0.23	125	0	P6	8287	                            Sarcopterygii
+  0.23	125	0	P7	1338369	                              Dipnotetrapodomorpha
+  0.23	125	0	P8	32523	                                Tetrapoda
+  0.23	125	0	P9	32524	                                  Amniota
+  0.23	125	0	C	40674	                                    Mammalia
+  0.23	125	0	C1	32525	                                      Theria
+  0.23	125	0	C2	9347	                                        Eutheria
+  0.23	125	0	C3	1437010	                                          Boreoeutheria
+  0.23	125	0	C4	314146	                                            Euarchontoglires
+  0.23	125	0	O	9443	                                              Primates
+  0.23	125	0	O1	376913	                                                Haplorrhini
+  0.23	125	0	O2	314293	                                                  Simiiformes
+  0.23	125	0	O3	9526	                                                    Catarrhini
+  0.23	125	0	O4	314295	                                                      Hominoidea
+  0.23	125	0	F	9604	                                                        Hominidae
+  0.23	125	0	F1	207598	                                                          Homininae
+  0.23	125	0	G	9605	                                                            Homo
+  0.23	125	125	S	9606	                                                              Homo sapiens
+  0.00	2	2	D	2157	    Archaea
+  0.00	1	0	D	10239	  Viruses
+  0.00	1	0	D1	2732004	    Varidnaviria
+  0.00	1	0	K	2732005	      Bamfordvirae
+  0.00	1	0	P	2732007	        Nucleocytoviricota
+  0.00	1	0	C	2732523	          Megaviricetes
+  0.00	1	0	O	2732524	            Algavirales
+  0.00	1	0	F	10501	              Phycodnaviridae
+  0.00	1	0	G	181083	                Chlorovirus
+  0.00	1	0	G1	346674	                  unclassified Chlorovirus
+  0.00	1	1	S	1917232	                    Only Syngen Nebraska virus 5
