@@ -102,22 +102,22 @@ $cpp_execution_params_command
 #################################################################
 #5) searchInAnalysis: (corona, coronavirus, sars-cov-2)
 
-fieldIdxs_array=('6' '6' '5')
-valueIdxs_array=('corona' 'coronavirus' '2697049')
+#fieldIdxs_array=('6' '6' '5')
+#valueIdxs_array=('corona' 'coronavirus' '2697049')
 
-n=${#fieldIdxs_array[@]}
+#n=${#fieldIdxs_array[@]}
 
-for (( i=0; i<$n; i++ ))
-do
-    execSearch_cmd="$searchInAnalysis_script \
-        $mainOutDir \
-        ${fieldIdxs_array[$i]} \
-        ${valueIdxs_array[$i]} \
-        $researchesOutDir"
-
-    echo $execSearch_cmd
-    $execSearch_cmd
-
-done
+#for (( i=0; i<$n; i++ ))
+#do
+#    execSearch_cmd="$searchInAnalysis_script \
+#        $mainOutDir \
+#        ${fieldIdxs_array[$i]} \
+#        ${valueIdxs_array[$i]} \
+#        $researchesOutDir"
+#
+#    echo $execSearch_cmd
+#    $execSearch_cmd
+#
+#done
 
 ###########################################################################à
