@@ -23,6 +23,7 @@ c++/signals_example.cpp
 scripts/god_with_signals.sh
 z_prof_scripts/*
 sql/log_postgres.log
+sql/4_population/0_kdb_KrakenDatabase.sql
 sql/4_population/0_sra_Institution.sql
 sql/4_population/0_sra_Study.sql
 sql/4_population/0_sra_Submission.sql
@@ -41,3 +42,5 @@ metadata/run_runoutcome_2021_08_01.sql
 reports_to_xml/*
 scripts/old_scripts/*
 metadata/*
+create_sql_files_to_populate_db/kraken2_database/Kraken2_DB16_inspect.txt
+create_sql_files_to_populate_db/kraken2_database/Kraken2_DB16_Standard-16_2020-12-02.sql
