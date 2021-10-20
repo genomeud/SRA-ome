@@ -23,10 +23,10 @@ Relations among entities (too see it better and complete check the IDEF1X model)
  * <Run, Experiment>: one-to-many
  * <Experiment, Sample>: one-to-many
  * <Sample, Study>: many-to-many 
-  * in practice in most case is just one-to-many but can happen that another study re-analyses some samples)
-  * a many-to-many relation implies to create a derived relation "StudySample" (you will see it in the IDEF1X schema)
+    * in practice in most case is just one-to-many but can happen that another study re-analyses some samples)
+    * a many-to-many relation implies to create a derived relation "StudySample" (you will see it in the IDEF1X schema)
  * <Study, Submission>: many-to-many
-  * A study with all the infos about samples, experiments, runs ecc can be uploaded in more than one part
-  * During a submission is possible to upload many different studies
+    * A study with all the infos about samples, experiments, runs ecc can be uploaded in more than one part
+    * During a submission is possible to upload many different studies
 
 Work-flow is described as follows:
