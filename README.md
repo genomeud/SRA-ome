@@ -1,6 +1,5 @@
-# SRA-ome
-## Data analysis of DNA/RNA sequences uploaded on SRA
-### Samples comes from metagenomics or metatranscriptomics experiments
+# SRA-ome: data analysis of DNA/RNA sequences uploaded on SRA
+## Samples analysed come from metagenomic or metatranscriptomic experiments
 
 Code for systematically classify the reads present in SRA database, in order to detect all the taxa present inside it.
 
