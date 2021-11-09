@@ -99,15 +99,22 @@ For this reason we had to identify each taxa with the tuple <Date, TaxonID>.
 This obviously causes a massive increase in the size: each taxonomy version contains all the taxa associated, altough most of them is always the same.
 
 NB2: (Obviously) we do not store all the taxonomy versions but only the ones associated to a KrakenDatabase used during classification.
-
 As for now, we are storing just one version: 2020-12-01.
 It is available here: https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/new_taxdump_2020-12-01.zip
 
-NB3: From the cited version we had to manually add two taxa:
+NB3: SRA when edits the Taxonomy also updates the reference of the taxa in the old samples.
+This implies that downloading the same metadata in different time can lead to a different result, in the specific in the TaxonID of the sample which can have changed in the meanwhile.
+In respect to this, our politic is different: we mantain old data as it is without updating it (remember, as said before, that our Taxon PK is composed by both TaxonID and database date version and so the FK too).
+
+The analysis we did where based on the metadata downloaded the 13/03/2021 (three months later the Taxonomy version used).
+Luckily, just one sample had a taxon not inside the Taxonomy, which has been inserted manually.
+
+So, from the Taxonomy version of 2020-12-01 we had to add manually two taxa:
 | TaxonID   | ParentTaxonID | Rank    | TaxonName                 | Reason                                                   |
 | --------- | ------------- | ------- | ------------------------- | -------------------------------------------------------- |
 | 2801061   | 205167        | species | Andrena sp. MF-2021       | present in Sample.TaxonID but not in NCBI Taxonomy       |
 | 2792603   | 1765964       | species | Acidihalobacter aeolianus | present in KrakenRecord.TaxonID but not in NCBI Taxonomy |
+
 
 ### Kraken Taxonomy
 
