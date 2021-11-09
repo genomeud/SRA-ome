@@ -110,7 +110,7 @@ NB3: From the cited version we had to manually add two taxa: (which are present 
 | 2792603   | 1765964       | species | Acidihalobacter aeolianus | present in KrakenRecord.TaxonID but not in NCBI Taxonomy |
 
 ### Kraken Taxonomy
-For the classification is used the K
+
 
 ### Reports
 
