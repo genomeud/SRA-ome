@@ -115,9 +115,15 @@ So, from the Taxonomy version of 2020-12-01 we had to add manually two taxa:
 | 2801061   | 205167        | species | Andrena sp. MF-2021       | present in Sample.TaxonID but not in NCBI Taxonomy       |
 | 2792603   | 1765964       | species | Acidihalobacter aeolianus | present in KrakenRecord.TaxonID but not in NCBI Taxonomy |
 
-
 ### Kraken Taxonomy
+The Kraken Taxonomy is a subtree of the NCBI Taxonomy.
+If the NCBI T. contains all taxa known, the Kraken T. just lists the taxa that can be found.
+The Kraken T. maps foreach taxon the corresponding k-mers, fundamental in the classification process.
+NB: The k-mers are not stored in our database.
 
+Foreach Kraken Taxonomy version used we save the information about the version and all the taxa.
+As for now, we are storing just one version: Standard-16 of 2020-12-02.
+It is available here: https://genome-idx.s3.amazonaws.com/kraken/k2_standard_16gb_20201202.tar.gz
 
 ### Reports
 
