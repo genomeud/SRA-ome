@@ -86,7 +86,7 @@ The only field which is stored is its accession code.
 See also: https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/
 
 ### NCBI Taxonomy
-The NCBI Taxonomy contains all the taxonomy known and accepted by NCBI.
+The NCBI Taxonomy contains all the taxonomy known and accepted by NCBI.<br>
 It is useful to know all the ancestors and the descendants of a taxon, his rank ecc.
 
 NB1: In the first version of the database each taxon was identified only by his TaxonID.
@@ -98,7 +98,7 @@ This fact cause errors with the FK in the Kraken Taxonomy: if a taxon was found 
 For this reason we had to identify each taxa with the tuple <Date, TaxonID>.
 This obviously causes a massive increase in the size: each taxonomy version contains all the taxa associated, altough most of them is always the same.
 
-NB2: (Obviously) we do not store all the taxonomy versions but only the ones associated to a KrakenDatabase used during classification.
+NB2: (Obviously) we do not store all the taxonomy versions but only the ones associated to a KrakenDatabase used during classification.<br>
 As for now, we are storing just one version: 2020-12-01.<br>
 It is available here: https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/new_taxdump_2020-12-01.zip
 
@@ -118,7 +118,7 @@ So, from the Taxonomy version of 2020-12-01 we had to add manually two taxa:
 ### Kraken Taxonomy
 The Kraken Taxonomy is a subtree of the NCBI Taxonomy.
 If the NCBI T. contains all taxa known, the Kraken T. just lists the taxa that can be found.
-The Kraken T. maps foreach taxon the corresponding k-mers, fundamental in the classification process.
+The Kraken T. maps foreach taxon the corresponding k-mers, fundamental in the classification process.<br>
 NB: The k-mers are not stored in our database.
 
 Foreach Kraken Taxonomy version used we save the information about the version and all the taxa.<br>
