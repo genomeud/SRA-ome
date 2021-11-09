@@ -1,4 +1,4 @@
-# SRA-ome: taxonomy classification of DNA/RNA sequences uploaded on SRA
+# SRA-ome: taxonomy classification of DNA/RNA sequences from SRA
 ## Analysis of metagenomics or metatranscriptomics samples
 
 In this project has been implemented an almost fully automated system to systematically classify the reads present in SRA database, in order to detect all the taxa present inside it.
@@ -10,6 +10,9 @@ To store all the needed data, has been designed and implemented a database (in p
  * Classification results (called also reports)
 
 ## Database structure
+
+### SRA Metadata
+
 NB: SRA is maintained by INDSC, which is an association of three indipendent entities:
 | Entity | State | DB Name | SRA Acronym |
 | ------ | ----- | ------- | ----------- |
@@ -17,7 +20,6 @@ NB: SRA is maintained by INDSC, which is an association of three indipendent ent
 | EMBL   | EU    | EMBL    | E           |
 | NIG    | JPN   | DDBJ    | D           |
 
-### SRA Metadata
 Currently SRA has these main entities:
  * **Run**: contains the associated reads, no other information
  * **Experiment**: contains all the infos about the experiment (design, libraries ecc)
