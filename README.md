@@ -37,7 +37,7 @@ Relations among entities (too see it better and complete check the IDEF1X model)
     * A study with all the infos about samples, experiments, runs ecc can be uploaded in more than one part
     * During a submission is possible to upload many different studies
 
-#### Run (ID regex: [D,E,S]RR[0-9]+ )
+#### Run (Accession regex: [D,E,S]RR[0-9]+ )
 SRA's Run definition:
 "A Run is simply a manifest of data file(s) that are derived from sequencing a library described by the associated Experiment."
 
@@ -103,7 +103,7 @@ NB2: (Obviously) we do not store all the taxonomy versions but only the ones ass
 As for now, we are storing just one version: 2020-12-01.
 It is available here: https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/new_taxdump_2020-12-01.zip
 
-NB3: From the cited version we had to manually add two taxa:s
+NB3: From the cited version we had to manually add two taxa:
 | TaxonID   | ParentTaxonID | Rank    | TaxonName                 | Reason                                                   |
 | --------- | ------------- | ------- | ------------------------- | -------------------------------------------------------- |
 | 2801061   | 205167        | species | Andrena sp. MF-2021       | present in Sample.TaxonID but not in NCBI Taxonomy       |
