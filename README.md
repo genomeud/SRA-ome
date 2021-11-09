@@ -42,7 +42,10 @@ SRA's Run definition:
 "A Run is simply a manifest of data file(s) that are derived from sequencing a library described by the associated Experiment."
 
 In the run are only few information: PublicationDateTime, SRAFileSize, Spot, Base, Consent.
+
 Moreover we added a column 'RunOutcome' which explicits if the run has already been analysed ('OK'), if has to be analysed ('TODO') or if it not of our interest ('IGNORE').
+
+It also contains the FK to the corresponding Experiment.
 
 #### Experiment (ID regex: [D,E,S]RX[0-9]+ )
 SRA's Experiment definition:
@@ -53,8 +56,17 @@ Design, LibraryName, LibrarySource, LibraryLayout, LibrarySelection, LibraryStra
 
 Most of these fields are actually stored in a separated table (with all the fields possibilities) and are referred as a FK.
 
+It also contains the FK to the corresponding Sample.
+
 #### Sample (ID regex: [D,E,S]RS[0-9]+ )
+A sample represents what actually has been collected from the environment.
+A sample can be splitted in many sequencing experiments and also can be the target of many studies.
+
+The two most important information stored are: the TaxonID of the sample and the corresponding BioSampleID (from BioSample database).
+
 #### Study (ID regex: [D,E,S]RP[0-9]+ )
+
+
 #### Submission (ID regex: [D,E,S]RA[0-9]+ )
 
 See also: https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/
