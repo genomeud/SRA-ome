@@ -81,11 +81,36 @@ It just represents when the studies has been uploaded to SRA.
 It could be useful in some (rare) cases when different studies are in practical the same but are stored with different accessions.
 Obviously only if they are uploaded together (in the same submission).
 
+The only field which is stored is its accession code.
+
 See also: https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/
 
 ### NCBI Taxonomy
+The NCBI Taxonomy contains all the taxonomy known and accepted by NCBI.
+It is useful to know all the ancestors and the descendants of a taxon, his rank ecc.
+
+NB1: In the first version of the database each taxon was identified only by his TaxonID.
+This is always true.
+But problems raised trying to update the taxonomy to new versions (tipically there is an update per month).
+This is due to how NCBI handles old taxa: it does not just rename them but sometimes changes the tree (parent/sons) but most important can happen that some taxa may be merged, moved, deleted.
+This fact cause errors with the FK in the Kraken Taxonomy: if a taxon was found in a classification using an older version and then it is removed from the NCBI Taxonomy then there would be a FK missing in the Kraken Taxonomy.
+
+For this reason we had to identify each taxa with the tuple <Date, TaxonID>.
+This obviously causes a massive increase in the size: each taxonomy version contains all the taxa associated, altough most of them is always the same.
+
+NB2: (Obviously) we do not store all the taxonomy versions but only the ones associated to a KrakenDatabase used during classification.
+
+As for now, we are storing just one version: 2020-12-01.
+It is available here: https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/new_taxdump_2020-12-01.zip
+
+NB3: From the cited version we had to manually add two taxa: (which are present in the version of the KrakenDatabase):
+| TaxonID   | ParentTaxonID | Rank    | TaxonName                 | Reason                                                   |
+| --------- | ------------- | ------- | ------------------------- | -------------------------------------------------------- |
+| 2801061   | 205167        | species | Andrena sp. MF-2021       | present in Sample.TaxonID but not in NCBI Taxonomy       |
+| 2792603   | 1765964       | species | Acidihalobacter aeolianus | present in KrakenRecord.TaxonID but not in NCBI Taxonomy |
 
 ### Kraken Taxonomy
+For the classification is used the K
 
 ### Reports
 
