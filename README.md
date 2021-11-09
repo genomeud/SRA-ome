@@ -37,24 +37,25 @@ Relations among entities (too see it better and complete check the IDEF1X model)
     * A study with all the infos about samples, experiments, runs ecc can be uploaded in more than one part
     * During a submission is possible to upload many different studies
 
-#### Run (ID regex: ^[D,E,S]RR[0-9]+$ )
+#### Run (ID regex: [D,E,S]RR[0-9]+ )
 SRA's Run definition:
 "A Run is simply a manifest of data file(s) that are derived from sequencing a library described by the associated Experiment."
 
 In the run are only few information: PublicationDateTime, SRAFileSize, Spot, Base, Consent.
 Moreover we added a column 'RunOutcome' which explicits if the run has already been analysed ('OK'), if has to be analysed ('TODO') or if it not of our interest ('IGNORE').
 
-#### Experiment (ID regex: ^[D,E,S]RX[0-9]+$ )
+#### Experiment (ID regex: [D,E,S]RX[0-9]+ )
 SRA's Experiment definition:
-"An experiment is a unique sequencing result for a specific sample.
+"An experiment is a unique sequencing result for a specific sample."
 
-The experiment is most important entity: it contains all the information about the sequencing procedure:
+The experiment is most important entity, it contains all the information about the sequencing procedure:
 Design, LibraryName, LibrarySource, LibraryLayout, LibrarySelection, LibraryStrategy, PlatformName, InstrumentName.
 
+Most of these fields are actually stored in a separated table (with all the fields possibilities) and are referred as a FK.
 
-#### Sample (ID regex: ^[D,E,S]RS[0-9]+$ )
-#### Study (ID regex: ^[D,E,S]RP[0-9]+$ )
-#### Submission (ID regex: ^[D,E,S]RA[0-9]+$ )
+#### Sample (ID regex: [D,E,S]RS[0-9]+ )
+#### Study (ID regex: [D,E,S]RP[0-9]+ )
+#### Submission (ID regex: [D,E,S]RA[0-9]+ )
 
 See also: https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/
 
