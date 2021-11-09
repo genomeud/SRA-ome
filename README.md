@@ -14,11 +14,11 @@ To store all the needed data, has been designed and implemented a database (in p
 ### SRA Metadata
 
 NB: SRA is maintained by INDSC, which is an association of three indipendent entities:
-| Entity | State | DB Name | SRA Acronym |
-| ------ | ----- | ------- | ----------- |
-| NCBI   | US    | GenBank | S           |
-| EMBL   | EU    | EMBL    | E           |
-| NIG    | JPN   | DDBJ    | D           |
+| Entity   | State | DB Name | SRA Acronym |
+| -------- | ----- | ------- | ----------- |
+| NCBI     | US    | GenBank | S           |
+| EMBL-EBI | EU    | ENA     | E           |
+| NIG      | JPN   | DDBJ    | D           |
 
 Currently SRA has these main entities:
  * **Run**: contains the associated reads, no other information
