@@ -14,11 +14,11 @@ To store all the needed data, has been designed and implemented a database (in p
 ### SRA Metadata
 
 NB: SRA is maintained by INDSC, which is an association of three indipendent entities:
-| Entity   | State | DB Name | SRA Acronym |
-| -------- | ----- | ------- | ----------- |
-| NCBI     | US    | GenBank | S           |
-| EMBL-EBI | EU    | ENA     | E           |
-| NIG      | JPN   | DDBJ    | D           |
+| Entity   | State | Database | SRA Acronym |
+| -------- | ----- | -------- | ----------- |
+| NCBI     | US    | GenBank  | S           |
+| EMBL-EBI | EU    | ENA      | E           |
+| NIG      | JPN   | DDBJ     | D           |
 
 Currently SRA has these main entities:
  * **Run**: contains the associated reads, no other information
@@ -41,9 +41,15 @@ Relations among entities (too see it better and complete check the IDEF1X model)
 SRA's Run definition:
 "A Run is simply a manifest of data file(s) that are derived from sequencing a library described by the associated Experiment."
 
+In the run are only few information: PublicationDateTime, SRAFileSize, Spot, Base, Consent.
+Moreover we added a column 'RunOutcome' which explicits if the run has already been analysed ('OK'), if has to be analysed ('TODO') or if it not of our interest ('IGNORE').
+
 #### Experiment (ID regex: ^[D,E,S]RX[0-9]+$ )
 SRA's Experiment definition:
-"An experiment is a unique sequencing result for a specific sample."
+"An experiment is a unique sequencing result for a specific sample.
+
+The experiment is most important entity: it contains all the information about the sequencing procedure:
+Design, LibraryName, LibrarySource, LibraryLayout, LibrarySelection, LibraryStrategy, PlatformName, InstrumentName.
 
 
 #### Sample (ID regex: ^[D,E,S]RS[0-9]+$ )
