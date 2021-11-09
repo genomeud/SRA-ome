@@ -103,7 +103,7 @@ NB2: (Obviously) we do not store all the taxonomy versions but only the ones ass
 As for now, we are storing just one version: 2020-12-01.
 It is available here: https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/new_taxdump_2020-12-01.zip
 
-NB3: From the cited version we had to manually add two taxa: (which are present in the version of the KrakenDatabase):
+NB3: From the cited version we had to manually add two taxa:s
 | TaxonID   | ParentTaxonID | Rank    | TaxonName                 | Reason                                                   |
 | --------- | ------------- | ------- | ------------------------- | -------------------------------------------------------- |
 | 2801061   | 205167        | species | Andrena sp. MF-2021       | present in Sample.TaxonID but not in NCBI Taxonomy       |
