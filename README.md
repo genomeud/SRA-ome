@@ -10,6 +10,12 @@ To store all the needed data, has been designed and implemented a database (in p
  * Classification results (called also reports)
 
 ## Database structure
+NB: SRA is maintained by INDSC, which is an association of three indipendent entities:
+| Entity | State | DB Name | SRA Acronym |
+| ------ | ----- | ------- | ----------- |
+| NCBI   | US    | GenBank | S           |
+| EMBL   | EU    | EMBL    | E           |
+| NIG    | JPN   | DDBJ    | D           |
 
 ### SRA Metadata
 Currently SRA has these main entities:
@@ -29,19 +35,18 @@ Relations among entities (too see it better and complete check the IDEF1X model)
     * A study with all the infos about samples, experiments, runs ecc can be uploaded in more than one part
     * During a submission is possible to upload many different studies
 
-#### Run
-Unique identifier regex: ^[D,E,S]RR[0-9]+$
+#### Run (ID regex: ^[D,E,S]RR[0-9]+$ )
 SRA's Run definition:
 "A Run is simply a manifest of data file(s) that are derived from sequencing a library described by the associated Experiment."
 
-#### Experiment
+#### Experiment (ID regex: ^[D,E,S]RX[0-9]+$ )
 SRA's Experiment definition:
 "An experiment is a unique sequencing result for a specific sample."
 
 
-#### Sample
-#### Study
-#### Submission
+#### Sample (ID regex: ^[D,E,S]RS[0-9]+$ )
+#### Study (ID regex: ^[D,E,S]RP[0-9]+$ )
+#### Submission (ID regex: ^[D,E,S]RA[0-9]+$ )
 
 See also: https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/
 
