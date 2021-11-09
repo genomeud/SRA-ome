@@ -1,9 +1,9 @@
-# SRA-ome: data analysis of DNA/RNA sequences uploaded on SRA
-## Samples analysed come from metagenomic or metatranscriptomic experiments
+# SRA-ome: taxonomy classification of DNA/RNA sequences uploaded on SRA
+## Analysis of metagenomics or metatranscriptomics samples
 
-Code for systematically classify the reads present in SRA database, in order to detect all the taxa present inside it.
+In this project has been implemented an almost fully automated system to systematically classify the reads present in SRA database, in order to detect all the taxa present inside it.
 
-To store all the data has been designed and implemented a database (in postgres), which contains: 
+To store all the needed data, has been designed and implemented a database (in postgres), which contains: 
  * SRA metadata of runs, experiments, samples ecc. 
  * NCBI Official Taxonomy
  * Kraken Taxonomy
@@ -17,7 +17,7 @@ Currently SRA has these main entities:
  * **Experiment**: contains all the infos about the experiment (design, libraries ecc)
  * **Sample**: contains the taxonID of the sample and some informations about the sample
  * **Study**: contains infos about the study
- * **Submission**: explicits when the datas has been uploaded.
+ * **Submission**: explicits when the data has been uploaded.
 
 Relations among entities (too see it better and complete check the IDEF1X model):
  * **<Run, Experiment>**: one-to-many
@@ -30,10 +30,20 @@ Relations among entities (too see it better and complete check the IDEF1X model)
     * During a submission is possible to upload many different studies
 
 #### Run
+Unique identifier regex: ^[D,E,S]RR[0-9]+$
+SRA's Run definition:
+"A Run is simply a manifest of data file(s) that are derived from sequencing a library described by the associated Experiment."
+
 #### Experiment
+SRA's Experiment definition:
+"An experiment is a unique sequencing result for a specific sample."
+
+
 #### Sample
 #### Study
 #### Submission
+
+See also: https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/
 
 
 ### NCBI Taxonomy
