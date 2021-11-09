@@ -99,7 +99,7 @@ For this reason we had to identify each taxa with the tuple <Date, TaxonID>.
 This obviously causes a massive increase in the size: each taxonomy version contains all the taxa associated, altough most of them is always the same.
 
 NB2: (Obviously) we do not store all the taxonomy versions but only the ones associated to a KrakenDatabase used during classification.
-As for now, we are storing just one version: 2020-12-01.\n
+As for now, we are storing just one version: 2020-12-01.<br>
 It is available here: https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/new_taxdump_2020-12-01.zip
 
 NB3: SRA when edits the Taxonomy also updates the reference of the taxa in the old samples.
@@ -121,8 +121,8 @@ If the NCBI T. contains all taxa known, the Kraken T. just lists the taxa that c
 The Kraken T. maps foreach taxon the corresponding k-mers, fundamental in the classification process.
 NB: The k-mers are not stored in our database.
 
-Foreach Kraken Taxonomy version used we save the information about the version and all the taxa.\n
-As for now, we are storing just one version: Standard-16 of 2020-12-02.\n
+Foreach Kraken Taxonomy version used we save the information about the version and all the taxa.<br>
+As for now, we are storing just one version: Standard-16 of 2020-12-02.<br>
 It is available here: https://genome-idx.s3.amazonaws.com/kraken/k2_standard_16gb_20201202.tar.gz
 
 ### Reports
