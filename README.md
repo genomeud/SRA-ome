@@ -47,7 +47,7 @@ Moreover we added a column 'RunOutcome' which explicits if the run has already b
 
 It also contains the FK to the corresponding Experiment.
 
-#### Experiment (ID regex: [D,E,S]RX[0-9]+ )
+#### Experiment (Accession regex: [D,E,S]RX[0-9]+ )
 SRA's Experiment definition:
 "An experiment is a unique sequencing result for a specific sample."
 
@@ -58,19 +58,30 @@ Most of these fields are actually stored in a separated table (with all the fiel
 
 It also contains the FK to the corresponding Sample.
 
-#### Sample (ID regex: [D,E,S]RS[0-9]+ )
+#### Sample (Accession regex: [D,E,S]RS[0-9]+ )
 A sample represents what actually has been collected from the environment.
 A sample can be splitted in many sequencing experiments and also can be the target of many studies.
 
-The two most important information stored are: the TaxonID of the sample and the corresponding BioSampleID (from BioSample database).
+The two most important information stored are: the TaxonID of the sample and the corresponding BioSampleID (identifier in the BioSample database).
 
-#### Study (ID regex: [D,E,S]RP[0-9]+ )
+It does NOT contain the FK to the corresponding Study, because, being a M-M relationship, all the FKs are stored in a separated table, StudySample.
 
+#### Study (Accession regex: [D,E,S]RP[0-9]+ )
+A study represents a more abstract concept: a work project.
+It does not hold any information about sampling or sequencing, just two main fields: Title, Abstract.
 
-#### Submission (ID regex: [D,E,S]RA[0-9]+ )
+A study can focus in many samples and can be uploaded in many submission.
+
+It does NOT contain the FK to the corresponding Submission, because, being a M-M relationship, all the FKs are stored in a separated table, StudySubmission.
+
+#### Submission (Accession regex: [D,E,S]RA[0-9]+ )
+A submission is not a pretty important entity.
+It just represents when the studies has been uploaded to SRA.
+
+It could be useful in some (rare) cases when different studies are in practical the same but are stored with different accessions.
+Obviously only if they are uploaded together (in the same submission).
 
 See also: https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/
-
 
 ### NCBI Taxonomy
 
