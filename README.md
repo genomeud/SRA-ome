@@ -98,7 +98,7 @@ It is structured with three entities:
  * **Rank**: container for all exiting rank, is used as FK in Taxon
  * **Lineage**: container for all exiting couples <rank, parent_rank>, is used as FK from Rank
    * it is useful for mantain some integrity constraints: if the couple is not present here than can't exist such couple in Taxon table 
-      * which means foreach Taxon T: <T.Rank, T.ParenTaxonID.Rank> in Taxon ==> <L.Rank, L.ParentRank> in Lineage
+      * which means foreach Taxon T: <T.Rank, T.ParenTaxonID.Rank> in Taxon &rarr; <L.Rank, L.ParentRank> in Lineage
 
 NB1: In the first version of the database each taxon was identified only by his TaxonID.
 This is always true.
