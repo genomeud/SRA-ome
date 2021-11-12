@@ -89,6 +89,15 @@ See also: https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/
 The NCBI Taxonomy contains all the taxonomy known and accepted by NCBI.<br>
 It is useful to know all the ancestors and the descendants of a taxon, his rank ecc.
 
+It is structured with three entities:
+ * **Taxon**: the most important, contains all the data about all taxa
+   * TaxonID: NCBI's Taxonomy Index (PK)
+   * Rank: rank od the taxon (FK)
+   * TaxonName: scientific name of the taxon
+ * **Rank**: container for all exiting rank, is used as FK in Taxon
+ * **Lineage**: container for all exiting couples <rank, parent_rank>, is used as FK from Rank
+   * it is useful for mantain some integrity constraints: if the couple is not present here than can't exist such couple in Taxon table.
+
 NB1: In the first version of the database each taxon was identified only by his TaxonID.
 This is always true.
 But problems raised trying to update the taxonomy to new versions (tipically there is an update per month).
