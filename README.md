@@ -94,11 +94,11 @@ It is structured with three entities:
    * **TaxonID**: NCBI's Taxonomy Index (PK)
    * **Rank**: rank of the taxon (FK)
    * **TaxonName**: scientific name of the taxon
-   * **ParentTaxonID**: NCBI's Taxonomy Index of the parent of the taxon (PK)
+   * **ParentTaxonID**: NCBI's Taxonomy Index of the parent of the taxon (FK)
  * **Rank**: container for all exiting rank, is used as FK in Taxon
  * **Lineage**: container for all exiting couples <rank, parent_rank>, is used as FK from Rank
    * it is useful for mantain some integrity constraints: if the couple is not present here than can't exist such couple in Taxon table 
-      * which means foreach Taxon T: <T.Rank, T.ParenTaxonID.Rank> in Taxon &rarr; <L.Rank, L.ParentRank> in Lineage
+      * which means that foreach Taxon T: <T.Rank, T.ParenTaxonID.Rank> in Taxon &rarr; <L.Rank, L.ParentRank> in Lineage
 
 NB1: In the first version of the database each taxon was identified only by his TaxonID.
 This is always true.
@@ -132,6 +132,13 @@ The Kraken Taxonomy is a subtree of the NCBI Taxonomy.
 If the NCBI T. contains all taxa known, the Kraken T. just lists the taxa that can be found.
 The Kraken T. maps foreach taxon the corresponding k-mers, fundamental in the classification process.<br>
 NB: The k-mers are not stored in our database.
+
+It is structured with two entities:
+ * **KrakenDatabase**: contains the metadata about the database version
+ * **KrakenRecord**: contains the list of all taxa present forall the database version related.
+   * it is a sublist of all taxa present in Taxon
+   * if a taxon is not present here then Kraken can't find it in the classification
+   * foreach taxon is written the total number of fragments present in the database, both directly and rooted in the taxon
 
 Foreach Kraken Taxonomy version used we save the information about the version and all the taxa.<br>
 As for now, we are storing just one version: Standard-16 of 2020-12-02.<br>
