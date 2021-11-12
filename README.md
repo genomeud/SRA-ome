@@ -91,12 +91,14 @@ It is useful to know all the ancestors and the descendants of a taxon, his rank 
 
 It is structured with three entities:
  * **Taxon**: the most important, contains all the data about all taxa
-   * TaxonID: NCBI's Taxonomy Index (PK)
-   * Rank: rank od the taxon (FK)
-   * TaxonName: scientific name of the taxon
+   * **TaxonID**: NCBI's Taxonomy Index (PK)
+   * **Rank**: rank of the taxon (FK)
+   * **TaxonName**: scientific name of the taxon
+   * **ParentTaxonID**: NCBI's Taxonomy Index of the parent of the taxon (PK)
  * **Rank**: container for all exiting rank, is used as FK in Taxon
  * **Lineage**: container for all exiting couples <rank, parent_rank>, is used as FK from Rank
-   * it is useful for mantain some integrity constraints: if the couple is not present here than can't exist such couple in Taxon table.
+   * it is useful for mantain some integrity constraints: if the couple is not present here than can't exist such couple in Taxon table 
+      * which means foreach Taxon T: <T.Rank, T.ParenTaxonID.Rank> in Taxon ==> <L.Rank, L.ParentRank> in Lineage
 
 NB1: In the first version of the database each taxon was identified only by his TaxonID.
 This is always true.
