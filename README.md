@@ -100,7 +100,8 @@ This obviously causes a massive increase in the size: each taxonomy version cont
 
 NB2: (Obviously) we do not store all the taxonomy versions but only the ones associated to a KrakenDatabase used during classification.<br>
 As for now, we are storing just one version: 2020-12-01.<br>
-It is available here: https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/new_taxdump_2020-12-01.zip
+It is available here: https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive/new_taxdump_2020-12-01.zip<br>
+All possible database versions are here: https://ftp.ncbi.nih.gov/pub/taxonomy/taxdump_archive
 
 NB3: SRA when edits the Taxonomy also updates the reference of the taxa in the old samples.
 This implies that downloading the same metadata in different time can lead to a different result, in the specific in the TaxonID of the sample which can have changed in the meanwhile.
@@ -123,7 +124,8 @@ NB: The k-mers are not stored in our database.
 
 Foreach Kraken Taxonomy version used we save the information about the version and all the taxa.<br>
 As for now, we are storing just one version: Standard-16 of 2020-12-02.<br>
-It is available here: https://genome-idx.s3.amazonaws.com/kraken/k2_standard_16gb_20201202.tar.gz
+It is available here: https://genome-idx.s3.amazonaws.com/kraken/k2_standard_16gb_20201202.tar.gz<br>
+All possible database versions are here: https://benlangmead.github.io/aws-indexes/k2
 
 ### Reports
 
