@@ -99,14 +99,14 @@ It is useful to know all the ancestors and the descendants of a taxon, his rank 
 
 It is structured with three entities:
  * **Taxon**: the most important, contains all the data about all taxa
-   * **TaxonID**: NCBI's Taxonomy Index (PK)
+   * **TaxonID**: NCBI's taxonomy index (PK)
    * **Rank**: rank of the taxon (FK)
    * **TaxonName**: scientific name of the taxon
-   * **ParentTaxonID**: NCBI's Taxonomy Index of the parent of the taxon (FK)
- * **Rank**: container for all exiting rank, is used as FK in Taxon
- * **Lineage**: container for all exiting couples <rank, parent_rank>, is used as FK from Rank
+   * **ParentTaxonID**: NCBI's taxonomy index of the parent of the taxon (FK)
+ * **Rank**: container for all existing rank, is used as FK in Taxon
+ * **Lineage**: container for all existing couples <rank, parent_rank>, is used as FK from Rank
    * it is useful for mantain some integrity constraints: if the couple is not present here than can't exist such couple in Taxon table 
-      * which means that foreach Taxon T: <T.Rank, T.ParenTaxonID.Rank> in Taxon &rarr; <L.Rank, L.ParentRank> in Lineage
+      * which means that foreach Taxon T: <T.Rank, T.ParentTaxonID.Rank> in Taxon &rarr; <L.Rank, L.ParentRank> in Lineage
 
 NB1: In the first version of the database each taxon was identified only by his TaxonID.
 This is always true.
@@ -154,6 +154,20 @@ It is available here: https://genome-idx.s3.amazonaws.com/kraken/k2_standard_16g
 All possible database versions are here: https://benlangmead.github.io/aws-indexes/k2
 
 ### Reports
+The reports are the core of our project.
+A report is the result of the classification of a run.
+
+In the reports are we have two entities:
+ * **Report**: stores which specific runs has been classified with a specific kraken database in a certain date
+ * **ReportTaxon**: contains the output of the classification of each report:
+  * **TaxonID**: the ID of the Taxon found
+  * **RootedFragmentNum**: the number of fragments found in the taxon and in all his descedants (the sub-tree with it as root)
+  * **DirectFragmentNum**: the number of fragments found in the specific taxon
+
+NB1: For a complete view of the classification can be useful to compare the fragment nums in percentage of the total number of fragments in the run, the Run.Spot value.
+
+NB2: Note that there is a possibility of getting some false-positive.
+
 
 
 ## Workflow
