@@ -13,7 +13,7 @@ To store all the needed data, has been designed and implemented a database (in p
 
 ### SRA Metadata
 
-NB: SRA is maintained by INDSC, which is an association of three indipendent entities:
+SRA is maintained by INDSC, which is an association of three indipendent entities:
 | Entity   | State | Database | SRA Acronym |
 | -------- | ----- | -------- | ----------- |
 | NCBI     | US    | GenBank  | S           |
@@ -41,9 +41,12 @@ Relations among entities (too see it better and complete check the IDEF1X model)
 SRA's Run definition:
 "A Run is simply a manifest of data file(s) that are derived from sequencing a library described by the associated Experiment."
 
-In the run are only few information: PublicationDateTime, SRAFileSize, Spot, Base, Consent.
+In a run there are few relevant information: PublicationDateTime, SRAFileSize, Spot, Base, Consent.
 
-Moreover we added a column 'RunOutcome' which explicits if the run has already been analysed ('OK'), if has to be analysed ('TODO') or if it not of our interest ('IGNORE').
+In addition to these, in our schema we are storing a column 'RunOutcome' which explicits the state of the run in respect to the analysis process:
+ * **OK**: already been analysed 
+ * **TODO**: not yet analysed (but we want to)
+ * **IGNORE** we are not interest on analysing it
 
 It also contains the FK to the corresponding Experiment.
 
@@ -51,7 +54,7 @@ It also contains the FK to the corresponding Experiment.
 SRA's Experiment definition:
 "An experiment is a unique sequencing result for a specific sample."
 
-The experiment is most important entity, it contains all the information about the sequencing procedure:
+The experiment is the most important entity, it contains all the information about the sequencing procedure:
 Design, LibraryName, LibrarySource, LibraryLayout, LibrarySelection, LibraryStrategy, PlatformName, InstrumentName.
 
 Most of these fields are actually stored in a separated table (with all the fields possibilities) and are referred as a FK.
@@ -62,7 +65,7 @@ It also contains the FK to the corresponding Sample.
 A sample represents what actually has been collected from the environment.
 A sample can be splitted in many sequencing experiments and also can be the target of many studies.
 
-The two most important information stored are: the TaxonID of the sample and the corresponding BioSampleID (identifier in the BioSample database).
+The two most important information stored are: TaxonID, the TaxonID of the sample, BioSampleID, the identifier of the sample in the BioSample database.
 
 It does NOT contain the FK to the corresponding Study, because, being a M-M relationship, all the FKs are stored in a separated table, StudySample.
 
@@ -79,11 +82,16 @@ A submission is not a pretty important entity.
 It just represents when the studies has been uploaded to SRA.
 
 It could be useful in some (rare) cases when different studies are in practical the same but are stored with different accessions.
-Obviously only if they are uploaded together (in the same submission).
+In this particular cases, some euristics can be used to discover it: same Title, same Abstract, same SubmissionAccession ecc.
 
-The only field which is stored is its accession code.
+The only field which is stored is the accession code.
 
-See also: https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/
+#### SRA Structure links
+
+Some more information on how SRA is structured can be found: 
+ * https://www.ncbi.nlm.nih.gov/sra/docs/submitmeta/
+ * https://github.com/enasequence/schema/tree/master/src/main/resources/uk/ac/ebi/ena/sra/schema
+ * https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=xml_schemas
 
 ### NCBI Taxonomy
 The NCBI Taxonomy contains all the taxonomy known and accepted by NCBI.<br>
